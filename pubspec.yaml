@@ -26,7 +26,7 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   font_awesome_flutter: ^9.0.0-nullsafety
-  # lite_rolling_switch: ^0.1.1
+  expansion_tile_card: ^2.0.0
   image_picker: ^0.7.3
 
   #State Management

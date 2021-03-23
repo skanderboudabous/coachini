@@ -1,19 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:coachini/models/app-user.dart';
+import 'package:coachini/models/adherant.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class FirebaseService extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  final FirebaseFirestore _store = FirebaseFirestore.instance;
 
   final Rx<User> _user = Rx<User>();
+
   String? get userId => _user.value?.uid;
-  Future<AppUser?> get $appUser => getUserFromId(id: userId);
-  AppUser? appUser;
+
+  // Future<Adherant?> get $user => getUserFromId(id: userId);
+  Adherant? user;
   final usersCollection = FirebaseFirestore.instance.collection("users");
 
   @override
@@ -21,6 +20,9 @@ class FirebaseService extends GetxController {
     // TODO: implement onInit
 
     _user.bindStream(_auth.authStateChanges());
+    _user.listen((user) async {
+      this.user = user == null ? null :  await getUserFromId(id: user.uid);
+    });
 
     super.onInit();
   }
@@ -37,28 +39,24 @@ class FirebaseService extends GetxController {
     super.onClose();
   }
 
-
-  Future<AppUser?> login({required String email,required String password}) async {
-      final authResult = (await _auth.signInWithEmailAndPassword(
-          email: email, password: password));
-      User? user = authResult.user;
-      if (user != null) {
-        final AppUser? currentUser = (await getUserFromId(id: user.uid));
-        this.appUser=currentUser;
-
-        return currentUser;
-      }
-      return null;
+  Future<User?> login({required String email, required String password}) async {
+    final authResult = (await _auth.signInWithEmailAndPassword(
+        email: email, password: password));
+    User? user = authResult.user;
+    return user;
   }
 
-  Future<AppUser?> register(String email, String password, String firstName,
+  Future<Adherant?> register(String email, String password, String firstName,
       String lastName, String phone) async {
     try {
       final UserCredential result = (await _auth.createUserWithEmailAndPassword(
           email: email, password: password));
-      AppUser? user = new AppUser(
+      Adherant? user = new Adherant(
           email: email,
           phone: phone,
+          sexe: "SEXE",
+          birthday: DateTime.now(),
+          id: (result.user)?.uid,
           firstName: firstName,
           lastName: lastName);
       await setNewUser(user);
@@ -72,15 +70,22 @@ class FirebaseService extends GetxController {
     }
   }
 
-  Future<void> setNewUser(AppUser user) async {
-    await usersCollection.doc(user.userId).set(user.toMap());
+  Future<void> setNewUser(Adherant user) async {
+    await usersCollection.doc(user.id).set(user.toMap());
   }
 
-  Future<AppUser?> getUserFromId({required String? id}) async {
+  Future<Adherant?> getUserFromId({required String? id}) async {
     final DocumentSnapshot documentSnapshot =
         (await usersCollection.doc(id).get());
     if (documentSnapshot.data == null) return null;
-    return AppUser.fromMap(documentSnapshot.data());
+    dynamic? map = documentSnapshot.data();
+    List<dynamic> exercices = map['exercices'];
+    print(exercices.length);
+    // exercices.forEach((element) async {
+    //   var doc=await element.get();
+    //   print(doc.data());
+    // });
+    return Adherant.fromMap(documentSnapshot.data());
   }
 
   Future<void> logout() async {

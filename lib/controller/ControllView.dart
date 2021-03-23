@@ -1,4 +1,4 @@
-import 'package:coachini/models/app-user.dart';
+import 'package:coachini/models/adherant.dart';
 import 'package:coachini/pages/home.dart';
 import 'package:coachini/pages/login.dart';
 import 'package:coachini/services/firebase.-service.dart';

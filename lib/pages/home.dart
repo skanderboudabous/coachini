@@ -22,7 +22,6 @@ class _HomePageState extends State<HomePage> {
 
             firebaseService.login(email:"mameya.mseddi@gmail.com",password:"1996medmsd").then((value)
             {
-              print(value);
 
 
             },onError: (e){
