@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class Adherant {
   String? email;
   String? id;
@@ -7,75 +5,42 @@ class Adherant {
   String? lastName;
   DateTime? birthday;
   String? sexe;
-
   String? phone;
+  List<dynamic>? exercices;
+  List<dynamic>? objectifs;
+  List<dynamic>? mesures;
+  List<dynamic>? rms;
 
   String? fullName() {
     return firstName! + " " + lastName!;
   }
 
-  Adherant({
-    required this.email,
-    required this.firstName,
-    required this.lastName,
-    required this.birthday,
-    required this.sexe,
-    this.id,
-    this.phone,
-  });
+  Adherant(
+      {this.email,
+      this.id,
+      this.firstName,
+      this.lastName,
+      this.birthday,
+      this.sexe,
+      this.phone,
+      this.exercices,
+      this.objectifs,
+      this.mesures,
+      this.rms});
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is Adherant &&
-          runtimeType == other.runtimeType &&
-          id == other.id;
+      other is Adherant && runtimeType == other.runtimeType && id == other.id;
 
   @override
   int get hashCode => id.hashCode;
-
-  @override
-  String toString() {
-    return 'Adherant{email: $email, userId: $id, firstName: $firstName, lastName: $lastName, birthday: $birthday, sexe: $sexe, phone: $phone}';
-  }
-
-  Adherant copyWith({
-    String? email,
-    String? userId,
-    String? firstName,
-    String? lastName,
-    DateTime? birthday,
-    String? sexe,
-    String? phone,
-  }) {
-    return Adherant(
-      email: email ?? this.email,
-      id: userId ?? this.id,
-      firstName: firstName ?? this.firstName,
-      lastName: lastName ?? this.lastName,
-      birthday: birthday ?? this.birthday,
-      sexe: sexe ?? this.sexe,
-      phone: phone ?? this.phone,
-    );
-  }
-
-  Map<String, dynamic> toMap() {
-    return {
-      'email': email,
-      'userId': id,
-      'firstName': firstName,
-      'lastName': lastName,
-      'birthday': birthday?.toString(),
-      'sexe': sexe,
-      'phone': phone,
-    };
-  }
 
   factory Adherant.fromMap(dynamic map) {
     var temp;
     return Adherant(
       email: map['email']?.toString(),
-      id: map['userId']?.toString(),
+      id: map['id']?.toString(),
       firstName: map['firstName']?.toString(),
       lastName: map['lastName']?.toString(),
       birthday: null == (temp = map['birthday'])
@@ -83,6 +48,34 @@ class Adherant {
           : (temp is DateTime ? temp : DateTime.tryParse(temp)),
       sexe: map['sexe']?.toString(),
       phone: map['phone']?.toString(),
+      exercices: null == (temp = map['exercices'])
+          ? []
+          : (temp is List ? temp.map((map) => map).toList() : []),
+      objectifs: null == (temp = map['objectifs'])
+          ? []
+          : (temp is List ? temp.map((map) => map).toList() : []),
+      mesures: null == (temp = map['mesures'])
+          ? []
+          : (temp is List ? temp.map((map) => map).toList() : []),
+      rms: null == (temp = map['rms'])
+          ? []
+          : (temp is List ? temp.map((map) => map).toList() : []),
     );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'email': email,
+      'id': id,
+      'firstName': firstName,
+      'lastName': lastName,
+      'birthday': birthday?.toString(),
+      'sexe': sexe,
+      'phone': phone,
+      'exercices': exercices,
+      'objectifs': objectifs,
+      'mesures': mesures,
+      'rms': rms,
+    };
   }
 }
