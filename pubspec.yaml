@@ -26,8 +26,11 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   font_awesome_flutter: ^9.0.0-nullsafety
-  expansion_tile_card: ^2.0.0
+  expansion_card: ^0.1.0
+  flutter_slider_drawer: ^2.0.0
   image_picker: ^0.7.3
+  flutter_form_builder: ^6.0.0-nullsafety.1
+  flutter_login: ^2.0.0-nullsafety.0
 
   #State Management
   get: ^4.0.0-nullsafety.2
@@ -56,8 +59,14 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+     - assets/images/bg.jpg
+     - assets/images/img1.jpg
+     - assets/images/img2.png
+     - assets/images/img3.jpg
+     - assets/images/img4.jpg
+     - assets/images/img5.jpg
+     - assets/images/logo.png
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

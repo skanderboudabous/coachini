@@ -10,9 +10,9 @@ class ControlView extends GetWidget<FirebaseService> {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      return (Get.find<FirebaseService>().userId == null)
-          ? HomePage()
-          : LoginPage();
+      return (Get.find<FirebaseService>().userId != null)
+          ? LoginScreen()
+          : HomePage();
     });
   }
 }

@@ -1,42 +1,56 @@
 import 'package:coachini/services/firebase.-service.dart';
-import 'package:coachini/utils/toast.dart';
+import 'package:expansion_card/expansion_card.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
+
+import 'main_widget.dart';
+import 'menu_widget.dart';
+
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-
+  GlobalKey<SliderMenuContainerState> _key =
+  new GlobalKey<SliderMenuContainerState>();
+  late String title;
+  @override
+  void initState() {
+    title = "Home";
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
+    final ButtonStyle flatButtonStyle = TextButton.styleFrom(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+      ),
+    );
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Coachini"),
-      ),
-      body: Center(
-        child: MaterialButton(
-          onPressed: () {
-            var firebaseService=Get.find<FirebaseService>();
-
-            firebaseService.login(email:"mameya.mseddi@gmail.com",password:"1996medmsd").then((value)
-            {
-
-
-            },onError: (e){
-
-              if(e.code=='user-not-found'){
-                showShortToast("User not found");
-              }
-              else if(e.code=='wrong-password'){
-                showShortToast("Wrong password");
-              }
-            });
+        body: WillPopScope(
+          onWillPop: (){
+            return Future.value(false);
           },
-          child: Text("Press me"),
+          child: SliderMenuContainer(
+              appBarColor: Colors.white,
+              key: _key,
+              sliderMenuOpenSize: 200,
+              title: Text(
+                title,
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
+              ),
+              sliderMenu: MenuWidget(
+                onItemClick: (title) {
+                  _key.currentState!.closeDrawer();
+                  setState(() {
+                    this.title = title;
+                  });
+                },
+              ),
+              sliderMain: MainWidget()
+          ),
         ),
-      ),
     );
   }
 }

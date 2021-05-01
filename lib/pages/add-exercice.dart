@@ -75,9 +75,6 @@ class _AddExercicePageState extends State<AddExercicePage> {
               form.save();
               print(exercice);
               Get.find<FirebaseService>().addExercice(exercice).then((value) =>  Get.to(ExercicesPage()));
-
-
-
             }
           }
 

@@ -1,65 +1,67 @@
-import 'package:coachini/pages/exercices.dart';
-import 'package:coachini/services/firebase.-service.dart';
-import 'package:expansion_tile_card/expansion_tile_card.dart';
+import 'package:coachini/pages/home.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:flutter_login/flutter_login.dart';
 
-class LoginPage extends StatefulWidget {
-  @override
-  _LoginPageState createState() => _LoginPageState();
-}
+const users = const {
+  'user@gmail.com': 'useruser',
+  'hunter@gmail.com': 'hunter',
+};
 
-class _LoginPageState extends State<LoginPage> {
-  final GlobalKey<ExpansionTileCardState> cardA = new GlobalKey();
-  final GlobalKey<ExpansionTileCardState> cardB = new GlobalKey();
+class LoginScreen extends StatelessWidget {
+  Duration get loginTime => Duration(milliseconds: 2250);
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
+  Future<String?> _authUser(LoginData data) {
+    print('Name: ${data.name}, Password: ${data.password}');
+    return Future.delayed(loginTime).then((_) {
+      if (!users.containsKey(data.name)) {
+        return 'Username not exists';
+      }
+      if (users[data.name] != data.password) {
+        return 'Password does not match';
+      }
+      return null
+      ;
+    });
+  }
 
-
+  Future<String?> _recoverPassword(String name) {
+    print('Name: $name');
+    return Future.delayed(loginTime).then((_) {
+      if (!users.containsKey(name)) {
+        return 'Username not exists';
+      }
+      return null;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    final ButtonStyle flatButtonStyle = TextButton.styleFrom(
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(4.0)),
-      ),
-    );
-    return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: Column(
-          children: [
-            MaterialButton(
-              onPressed: () {
-               var firebaseService= Get.find<FirebaseService>();
-               print(firebaseService.user?.fullName());
-
-              },
-              child: Text("AppUser"),
-            ),
-            MaterialButton(
-              onPressed: () {
-              },
-              child: Text("test"),
-            ),
-            MaterialButton(
-              onPressed: () {
-                Get.find<FirebaseService>().logout();
-              },
-              child: Text("Logout"),
-            ),
-            MaterialButton(onPressed: ()=>{
-              Get.to(ExercicesPage())
+    return MaterialApp(
+        theme: ThemeData(
+        scaffoldBackgroundColor: Colors.transparent,
+    ),
+      home: Scaffold(
+          extendBodyBehindAppBar: true,
+          body: Container(
+          decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/bg.jpg"),
+             fit: BoxFit.cover,
+              ),
+          ),
+            child:FlutterLogin(
+              logo: 'assets/images/logo.png',
+              onLogin: _authUser,
+              onSignup: _authUser,
+              onSubmitAnimationCompleted: () {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) => HomePage(),
+              ));
             },
-            child: Text("To Excercice"),
-            ),
-          ],
-        ),
-      ),
+            onRecoverPassword: _recoverPassword,
+                  )
+          )
+      )
     );
   }
 }
