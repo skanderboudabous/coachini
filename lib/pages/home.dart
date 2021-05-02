@@ -2,6 +2,7 @@ import 'package:coachini/services/firebase.-service.dart';
 import 'package:expansion_card/expansion_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
+import 'package:get/get.dart';
 
 import 'main_widget.dart';
 import 'menu_widget.dart';

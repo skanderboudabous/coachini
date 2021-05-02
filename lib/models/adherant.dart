@@ -4,6 +4,7 @@ class Adherant {
   String? firstName;
   String? lastName;
   DateTime? birthday;
+  bool? isAdmin;
   String? sexe;
   String? phone;
   List<dynamic>? exercices;
@@ -26,7 +27,8 @@ class Adherant {
       this.exercices,
       this.objectifs,
       this.mesures,
-      this.rms});
+      this.rms,
+      this.isAdmin});
 
   @override
   bool operator ==(Object other) =>
@@ -41,6 +43,7 @@ class Adherant {
     return Adherant(
       email: map['email']?.toString(),
       id: map['id']?.toString(),
+      isAdmin: map['isAdmin'],
       firstName: map['firstName']?.toString(),
       lastName: map['lastName']?.toString(),
       birthday: null == (temp = map['birthday'])

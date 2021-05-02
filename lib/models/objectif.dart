@@ -1,8 +1,10 @@
 class Objectif{
   String? id;
   String? nom;
+  DateTime? date;
 
-  Objectif({this.id, this.nom});
+
+  Objectif({this.id, this.nom,this.date});
 
   @override
   bool operator ==(Object other) =>
@@ -17,6 +19,9 @@ class Objectif{
     return Objectif(
       id: map['id']?.toString(),
       nom: map['nom']?.toString(),
+      date: null == (temp = map['date'])
+          ? null
+          : (temp is DateTime ? temp : DateTime.tryParse(temp)),
     );
   }
 
@@ -24,6 +29,7 @@ class Objectif{
     return {
       'id': id,
       'nom': nom,
+      'date':date?.toString(),
     };
   }
 }

@@ -1,10 +1,15 @@
+import 'package:coachini/models/objectif.dart';
+import 'package:coachini/pages/objectif.dart';
 import 'package:coachini/services/firebase.-service.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 
+import 'edit_profile.dart';
 import 'exercices.dart';
 import 'login.dart';
+import 'morphologie.dart';
 
 class MenuWidget extends StatelessWidget {
   final Function(String)? onItemClick;
@@ -35,7 +40,7 @@ class MenuWidget extends StatelessWidget {
               height: 20,
             ),
             Text(
-              'Nick',
+              Get.find<FirebaseService>().user?.firstName??'',
               style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
@@ -78,6 +83,15 @@ class MenuWidget extends StatelessWidget {
             break;
           case "Exercices":
             Get.to(ExercicesPage());
+            break;
+          case "Objectif":
+            Get.to(ObjectifPage());
+            break;
+          case "Type de morphologie":
+            Get.to(MorphologiePage());
+            break;
+          case "Profile":
+            Get.to(EditProfilePage());
             break;
         }
       });

@@ -30,6 +30,7 @@ import 'package:coachini/models/suivie-nutritionnel.dart';
 import 'package:coachini/models/suivie-nutritionnel.dart';
 import 'package:coachini/models/suivie-nutritionnel.dart';
 import 'package:coachini/models/suivie-nutritionnel.dart';
+import 'package:coachini/utils/toast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
@@ -61,6 +62,8 @@ class FirebaseService extends GetxController {
     _user.listen((user) async {
       if (user != null) {
         getUserFromId(id: user.uid).asStream().take(1).listen((adherant) {
+          print("user is here");
+          print(adherant);
           this.user = adherant;
         });
       } else {
@@ -89,29 +92,50 @@ class FirebaseService extends GetxController {
     return user;
   }
 
-  Future<Adherant?> register(String email, String password, String firstName,
-      String lastName, String phone) async {
+//  Future<Adherant?> register(String email, String password, String firstName,
+//      String lastName, String phone) async {
+//    try {
+//      final UserCredential result = (await _auth.createUserWithEmailAndPassword(
+//          email: email, password: password));
+//      Adherant? user = new Adherant(
+//          email: email,
+//          phone: phone,
+//          sexe: "SEXE",
+//          birthday: DateTime.now(),
+//          id: (result.user)?.uid,
+//          firstName: firstName,
+//          lastName: lastName);
+//      await setNewUser(user);
+//      return user;
+//    } on FirebaseAuthException catch (e) {
+//      if (e.code == 'weak-password') {
+//        print('The password provided is too weak.');
+//      } else if (e.code == 'email-already-in-use') {
+//        print('The account already exists for that email.');
+//      }
+//    }
+//  }
+
+  Future<Adherant?> register({required String email,required String password}) async {
     try {
       final UserCredential result = (await _auth.createUserWithEmailAndPassword(
           email: email, password: password));
       Adherant? user = new Adherant(
           email: email,
-          phone: phone,
-          sexe: "SEXE",
-          birthday: DateTime.now(),
-          id: (result.user)?.uid,
-          firstName: firstName,
-          lastName: lastName);
+          id: (result.user)?.uid,);
       await setNewUser(user);
       return user;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        print('The password provided is too weak.');
+        showLongToast('The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
-        print('The account already exists for that email.');
+        showLongToast('The account already exists for that email.');
       }
     }
   }
+
+
+
 
   Future<void> setNewUser(Adherant user) async {
     await userCollection.doc(user.id).set(user.toMap());
@@ -121,13 +145,6 @@ class FirebaseService extends GetxController {
     final DocumentSnapshot documentSnapshot =
         (await userCollection.doc(id).get());
     if (documentSnapshot.data == null) return null;
-    dynamic? map = documentSnapshot.data();
-    List<dynamic> exercices = map['exercices'];
-    print(exercices.length);
-    // exercices.forEach((element) async {
-    //   var doc=await element.get();
-    //   print(doc.data());
-    // });
     return Adherant.fromMap(documentSnapshot.data());
   }
 

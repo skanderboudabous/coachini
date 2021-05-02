@@ -1,4 +1,3 @@
-import 'package:coachini/models/adherant.dart';
 import 'package:coachini/pages/home.dart';
 import 'package:coachini/pages/login.dart';
 import 'package:coachini/services/firebase.-service.dart';
@@ -10,7 +9,7 @@ class ControlView extends GetWidget<FirebaseService> {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      return (Get.find<FirebaseService>().userId != null)
+      return (Get.find<FirebaseService>().userId == null)
           ? LoginScreen()
           : HomePage();
     });
