@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 import 'edit_profile.dart';
 import 'exercices.dart';
 import 'login.dart';
+import 'mesures.dart';
 import 'morphologie.dart';
 
 class MenuWidget extends StatelessWidget {
@@ -79,7 +80,7 @@ class MenuWidget extends StatelessWidget {
         onItemClick!(title);
         switch (title){
           case "LogOut":
-            Get.find<FirebaseService>().logout().then((value) =>  Get.to(LoginScreen()));
+            Get.find<FirebaseService>().logout().then((value) =>  Get.to(LoginPage()));
             break;
           case "Exercices":
             Get.to(ExercicesPage());
@@ -92,6 +93,9 @@ class MenuWidget extends StatelessWidget {
             break;
           case "Profile":
             Get.to(EditProfilePage());
+            break;
+          case "Mesures":
+            Get.to(MesuresPage());
             break;
         }
       });

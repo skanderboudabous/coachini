@@ -1,4 +1,6 @@
+import 'package:coachini/pages/admin.dart';
 import 'package:coachini/pages/home.dart';
+import 'package:coachini/pages/loading.dart';
 import 'package:coachini/pages/login.dart';
 import 'package:coachini/services/firebase.-service.dart';
 import 'package:flutter/material.dart';
@@ -10,8 +12,8 @@ class ControlView extends GetWidget<FirebaseService> {
   Widget build(BuildContext context) {
     return Obx(() {
       return (Get.find<FirebaseService>().userId == null)
-          ? LoginScreen()
-          : HomePage();
+          ? LoginPage()
+          : LoadingPage();
     });
   }
 }

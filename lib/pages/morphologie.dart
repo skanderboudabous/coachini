@@ -11,11 +11,7 @@ class MorphologiePage extends StatefulWidget {
 }
 
 class _MorphologiePageState extends State<MorphologiePage> {
-  List<String> morphologies = ["Perte de poids", "Prise de masse", "Remise en forme", "Renforcement musculaire",
-    "Tonification musculaire", "Musculation", "TRX", "Cuisses abdos fessiers", "Ventre plat", "Cross training",
-    "Cardio training", "Travail postural", "Stretching", "Art martial", "Gym senior", "Femmes enceintes",
-    "Post accouchement", "Gym enfant", "Gym handicap", "Gym et pathologie", "Préparation physique",
-    "Réathlétisation", "Préparation mentale", "Gym a domicile", "Coaching individuel et/ou groupes", "Soin énergétique"];
+  List<String> morphologies = ["Ectomorphe", "Mesomorphe", "Endomorphe"];
 
 
   bool? isAdmin;

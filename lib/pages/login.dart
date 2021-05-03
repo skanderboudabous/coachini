@@ -9,12 +9,12 @@ const users = const {
   'user@gmail.com': 'useruser',
   'hunter@gmail.com': 'hunter',
 };
-class LoginScreen extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginPageState extends State<LoginPage> {
 
   String? page="login";
 
@@ -69,9 +69,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   onSignup: _signUpUser,
                   onSubmitAnimationCompleted: () {
                     if(page=="login"){
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => HomePage(),
-                      ));
+//                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+//                        builder: (context) => HomePage(),
+//                      ));
                     } else if(page=="signup"){
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
                         builder: (context) => ProfilePage(),

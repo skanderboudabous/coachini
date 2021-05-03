@@ -4,6 +4,7 @@ class Adherant {
   String? firstName;
   String? lastName;
   DateTime? birthday;
+  bool? isSubscribed;
   bool? isAdmin;
   String? sexe;
   String? phone;
@@ -28,7 +29,8 @@ class Adherant {
       this.objectifs,
       this.mesures,
       this.rms,
-      this.isAdmin});
+      this.isAdmin,
+      this.isSubscribed});
 
   @override
   bool operator ==(Object other) =>
@@ -44,6 +46,7 @@ class Adherant {
       email: map['email']?.toString(),
       id: map['id']?.toString(),
       isAdmin: map['isAdmin'],
+      isSubscribed: map['isSubscribed'],
       firstName: map['firstName']?.toString(),
       lastName: map['lastName']?.toString(),
       birthday: null == (temp = map['birthday'])
@@ -78,6 +81,8 @@ class Adherant {
       'exercices': exercices,
       'objectifs': objectifs,
       'mesures': mesures,
+      'isAdmin': isAdmin,
+      'isSubscribed':isSubscribed,
       'rms': rms,
     };
   }

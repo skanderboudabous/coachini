@@ -34,14 +34,13 @@ import 'package:coachini/utils/toast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:rxdart/rxdart.dart' as Rxdart;
 
 class FirebaseService extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-
+  final Rxdart.BehaviorSubject<Adherant?> adherant= new Rxdart.BehaviorSubject();
   final Rx<User> _user = Rx<User>();
-
   String? get userId => _user.value?.uid;
-
   Adherant? user;
   final userCollection = FirebaseFirestore.instance.collection("users");
   final objectifCollection=FirebaseFirestore.instance.collection("objectifs");
@@ -57,20 +56,25 @@ class FirebaseService extends GetxController {
   @override
   void onInit() {
     // TODO: implement onInit
-
     _user.bindStream(_auth.authStateChanges());
     _user.listen((user) async {
       if (user != null) {
         getUserFromId(id: user.uid).asStream().take(1).listen((adherant) {
           print("user is here");
           print(adherant);
+          this.adherant.add(adherant);
           this.user = adherant;
         });
       } else {
+        this.adherant.add(null);
         this.user = null;
       }
     });
     super.onInit();
+  }
+
+  Future<Adherant?> getAdherant(){
+    return Future.value(this.user);
   }
 
   @override
