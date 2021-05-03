@@ -1,7 +1,7 @@
 import 'package:coachini/pages/add-exercice.dart';
 import 'package:coachini/pages/home.dart';
 import 'package:coachini/pages/profile.dart';
-import 'package:coachini/services/firebase.-service.dart';
+import 'package:coachini/controller/firebase_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_login/flutter_login.dart';
 import 'package:get/get.dart';
@@ -25,12 +25,12 @@ class _LoginPageState extends State<LoginPage> {
     setState(() {
       page="login";
     });
-    var user = await Get.find<FirebaseService>().login(email: data.name, password: data.password);
-    return null;
+    await Get.find<FirebaseController>().login(email: data.name, password: data.password,context: context);
+    return "";
   }
 
   Future<String?> _signUpUser(LoginData data) async {
-    var user = await Get.find<FirebaseService>().register(email: data.name, password: data.password);
+    await Get.find<FirebaseController>().register(email: data.name, password: data.password,context:context);
     setState(() {
       page="signup";
     });
@@ -68,15 +68,15 @@ class _LoginPageState extends State<LoginPage> {
                   onLogin: _authUser,
                   onSignup: _signUpUser,
                   onSubmitAnimationCompleted: () {
-                    if(page=="login"){
-//                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-//                        builder: (context) => HomePage(),
-//                      ));
-                    } else if(page=="signup"){
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => ProfilePage(),
-                      ));
-                    }
+//                     if(page=="login"){
+//                       Navigator.of(context).pushReplacement(MaterialPageRoute(
+//                         builder: (context) => HomePage(),
+//                       ));
+//                     } else if(page=="signup"){
+//                       Navigator.of(context).pushReplacement(MaterialPageRoute(
+//                         builder: (context) => ProfilePage(),
+//                       ));
+//                     }
                   },
                   onRecoverPassword: _recoverPassword,
                 )

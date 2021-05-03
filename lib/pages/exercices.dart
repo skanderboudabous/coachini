@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coachini/models/exercice.dart';
 import 'package:coachini/pages/add-exercice.dart';
-import 'package:coachini/services/firebase.-service.dart';
-import 'package:coachini/widgets/exercice-card.dart';
+import 'package:coachini/controller/firebase_controller.dart';
+import 'package:coachini/widgets/exercice_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -29,7 +29,7 @@ class _ExercicesPageState extends State<ExercicesPage> {
             Get.to(AddExercicePage());
           }),
           FutureBuilder(
-              future: Get.find<FirebaseService>().getExercices(),
+              future: Get.find<FirebaseController>().getExercices(),
               builder: (BuildContext context,AsyncSnapshot<QuerySnapshot> snapshot){
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return const Center(child: CircularProgressIndicator());

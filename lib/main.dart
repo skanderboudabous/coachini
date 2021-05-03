@@ -1,12 +1,15 @@
-import 'package:coachini/controller/ControllView.dart';
-import 'package:coachini/utils/binding.dart';
+import 'package:coachini/controller/firebase_controller.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+
+import 'constants/app_routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  Get.put<FirebaseController>(FirebaseController());
   runApp(MyApp());
 }
 
@@ -20,8 +23,8 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       debugShowCheckedModeBanner: false,
-      home: ControlView(),
-      initialBinding: Binding(),
+      initialRoute: "/",
+      getPages: AppRoutes.routes,
     );
   }
 }

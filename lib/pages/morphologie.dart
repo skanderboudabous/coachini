@@ -1,4 +1,4 @@
-import 'package:coachini/services/firebase.-service.dart';
+import 'package:coachini/controller/firebase_controller.dart';
 import 'package:coachini/utils/toast.dart';
 import 'package:flutter/material.dart';
 import 'package:direct_select_flutter/direct_select_container.dart';
@@ -17,7 +17,7 @@ class _MorphologiePageState extends State<MorphologiePage> {
   bool? isAdmin;
   @override
   void initState() {
-    isAdmin=Get.find<FirebaseService>().user?.isAdmin;
+    isAdmin=Get.find<FirebaseController>().admin.value;
     // TODO: implement initState
     super.initState();
   }

@@ -16,7 +16,6 @@ class Adherant {
   String? fullName() {
     return firstName! + " " + lastName!;
   }
-
   Adherant(
       {this.email,
       this.id,

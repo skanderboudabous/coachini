@@ -1,4 +1,4 @@
-import 'package:coachini/services/firebase.-service.dart';
+import 'package:coachini/controller/firebase_controller.dart';
 import 'package:coachini/utils/toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -16,7 +16,7 @@ class _MesuresPageState extends State<MesuresPage> {
 
   @override
   void initState() {
-    isAdmin = Get.find<FirebaseService>().user?.isAdmin;
+    isAdmin = Get.find<FirebaseController>().admin.value;
     // TODO: implement initState
     super.initState();
   }

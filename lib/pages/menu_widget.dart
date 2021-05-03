@@ -1,6 +1,6 @@
 import 'package:coachini/models/objectif.dart';
 import 'package:coachini/pages/objectif.dart';
-import 'package:coachini/services/firebase.-service.dart';
+import 'package:coachini/controller/firebase_controller.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -40,14 +40,16 @@ class MenuWidget extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            Text(
-              Get.find<FirebaseService>().user?.firstName??'',
-              style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  fontFamily: 'BalsamiqSans'),
-            ),
+            GetX<FirebaseController>(builder: (fb){
+              return Text(
+                fb.firestoreUser.value?.firstName??'',
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    fontFamily: 'BalsamiqSans'),
+              );
+            },init: FirebaseController(),),
             SizedBox(
               height: 5,
             ),
@@ -80,7 +82,7 @@ class MenuWidget extends StatelessWidget {
         onItemClick!(title);
         switch (title){
           case "LogOut":
-            Get.find<FirebaseService>().logout().then((value) =>  Get.to(LoginPage()));
+            Get.find<FirebaseController>().logout();
             break;
           case "Exercices":
             Get.to(ExercicesPage());

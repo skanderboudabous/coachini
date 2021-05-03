@@ -1,5 +1,5 @@
 import 'package:auto_animated/auto_animated.dart';
-import 'package:coachini/services/firebase.-service.dart';
+import 'package:coachini/controller/firebase_controller.dart';
 import 'package:coachini/widgets/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorful_tab/flutter_colorful_tab.dart';
@@ -28,7 +28,7 @@ class _AdminPageState extends State<AdminPage>  with SingleTickerProviderStateMi
         title:Text("Admin"),
         actions: [
           IconButton(icon: Icon(Icons.cancel), onPressed: ()=>{
-            Get.find<FirebaseService>().logout().then((value) => Get.to(LoginPage()))
+            Get.find<FirebaseController>().logout()
           })
         ],
       ),

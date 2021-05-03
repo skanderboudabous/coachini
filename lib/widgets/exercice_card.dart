@@ -1,5 +1,5 @@
 import 'package:coachini/models/exercice.dart';
-import 'package:coachini/services/firebase.-service.dart';
+import 'package:coachini/controller/firebase_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 class ExerciceCard extends StatefulWidget {
@@ -22,7 +22,7 @@ class _ExerciceCardState extends State<ExerciceCard> {
                 onPressed: (){
                 setState(() {
                   widget.exercice.nom="bbbbb";
-                  Get.find<FirebaseService>().updateExercice(widget.exercice);
+                  Get.find<FirebaseController>().updateExercice(widget.exercice);
 
                 });
           })

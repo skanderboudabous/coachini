@@ -1,6 +1,6 @@
 import 'package:coachini/models/exercice.dart';
 import 'package:coachini/pages/exercices.dart';
-import 'package:coachini/services/firebase.-service.dart';
+import 'package:coachini/controller/firebase_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -74,7 +74,7 @@ class _AddExercicePageState extends State<AddExercicePage> {
             if (form.validate()) {
               form.save();
               print(exercice);
-              Get.find<FirebaseService>().addExercice(exercice).then((value) =>  Get.to(ExercicesPage()));
+              Get.find<FirebaseController>().addExercice(exercice).then((value) =>  Get.to(ExercicesPage()));
             }
           }
 
