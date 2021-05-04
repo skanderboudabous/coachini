@@ -9,6 +9,7 @@ class PrimaryButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed,
+      style: ButtonStyle(),
       child: Text(
         labelText.toUpperCase(),
         style: TextStyle(fontWeight: FontWeight.bold),
