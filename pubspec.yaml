@@ -35,7 +35,6 @@ dependencies:
   auto_animated: any
   flutter_colorful_tab: ^0.1.0
   loader_overlay: ^2.0.1
-  primary_button: ^0.1.0
   #State Management
   get: ^4.0.0-nullsafety.2
   shared_preferences: ^2.0.3
