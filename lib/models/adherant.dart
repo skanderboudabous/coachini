@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Adherant {
   String? email;
   String? id;
@@ -8,6 +10,7 @@ class Adherant {
   bool? isAdmin;
   String? sexe;
   String? phone;
+  String? pictureUrl;
   List<dynamic>? exercices;
   List<dynamic>? objectifs;
   List<dynamic>? mesures;
@@ -29,7 +32,8 @@ class Adherant {
       this.mesures,
       this.rms,
       this.isAdmin,
-      this.isSubscribed});
+      this.isSubscribed,
+      this.pictureUrl});
 
   @override
   bool operator ==(Object other) =>
@@ -46,6 +50,7 @@ class Adherant {
       id: map['id']?.toString(),
       isAdmin: map['isAdmin'],
       isSubscribed: map['isSubscribed'],
+      pictureUrl: map['pictureUrl'],
       firstName: map['firstName']?.toString(),
       lastName: map['lastName']?.toString(),
       birthday: null == (temp = map['birthday'])
@@ -76,6 +81,7 @@ class Adherant {
       'lastName': lastName,
       'birthday': birthday?.toString(),
       'sexe': sexe,
+      'pictureUrl': pictureUrl,
       'phone': phone,
       'exercices': exercices,
       'objectifs': objectifs,

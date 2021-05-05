@@ -1,12 +1,8 @@
-import 'package:coachini/constants/app_routes.dart';
 import 'package:coachini/controller/firebase_controller.dart';
 import 'package:coachini/helpers/helpers.dart';
-import 'package:coachini/widgets/label_button.dart';
-import 'package:primary_button/PrimaryButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:get/get.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -93,34 +89,34 @@ class SignUpPage extends StatelessWidget {
                                     SizedBox(
                                     height: 10 ,
                                     ),
-                                    PrimaryButton(
-                                    onPressed: () async {
-                                    if (_formKey.currentState!.validate()) {
-                                    SystemChannels.textInput.invokeMethod(
-                                    'TextInput.hide'); //to hide the keyboard - if any
-                                    authController.register(
-                                    email: emailController.text,
-                                    password: passwordController.text,
-                                    context: context);
-                                    }
-                                    },
-                                    buttonLabel: 'Signup',
-                                    fontSize: 14,
-                                    bgColor: Colors.lightBlue,
-                                    width: 340,
-                                    height: 50,
-                                    ),
-                                    SizedBox(
-                                    height: 10,
-                                    ),
-                                    PrimaryButton(
-                                    onPressed: () => Get.toNamed(AppRoutes.SIGNIN),
-                                    buttonLabel: 'Sign In',
-                                    fontSize: 14,
-                                    bgColor: Colors.lightBlue,
-                                    width: 340,
-                                    height: 50,
-                                    ),
+                                    // PrimaryButton(
+                                    // onPressed: () async {
+                                    // if (_formKey.currentState!.validate()) {
+                                    // SystemChannels.textInput.invokeMethod(
+                                    // 'TextInput.hide'); //to hide the keyboard - if any
+                                    // authController.register(
+                                    // email: emailController.text,
+                                    // password: passwordController.text,
+                                    // context: context);
+                                    // }
+                                    // },
+                                    // buttonLabel: 'Signup',
+                                    // fontSize: 14,
+                                    // bgColor: Colors.lightBlue,
+                                    // width: 340,
+                                    // height: 50,
+                                    // ),
+                                    // SizedBox(
+                                    // height: 10,
+                                    // ),
+                                    // PrimaryButton(
+                                    // onPressed: () => Get.toNamed(AppRoutes.SIGNIN),
+                                    // buttonLabel: 'Sign In',
+                                    // fontSize: 14,
+                                    // bgColor: Colors.lightBlue,
+                                    // width: 340,
+                                    // height: 50,
+                                    // ),
                                   ],
                               ),
                             ),

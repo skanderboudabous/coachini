@@ -1,5 +1,7 @@
 import 'package:auto_animated/auto_animated.dart';
 import 'package:coachini/controller/firebase_controller.dart';
+import 'package:coachini/pages/users_subscribed.dart';
+import 'package:coachini/pages/users_unsubscribed.dart';
 import 'package:coachini/widgets/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorful_tab/flutter_colorful_tab.dart';
@@ -57,31 +59,12 @@ class _AdminPageState extends State<AdminPage>  with SingleTickerProviderStateMi
             Expanded(child: TabBarView(
               controller: _tabController,
               children: [
-                userSubscribed(),
-                userSubscribed(),
+                UsersSubscribed(),
+                UsersUnSubscribed(),
               ],
             ))
           ],
         ),
-      ),
-    );
-  }
-
-  Widget userSubscribed(){
-    return LiveList(
-      showItemInterval: Duration(milliseconds: 150),
-      showItemDuration: Duration(milliseconds: 350),
-      padding: EdgeInsets.all(16),
-      reAnimateOnVisibility: true,
-      scrollDirection: Axis.vertical,
-      itemCount: 20,
-      itemBuilder: animationItemBuilder(
-            (index) =>Card(
-          child: Text(
-            index.toString(),
-          ),
-        ),
-        padding: EdgeInsets.symmetric(vertical: 8),
       ),
     );
   }

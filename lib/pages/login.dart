@@ -1,6 +1,3 @@
-import 'package:coachini/pages/add-exercice.dart';
-import 'package:coachini/pages/home.dart';
-import 'package:coachini/pages/profile.dart';
 import 'package:coachini/controller/firebase_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_login/flutter_login.dart';

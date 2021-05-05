@@ -97,7 +97,7 @@ class FirebaseController extends GetxController {
       final authResult = (await _auth.signInWithEmailAndPassword(
           email: email, password: password));
       User? user = authResult.user;
-       hideLoadingIndicator(context);
+      hideLoadingIndicator(context);
       return user;
     } on FirebaseAuthException catch (e) {
       hideLoadingIndicator(context);
@@ -136,24 +136,18 @@ class FirebaseController extends GetxController {
     }
   }
 
-  showLoadingIndicator(BuildContext context){
+  showLoadingIndicator(BuildContext context) {
     context.loaderOverlay.show();
   }
-  hideLoadingIndicator(BuildContext context){
+
+  hideLoadingIndicator(BuildContext context) {
     context.loaderOverlay.hide();
   }
-
 
   Future<void> setNewUser(Adherant user) async {
     await userCollection.doc(user.id).set(user.toMap());
   }
 
-  Future<Adherant?> getUserFromId({required String? id}) async {
-    final DocumentSnapshot documentSnapshot =
-        (await userCollection.doc(id).get());
-    if (documentSnapshot.data == null) return null;
-    return Adherant.fromMap(documentSnapshot.data());
-  }
 
   Future<void> logout() async {
     return _auth.signOut();
@@ -308,6 +302,30 @@ class FirebaseController extends GetxController {
       return suivieNutritionnel;
     });
   }
+
+//#endregion
+
+//#region Users Functions
+
+  Future<QuerySnapshot> getUsers() async {
+    return userCollection.get();
+  }
+
+  Future<QuerySnapshot> getUsersSubscribed() async {
+    return userCollection.where("isSubscribed",isEqualTo: true).get();
+  }
+  Future<QuerySnapshot> getUsersUnSubscribed() async {
+    return userCollection.where("isSubscribed",isEqualTo: false).get();
+  }
+
+
+  Future<Adherant?> getUserFromId({required String? id}) async {
+    final DocumentSnapshot documentSnapshot =
+    (await userCollection.doc(id).get());
+    if (documentSnapshot.data == null) return null;
+    return Adherant.fromMap(documentSnapshot.data());
+  }
+
 
 //#endregion
 
