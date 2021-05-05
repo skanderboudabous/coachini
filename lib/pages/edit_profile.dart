@@ -13,116 +13,129 @@ class _EditProfilePageState extends State<EditProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: <Widget>[
-            FormBuilder(
-              key: _formKey,
-              child: Column(
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/bg.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: <Widget>[
+              FormBuilder(
+                key: _formKey,
+                child: Column(
+                  children: <Widget>[
+                    FormBuilderTextField(
+                      name: 'First Name',
+                      decoration: InputDecoration(
+                        labelText:  'First Name',
+                          labelStyle: TextStyle(color: Colors.white)
+                      ),
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(context),
+                      ]),
+                      keyboardType: TextInputType.number,
+                    ),
+                    FormBuilderTextField(
+                      name: 'Last Name',
+                      decoration: InputDecoration(
+                        labelText:
+                        'Last Name',
+                          labelStyle: TextStyle(color: Colors.white)
+                      ),
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(context),
+                      ]),
+                      keyboardType: TextInputType.number,
+                    ),
+                    FormBuilderTextField(
+                      name: 'Phone',
+                      decoration: InputDecoration(
+                        labelText:
+                        'Phone Number',
+                          labelStyle: TextStyle(color: Colors.white)
+                      ),
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(context),
+                        FormBuilderValidators.numeric(context),
+                        FormBuilderValidators.max(context, 8),
+                      ]),
+                      keyboardType: TextInputType.number,
+                    ),
+                    FormBuilderDateTimePicker(
+                      name: 'date',
+                      // onChanged: _onChanged,
+                      inputType: InputType.date,
+                      decoration: InputDecoration(
+                        labelText: 'Birthday',
+                          labelStyle: TextStyle(color: Colors.white)
+                      ),
+                      // initialValue: DateTime.now(),
+                      // enabled: true,
+                    ),
+
+
+                    FormBuilderDropdown(
+                      name: 'gender',
+                      decoration: InputDecoration(
+                        labelText: 'Gender',
+                          labelStyle: TextStyle(color: Colors.white)
+                      ),
+                      // initialValue: 'Male',
+                      allowClear: true,
+                      hint: Text('Select Gender',style: TextStyle(color: Colors.white),),
+                      validator: FormBuilderValidators.compose(
+                          [FormBuilderValidators.required(context)]),
+                      items: genderOptions
+                          .map((gender) => DropdownMenuItem(
+                        value: gender,
+                        child: Text('$gender'),
+                      ))
+                          .toList(),
+                    ),
+                  ],
+                ),
+              ),
+              Row(
                 children: <Widget>[
-                  FormBuilderTextField(
-                    name: 'First Name',
-                    decoration: InputDecoration(
-                      labelText:
-                      'First Name',
+                  Expanded(
+                    child: MaterialButton(
+                      color: Theme.of(context).accentColor,
+                      child: Text(
+                        "Submit",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      onPressed: () {
+                        _formKey.currentState?.save();
+                        if (_formKey.currentState?.validate()==true) {
+                          print(_formKey.currentState?.value);
+                        } else {
+                          print("validation failed");
+                        }
+                      },
                     ),
-                    validator: FormBuilderValidators.compose([
-                      FormBuilderValidators.required(context),
-                    ]),
-                    keyboardType: TextInputType.number,
                   ),
-                  FormBuilderTextField(
-                    name: 'Last Name',
-                    decoration: InputDecoration(
-                      labelText:
-                      'Last Name',
+                  SizedBox(width: 20),
+                  Expanded(
+                    child: MaterialButton(
+                      color: Theme.of(context).accentColor,
+                      child: Text(
+                        "Reset",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      onPressed: () {
+                        _formKey.currentState?.reset();
+                      },
                     ),
-                    validator: FormBuilderValidators.compose([
-                      FormBuilderValidators.required(context),
-                    ]),
-                    keyboardType: TextInputType.number,
-                  ),
-                  FormBuilderTextField(
-                    name: 'Phone',
-                    decoration: InputDecoration(
-                      labelText:
-                      'Phone Number',
-                    ),
-                    validator: FormBuilderValidators.compose([
-                      FormBuilderValidators.required(context),
-                      FormBuilderValidators.numeric(context),
-                      FormBuilderValidators.max(context, 8),
-                    ]),
-                    keyboardType: TextInputType.number,
-                  ),
-                  FormBuilderDateTimePicker(
-                    name: 'date',
-                    // onChanged: _onChanged,
-                    inputType: InputType.date,
-                    decoration: InputDecoration(
-                      labelText: 'Birthday',
-                    ),
-                    // initialValue: DateTime.now(),
-                    // enabled: true,
-                  ),
-
-
-                  FormBuilderDropdown(
-                    name: 'gender',
-                    decoration: InputDecoration(
-                      labelText: 'Gender',
-                    ),
-                    // initialValue: 'Male',
-                    allowClear: true,
-                    hint: Text('Select Gender'),
-                    validator: FormBuilderValidators.compose(
-                        [FormBuilderValidators.required(context)]),
-                    items: genderOptions
-                        .map((gender) => DropdownMenuItem(
-                      value: gender,
-                      child: Text('$gender'),
-                    ))
-                        .toList(),
                   ),
                 ],
-              ),
-            ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: MaterialButton(
-                    color: Theme.of(context).accentColor,
-                    child: Text(
-                      "Submit",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    onPressed: () {
-                      _formKey.currentState?.save();
-                      if (_formKey.currentState?.validate()==true) {
-                        print(_formKey.currentState?.value);
-                      } else {
-                        print("validation failed");
-                      }
-                    },
-                  ),
-                ),
-                SizedBox(width: 20),
-                Expanded(
-                  child: MaterialButton(
-                    color: Theme.of(context).accentColor,
-                    child: Text(
-                      "Reset",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    onPressed: () {
-                      _formKey.currentState?.reset();
-                    },
-                  ),
-                ),
-              ],
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

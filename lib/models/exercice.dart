@@ -3,13 +3,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class Exercice{
   String? id;
   String? nom;
+  String? ImageLink;
   int? nbSerie;
   int? nbRep;
   int? repo;
   DocumentReference? muscle;
 
   Exercice(
-      {this.id, this.nom, this.nbSerie, this.nbRep, this.repo, this.muscle});
+      {this.id, this.nom,this.ImageLink, this.nbSerie, this.nbRep, this.repo, this.muscle});
 
   @override
   bool operator ==(Object other) =>
@@ -41,15 +42,17 @@ class Exercice{
     return {
       'id': id,
       'nom': nom,
+      'ImageLink' :ImageLink,
       'nbSerie': nbSerie,
       'nbRep': nbRep,
       'repo': repo,
       'muscle': muscle,
+
     };
   }
 
   @override
   String toString() {
-    return 'Exercice{id: $id, nom: $nom, nbSerie: $nbSerie, nbRep: $nbRep, repo: $repo, muscle: $muscle}';
+    return 'Exercice{id: $id, nom: $nom,ImageLink: $ImageLink, nbSerie: $nbSerie, nbRep: $nbRep, repo: $repo, muscle: $muscle}';
   }
 }

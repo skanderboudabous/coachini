@@ -1,6 +1,7 @@
 import 'package:coachini/models/objectif.dart';
 import 'package:coachini/pages/objectif.dart';
 import 'package:coachini/controller/firebase_controller.dart';
+import 'package:coachini/pages/suivie-mentale.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -61,6 +62,7 @@ class MenuWidget extends StatelessWidget {
             sliderItem('Exercices', Icons.fitness_center),
             sliderItem('Regime Alimentaire', Icons.food_bank),
             sliderItem('Suivi Nutritionnel', Icons.fastfood),
+            sliderItem('Suivi Mentale', Icons.assignment),
             sliderItem('LogOut', Icons.arrow_back_ios)
           ],
         ),
@@ -98,6 +100,9 @@ class MenuWidget extends StatelessWidget {
             break;
           case "Mesures":
             Get.to(MesuresPage());
+            break;
+          case "Suivi Mentale":
+            Get.to(SuivieMentalePage());
             break;
         }
       });

@@ -4,6 +4,7 @@ import 'package:coachini/pages/login.dart';
 import 'package:coachini/pages/sigin.dart';
 import 'package:coachini/pages/sign_up.dart';
 import 'package:coachini/pages/splash.dart';
+import 'package:coachini/pages/suivie-mentale.dart';
 import 'package:coachini/pages/user_profile.dart';
 import 'package:get/get.dart';
 
@@ -15,12 +16,15 @@ class AppRoutes {
     GetPage(name: SIGNUP, page: () => SignUpPage()),
     GetPage(name: HOME, page: () => HomePage()),
     GetPage(name: ADMIN, page: () => AdminPage()),
-    GetPage(name: USER_PROFILE, page: ()=> UserProfile())
+    GetPage(name: USER_PROFILE, page: ()=> UserProfile()),
+    GetPage(name: SuivieMentale, page: ()=> SuivieMentalePage())
   ];
   static final String HOME="/home";
   static final String ADMIN="/admin";
   static final String SIGNIN="/signin";
   static final String SIGNUP="/signup";
   static final String USER_PROFILE="/user-profile";
+  static final String SuivieMentale="/suivie-mentale";
+
 
 }

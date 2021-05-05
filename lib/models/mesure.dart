@@ -23,6 +23,7 @@ class Mesure{
   int? repMaxAbd;
   double? tempsLimiteGain;
   double? tempsLimiteGainSquat;
+  int? RPE;
 
   Mesure(
   {
@@ -49,7 +50,8 @@ class Mesure{
     this.repMaxPompe,
     this.repMaxAbd,
     this.tempsLimiteGain,
-    this.tempsLimiteGainSquat});
+    this.tempsLimiteGainSquat,
+    this.RPE});
 
   @override
   bool operator ==(Object other) =>
@@ -86,6 +88,7 @@ class Mesure{
       'repMaxAbd': repMaxAbd,
       'tempsLimiteGain': tempsLimiteGain,
       'tempsLimiteGainSquat': tempsLimiteGainSquat,
+      'RPE' : RPE
     };
   }
 
@@ -162,6 +165,9 @@ class Mesure{
       tempsLimiteGainSquat: null == (temp = map['tempsLimiteGainSquat'])
           ? null
           : (temp is num ? temp.toDouble() : double.tryParse(temp)),
+      RPE: null == (temp = map['RPE'])
+          ? null
+          : (temp is num ? temp.toInt() : int.tryParse(temp)),
     );
   }
 }

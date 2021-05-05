@@ -6,6 +6,7 @@ import 'package:coachini/widgets/user_unsubscribed_card.dart';
 import 'package:flutter/material.dart';
 class UsersUnSubscribed extends StatelessWidget {
   @override
+  @override
   Widget build(BuildContext context) {
     return FutureBuilder(
         future: FirebaseController.to.getUsersUnSubscribed(),
@@ -16,7 +17,10 @@ class UsersUnSubscribed extends StatelessWidget {
                 itemCount: documents?.length,
                 itemBuilder: (context, index) {
                   final Adherant adherant = Adherant.fromMap(documents?[index]);
-                  return UserUnSubscribedCard(adherant);
+                  return Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: UserUnSubscribedCard(adherant),
+                  );
                 });
           } else {
             return Loader();

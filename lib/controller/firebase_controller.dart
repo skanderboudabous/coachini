@@ -3,7 +3,6 @@ import 'package:coachini/constants/app_routes.dart';
 import 'package:coachini/models/adherant.dart';
 import 'package:coachini/models/exercice.dart';
 import 'package:coachini/models/mesure.dart';
-import 'package:coachini/models/muscle.dart';
 import 'package:coachini/models/objectif.dart';
 import 'package:coachini/models/rm.dart';
 import 'package:coachini/models/suivie-nutritionnel.dart';
@@ -202,29 +201,7 @@ class FirebaseController extends GetxController {
 
 //#endregion
 
-  //#region Muscle Functions
 
-  Future<Muscle> addMuscle(Muscle muscle) {
-    return FirebaseFirestore.instance.runTransaction((transaction) async {
-      final DocumentSnapshot ds = await transaction.get(muscleCollection.doc());
-      muscle.id = ds.id;
-      transaction.set(muscleCollection.doc(muscle.id), muscle.toMap());
-      return muscle;
-    });
-  }
-
-  Future<QuerySnapshot> getMuscles() async {
-    return muscleCollection.get();
-  }
-
-  Future<Muscle> updateMuscle(Muscle muscle) {
-    return FirebaseFirestore.instance.runTransaction((transaction) async {
-      transaction.update(muscleCollection.doc(muscle.id), muscle.toMap());
-      return muscle;
-    });
-  }
-
-//#endregion
 
   //#region RM Functions
 

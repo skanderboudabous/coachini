@@ -24,7 +24,6 @@ class _MorphologiePageState extends State<MorphologiePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(),
       body: Container(
         height: MediaQuery.of(context).size.height,

@@ -1,12 +1,13 @@
 class SuivieNutritionnel{
   String? id;
+  DateTime? date;
   int? apport;
   int? glucide;
   int? lipide;
   int? proteine;
 
   SuivieNutritionnel(
-      {this.id, this.apport, this.glucide, this.lipide, this.proteine});
+      {this.id,this.date, this.apport, this.glucide, this.lipide, this.proteine});
 
   @override
   bool operator ==(Object other) =>
@@ -22,6 +23,9 @@ class SuivieNutritionnel{
     var temp;
     return SuivieNutritionnel(
       id: map['id']?.toString(),
+      date: null == (temp = map['date'])
+          ? null
+          : (temp is DateTime ? temp : DateTime.tryParse(temp)),
       apport: null == (temp = map['apport'])
           ? null
           : (temp is num ? temp.toInt() : int.tryParse(temp)),
@@ -44,6 +48,7 @@ class SuivieNutritionnel{
       'glucide': glucide,
       'lipide': lipide,
       'proteine': proteine,
+      'date': date
     };
   }
 }
