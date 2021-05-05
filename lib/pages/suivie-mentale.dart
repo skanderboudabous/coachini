@@ -166,44 +166,52 @@ class _SuivieMentalePageState extends State<SuivieMentalePage> {
                   absorbing: isAdmin == false,
                 ),
               ),
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    child: MaterialButton(
-                      color: Theme.of(context).accentColor,
-                      child: Text(
-                        "Submit",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      onPressed: () {
-                        _formKey.currentState?.save();
-                        if (_formKey.currentState?.validate() == true) {
-                          print(_formKey.currentState?.value);
-                        } else {
-                          print("validation failed");
-                        }
-                      },
-                    ),
-                  ),
-                  SizedBox(width: 20),
-                  Expanded(
-                    child: MaterialButton(
-                      color: Theme.of(context).accentColor,
-                      child: Text(
-                        "Reset",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      onPressed: () {
-                        _formKey.currentState?.reset();
-                      },
-                    ),
-                  ),
-                ],
-              )
+
             ],
           ),
         ),
       ),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Expanded(
+              child: MaterialButton(
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(28))),
+                color: Theme.of(context).accentColor,
+                child: Text(
+                  "Submit",
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () {
+                  _formKey.currentState?.save();
+                  if (_formKey.currentState?.validate() == true) {
+                    print(_formKey.currentState?.value);
+                  } else {
+                    print("validation failed");
+                  }
+                },
+              ),
+            ),
+            SizedBox(width: 20,),
+            Expanded(
+              child: MaterialButton(
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(28))),
+                color: Theme.of(context).accentColor,
+                child: Text(
+                  "Reset",
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () {
+                  _formKey.currentState?.reset();
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }

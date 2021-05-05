@@ -25,7 +25,7 @@ class _MorphologiePageState extends State<MorphologiePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Container(
+      body:Container(
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -63,7 +63,7 @@ class _MorphologiePageState extends State<MorphologiePage> {
                                         child: AbsorbPointer(
                                           child: DirectSelectList<String>(
                                               values: morphologies,
-                                              defaultItemIndex: 3,
+                                              defaultItemIndex: 1,
                                               itemBuilder: (String value) => getDropDownMenuItem(value),
                                               focusedItemDecoration: _getDslDecoration(),
                                               onUserTappedListener: ()=>{
@@ -95,7 +95,7 @@ class _MorphologiePageState extends State<MorphologiePage> {
           ),
         ),
       ),
-    );;
+    );
   }
 
 

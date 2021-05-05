@@ -23,113 +23,123 @@ class _UserProfileState extends State<UserProfile> {
         child: FutureBuilder(
           future: FirebaseController.to.getUserFromId(id: this.widget.id),
           builder: (context, AsyncSnapshot<Adherant?> snapshot) {
-        if (snapshot.hasData) {
-          late final user = snapshot.data;
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Center(
-                    child: OnlineImage(
-                      user?.pictureUrl,
-                      width: 100,
-                      height: 100,
-                    ),
-                  ),
-                  SizedBox(height: 20,),
-                  Text('${user?.firstName} ${user?.lastName}'),
-                  Text("Age:  "+'${AgeCalculator.age(user?.birthday??DateTime.now()).years}'),
-                  Text("email:  "+'${user?.email}'),
-                  Text("Phone:  "+'${user?.phone} '),
-                  SizedBox(height: 20,),
-                  user?.isSubscribed == true
-                      ?Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        PrimaryButton(
-                          onPressed: () {
-
-                          },
-                          buttonLabel: "Objectif",
-                          fontSize: 14,
-                          bgColor: Colors.lightBlue,
-                          width: 150,
-                          height: 50,),
-                        SizedBox(height: 10,),
-                        PrimaryButton(
-                          onPressed: () {
-
-                          },
-                          buttonLabel: "Type de Morphologie",
-                          fontSize: 14,
-                          bgColor: Colors.lightBlue,
-                          width: 150,
-                          height: 50,),
-                        SizedBox(height: 10,),
-                        PrimaryButton(
-                          onPressed: () {
-
-                        },
-                          buttonLabel: "Mesures",
-                          fontSize: 14,
-                          bgColor: Colors.lightBlue,
-                          width: 150,
-                          height: 50,),
-                        SizedBox(height: 10,),
-                        PrimaryButton(
-                          onPressed: () {
-
-                          },
-                          buttonLabel: "Exercices",
-                          fontSize: 14,
-                          bgColor: Colors.lightBlue,
-                          width: 150,
-                          height: 50,),
-                        SizedBox(height: 10,),
-                        PrimaryButton(
-                          onPressed: () {
-
-                          },
-                          buttonLabel: "RM",
-                          fontSize: 14,
-                          bgColor: Colors.lightBlue,
-                          width: 150,
-                          height: 50,),
-                        SizedBox(height: 10,),
-                        PrimaryButton(
-                          onPressed: () {
-
-                          },
-                          buttonLabel: "Suivie Nutritionnel",
-                          fontSize: 14,
-                          bgColor: Colors.lightBlue,
-                          width: 150,
-                          height: 50,),
-                        SizedBox(height: 10,),
-                        PrimaryButton(
-                          onPressed: () {
-
-                          },
-                          buttonLabel: "Suivie Mentale",
-                          fontSize: 14,
-                          bgColor: Colors.lightBlue,
-                          width: 150,
-                          height: 50,),
-                        SizedBox(height: 20,),
-                      ])
-                      : Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-
-                      ]),
-                ]),
-          );
-        }
-        return Loader();
+            if (snapshot.hasData) {
+              late final user = snapshot.data;
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Center(
+                        child: OnlineImage(
+                          user?.pictureUrl,
+                          width: 100,
+                          height: 100,
+                        ),
+                      ),
+                      SizedBox(height: 20,),
+                      Text('${user?.firstName} ${user?.lastName}'),
+                      Text("Age:  " + '${AgeCalculator
+                          .age(user?.birthday ?? DateTime.now())
+                          .years}'),
+                      Text("email:  " + '${user?.email}'),
+                      Text("Phone:  " + '${user?.phone} '),
+                      SizedBox(height: 20,),
+                      user?.isSubscribed == true
+                          ? userSubscribed()
+                          : userUnsubscribed()
+                    ]),
+              );
+            }
+            return Loader();
           },
         ),
       ),
     );
   }
+
+  Widget userSubscribed() {
+    return Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          PrimaryButton(
+            onPressed: () {
+
+            },
+            buttonLabel: "Objectif",
+            fontSize: 14,
+            bgColor: Colors.lightBlue,
+            width: 150,
+            height: 50,),
+          SizedBox(height: 10,),
+          PrimaryButton(
+            onPressed: () {
+
+            },
+            buttonLabel: "Type de Morphologie",
+            fontSize: 14,
+            bgColor: Colors.lightBlue,
+            width: 150,
+            height: 50,),
+          SizedBox(height: 10,),
+          PrimaryButton(
+            onPressed: () {
+
+            },
+            buttonLabel: "Mesures",
+            fontSize: 14,
+            bgColor: Colors.lightBlue,
+            width: 150,
+            height: 50,),
+          SizedBox(height: 10,),
+          PrimaryButton(
+            onPressed: () {
+
+            },
+            buttonLabel: "Exercices",
+            fontSize: 14,
+            bgColor: Colors.lightBlue,
+            width: 150,
+            height: 50,),
+          SizedBox(height: 10,),
+          PrimaryButton(
+            onPressed: () {
+
+            },
+            buttonLabel: "RM",
+            fontSize: 14,
+            bgColor: Colors.lightBlue,
+            width: 150,
+            height: 50,),
+          SizedBox(height: 10,),
+          PrimaryButton(
+            onPressed: () {
+
+            },
+            buttonLabel: "Suivie Nutritionnel",
+            fontSize: 14,
+            bgColor: Colors.lightBlue,
+            width: 150,
+            height: 50,),
+          SizedBox(height: 10,),
+          PrimaryButton(
+            onPressed: () {
+
+            },
+            buttonLabel: "Suivie Mentale",
+            fontSize: 14,
+            bgColor: Colors.lightBlue,
+            width: 150,
+            height: 50,),
+          SizedBox(height: 20,),
+        ]);
+  }
+
+  Widget userUnsubscribed() {
+    return Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+        ]);
+  }
+
 }

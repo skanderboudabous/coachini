@@ -100,7 +100,7 @@ class _ObjectifPageState extends State<ObjectifPage> {
           ),
         ),
       ),
-    );;
+    );
   }
 
 

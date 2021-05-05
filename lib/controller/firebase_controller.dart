@@ -201,8 +201,6 @@ class FirebaseController extends GetxController {
 
 //#endregion
 
-
-
   //#region RM Functions
 
   Future<RM> addRM(RM rm) {
@@ -282,7 +280,7 @@ class FirebaseController extends GetxController {
 
 //#endregion
 
-//#region Users Functions
+  //#region Users Functions
 
   Future<QuerySnapshot> getUsers() async {
     return userCollection.get();
