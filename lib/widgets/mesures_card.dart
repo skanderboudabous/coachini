@@ -1,16 +1,18 @@
-import 'package:coachini/constants/app_routes.dart';
-import 'package:coachini/models/adherant.dart';
-import 'package:coachini/widgets/online_image.dart';
+import 'package:coachini/models/mesure.dart';
+import 'package:coachini/pages/mesures_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-class UserSubscribedCard extends StatelessWidget {
-  final Adherant adherant;
-  UserSubscribedCard(this.adherant);
+
+
+class MesuresCard extends StatelessWidget {
+  final Mesure mesure;
+  final String? userId;
+  MesuresCard(this.mesure,this.userId);
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        Get.toNamed(AppRoutes.USER_PROFILE+"?id="+this.adherant.id!,);
+        Get.to(new MesuresDetailPage(userId,mesure: this.mesure));
       },
       child: Container(
         decoration: BoxDecoration(color: Colors.grey,borderRadius: BorderRadius.circular(20)),
@@ -19,8 +21,7 @@ class UserSubscribedCard extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              OnlineImage( this.adherant.pictureUrl!),
-              Text(adherant.firstName!+" "+adherant.lastName!),
+              Text(mesure.date.toString(),style: TextStyle(fontSize: 18),),
             ],
           ),
         ),

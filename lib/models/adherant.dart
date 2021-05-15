@@ -11,10 +11,6 @@ class Adherant {
   String? sexe;
   String? phone;
   String? pictureUrl;
-  List<dynamic>? exercices;
-  List<dynamic>? objectifs;
-  List<dynamic>? mesures;
-  List<dynamic>? rms;
 
   String? fullName() {
     return firstName! + " " + lastName!;
@@ -27,13 +23,10 @@ class Adherant {
       this.birthday,
       this.sexe,
       this.phone,
-      this.exercices,
-      this.objectifs,
-      this.mesures,
-      this.rms,
       this.isAdmin,
       this.isSubscribed,
-      this.pictureUrl});
+      this.pictureUrl,
+});
 
   @override
   bool operator ==(Object other) =>
@@ -58,18 +51,6 @@ class Adherant {
           : (temp is DateTime ? temp : DateTime.tryParse(temp)),
       sexe: map['sexe']?.toString(),
       phone: map['phone']?.toString(),
-      exercices: null == (temp = map['exercices'])
-          ? []
-          : (temp is List ? temp.map((map) => map).toList() : []),
-      objectifs: null == (temp = map['objectifs'])
-          ? []
-          : (temp is List ? temp.map((map) => map).toList() : []),
-      mesures: null == (temp = map['mesures'])
-          ? []
-          : (temp is List ? temp.map((map) => map).toList() : []),
-      rms: null == (temp = map['rms'])
-          ? []
-          : (temp is List ? temp.map((map) => map).toList() : []),
     );
   }
 
@@ -83,12 +64,8 @@ class Adherant {
       'sexe': sexe,
       'pictureUrl': pictureUrl,
       'phone': phone,
-      'exercices': exercices,
-      'objectifs': objectifs,
-      'mesures': mesures,
       'isAdmin': isAdmin,
       'isSubscribed':isSubscribed,
-      'rms': rms,
     };
   }
 }

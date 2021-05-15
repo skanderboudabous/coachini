@@ -1,13 +1,11 @@
-import 'package:auto_animated/auto_animated.dart';
 import 'package:coachini/controller/firebase_controller.dart';
+import 'package:coachini/models/suivie-nutritionnel.dart';
 import 'package:coachini/pages/users_subscribed.dart';
 import 'package:coachini/pages/users_unsubscribed.dart';
-import 'package:coachini/widgets/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorful_tab/flutter_colorful_tab.dart';
 import 'package:get/get.dart';
 
-import 'login.dart';
 class AdminPage extends StatefulWidget {
   @override
   _AdminPageState createState() => _AdminPageState();
@@ -20,7 +18,14 @@ class _AdminPageState extends State<AdminPage>  with SingleTickerProviderStateMi
   @override
   void initState() {
     _tabController = TabController(vsync: this, length: 2);
+
     super.initState();
+  }
+  @override
+  void dispose() {
+    _tabController?.dispose();
+    // TODO: implement dispose
+    super.dispose();
   }
 
   @override
@@ -37,6 +42,12 @@ class _AdminPageState extends State<AdminPage>  with SingleTickerProviderStateMi
       body: SafeArea(
         child: Column(
           children: [
+            MaterialButton(onPressed: (){
+              SuivieNutritionnel suivieNutritionnel=new SuivieNutritionnel(apport: 10,date: DateTime.now(),glucide: 50,lipide: 5,proteine: 3);
+              FirebaseController.to.addSuivieNutritionnel(suivieNutritionnel, "9WoyHufTYpfEMuvAegum1Lw03Er2").then((value) => {
+                print(value)
+              });
+            },child: Text("aaa"),),
             ColorfulTabBar(
               controller: _tabController,
               tabs: [

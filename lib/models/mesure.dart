@@ -98,7 +98,7 @@ class Mesure{
       id: map['id']?.toString(),
       date: null == (temp = map['date'])
           ? null
-          : (temp is DateTime ? temp : DateTime.tryParse(temp)),
+          : (temp is DateTime ? temp : DateTime.fromMillisecondsSinceEpoch(temp.millisecondsSinceEpoch)),
       poid: null == (temp = map['poid'])
           ? null
           : (temp is num ? temp.toDouble() : double.tryParse(temp)),

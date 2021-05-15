@@ -1,16 +1,18 @@
-import 'package:coachini/constants/app_routes.dart';
-import 'package:coachini/models/adherant.dart';
-import 'package:coachini/widgets/online_image.dart';
+import 'package:coachini/models/suivie-nutritionnel.dart';
+import 'package:coachini/pages/suivie_nutritionnel_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-class UserSubscribedCard extends StatelessWidget {
-  final Adherant adherant;
-  UserSubscribedCard(this.adherant);
+
+
+class SuiviNutritionnelCard extends StatelessWidget {
+  final SuivieNutritionnel suivieNutritionnel;
+  final String? userId;
+  SuiviNutritionnelCard(this.suivieNutritionnel,this.userId);
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        Get.toNamed(AppRoutes.USER_PROFILE+"?id="+this.adherant.id!,);
+        Get.to(new SuivieNutritionnelDetailPage(userId,suivieNutritionnel: this.suivieNutritionnel));
       },
       child: Container(
         decoration: BoxDecoration(color: Colors.grey,borderRadius: BorderRadius.circular(20)),
@@ -19,8 +21,7 @@ class UserSubscribedCard extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              OnlineImage( this.adherant.pictureUrl!),
-              Text(adherant.firstName!+" "+adherant.lastName!),
+              Text(suivieNutritionnel.date.toString(),style: TextStyle(fontSize: 18),),
             ],
           ),
         ),

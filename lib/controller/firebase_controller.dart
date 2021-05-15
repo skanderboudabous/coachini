@@ -20,6 +20,7 @@ class FirebaseController extends GetxController {
   final Rx<User> firebaseUser = Rx<User>();
   final Rx<Adherant> firestoreUser = Rx<Adherant>();
   final RxBool admin = false.obs;
+  String? currentId;
   final userCollection = FirebaseFirestore.instance.collection("users");
   final objectifCollection = FirebaseFirestore.instance.collection("objectifs");
   final muscleCollection = FirebaseFirestore.instance.collection("muscles");
@@ -41,6 +42,7 @@ class FirebaseController extends GetxController {
   handleAuthChanged(_firebaseUser) async {
     //get user data from firestore
     if (_firebaseUser?.uid != null) {
+      currentId=_firebaseUser.uid;
       firestoreUser.bindStream(streamFirestoreUser());
       await isAdmin();
     }
@@ -253,12 +255,13 @@ class FirebaseController extends GetxController {
   //#region SuivieNutritionnel Functions
 
   Future<SuivieNutritionnel> addSuivieNutritionnel(
-      SuivieNutritionnel suivieNutritionnel) {
+      SuivieNutritionnel suivieNutritionnel,String id) {
     return FirebaseFirestore.instance.runTransaction((transaction) async {
       final DocumentSnapshot ds =
-          await transaction.get(suivieNutritionnelCollection.doc());
+          await transaction.get(userCollection.doc(id).collection("suivieNutritionnels").doc());
+      print(ds.id);
       suivieNutritionnel.id = ds.id;
-      transaction.set(suivieNutritionnelCollection.doc(suivieNutritionnel.id),
+      await transaction.set(userCollection.doc(id).collection("suivieNutritionnels").doc(suivieNutritionnel.id),
           suivieNutritionnel.toMap());
       return suivieNutritionnel;
     });
@@ -297,9 +300,14 @@ class FirebaseController extends GetxController {
   Future<Adherant?> getUserFromId({required String? id}) async {
     final DocumentSnapshot documentSnapshot =
     (await userCollection.doc(id).get());
-    if (documentSnapshot.data == null) return null;
     return Adherant.fromMap(documentSnapshot.data());
   }
+
+  Future<QuerySnapshot> getUserSuivieNutritionnels({required String? id}) {
+    return userCollection.doc(id).collection("suivieNutritionnels").get();
+  }
+
+
 
 
 //#endregion

@@ -1,22 +1,22 @@
-import 'package:coachini/models/objectif.dart';
 import 'package:coachini/pages/objectif.dart';
 import 'package:coachini/controller/firebase_controller.dart';
 import 'package:coachini/pages/suivie-mentale.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:coachini/pages/suivie-nutritionnel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 
 import 'edit_profile.dart';
 import 'exercices.dart';
-import 'login.dart';
 import 'mesures.dart';
+import 'mesures_detail.dart';
 import 'morphologie.dart';
 
 class MenuWidget extends StatelessWidget {
   final Function(String)? onItemClick;
 
   const MenuWidget({Key? key, this.onItemClick}) : super(key: key);
+//  final String? id=
 
   @override
   Widget build(BuildContext context) {
@@ -99,10 +99,13 @@ class MenuWidget extends StatelessWidget {
             Get.to(EditProfilePage());
             break;
           case "Mesures":
-            Get.to(MesuresPage());
+            Get.to(MesuresPage(FirebaseController.to.currentId));
             break;
           case "Suivi Mentale":
             Get.to(SuivieMentalePage());
+            break;
+         case "Suivi Nutritionnel":
+              Get.to(SuivieNutritionnelPage(FirebaseController.to.currentId));
             break;
         }
       });

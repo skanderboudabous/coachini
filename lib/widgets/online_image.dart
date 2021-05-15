@@ -65,7 +65,6 @@ class _OnlineImageState extends State<OnlineImage> with SingleTickerProviderStat
                 state.reLoadImage();
               },
             );
-            break;
         }
       },
     );
