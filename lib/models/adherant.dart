@@ -47,7 +47,7 @@ class Adherant {
       lastName: map['lastName']?.toString(),
       birthday: null == (temp = map['birthday'])
           ? null
-          : (temp is DateTime ? temp : DateTime.tryParse(temp)),
+          : (temp is DateTime ? temp : DateTime.fromMillisecondsSinceEpoch(temp.millisecondsSinceEpoch)),
       sexe: map['sexe']?.toString(),
       phone: map['phone']?.toString(),
     );

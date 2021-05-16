@@ -90,31 +90,31 @@ class MenuWidget extends StatelessWidget {
             Get.find<FirebaseController>().logout();
             break;
           case "Exercices":
-            Get.to(ExercicesPage(FirebaseController.to.currentId));
+            Get.to(ExercicesPage(FirebaseController.currentId));
             break;
           case "Objectif":
-            Get.to(ObjectifPage(FirebaseController.to.currentId));
+            Get.to(ObjectifPage(FirebaseController.currentId));
             break;
           case "Type de morphologie":
-            Get.to(MorphologiePage(FirebaseController.to.currentId));
+            Get.to(MorphologiePage(FirebaseController.currentId));
             break;
           case "Profile":
             Get.to(EditProfilePage());
             break;
             case "1RM":
-            Get.to(RMsPage(FirebaseController.to.currentId));
+            Get.to(RMsPage(FirebaseController.currentId));
             break;
           case "Mesures":
-            Get.to(MesuresPage(FirebaseController.to.currentId));
+            Get.to(MesuresPage(FirebaseController.currentId));
             break;
           case "Suivi Mentale":
-            Get.to(SuivieMentalePage(FirebaseController.to.currentId));
+            Get.to(SuivieMentalePage(FirebaseController.currentId));
             break;
          case "Suivi Nutritionnel":
-              Get.to(SuivieNutritionnelPage(FirebaseController.to.currentId));
+              Get.to(SuivieNutritionnelPage(FirebaseController.currentId));
             break;
             case "Suivi Entrainement":
-              Get.to(SuiviEntrainementPage(FirebaseController.to.currentId));
+              Get.to(SuiviEntrainementPage(FirebaseController.currentId));
             break;
         }
       });

@@ -15,15 +15,13 @@ class AppRoutes {
     GetPage(name: SIGNUP, page: () => SignUpPage()),
     GetPage(name: HOME, page: () => HomePage()),
     GetPage(name: ADMIN, page: () => AdminPage()),
-    GetPage(name: USER_PROFILE, page: ()=> UserProfile()),
- //   GetPage(name: SUIVIE_MENTALE, page: ()=> SuivieMentalePage())
+    GetPage(name: USER_PROFILE, page: () => UserProfile()),
+    //   GetPage(name: SUIVIE_MENTALE, page: ()=> SuivieMentalePage())
   ];
-  static final String HOME="/home";
-  static final String ADMIN="/admin";
-  static final String SIGNIN="/signin";
-  static final String SIGNUP="/signup";
-  static final String USER_PROFILE="/user-profile";
-  static final String SUIVIE_MENTALE="/suivie-mentale";
-
-
+  static final String HOME = "/home";
+  static final String ADMIN = "/admin";
+  static final String SIGNIN = "/signin";
+  static final String SIGNUP = "/signup";
+  static final String USER_PROFILE = "/user-profile";
+  static final String SUIVIE_MENTALE = "/suivie-mentale";
 }

@@ -49,6 +49,7 @@ dependencies:
 
   #Storage
   cloud_firestore: ^1.0.0
+  firebase_storage: ^8.0.0
   fluttertoast: ^8.0.3
 
 

@@ -28,14 +28,11 @@ class _ExercicesPageState extends State<ExercicesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: ElevatedButton(
-          child: Icon(Icons.arrow_back),
-          onPressed: () {
-            isAdmin == true
-                ? Get.toNamed(AppRoutes.USER_PROFILE + "?id=" + widget.userId!)
-                : Get.toNamed(AppRoutes.HOME);
-          },
-        ),
+        leading: IconButton(icon: Icon(Icons.arrow_back),onPressed: (){
+          isAdmin == true
+              ? Get.toNamed(AppRoutes.USER_PROFILE + "?id=" + widget.userId!)
+              : Get.toNamed(AppRoutes.HOME);
+        },)
       ),
       body: FutureBuilder(
           future: FirebaseController.to.getUserExercices(id: widget.userId),

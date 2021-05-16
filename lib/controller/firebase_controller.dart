@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coachini/constants/app_routes.dart';
 import 'package:coachini/models/adherant.dart';
@@ -7,6 +9,7 @@ import 'package:coachini/models/objectif.dart';
 import 'package:coachini/models/rm.dart';
 import 'package:coachini/models/suivie-nutritionnel.dart';
 import 'package:coachini/utils/toast.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -17,10 +20,11 @@ class FirebaseController extends GetxController {
   static FirebaseController to = Get.find();
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _db = FirebaseFirestore.instance;
+  final FirebaseStorage _fs = FirebaseStorage.instance;
   final Rx<User> firebaseUser = Rx<User>();
   final Rx<Adherant> firestoreUser = Rx<Adherant>();
   final RxBool admin = false.obs;
-  String? currentId;
+  static String? currentId;
   final userCollection = FirebaseFirestore.instance.collection("users");
   final objectifCollection = FirebaseFirestore.instance.collection("objectifs");
   final muscleCollection = FirebaseFirestore.instance.collection("muscles");
@@ -169,6 +173,7 @@ class FirebaseController extends GetxController {
       return exercice;
     });
   }
+
   Future<QuerySnapshot> getExercices() async {
     return exerciceCollection.get();
   }
@@ -300,11 +305,11 @@ class FirebaseController extends GetxController {
     return userCollection.get();
   }
 
-  Stream<QuerySnapshot> getUsersSubscribed()  {
+  Stream<QuerySnapshot> getUsersSubscribed() {
     return userCollection.where("isSubscribed", isEqualTo: true).snapshots();
   }
 
-  Stream<QuerySnapshot> getUsersUnSubscribed()  {
+  Stream<QuerySnapshot> getUsersUnSubscribed() {
     return userCollection.where("isSubscribed", isEqualTo: false).snapshots();
   }
 
@@ -315,36 +320,68 @@ class FirebaseController extends GetxController {
   }
 
   Future<QuerySnapshot> getUserSuivieNutritionnels({required String? id}) {
-    return userCollection.doc(id).collection("suivieNutritionnels").get();
+    return userCollection
+        .doc(id)
+        .collection("suivieNutritionnels")
+        .orderBy('date', descending: true)
+        .get();
   }
 
   Future<QuerySnapshot> getUserMesures({required String? id}) {
-    return userCollection.doc(id).collection("mesures").get();
+    return userCollection
+        .doc(id)
+        .collection("mesures")
+        .orderBy('date', descending: true)
+        .get();
   }
 
-  Future<void> setUserSubscribed({required String? userId}) async{
-   return  userCollection.doc(userId).update({
-       "isSubscribed":true
-     });
-  }
-  Future<void> setUserUnSubscribed({required String? userId}) async{
-    return  userCollection.doc(userId).update({
-      "isSubscribed":false
-    });
+  Future<void> setUserSubscribed({required String? userId}) async {
+    return userCollection.doc(userId).update({"isSubscribed": true});
   }
 
+  Future<void> setUserUnSubscribed({required String? userId}) async {
+    return userCollection.doc(userId).update({"isSubscribed": false});
+  }
 
   Future<QuerySnapshot> getUserSuiviEntrainements({required String? id}) {
-    return userCollection.doc(id).collection("suiviEntrainements").get();
+    return userCollection
+        .doc(id)
+        .collection("suiviEntrainements")
+        .orderBy('date', descending: true)
+        .get();
   }
+
   Future<QuerySnapshot> getUserExercices({required String? id}) {
-    return userCollection.doc(id).collection("exercices").get();
+    return userCollection
+        .doc(id)
+        .collection("exercices")
+        .orderBy('date', descending: true)
+        .get();
   }
+
   Future<QuerySnapshot> getUserRms({required String? id}) {
-    return userCollection.doc(id).collection("rms").get();
+    return userCollection
+        .doc(id)
+        .collection("rms")
+        .orderBy('date', descending: true)
+        .get();
   }
 
-
+  Future<void> updateProfile(
+      {required Map<String, dynamic>? data, File? image}) async {
+    Map<String, dynamic> updatedData = Map.from(data!);
+    print(Timestamp.fromDate(updatedData['birthday']!));
+    updatedData['birthday'] = Timestamp.fromDate(updatedData['birthday']!);
+    if (image != null) {
+      String? extension = ((image.path.split("/").last).split(".").last);
+      Reference ref = _fs.ref("users/${currentId!}.$extension");
+      var bytes = await image.readAsBytes();
+      await ref.putData(bytes);
+      var url = await ref.getDownloadURL();
+      updatedData.putIfAbsent("pictureUrl", () => url);
+    }
+    await userCollection.doc(currentId).update(updatedData);
+  }
 
 //#endregion
 

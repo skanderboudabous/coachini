@@ -1,4 +1,4 @@
-class Exercice{
+class Exercice {
   String? id;
   String? nom;
   String? ImageLink;
@@ -9,7 +9,14 @@ class Exercice{
   DateTime? dateLim;
 
   Exercice(
-      {this.id, this.nom,this.ImageLink, this.nbSerie, this.nbRep, this.repo, this.isDone,this.dateLim});
+      {this.id,
+      this.nom,
+      this.ImageLink,
+      this.nbSerie,
+      this.nbRep,
+      this.repo,
+      this.isDone,
+      this.dateLim});
 
   @override
   bool operator ==(Object other) =>
@@ -36,8 +43,10 @@ class Exercice{
       isDone: map['isDone'],
       dateLim: null == (temp = map['date'])
           ? null
-          : (temp is DateTime ? temp : DateTime.fromMillisecondsSinceEpoch(temp.millisecondsSinceEpoch)),
-
+          : (temp is DateTime
+              ? temp
+              : DateTime.fromMillisecondsSinceEpoch(
+                  temp.millisecondsSinceEpoch)),
     );
   }
 
@@ -45,13 +54,12 @@ class Exercice{
     return {
       'id': id,
       'nom': nom,
-      'ImageLink' :ImageLink,
+      'ImageLink': ImageLink,
       'nbSerie': nbSerie,
       'nbRep': nbRep,
       'repo': repo,
       'isDone': isDone,
       'dateLim': dateLim
-
     };
   }
 

@@ -5,31 +5,40 @@ import 'package:coachini/widgets/online_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+
 class UserSubscribedCard extends StatelessWidget {
   final Adherant adherant;
+
   UserSubscribedCard(this.adherant);
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-        Get.toNamed(AppRoutes.USER_PROFILE+"?id="+this.adherant.id!,);
+      onTap: () {
+        Get.toNamed(
+          AppRoutes.USER_PROFILE + "?id=" + this.adherant.id!,
+        );
       },
       child: Container(
-        decoration: BoxDecoration(color: Colors.grey,borderRadius: BorderRadius.circular(20)),
+        decoration: BoxDecoration(
+            color: Colors.grey, borderRadius: BorderRadius.circular(20)),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              OnlineImage( this.adherant.pictureUrl),
-              Text(adherant.firstName!+" "+adherant.lastName!),
+              OnlineImage(this.adherant.pictureUrl),
+              Text(adherant.firstName! + " " + adherant.lastName!),
               IconButton(
                   icon: Icon(Icons.pause),
                   onPressed: () {
                     Alert(
                       context: context,
                       type: AlertType.warning,
-                      title: "Désabonner "+adherant.firstName!+" "+adherant.lastName!,
+                      title: "Désabonner " +
+                          adherant.firstName! +
+                          " " +
+                          adherant.lastName!,
                       desc: "vous êtes sur ??",
                       buttons: [
                         DialogButton(
