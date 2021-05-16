@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 class Exercice{
   String? id;
   String? nom;
@@ -7,10 +5,11 @@ class Exercice{
   int? nbSerie;
   int? nbRep;
   int? repo;
-  DocumentReference? muscle;
+  bool? isDone;
+  DateTime? dateLim;
 
   Exercice(
-      {this.id, this.nom,this.ImageLink, this.nbSerie, this.nbRep, this.repo, this.muscle});
+      {this.id, this.nom,this.ImageLink, this.nbSerie, this.nbRep, this.repo, this.isDone,this.dateLim});
 
   @override
   bool operator ==(Object other) =>
@@ -34,7 +33,11 @@ class Exercice{
       repo: null == (temp = map['repo'])
           ? null
           : (temp is num ? temp.toInt() : int.tryParse(temp)),
-      muscle: map['muscle'],
+      isDone: map['isDone'],
+      dateLim: null == (temp = map['date'])
+          ? null
+          : (temp is DateTime ? temp : DateTime.fromMillisecondsSinceEpoch(temp.millisecondsSinceEpoch)),
+
     );
   }
 
@@ -46,13 +49,14 @@ class Exercice{
       'nbSerie': nbSerie,
       'nbRep': nbRep,
       'repo': repo,
-      'muscle': muscle,
+      'isDone': isDone,
+      'dateLim': dateLim
 
     };
   }
 
   @override
   String toString() {
-    return 'Exercice{id: $id, nom: $nom,ImageLink: $ImageLink, nbSerie: $nbSerie, nbRep: $nbRep, repo: $repo, muscle: $muscle}';
+    return 'Exercice{id: $id, nom: $nom,ImageLink: $ImageLink, nbSerie: $nbSerie, nbRep: $nbRep, repo: $repo,isDone :$isDone,dateLim: $dateLim}';
   }
 }

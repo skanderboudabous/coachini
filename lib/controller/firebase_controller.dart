@@ -29,6 +29,8 @@ class FirebaseController extends GetxController {
   final rmCollection = FirebaseFirestore.instance.collection("rms");
   final suivieNutritionnelCollection =
       FirebaseFirestore.instance.collection("suiviesNurtitionneles");
+  final suiviEntrainementsCollection =
+      FirebaseFirestore.instance.collection("suiviEntrainements");
 
   @override
   void onReady() {
@@ -42,7 +44,7 @@ class FirebaseController extends GetxController {
   handleAuthChanged(_firebaseUser) async {
     //get user data from firestore
     if (_firebaseUser?.uid != null) {
-      currentId=_firebaseUser.uid;
+      currentId = _firebaseUser.uid;
       firestoreUser.bindStream(streamFirestoreUser());
       await isAdmin();
     }
@@ -149,23 +151,24 @@ class FirebaseController extends GetxController {
     await userCollection.doc(user.id).set(user.toMap());
   }
 
-
   Future<void> logout() async {
     return _auth.signOut();
   }
 
   //#region Exercice Functions
 
-  Future<Exercice> addExercice(Exercice exercice) {
+  Future<Exercice> addExercice(Exercice exercice, String? userId) {
     return FirebaseFirestore.instance.runTransaction((transaction) async {
-      final DocumentSnapshot ds =
-          await transaction.get(exerciceCollection.doc());
+      final DocumentSnapshot ds = await transaction
+          .get(userCollection.doc(userId).collection("exercices").doc());
+      print(ds.id);
       exercice.id = ds.id;
-      transaction.set(exerciceCollection.doc(exercice.id), exercice.toMap());
+      await transaction.set(
+          userCollection.doc(userId).collection("mesures").doc(exercice.id),
+          exercice.toMap());
       return exercice;
     });
   }
-
   Future<QuerySnapshot> getExercices() async {
     return exerciceCollection.get();
   }
@@ -181,11 +184,15 @@ class FirebaseController extends GetxController {
 
   //#region Mesure Functions
 
-  Future<Mesure> addMesure(Mesure mesure) {
+  Future<Mesure> addMesure(Mesure mesure, String? userId) {
     return FirebaseFirestore.instance.runTransaction((transaction) async {
-      final DocumentSnapshot ds = await transaction.get(mesureCollection.doc());
+      final DocumentSnapshot ds = await transaction
+          .get(userCollection.doc(userId).collection("mesures").doc());
+      print(ds.id);
       mesure.id = ds.id;
-      transaction.set(exerciceCollection.doc(mesure.id), mesure.toMap());
+      await transaction.set(
+          userCollection.doc(userId).collection("mesures").doc(mesure.id),
+          mesure.toMap());
       return mesure;
     });
   }
@@ -255,13 +262,17 @@ class FirebaseController extends GetxController {
   //#region SuivieNutritionnel Functions
 
   Future<SuivieNutritionnel> addSuivieNutritionnel(
-      SuivieNutritionnel suivieNutritionnel,String id) {
+      SuivieNutritionnel suivieNutritionnel, String id) {
     return FirebaseFirestore.instance.runTransaction((transaction) async {
-      final DocumentSnapshot ds =
-          await transaction.get(userCollection.doc(id).collection("suivieNutritionnels").doc());
+      final DocumentSnapshot ds = await transaction
+          .get(userCollection.doc(id).collection("suivieNutritionnels").doc());
       print(ds.id);
       suivieNutritionnel.id = ds.id;
-      await transaction.set(userCollection.doc(id).collection("suivieNutritionnels").doc(suivieNutritionnel.id),
+      await transaction.set(
+          userCollection
+              .doc(id)
+              .collection("suivieNutritionnels")
+              .doc(suivieNutritionnel.id),
           suivieNutritionnel.toMap());
       return suivieNutritionnel;
     });
@@ -289,17 +300,17 @@ class FirebaseController extends GetxController {
     return userCollection.get();
   }
 
-  Future<QuerySnapshot> getUsersSubscribed() async {
-    return userCollection.where("isSubscribed",isEqualTo: true).get();
-  }
-  Future<QuerySnapshot> getUsersUnSubscribed() async {
-    return userCollection.where("isSubscribed",isEqualTo: false).get();
+  Stream<QuerySnapshot> getUsersSubscribed()  {
+    return userCollection.where("isSubscribed", isEqualTo: true).snapshots();
   }
 
+  Stream<QuerySnapshot> getUsersUnSubscribed()  {
+    return userCollection.where("isSubscribed", isEqualTo: false).snapshots();
+  }
 
   Future<Adherant?> getUserFromId({required String? id}) async {
     final DocumentSnapshot documentSnapshot =
-    (await userCollection.doc(id).get());
+        (await userCollection.doc(id).get());
     return Adherant.fromMap(documentSnapshot.data());
   }
 
@@ -307,6 +318,31 @@ class FirebaseController extends GetxController {
     return userCollection.doc(id).collection("suivieNutritionnels").get();
   }
 
+  Future<QuerySnapshot> getUserMesures({required String? id}) {
+    return userCollection.doc(id).collection("mesures").get();
+  }
+
+  Future<void> setUserSubscribed({required String? userId}) async{
+   return  userCollection.doc(userId).update({
+       "isSubscribed":true
+     });
+  }
+  Future<void> setUserUnSubscribed({required String? userId}) async{
+    return  userCollection.doc(userId).update({
+      "isSubscribed":false
+    });
+  }
+
+
+  Future<QuerySnapshot> getUserSuiviEntrainements({required String? id}) {
+    return userCollection.doc(id).collection("suiviEntrainements").get();
+  }
+  Future<QuerySnapshot> getUserExercices({required String? id}) {
+    return userCollection.doc(id).collection("exercices").get();
+  }
+  Future<QuerySnapshot> getUserRms({required String? id}) {
+    return userCollection.doc(id).collection("rms").get();
+  }
 
 
 

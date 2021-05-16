@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 class UsersSubscribed extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-        future: FirebaseController.to.getUsersSubscribed(),
+    return StreamBuilder(
+        stream: FirebaseController.to.getUsersSubscribed(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasData) {
             final List<DocumentSnapshot>? documents = snapshot.data?.docs;

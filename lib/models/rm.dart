@@ -27,7 +27,7 @@ class RM{
       name: map['name']?.toString(),
       date: null == (temp = map['date'])
           ? null
-          : (temp is DateTime ? temp : DateTime.tryParse(temp)),
+          : (temp is DateTime ? temp : DateTime.fromMillisecondsSinceEpoch(temp.millisecondsSinceEpoch)),
       value: null == (temp = map['value'])
           ? null
           : (temp is num ? temp.toDouble() : double.tryParse(temp)),

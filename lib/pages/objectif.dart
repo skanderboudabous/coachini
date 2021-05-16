@@ -6,6 +6,8 @@ import 'package:direct_select_flutter/direct_select_item.dart';
 import 'package:direct_select_flutter/direct_select_list.dart';
 import 'package:get/get.dart';
 class ObjectifPage extends StatefulWidget {
+  final String? userId;
+  ObjectifPage(this.userId);
   @override
   _ObjectifPageState createState() => _ObjectifPageState();
 }

@@ -1,23 +1,23 @@
 import 'package:coachini/controller/firebase_controller.dart';
+import 'package:coachini/models/suivi-entrainement.dart';
 import 'package:coachini/models/suivie-nutritionnel.dart';
 import 'package:coachini/pages/suivie-nutritionnel.dart';
 import 'package:coachini/utils/toast.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 
-class SuivieNutritionnelDetailPage extends StatefulWidget {
+class SuiviEntrainementDetailPage extends StatefulWidget {
   final String? userId;
-  final SuivieNutritionnel? suivieNutritionnel;
-  SuivieNutritionnelDetailPage(this.userId,{this.suivieNutritionnel});
+  final SuiviEntrainement? suiviEntrainement;
+  SuiviEntrainementDetailPage(this.userId,{this.suiviEntrainement});
   @override
-  _SuivieNutritionnelDetailPageState createState() =>
-      _SuivieNutritionnelDetailPageState();
+  _SuiviEntrainementDetailPageState createState() =>
+      _SuiviEntrainementDetailPageState();
 }
 
-class _SuivieNutritionnelDetailPageState
-    extends State<SuivieNutritionnelDetailPage> {
+class _SuiviEntrainementDetailPageState
+    extends State<SuiviEntrainementDetailPage> {
   final _formKey = GlobalKey<FormBuilderState>();
   bool? isAdmin;
   @override
@@ -53,61 +53,87 @@ class _SuivieNutritionnelDetailPageState
             child: Column(
               children: <Widget>[
                 AbsorbPointer(
-                  absorbing: widget.suivieNutritionnel!=null,
+                  absorbing: widget.suiviEntrainement!=null,
                   child: FormBuilder(
                     key: _formKey,
                     child: Column(
                       children: <Widget>[
                         FormBuilderTextField(
-                          name: 'apport',
+                          name: 'duree_totale_seance',
                           decoration: InputDecoration(
-                              labelText: 'Apport',
+                              labelText: 'Duree totale séance',
                               labelStyle: TextStyle(color: Colors.white)),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(context),
                             FormBuilderValidators.numeric(context),
                           ]),
                           //************************************
-                          initialValue: widget.suivieNutritionnel?.apport.toString(),
+                          initialValue: widget.suiviEntrainement?.duree_totale_seance.toString(),
                           style: TextStyle(color: Colors.white),
                           keyboardType: TextInputType.number,
                         ),
                         FormBuilderTextField(
-                          name: 'proteine',
+                          name: 'rythme_cardiaque_moy',
                           decoration: InputDecoration(
-                              labelText: 'Proteine',
+                              labelText: 'Rythme cardiaque moyen',
                               labelStyle: TextStyle(color: Colors.white)),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(context),
                             FormBuilderValidators.numeric(context),
                           ]),
-                          initialValue: widget.suivieNutritionnel?.proteine.toString(),
+                          initialValue: widget.suiviEntrainement?.rythme_cardiaque_moy.toString(),
                           style: TextStyle(color: Colors.white),
                           keyboardType: TextInputType.number,
                         ),
                         FormBuilderTextField(
-                          name: 'glucide',
+                          name: 'vitesse_moyenne',
                           decoration: InputDecoration(
-                              labelText: 'Glucide',
+                              labelText: 'Vitesse moyenne',
                               labelStyle: TextStyle(color: Colors.white)),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(context),
                             FormBuilderValidators.numeric(context),
                           ]),
-                          initialValue: widget.suivieNutritionnel?.glucide.toString(),
+                          initialValue: widget.suiviEntrainement?.vitesse_moyenne.toString(),
                           style: TextStyle(color: Colors.white),
                           keyboardType: TextInputType.number,
                         ),
                         FormBuilderTextField(
-                          name: 'lipide',
+                          name: 'nombre_pas',
                           decoration: InputDecoration(
-                              labelText: 'Lipide',
+                              labelText: 'Nombre de pas',
                               labelStyle: TextStyle(color: Colors.white)),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(context),
                             FormBuilderValidators.numeric(context),
                           ]),
-                          initialValue: widget.suivieNutritionnel?.lipide.toString(),
+                          initialValue: widget.suiviEntrainement?.nombre_pas.toString(),
+                          style: TextStyle(color: Colors.white),
+                          keyboardType: TextInputType.number,
+                        ),
+                        FormBuilderTextField(
+                          name: 'distance_parcourue',
+                          decoration: InputDecoration(
+                              labelText: 'distance parcourue',
+                              labelStyle: TextStyle(color: Colors.white)),
+                          validator: FormBuilderValidators.compose([
+                            FormBuilderValidators.required(context),
+                            FormBuilderValidators.numeric(context),
+                          ]),
+                          initialValue: widget.suiviEntrainement?.distance_parcourue.toString(),
+                          style: TextStyle(color: Colors.white),
+                          keyboardType: TextInputType.number,
+                        ),
+                        FormBuilderTextField(
+                          name: 'nb_calorie_brule',
+                          decoration: InputDecoration(
+                              labelText: 'Nombre calories bruleés',
+                              labelStyle: TextStyle(color: Colors.white)),
+                          validator: FormBuilderValidators.compose([
+                            FormBuilderValidators.required(context),
+                            FormBuilderValidators.numeric(context),
+                          ]),
+                          initialValue: widget.suiviEntrainement?.nb_calorie_brule.toString(),
                           style: TextStyle(color: Colors.white),
                           keyboardType: TextInputType.number,
                         ),
@@ -115,7 +141,7 @@ class _SuivieNutritionnelDetailPageState
                     ),
                   ),
                 ),
-                widget.suivieNutritionnel == null ?  Row(
+                widget.suiviEntrainement == null ?  Row(
                   children: <Widget>[
                     Expanded(
                       child: MaterialButton(
@@ -152,7 +178,7 @@ class _SuivieNutritionnelDetailPageState
                     ),
                   ],
                 ):
-                    SizedBox()
+                SizedBox()
               ],
             ),
           ),

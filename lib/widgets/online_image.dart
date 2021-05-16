@@ -26,7 +26,8 @@ class _OnlineImageState extends State<OnlineImage> with SingleTickerProviderStat
 
   @override
   Widget build(BuildContext context) {
-    return  ExtendedImage.network(
+    return widget.url!=null ?
+      ExtendedImage.network(
       this.widget.url!,
       width: this.widget.width??50,
       height: this.widget.height??50,
@@ -67,6 +68,7 @@ class _OnlineImageState extends State<OnlineImage> with SingleTickerProviderStat
             );
         }
       },
-    );
+    ) :
+    Icon(Icons.supervised_user_circle,size: 30,);
   }
 }

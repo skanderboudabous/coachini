@@ -1,21 +1,22 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coachini/constants/app_routes.dart';
 import 'package:coachini/controller/firebase_controller.dart';
+import 'package:coachini/models/suivi-entrainement.dart';
 import 'package:coachini/models/suivie-nutritionnel.dart';
+import 'package:coachini/pages/suivi_entrainement_detail.dart';
 import 'package:coachini/pages/suivie_nutritionnel_detail.dart';
 import 'package:coachini/widgets/loader.dart';
-import 'package:coachini/widgets/suivi_entrainement_card.dart';
 import 'package:coachini/widgets/suivi_nutritionnel_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-class SuivieNutritionnelPage extends StatefulWidget {
+class SuiviEntrainementPage extends StatefulWidget {
   final String? userId;
-  SuivieNutritionnelPage(this.userId);
+  SuiviEntrainementPage(this.userId);
   @override
-  _SuivieNutritionnelPageState createState() => _SuivieNutritionnelPageState();
+  _SuiviEntrainementPageState createState() => _SuiviEntrainementPageState();
 }
 
-class _SuivieNutritionnelPageState extends State<SuivieNutritionnelPage> {
+class _SuiviEntrainementPageState extends State<SuiviEntrainementPage> {
 
 
   bool? isAdmin;
@@ -42,7 +43,7 @@ class _SuivieNutritionnelPageState extends State<SuivieNutritionnelPage> {
           return Future.value(false);
         },
         child: FutureBuilder(
-            future: FirebaseController.to.getUserSuivieNutritionnels(id:widget.userId),
+            future: FirebaseController.to.getUserSuiviEntrainements(id:widget.userId),
             builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
               if (snapshot.hasData) {
                 final List<DocumentSnapshot>? documents = snapshot.data?.docs;
@@ -50,10 +51,10 @@ class _SuivieNutritionnelPageState extends State<SuivieNutritionnelPage> {
                 return ListView.builder(
                     itemCount: documents?.length,
                     itemBuilder: (context, index) {
-                      final SuivieNutritionnel suivieNutritionnel = SuivieNutritionnel.fromMap(documents?[index]);
+                      final SuiviEntrainement suiviEntrainement = SuiviEntrainement.fromMap(documents?[index]);
                       return Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: SuiviNutritionnelCard(suivieNutritionnel,widget.userId)
+                          padding: const EdgeInsets.all(8),
+                          child: SuiviEntrainementCard(suiviEntrainement,widget.userId)
                       );
                     });
               } else {
@@ -62,7 +63,7 @@ class _SuivieNutritionnelPageState extends State<SuivieNutritionnelPage> {
             }),
       ),
       floatingActionButton: isAdmin==true ? ElevatedButton(child: Icon(Icons.add),onPressed: (){
-        Get.to(new SuivieNutritionnelDetailPage(widget.userId));
+        Get.to(new SuiviEntrainementDetailPage(widget.userId));
       },) : SizedBox(),
     );
   }

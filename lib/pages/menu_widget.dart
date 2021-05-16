@@ -1,5 +1,7 @@
 import 'package:coachini/pages/objectif.dart';
 import 'package:coachini/controller/firebase_controller.dart';
+import 'package:coachini/pages/rm.dart';
+import 'package:coachini/pages/suivi_entrainement.dart';
 import 'package:coachini/pages/suivie-mentale.dart';
 import 'package:coachini/pages/suivie-nutritionnel.dart';
 import 'package:flutter/material.dart';
@@ -59,10 +61,11 @@ class MenuWidget extends StatelessWidget {
             sliderItem('Objectif', Icons.assistant_photo),
             sliderItem('Mesures', Icons.assignment),
             sliderItem('1RM', Icons.assignment),
-            sliderItem('Exercices', Icons.fitness_center),
+            sliderItem('Exercices', Icons.assignment_turned_in_outlined),
             sliderItem('Regime Alimentaire', Icons.food_bank),
             sliderItem('Suivi Nutritionnel', Icons.fastfood),
             sliderItem('Suivi Mentale', Icons.assignment),
+            sliderItem('Suivi Entrainement', Icons.fitness_center),
             sliderItem('LogOut', Icons.arrow_back_ios)
           ],
         ),
@@ -87,25 +90,31 @@ class MenuWidget extends StatelessWidget {
             Get.find<FirebaseController>().logout();
             break;
           case "Exercices":
-            Get.to(ExercicesPage());
+            Get.to(ExercicesPage(FirebaseController.to.currentId));
             break;
           case "Objectif":
-            Get.to(ObjectifPage());
+            Get.to(ObjectifPage(FirebaseController.to.currentId));
             break;
           case "Type de morphologie":
-            Get.to(MorphologiePage());
+            Get.to(MorphologiePage(FirebaseController.to.currentId));
             break;
           case "Profile":
             Get.to(EditProfilePage());
+            break;
+            case "1RM":
+            Get.to(RMsPage(FirebaseController.to.currentId));
             break;
           case "Mesures":
             Get.to(MesuresPage(FirebaseController.to.currentId));
             break;
           case "Suivi Mentale":
-            Get.to(SuivieMentalePage());
+            Get.to(SuivieMentalePage(FirebaseController.to.currentId));
             break;
          case "Suivi Nutritionnel":
               Get.to(SuivieNutritionnelPage(FirebaseController.to.currentId));
+            break;
+            case "Suivi Entrainement":
+              Get.to(SuiviEntrainementPage(FirebaseController.to.currentId));
             break;
         }
       });

@@ -5,6 +5,8 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_radio_group/flutter_radio_group.dart';
 import 'package:get/get.dart';
 class SuivieMentalePage extends StatefulWidget {
+  final String? userId;
+  SuivieMentalePage(this.userId);
   @override
   _SuivieMentalePageState createState() => _SuivieMentalePageState();
 }

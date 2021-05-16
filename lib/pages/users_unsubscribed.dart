@@ -8,8 +8,8 @@ class UsersUnSubscribed extends StatelessWidget {
   @override
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-        future: FirebaseController.to.getUsersUnSubscribed(),
+    return StreamBuilder(
+        stream: FirebaseController.to.getUsersUnSubscribed(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasData) {
             final List<DocumentSnapshot>? documents = snapshot.data?.docs;

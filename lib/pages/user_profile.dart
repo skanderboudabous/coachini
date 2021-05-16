@@ -2,6 +2,12 @@ import 'package:age_calculator/age_calculator.dart';
 import 'package:coachini/constants/app_routes.dart';
 import 'package:coachini/controller/firebase_controller.dart';
 import 'package:coachini/models/adherant.dart';
+import 'package:coachini/pages/exercices.dart';
+import 'package:coachini/pages/morphologie.dart';
+import 'package:coachini/pages/objectif.dart';
+import 'package:coachini/pages/rm.dart';
+import 'package:coachini/pages/suivi_entrainement.dart';
+import 'package:coachini/pages/suivie-mentale.dart';
 import 'package:coachini/pages/suivie-nutritionnel.dart';
 import 'package:coachini/widgets/loader.dart';
 import 'package:coachini/widgets/online_image.dart';
@@ -74,7 +80,7 @@ class _UserProfileState extends State<UserProfile> {
         children: [
           PrimaryButton(
             onPressed: () {
-
+              Get.to(new ObjectifPage(widget.id));
             },
             buttonLabel: "Objectif",
             fontSize: 14,
@@ -84,7 +90,7 @@ class _UserProfileState extends State<UserProfile> {
           SizedBox(height: 10,),
           PrimaryButton(
             onPressed: () {
-
+              Get.to(new MorphologiePage(widget.id));
             },
             buttonLabel: "Type de Morphologie",
             fontSize: 14,
@@ -94,7 +100,7 @@ class _UserProfileState extends State<UserProfile> {
           SizedBox(height: 10,),
           PrimaryButton(
             onPressed: () {
-              Get.to(MesuresPage(FirebaseController.to.currentId));
+              Get.to(MesuresPage(widget.id));
             },
             buttonLabel: "Mesures",
             fontSize: 14,
@@ -104,7 +110,7 @@ class _UserProfileState extends State<UserProfile> {
           SizedBox(height: 10,),
           PrimaryButton(
             onPressed: () {
-
+              Get.to(ExercicesPage(widget.id));
             },
             buttonLabel: "Exercices",
             fontSize: 14,
@@ -114,7 +120,7 @@ class _UserProfileState extends State<UserProfile> {
           SizedBox(height: 10,),
           PrimaryButton(
             onPressed: () {
-
+              Get.to(new RMsPage(widget.id));
             },
             buttonLabel: "RM",
             fontSize: 14,
@@ -126,7 +132,7 @@ class _UserProfileState extends State<UserProfile> {
             onPressed: () {
               Get.to(new SuivieNutritionnelPage(widget.id));
             },
-            buttonLabel: "Suivie Nutritionnel",
+            buttonLabel: "Suivi Nutritionnel",
             fontSize: 14,
             bgColor: Colors.lightBlue,
             width: 150,
@@ -134,9 +140,20 @@ class _UserProfileState extends State<UserProfile> {
           SizedBox(height: 10,),
           PrimaryButton(
             onPressed: () {
-
+              Get.to(new SuivieMentalePage(widget.id));
             },
-            buttonLabel: "Suivie Mentale",
+            buttonLabel: "Suivi Mentale",
+            fontSize: 14,
+            bgColor: Colors.lightBlue,
+            width: 150,
+            height: 50,),
+          SizedBox(height: 20,),
+          SizedBox(height: 10,),
+          PrimaryButton(
+            onPressed: () {
+              Get.to(new SuiviEntrainementPage(widget.id));
+            },
+            buttonLabel: "Suivi Entrainement",
             fontSize: 14,
             bgColor: Colors.lightBlue,
             width: 150,

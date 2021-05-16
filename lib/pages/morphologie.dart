@@ -6,6 +6,8 @@ import 'package:direct_select_flutter/direct_select_item.dart';
 import 'package:direct_select_flutter/direct_select_list.dart';
 import 'package:get/get.dart';
 class MorphologiePage extends StatefulWidget {
+  final String? userId;
+  MorphologiePage(this.userId);
   @override
   _MorphologiePageState createState() => _MorphologiePageState();
 }

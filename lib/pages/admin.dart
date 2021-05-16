@@ -47,7 +47,7 @@ class _AdminPageState extends State<AdminPage>  with SingleTickerProviderStateMi
               FirebaseController.to.addSuivieNutritionnel(suivieNutritionnel, "9WoyHufTYpfEMuvAegum1Lw03Er2").then((value) => {
                 print(value)
               });
-            },child: Text("aaa"),),
+            },),
             ColorfulTabBar(
               controller: _tabController,
               tabs: [

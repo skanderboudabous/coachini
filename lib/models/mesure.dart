@@ -65,7 +65,7 @@ class Mesure{
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'date': date?.toString(),
+      'date': date,
       'poid': poid,
       'taille': taille,
       'IMC': IMC,

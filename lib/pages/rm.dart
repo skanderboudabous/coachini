@@ -1,25 +1,25 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coachini/constants/app_routes.dart';
+import 'package:coachini/models/exercice.dart';
+import 'package:coachini/models/rm.dart';
+import 'package:coachini/pages/exercices_detail.dart';
 import 'package:coachini/controller/firebase_controller.dart';
-import 'package:coachini/models/mesure.dart';
+import 'package:coachini/widgets/exercice_card.dart';
 import 'package:coachini/widgets/loader.dart';
-import 'package:coachini/widgets/mesures_card.dart';
+import 'package:coachini/widgets/rms_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'mesures_detail.dart';
 
-class MesuresPage extends StatefulWidget {
+class RMsPage extends StatefulWidget {
   final String? userId;
-
-  MesuresPage(this.userId);
-
+  final RM? rm;
+  RMsPage(this.userId,{this.rm});
   @override
-  _MesuresPageState createState() => _MesuresPageState();
+  _RMsPageState createState() => _RMsPageState();
 }
 
-class _MesuresPageState extends State<MesuresPage> {
+class _RMsPageState extends State<RMsPage> {
   bool? isAdmin;
-
   @override
   void initState() {
     isAdmin = Get.find<FirebaseController>().admin.value;
@@ -41,7 +41,7 @@ class _MesuresPageState extends State<MesuresPage> {
         ),
       ),
       body: FutureBuilder(
-          future: FirebaseController.to.getUserMesures(id: widget.userId),
+          future: FirebaseController.to.getUserRms(id: widget.userId),
           builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
             print(snapshot.hasData);
             if (snapshot.hasData) {
@@ -50,10 +50,10 @@ class _MesuresPageState extends State<MesuresPage> {
               return ListView.builder(
                   itemCount: documents?.length,
                   itemBuilder: (context, index) {
-                    final Mesure mesure = Mesure.fromMap(documents?[index]);
+                    final RM rm = RM.fromMap(documents?[index]);
                     return Padding(
                         padding: const EdgeInsets.all(8),
-                        child: MesuresCard(mesure, widget.userId));
+                        child: RMsCard(rm, widget.userId));
                   });
             } else {
               return Loader();
@@ -61,11 +61,11 @@ class _MesuresPageState extends State<MesuresPage> {
           }),
       floatingActionButton: isAdmin == true
           ? ElevatedButton(
-              child: Icon(Icons.add),
-              onPressed: () {
-                Get.to(new MesuresDetailPage(widget.userId));
-              },
-            )
+        child: Icon(Icons.add),
+        onPressed: () {
+          Get.to(new ExerciceDetailPage(widget.userId));
+        },
+      )
           : SizedBox(),
     );
   }
