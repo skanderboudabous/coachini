@@ -24,6 +24,11 @@ class Mesure{
   double? tempsLimiteGain;
   double? tempsLimiteGainSquat;
   int? RPE;
+  double? souplesse;
+  int? counterMvtJump;
+  int? dropJump;
+  double? vo2Max;
+  int? test6MinMarche;
 
   Mesure(
   {
@@ -51,7 +56,12 @@ class Mesure{
     this.repMaxAbd,
     this.tempsLimiteGain,
     this.tempsLimiteGainSquat,
-    this.RPE});
+    this.RPE,
+    this.souplesse,
+    this.counterMvtJump,
+    this.dropJump,
+    this.vo2Max,
+    this.test6MinMarche});
 
   @override
   bool operator ==(Object other) =>
@@ -88,7 +98,14 @@ class Mesure{
       'repMaxAbd': repMaxAbd,
       'tempsLimiteGain': tempsLimiteGain,
       'tempsLimiteGainSquat': tempsLimiteGainSquat,
-      'RPE' : RPE
+      'RPE' : RPE,
+      'souplesse': souplesse,
+      'counterMvtJump':counterMvtJump,
+      'dropJump':dropJump,
+      'vo2Max':vo2Max,
+      'test6MinMarche':test6MinMarche
+
+
     };
   }
 
@@ -168,6 +185,22 @@ class Mesure{
       RPE: null == (temp = map['RPE'])
           ? null
           : (temp is num ? temp.toInt() : int.tryParse(temp)),
+      souplesse: null == (temp = map['souplesse'])
+          ? null
+          : (temp is num ? temp.toDouble() : double.tryParse(temp)),
+      counterMvtJump: null == (temp = map['counterMvtJump'])
+          ? null
+          : (temp is num ? temp.toInt() : int.tryParse(temp)),
+      dropJump: null == (temp = map['dropJump'])
+          ? null
+          : (temp is num ? temp.toInt() : int.tryParse(temp)),
+      vo2Max: null == (temp = map['vo2Max'])
+          ? null
+          : (temp is num ? temp.toDouble() : double.tryParse(temp)),
+      test6MinMarche: null == (temp = map['test6MinMarche'])
+          ? null
+          : (temp is num ? temp.toInt() : int.tryParse(temp)),
+
     );
   }
 }

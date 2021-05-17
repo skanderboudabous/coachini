@@ -89,6 +89,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(context),
                           ]),
+                          initialValue: adherant.firstName.toString(),
+                          style: TextStyle(color: Colors.white),
                           keyboardType: TextInputType.name,
                         ),
                         FormBuilderTextField(
@@ -101,6 +103,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(context),
                           ]),
+                          initialValue: adherant.lastName.toString(),
+                          style: TextStyle(color: Colors.white),
                           keyboardType: TextInputType.name,
                         ),
                         FormBuilderTextField(
@@ -117,6 +121,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                             FormBuilderValidators.minLength(context, 8),
                           ]),
                           keyboardType: TextInputType.number,
+                          style: TextStyle(color: Colors.white),
                         ),
                         FormBuilderDateTimePicker(
                           name: 'birthday',
@@ -126,6 +131,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                               labelText: 'Birthday',
                               labelStyle: TextStyle(color: Colors.white)
                           ),
+                          initialValue: adherant.birthday,
+                          style: TextStyle(color: Colors.white),
                           // initialValue: DateTime.now(),
                           // enabled: true,
                         ),
@@ -137,7 +144,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                               labelText: 'Gender',
                               labelStyle: TextStyle(color: Colors.white)
                           ),
-                          // initialValue: 'Male',
+                          initialValue: adherant.sexe.toString(),
+                          style: TextStyle(color: Colors.white),
                           allowClear: true,
                           hint: Text('Select Gender',style: TextStyle(color: Colors.white),),
                           validator: FormBuilderValidators.compose(

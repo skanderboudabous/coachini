@@ -63,9 +63,10 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                               name: 'Poid',
                               decoration: InputDecoration(
                                 labelText: 'Poids',
-                                  labelStyle: TextStyle(color: Colors.white)
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               initialValue: widget.mesure?.poid.toString(),
+                              style: TextStyle(color: Colors.white),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
                                 FormBuilderValidators.numeric(context),
@@ -76,288 +77,381 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                               name: 'taille',
                               decoration: InputDecoration(
                                 labelText: 'taille',
-                                  labelStyle: TextStyle(color: Colors.white)
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
                                 FormBuilderValidators.numeric(context),
                               ]),
                               initialValue: widget.mesure?.taille.toString(),
+                              style: TextStyle(color: Colors.white),
                               keyboardType: TextInputType.number,
                             ),
                             FormBuilderTextField(
                               name: 'IMC',
                               decoration: InputDecoration(
                                 labelText: 'IMC',
-                                  labelStyle: TextStyle(color: Colors.white)
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
                                 FormBuilderValidators.numeric(context),
                               ]),
                               initialValue: widget.mesure?.IMC.toString(),
+                              style: TextStyle(color: Colors.white),
                               keyboardType: TextInputType.number,
                             ),
                             FormBuilderTextField(
                               name: 'FC',
                               decoration: InputDecoration(
-                                labelText: 'FC repo',
-                                  labelStyle: TextStyle(color: Colors.white)
+                                labelText: 'FC repos',
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
                                 FormBuilderValidators.numeric(context),
                               ]),
                               initialValue: widget.mesure?.FC.toString(),
+                              style: TextStyle(color: Colors.white),
                               keyboardType: TextInputType.number,
                             ),
                             FormBuilderTextField(
                               name: 'masseMuscle',
                               decoration: InputDecoration(
                                 labelText: 'Masse Musculaire',
-                                  labelStyle: TextStyle(color: Colors.white)
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
                                 FormBuilderValidators.numeric(context),
                               ]),
                               initialValue: widget.mesure?.masseMuscle.toString(),
+                              style: TextStyle(color: Colors.white),
                               keyboardType: TextInputType.number,
                             ),
                             FormBuilderTextField(
                               name: 'masseGraisse',
                               decoration: InputDecoration(
                                 labelText: 'Masse Graisse',
-                                  labelStyle: TextStyle(color: Colors.white)
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
                                 FormBuilderValidators.numeric(context),
                               ]),
                               initialValue: widget.mesure?.masseGraisse.toString(),
+                              style: TextStyle(color: Colors.white),
                               keyboardType: TextInputType.number,
                             ),
                             FormBuilderTextField(
                               name: 'stresse',
                               decoration: InputDecoration(
                                 labelText: 'Stress',
-                                  labelStyle: TextStyle(color: Colors.white)
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
                                 FormBuilderValidators.numeric(context),
                               ]),
                               initialValue: widget.mesure?.stresse.toString(),
+                              style: TextStyle(color: Colors.white),
                               keyboardType: TextInputType.number,
                             ),
                             FormBuilderTextField(
                               name: 'oxygene',
                               decoration: InputDecoration(
                                 labelText: 'SpO2',
-                                  labelStyle: TextStyle(color: Colors.white)
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
                                 FormBuilderValidators.numeric(context),
                               ]),
                               initialValue: widget.mesure?.oxygene.toString(),
+                              style: TextStyle(color: Colors.white),
                               keyboardType: TextInputType.number,
                             ),
                             FormBuilderTextField(
                               name: 'tourTaille',
                               decoration: InputDecoration(
                                 labelText: 'Tour Taille',
-                                  labelStyle: TextStyle(color: Colors.white)
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
                                 FormBuilderValidators.numeric(context),
                               ]),
                               initialValue: widget.mesure?.tourTaille.toString(),
+                              style: TextStyle(color: Colors.white),
                               keyboardType: TextInputType.number,
                             ),
                             FormBuilderTextField(
                               name: 'TourHancher',
                               decoration: InputDecoration(
                                 labelText: 'Tour Hanche',
-                                  labelStyle: TextStyle(color: Colors.white)
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
                                 FormBuilderValidators.numeric(context),
                               ]),
                               initialValue: widget.mesure?.tourHancher.toString(),
+                              style: TextStyle(color: Colors.white),
                               keyboardType: TextInputType.number,
                             ),
                             FormBuilderTextField(
                               name: 'VMA',
                               decoration: InputDecoration(
                                 labelText: 'VMA',
-                                  labelStyle: TextStyle(color: Colors.white)
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
                                 FormBuilderValidators.numeric(context),
                               ]),
                               initialValue: widget.mesure?.VMA.toString(),
+                              style: TextStyle(color: Colors.white),
                               keyboardType: TextInputType.number,
                             ),
                             FormBuilderTextField(
                               name: 'LMD',
                               decoration: InputDecoration(
                                 labelText: 'Lancé medecine ball',
-                                  labelStyle: TextStyle(color: Colors.white)
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
                                 FormBuilderValidators.numeric(context),
                               ]),
                               initialValue: widget.mesure?.LMD.toString(),
+                              style: TextStyle(color: Colors.white),
                               keyboardType: TextInputType.number,
                             ),
                             FormBuilderTextField(
                               name: 'cordination',
                               decoration: InputDecoration(
-                                labelText: 'Cordination',
-                                  labelStyle: TextStyle(color: Colors.white)
+                                labelText: 'Coordination',
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
                                 FormBuilderValidators.numeric(context),
                               ]),
                               initialValue: widget.mesure?.cordination.toString(),
+                              style: TextStyle(color: Colors.white),
                               keyboardType: TextInputType.number,
                             ),
                             FormBuilderTextField(
                               name: 'vitesseDmg',
                               decoration: InputDecoration(
-                                labelText: 'Vitesse de demarrage',
-                                  labelStyle: TextStyle(color: Colors.white)
+                                labelText: 'Vitesse de démarrage',
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
                                 FormBuilderValidators.numeric(context),
                               ]),
                               initialValue: widget.mesure?.vitesseDmg.toString(),
+                              style: TextStyle(color: Colors.white),
                               keyboardType: TextInputType.number,
                             ),
                             FormBuilderTextField(
                               name: 'vitesseMax',
                               decoration: InputDecoration(
                                 labelText: 'Vitesse max',
-                                  labelStyle: TextStyle(color: Colors.white)
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
                                 FormBuilderValidators.numeric(context),
                               ]),
                               initialValue: widget.mesure?.vitesseMax.toString(),
+                              style: TextStyle(color: Colors.white),
                               keyboardType: TextInputType.number,
                             ),
                             FormBuilderTextField(
                               name: 'fiveJumpTest',
                               decoration: InputDecoration(
                                 labelText: 'Five Jump Test',
-                                  labelStyle: TextStyle(color: Colors.white)
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
                                 FormBuilderValidators.numeric(context),
                               ]),
                               initialValue: widget.mesure?.fiveJumpTest.toString(),
+                              style: TextStyle(color: Colors.white),
                               keyboardType: TextInputType.number,
                             ),
                             FormBuilderTextField(
                               name: 'squatJump',
                               decoration: InputDecoration(
                                 labelText: 'Squat Jump',
-                                  labelStyle: TextStyle(color: Colors.white)
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
                                 FormBuilderValidators.numeric(context),
                               ]),
                               initialValue: widget.mesure?.squatJump.toString(),
+                              style: TextStyle(color: Colors.white),
                               keyboardType: TextInputType.number,
                             ),
                             FormBuilderTextField(
                               name: 'agilite',
                               decoration: InputDecoration(
-                                labelText: 'Agilite',
-                                  labelStyle: TextStyle(color: Colors.white)
+                                labelText: 'Agilité',
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
                                 FormBuilderValidators.numeric(context),
                               ]),
                               initialValue: widget.mesure?.agilite.toString(),
+                              style: TextStyle(color: Colors.white),
                               keyboardType: TextInputType.number,
                             ),
                             FormBuilderTextField(
                               name: 'repMaxPompe',
                               decoration: InputDecoration(
-                                labelText: 'Repo Max Pompe',
-                                  labelStyle: TextStyle(color: Colors.white)
+                                labelText: 'Repétition Max Pompe',
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
                                 FormBuilderValidators.numeric(context),
                               ]),
                               initialValue: widget.mesure?.repMaxPompe.toString(),
+                              style: TextStyle(color: Colors.white),
                               keyboardType: TextInputType.number,
                             ),
                             FormBuilderTextField(
                               name: 'repMaxAbd',
                               decoration: InputDecoration(
-                                labelText: 'Rep Max Abdo',
-                                  labelStyle: TextStyle(color: Colors.white)
+                                labelText: 'Repétition Max Abdo',
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
                                 FormBuilderValidators.numeric(context),
                               ]),
                               initialValue: widget.mesure?.repMaxAbd.toString(),
+                              style: TextStyle(color: Colors.white),
                               keyboardType: TextInputType.number,
                             ),
                             FormBuilderTextField(
                               name: 'tempsLimiteGain',
                               decoration: InputDecoration(
-                                labelText: 'Temps Limite Gain',
-                                  labelStyle: TextStyle(color: Colors.white)
+                                labelText: 'Temps Limite Gainage',
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
                                 FormBuilderValidators.numeric(context),
                               ]),
                               initialValue: widget.mesure?.tempsLimiteGain.toString(),
+                              style: TextStyle(color: Colors.white),
                               keyboardType: TextInputType.number,
                             ),
                             FormBuilderTextField(
                               name: 'tempsLimiteGainSquat',
                               decoration: InputDecoration(
-                                labelText: 'Temps Limite Gain Squat',
-                                  labelStyle: TextStyle(color: Colors.white)
+                                labelText: 'Temps Limite Gainage Squat',
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
                                 FormBuilderValidators.numeric(context),
                               ]),
                               initialValue: widget.mesure?.tempsLimiteGainSquat.toString(),
+                              style: TextStyle(color: Colors.white),
                               keyboardType: TextInputType.number,
                             ),
                             FormBuilderTextField(
                               name: 'RPE',
                               decoration: InputDecoration(
                                 labelText: 'RPE',
-                                  labelStyle: TextStyle(color: Colors.white)
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
                                 FormBuilderValidators.numeric(context),
                               ]),
                               initialValue: widget.mesure?.RPE.toString(),
+                              style: TextStyle(color: Colors.white),
                               keyboardType: TextInputType.number,
                             ),
+                            FormBuilderTextField(
+                              name: 'souplesse',
+                              decoration: InputDecoration(
+                                labelText: 'souplesse',
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
+                              ),
+                              validator: FormBuilderValidators.compose([
+                                FormBuilderValidators.required(context),
+                                FormBuilderValidators.numeric(context),
+                              ]),
+                              initialValue: widget.mesure?.souplesse.toString(),
+                              style: TextStyle(color: Colors.white),
+                              keyboardType: TextInputType.number,
+                            ),
+                            FormBuilderTextField(
+                              name: 'counterMvtJump',
+                              decoration: InputDecoration(
+                                labelText: 'Counter movement Jump',
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
+                              ),
+                              validator: FormBuilderValidators.compose([
+                                FormBuilderValidators.required(context),
+                                FormBuilderValidators.numeric(context),
+                              ]),
+                              initialValue: widget.mesure?.counterMvtJump.toString(),
+                              style: TextStyle(color: Colors.white),
+                              keyboardType: TextInputType.number,
+                            ),
+                            FormBuilderTextField(
+                              name: 'dropJump',
+                              decoration: InputDecoration(
+                                labelText: 'Drop Jump',
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
+                              ),
+                              validator: FormBuilderValidators.compose([
+                                FormBuilderValidators.required(context),
+                                FormBuilderValidators.numeric(context),
+                              ]),
+                              initialValue: widget.mesure?.dropJump.toString(),
+                              style: TextStyle(color: Colors.white),
+                              keyboardType: TextInputType.number,
+                            ),
+                            FormBuilderTextField(
+                              name: 'vo2Max',
+                              decoration: InputDecoration(
+                                labelText: 'Vo2Max',
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
+                              ),
+                              validator: FormBuilderValidators.compose([
+                                FormBuilderValidators.required(context),
+                                FormBuilderValidators.numeric(context),
+                              ]),
+                              initialValue: widget.mesure?.vo2Max.toString(),
+                              style: TextStyle(color: Colors.white),
+                              keyboardType: TextInputType.number,
+                            ),
+                             FormBuilderTextField(
+                              name: 'test6MinMarche',
+                              decoration: InputDecoration(
+                                labelText: 'Test 6 minutes de marche',
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
+                              ),
+                              validator: FormBuilderValidators.compose([
+                                FormBuilderValidators.required(context),
+                                FormBuilderValidators.numeric(context),
+                              ]),
+                              initialValue: widget.mesure?.test6MinMarche.toString(),
+                              style: TextStyle(color: Colors.white),
+                              keyboardType: TextInputType.number,
+                            ),
+
                           ],
                         ),
                       ),
