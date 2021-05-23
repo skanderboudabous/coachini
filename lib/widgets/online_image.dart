@@ -5,8 +5,9 @@ class OnlineImage extends StatefulWidget {
   final String? url;
   final double? width;
   final double? height;
+  final double? size;
 
-  OnlineImage(this.url, {this.width, this.height});
+  OnlineImage(this.url, {this.width, this.height,this.size});
 
   @override
   _OnlineImageState createState() => _OnlineImageState();
@@ -49,13 +50,12 @@ class _OnlineImageState extends State<OnlineImage>
                 case LoadState.completed:
                   _controller.forward();
                   return FadeTransition(
-                    opacity: _controller,
-                    child: ExtendedRawImage(
-                      image: state.extendedImageInfo?.image,
-                      width: widget.width,
-                      height: widget.height,
-                    ),
-                  );
+                      opacity: _controller,
+                      child: CircleAvatar(
+                        minRadius: widget.size??20,
+                        maxRadius: widget.size??20,
+                        backgroundImage:state.imageProvider ,
+                      ));
                   break;
                 case LoadState.failed:
                   _controller.reset();

@@ -44,7 +44,7 @@ class _ExercicesPageState extends State<ExercicesPage> {
               return ListView.builder(
                   itemCount: documents?.length,
                   itemBuilder: (context, index) {
-                    final Exercice exercice = Exercice.fromMap(documents?[index]);
+                    final Exercice exercice = Exercice.fromMap(documents?[index].data());
                     return Padding(
                         padding: const EdgeInsets.all(8),
                         child: ExercicesCard(exercice, widget.userId));

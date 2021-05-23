@@ -32,8 +32,8 @@ class _CompositionCorporellePageState extends State<CompositionCorporellePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: ElevatedButton(
-          child: Icon(Icons.arrow_back),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
           onPressed: () {
             isAdmin == true
                 ? Get.toNamed(AppRoutes.USER_PROFILE + "?id=" + widget.userId!)
@@ -50,7 +50,7 @@ class _CompositionCorporellePageState extends State<CompositionCorporellePage> {
               return ListView.builder(
                   itemCount: documents?.length,
                   itemBuilder: (context, index) {
-                    final CompositionCorporelle compositionCorporelle = CompositionCorporelle.fromMap(documents?[index]);
+                    final CompositionCorporelle compositionCorporelle = CompositionCorporelle.fromMap(documents?[index].data());
                     return Padding(
                         padding: const EdgeInsets.all(8),
                         child: CompositionCorporelleCard(compositionCorporelle, widget.userId));

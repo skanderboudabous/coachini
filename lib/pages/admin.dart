@@ -33,6 +33,9 @@ class _AdminPageState extends State<AdminPage>  with SingleTickerProviderStateMi
     return Scaffold(
       appBar: AppBar(
         title:Text("Admin"),
+        leading: IconButton(icon:Icon(Icons.ac_unit),onPressed: (){
+
+        },),
         actions: [
           IconButton(icon: Icon(Icons.cancel), onPressed: ()=>{
             Get.find<FirebaseController>().logout()

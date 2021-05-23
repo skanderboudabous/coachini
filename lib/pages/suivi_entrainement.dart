@@ -31,7 +31,7 @@ class _SuiviEntrainementPageState extends State<SuiviEntrainementPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: ElevatedButton(child: Icon(Icons.arrow_back),onPressed: (){
+        leading: IconButton(icon: Icon(Icons.arrow_back),onPressed: (){
           isAdmin==true ?
           Get.toNamed(AppRoutes.USER_PROFILE+"?id="+widget.userId!) :
           Get.toNamed(AppRoutes.HOME);
@@ -51,7 +51,7 @@ class _SuiviEntrainementPageState extends State<SuiviEntrainementPage> {
                 return ListView.builder(
                     itemCount: documents?.length,
                     itemBuilder: (context, index) {
-                      final SuiviEntrainement suiviEntrainement = SuiviEntrainement.fromMap(documents?[index]);
+                      final SuiviEntrainement suiviEntrainement = SuiviEntrainement.fromMap(documents?[index].data());
                       return Padding(
                           padding: const EdgeInsets.all(8),
                           child: SuiviEntrainementCard(suiviEntrainement,widget.userId)

@@ -1,4 +1,6 @@
 import 'package:coachini/controller/firebase_controller.dart';
+import 'package:coachini/models/type-morphologie.dart';
+import 'package:coachini/models/type-morphologie.dart';
 import 'package:coachini/utils/toast.dart';
 import 'package:flutter/material.dart';
 import 'package:direct_select_flutter/direct_select_container.dart';
@@ -17,9 +19,23 @@ class _MorphologiePageState extends State<MorphologiePage> {
 
 
   bool? isAdmin;
+  int? selectedIndex;
   @override
   void initState() {
     isAdmin=Get.find<FirebaseController>().admin.value;
+    FirebaseController.to.getLastTypeMorphologie(widget.userId).then((value) {
+      setState(() {
+        if (value.size == 0) {
+          this.selectedIndex = 0;
+        } else {
+          TypeMorphologie typeMorphologie = TypeMorphologie.fromMap(value.docs[0].data());
+          print(typeMorphologie.date);
+          this.selectedIndex = this.morphologies.indexOf(typeMorphologie.nom!);
+        }
+      });
+    });
+
+
     // TODO: implement initState
     super.initState();
   }
@@ -59,20 +75,20 @@ class _MorphologiePageState extends State<MorphologiePage> {
                                         onTap: (){
                                           if(isAdmin== false)
                                           {
-                                            showLongToast("Please contact the administrator");
+                                            showShortToast("Please contact the administrator");
                                           }
                                         },
                                         child: AbsorbPointer(
                                           child: DirectSelectList<String>(
                                               values: morphologies,
-                                              defaultItemIndex: 1,
+                                              defaultItemIndex: this.selectedIndex??0,
                                               itemBuilder: (String value) => getDropDownMenuItem(value),
                                               focusedItemDecoration: _getDslDecoration(),
-                                              onUserTappedListener: ()=>{
-                                                showLongToast("aaaaa")
-                                              },
+
                                               onItemSelectedListener: (item, index, context) {
-                                                showLongToast(item);
+                                                setState(() {
+                                                  this.selectedIndex=index;
+                                                });
                                               }),
                                           absorbing: isAdmin==false,
                                         ),
@@ -97,6 +113,21 @@ class _MorphologiePageState extends State<MorphologiePage> {
           ),
         ),
       ),
+      floatingActionButton:  isAdmin == true
+          ? IconButton(
+        icon: Icon(
+          Icons.save,
+          color: Colors.green,
+        ),
+        onPressed: () {
+          TypeMorphologie? typeMorphologie = new TypeMorphologie();
+          typeMorphologie.nom = this.morphologies[this.selectedIndex!];
+          typeMorphologie.date = DateTime.now();
+          FirebaseController.to.addTypeMorphologie(typeMorphologie, widget.userId);
+          Get.back();
+        },
+      )
+          : SizedBox(),
     );
   }
 

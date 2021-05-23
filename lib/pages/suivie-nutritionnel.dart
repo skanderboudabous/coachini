@@ -30,7 +30,7 @@ class _SuivieNutritionnelPageState extends State<SuivieNutritionnelPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: ElevatedButton(child: Icon(Icons.arrow_back),onPressed: (){
+        leading: IconButton(icon: Icon(Icons.arrow_back),onPressed: (){
           isAdmin==true ?
           Get.toNamed(AppRoutes.USER_PROFILE+"?id="+widget.userId!) :
           Get.toNamed(AppRoutes.HOME);
@@ -50,7 +50,7 @@ class _SuivieNutritionnelPageState extends State<SuivieNutritionnelPage> {
                 return ListView.builder(
                     itemCount: documents?.length,
                     itemBuilder: (context, index) {
-                      final SuivieNutritionnel suivieNutritionnel = SuivieNutritionnel.fromMap(documents?[index]);
+                      final SuivieNutritionnel suivieNutritionnel = SuivieNutritionnel.fromMap(documents?[index].data());
                       return Padding(
                         padding: const EdgeInsets.all(8),
                         child: SuiviNutritionnelCard(suivieNutritionnel,widget.userId)

@@ -30,7 +30,7 @@ class SuiviEntrainement{
       id: map['id']?.toString(),
       date: null == (temp = map['date'])
           ? null
-          : (temp is DateTime ? temp : DateTime.tryParse(temp)),
+          : (temp is DateTime ? temp :  DateTime.fromMillisecondsSinceEpoch(temp.millisecondsSinceEpoch)),
       duree_totale_seance: null == (temp = map['duree_totale_seance'])
           ? null
           : (temp is num ? temp.toInt() : int.tryParse(temp)),

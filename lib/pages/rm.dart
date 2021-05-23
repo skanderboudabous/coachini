@@ -31,8 +31,8 @@ class _RMsPageState extends State<RMsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: ElevatedButton(
-          child: Icon(Icons.arrow_back),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
           onPressed: () {
             isAdmin == true
                 ? Get.toNamed(AppRoutes.USER_PROFILE + "?id=" + widget.userId!)
@@ -50,7 +50,7 @@ class _RMsPageState extends State<RMsPage> {
               return ListView.builder(
                   itemCount: documents?.length,
                   itemBuilder: (context, index) {
-                    final RM rm = RM.fromMap(documents?[index]);
+                    final RM rm = RM.fromMap(documents?[index].data());
                     return Padding(
                         padding: const EdgeInsets.all(8),
                         child: RMsCard(rm, widget.userId));

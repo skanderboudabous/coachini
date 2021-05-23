@@ -60,7 +60,7 @@ class _SuivieMentalePageState extends State<SuivieMentalePage> {
                 onTap: (){
                   if(isAdmin== false)
                   {
-                    showLongToast("Please contact the administrator");
+                    showShortToast("Please contact the administrator");
                   }
                 },
                 child: AbsorbPointer(

@@ -10,6 +10,7 @@ import 'package:coachini/models/objectif.dart';
 import 'package:coachini/models/rm.dart';
 import 'package:coachini/models/suivi-entrainement.dart';
 import 'package:coachini/models/suivie-nutritionnel.dart';
+import 'package:coachini/models/type-morphologie.dart';
 import 'package:coachini/utils/toast.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:loader_overlay/loader_overlay.dart';
@@ -110,9 +111,9 @@ class FirebaseController extends GetxController {
     } on FirebaseAuthException catch (e) {
       hideLoadingIndicator(context);
       if (e.code == 'user-not-found') {
-        showLongToast('No user found for that email.');
+        showShortToast('No user found for that email.');
       } else if (e.code == 'wrong-password') {
-        showLongToast('Wrong password provided for that user.');
+        showShortToast('Wrong password provided for that user.');
       }
     }
   }
@@ -137,9 +138,9 @@ class FirebaseController extends GetxController {
       hideLoadingIndicator(context);
 
       if (e.code == 'weak-password') {
-        showLongToast('The password provided is too weak.');
+        showShortToast('The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
-        showLongToast('The account already exists for that email.');
+        showShortToast('The account already exists for that email.');
       }
     }
   }
@@ -169,7 +170,7 @@ class FirebaseController extends GetxController {
       print(ds.id);
       exercice.id = ds.id;
       await transaction.set(
-          userCollection.doc(userId).collection("mesures").doc(exercice.id),
+          userCollection.doc(userId).collection("exercices").doc(exercice.id),
           exercice.toMap());
       return exercice;
     });
@@ -220,25 +221,48 @@ class FirebaseController extends GetxController {
 
   //#region Objectif Functions
 
-  Future<Objectif> addObjectif(Objectif objectif) {
+  Future<Objectif> addObjectif(Objectif objectif,String? userId) {
     return FirebaseFirestore.instance.runTransaction((transaction) async {
-      final DocumentSnapshot ds =
-          await transaction.get(objectifCollection.doc());
+      final DocumentSnapshot ds = await transaction
+          .get(userCollection.doc(userId).collection("objectives").doc());
+      print(ds.id);
       objectif.id = ds.id;
-      transaction.set(objectifCollection.doc(objectif.id), objectif.toMap());
+      await transaction.set(
+          userCollection
+              .doc(userId)
+              .collection("objectives")
+              .doc(objectif.id),
+          objectif.toMap());
       return objectif;
     });
   }
 
-  Future<QuerySnapshot> getObjectifs() async {
-    return objectifCollection.get();
+  Future<QuerySnapshot> getLastObjectif(String? userId){
+    return userCollection.doc(userId).collection("objectives").orderBy("date",descending: true).limit(1).get();
   }
 
-  Future<Objectif> updateObjectif(Objectif objectif) {
+
+  //#endregion
+
+  //#region TypeMorphologie Functions
+  Future<TypeMorphologie> addTypeMorphologie(TypeMorphologie typeMorphologie,String? userId) {
     return FirebaseFirestore.instance.runTransaction((transaction) async {
-      transaction.update(objectifCollection.doc(objectif.id), objectif.toMap());
-      return objectif;
+      final DocumentSnapshot ds = await transaction
+          .get(userCollection.doc(userId).collection("typeMorphologies").doc());
+      print(ds.id);
+      typeMorphologie.id = ds.id;
+      transaction.set(
+          userCollection
+              .doc(userId)
+              .collection("typeMorphologies")
+              .doc(typeMorphologie.id),
+          typeMorphologie.toMap());
+      return typeMorphologie;
     });
+  }
+
+  Future<QuerySnapshot> getLastTypeMorphologie(String? userId){
+    return userCollection.doc(userId).collection("typeMorphologies").orderBy("date",descending: true).limit(1).get();
   }
 
   //#endregion
@@ -284,7 +308,7 @@ class FirebaseController extends GetxController {
           .get(userCollection.doc(id).collection("compositionCorporelles").doc());
       print(ds.id);
       compositionCorporelle.id = ds.id;
-      await transaction.set(
+      transaction.set(
           userCollection
               .doc(id)
               .collection("compositionCorporelles")
@@ -360,7 +384,7 @@ class FirebaseController extends GetxController {
     return userCollection
         .doc(id)
         .collection("exercices")
-        .orderBy('date', descending: true)
+        .orderBy('dateLim', descending: true)
         .get();
   }
 

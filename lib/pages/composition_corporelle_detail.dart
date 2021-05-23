@@ -30,7 +30,7 @@ class _CompositionCorporelleDetailPageState extends State<CompositionCorporelleD
     return Scaffold(
       appBar: AppBar(
         title: Text("Composition Corporelle"),
-        leading: ElevatedButton(child: Icon(Icons.arrow_back),onPressed: (){
+        leading: IconButton(icon: Icon(Icons.arrow_back),onPressed: (){
           Get.to(CompositionCorporellePage(widget.userId));
         },),
       ),
@@ -168,7 +168,7 @@ class _CompositionCorporelleDetailPageState extends State<CompositionCorporelleD
                               await FirebaseController.to.addCompositionCorporelle(compositionCorporelle, widget.userId!);
                               Get.to(CompositionCorporellePage(widget.userId));
                             } else {
-                              showLongToast("Validation failed");
+                              showShortToast("Validation failed");
                             }
                           },
                         ),

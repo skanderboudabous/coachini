@@ -5,6 +5,7 @@ import 'package:coachini/pages/rm.dart';
 import 'package:coachini/pages/suivi_entrainement.dart';
 import 'package:coachini/pages/suivie-mentale.dart';
 import 'package:coachini/pages/suivie-nutritionnel.dart';
+import 'package:coachini/widgets/online_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
@@ -33,14 +34,7 @@ class MenuWidget extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            CircleAvatar(
-              radius: 50,
-              backgroundColor: Colors.grey,
-              child: CircleAvatar(
-                radius: 45,
-//              backgroundImage: AssetImage('assets/images/user_profile.jpg'),
-              ),
-            ),
+            OnlineImage(FirebaseController.to.firestoreUser.value?.pictureUrl,size: 25,width: 100,height: 100,),
             SizedBox(
               height: 20,
             ),

@@ -31,7 +31,7 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Mesures"),
-        leading: ElevatedButton(child: Icon(Icons.arrow_back),onPressed: (){
+        leading: IconButton(icon: Icon(Icons.arrow_back),onPressed: (){
           Get.to(MesuresPage(widget.userId));
         },),
       ),
@@ -422,7 +422,7 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                               await FirebaseController.to.addMesure(mesure, widget.userId!);
                               Get.to(MesuresPage(widget.userId));
                             } else {
-                              showLongToast("Validation failed");
+                              showShortToast("Validation failed");
                             }
                           },
                         ),

@@ -29,8 +29,8 @@ class _ExerciceDetailPageState extends State<ExerciceDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Mesures"),
-        leading: ElevatedButton(child: Icon(Icons.arrow_back),onPressed: (){
+        title: Text("Execrcice"),
+        leading: IconButton(icon: Icon(Icons.arrow_back),onPressed: (){
           Get.to(ExercicesPage(widget.userId));
         },),
       ),
@@ -68,7 +68,7 @@ class _ExerciceDetailPageState extends State<ExerciceDetailPage> {
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
                               ]),
-                              keyboardType: TextInputType.number,
+                              keyboardType: TextInputType.name,
                             ),
                             FormBuilderTextField(
                               name: 'ImageLink',
@@ -80,7 +80,7 @@ class _ExerciceDetailPageState extends State<ExerciceDetailPage> {
                                 FormBuilderValidators.required(context),
                               ]),
                               initialValue: widget.exercice?.ImageLink.toString(),
-                              keyboardType: TextInputType.number,
+                              keyboardType: TextInputType.name,
                             ),
                             FormBuilderTextField(
                               name: 'nbSerie',
@@ -145,7 +145,7 @@ class _ExerciceDetailPageState extends State<ExerciceDetailPage> {
                               await FirebaseController.to.addExercice(exercice, widget.userId!);
                               Get.to(ExercicesPage(widget.userId));
                             } else {
-                              showLongToast("Validation failed");
+                              showShortToast("Validation failed");
                             }
                           },
                         ),

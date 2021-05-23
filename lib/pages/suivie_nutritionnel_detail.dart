@@ -31,7 +31,7 @@ class _SuivieNutritionnelDetailPageState
     return Scaffold(
       appBar: AppBar(
         title: Text("Suivie Nutritionnel"),
-        leading: ElevatedButton(child: Icon(Icons.arrow_back),onPressed: (){
+        leading: IconButton(icon: Icon(Icons.arrow_back),onPressed: (){
           Get.to(SuivieNutritionnelPage(widget.userId));
         },),
       ),
@@ -131,7 +131,7 @@ class _SuivieNutritionnelDetailPageState
                             await FirebaseController.to.addSuivieNutritionnel(suivie, widget.userId!);
                             Get.to(SuivieNutritionnelPage(widget.userId));
                           } else {
-                            showLongToast("Validation failed");
+                            showShortToast("Validation failed");
                           }
                         },
                       ),

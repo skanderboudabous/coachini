@@ -59,7 +59,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     padding: const EdgeInsets.all(8.0),
                     child: GestureDetector(
                       onTap: () => {getImage()},
-                      child: _image==null ? adherant.pictureUrl!=null ? OnlineImage(adherant.pictureUrl!) : CircleAvatar(
+                      child: _image==null ? adherant.pictureUrl!=null ?
+                      OnlineImage(adherant.pictureUrl!,width: 100,height: 100,size: 25,) : CircleAvatar(
                         minRadius: 50,
                           maxRadius: 50,
                           child: Icon(Icons.add)) : CircleAvatar(
@@ -120,6 +121,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                             FormBuilderValidators.maxLength(context, 8),
                             FormBuilderValidators.minLength(context, 8),
                           ]),
+                          initialValue: adherant.phone.toString(),
                           keyboardType: TextInputType.number,
                           style: TextStyle(color: Colors.white),
                         ),

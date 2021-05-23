@@ -51,6 +51,7 @@ class _UserProfileState extends State<UserProfile> {
                             user?.pictureUrl,
                             width: 100,
                             height: 100,
+                            size: 30,
                           ),
                         ),
                         SizedBox(height: 20,),
