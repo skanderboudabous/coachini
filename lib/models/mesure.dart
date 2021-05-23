@@ -76,12 +76,8 @@ class Mesure{
     return {
       'id': id,
       'date': date,
-      'poid': poid,
       'taille': taille,
-      'IMC': IMC,
       'FC': FC,
-      'masseMuscle': masseMuscle,
-      'masseGraisse': masseGraisse,
       'stresse': stresse,
       'oxygene': oxygene,
       'tourTaille': tourTaille,

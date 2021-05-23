@@ -2,6 +2,7 @@ import 'package:age_calculator/age_calculator.dart';
 import 'package:coachini/constants/app_routes.dart';
 import 'package:coachini/controller/firebase_controller.dart';
 import 'package:coachini/models/adherant.dart';
+import 'package:coachini/pages/composition_corporelle.dart';
 import 'package:coachini/pages/exercices.dart';
 import 'package:coachini/pages/morphologie.dart';
 import 'package:coachini/pages/objectif.dart';
@@ -147,7 +148,6 @@ class _UserProfileState extends State<UserProfile> {
             bgColor: Colors.lightBlue,
             width: 150,
             height: 50,),
-          SizedBox(height: 20,),
           SizedBox(height: 10,),
           PrimaryButton(
             onPressed: () {
@@ -158,7 +158,16 @@ class _UserProfileState extends State<UserProfile> {
             bgColor: Colors.lightBlue,
             width: 150,
             height: 50,),
-          SizedBox(height: 20,),
+          SizedBox(height: 10,),
+          PrimaryButton(
+            onPressed: () {
+              Get.to(new CompositionCorporellePage(widget.id));
+            },
+            buttonLabel: "Composition Corporelle",
+            fontSize: 14,
+            bgColor: Colors.lightBlue,
+            width: 150,
+            height: 50,),
         ]);
   }
 

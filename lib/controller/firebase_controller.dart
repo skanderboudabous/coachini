@@ -3,10 +3,12 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coachini/constants/app_routes.dart';
 import 'package:coachini/models/adherant.dart';
+import 'package:coachini/models/composition-corporelle.dart';
 import 'package:coachini/models/exercice.dart';
 import 'package:coachini/models/mesure.dart';
 import 'package:coachini/models/objectif.dart';
 import 'package:coachini/models/rm.dart';
+import 'package:coachini/models/suivi-entrainement.dart';
 import 'package:coachini/models/suivie-nutritionnel.dart';
 import 'package:coachini/utils/toast.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -31,10 +33,9 @@ class FirebaseController extends GetxController {
   final exerciceCollection = FirebaseFirestore.instance.collection("exercices");
   final mesureCollection = FirebaseFirestore.instance.collection("mesures");
   final rmCollection = FirebaseFirestore.instance.collection("rms");
-  final suivieNutritionnelCollection =
-      FirebaseFirestore.instance.collection("suiviesNurtitionneles");
-  final suiviEntrainementsCollection =
-      FirebaseFirestore.instance.collection("suiviEntrainements");
+  final suivieNutritionnelCollection = FirebaseFirestore.instance.collection("suiviesNurtitionneles");
+  final suiviEntrainementsCollection = FirebaseFirestore.instance.collection("suiviEntrainements");
+  final compositionCorporelleCollection = FirebaseFirestore.instance.collection("compositionCorporelles");
 
   @override
   void onReady() {
@@ -215,28 +216,6 @@ class FirebaseController extends GetxController {
 
 //#endregion
 
-  //#region RM Functions
-
-  Future<RM> addRM(RM rm) {
-    return FirebaseFirestore.instance.runTransaction((transaction) async {
-      final DocumentSnapshot ds = await transaction.get(rmCollection.doc());
-      rm.id = ds.id;
-      transaction.set(rmCollection.doc(rm.id), rm.toMap());
-      return rm;
-    });
-  }
-
-  Future<QuerySnapshot> getRMs() async {
-    return rmCollection.get();
-  }
-
-  Future<RM> updateRM(RM rm) {
-    return FirebaseFirestore.instance.runTransaction((transaction) async {
-      transaction.update(rmCollection.doc(rm.id), rm.toMap());
-      return rm;
-    });
-  }
-
 //#endregion
 
   //#region Objectif Functions
@@ -282,20 +261,39 @@ class FirebaseController extends GetxController {
       return suivieNutritionnel;
     });
   }
-
-  Future<QuerySnapshot> getSuivieNutritionnels() async {
-    return suivieNutritionnelCollection.get();
-  }
-
-  Future<SuivieNutritionnel> updateSuivieNutritionnel(
-      SuivieNutritionnel suivieNutritionnel) {
+  Future<SuiviEntrainement> addSuivieEntrainement(
+      SuiviEntrainement suiviEntrainement, String id) {
     return FirebaseFirestore.instance.runTransaction((transaction) async {
-      transaction.update(
-          suivieNutritionnelCollection.doc(suivieNutritionnel.id),
-          suivieNutritionnel.toMap());
-      return suivieNutritionnel;
+      final DocumentSnapshot ds = await transaction
+          .get(userCollection.doc(id).collection("suiviEntrainements").doc());
+      print(ds.id);
+      suiviEntrainement.id = ds.id;
+      await transaction.set(
+          userCollection
+              .doc(id)
+              .collection("suiviEntrainements")
+              .doc(suiviEntrainement.id),
+          suiviEntrainement.toMap());
+      return suiviEntrainement;
     });
   }
+  Future<CompositionCorporelle> addCompositionCorporelle(
+      CompositionCorporelle compositionCorporelle, String id) {
+    return FirebaseFirestore.instance.runTransaction((transaction) async {
+      final DocumentSnapshot ds = await transaction
+          .get(userCollection.doc(id).collection("compositionCorporelles").doc());
+      print(ds.id);
+      compositionCorporelle.id = ds.id;
+      await transaction.set(
+          userCollection
+              .doc(id)
+              .collection("compositionCorporelles")
+              .doc(compositionCorporelle.id),
+          compositionCorporelle.toMap());
+      return compositionCorporelle;
+    });
+  }
+
 
 //#endregion
 
@@ -347,6 +345,13 @@ class FirebaseController extends GetxController {
     return userCollection
         .doc(id)
         .collection("suiviEntrainements")
+        .orderBy('date', descending: true)
+        .get();
+  }
+  Future<QuerySnapshot> getUserCompositionCorporelle({required String? id}) {
+    return userCollection
+        .doc(id)
+        .collection("compositionCorporelles")
         .orderBy('date', descending: true)
         .get();
   }

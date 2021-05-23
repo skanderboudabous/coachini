@@ -1,7 +1,6 @@
 import 'package:coachini/controller/firebase_controller.dart';
 import 'package:coachini/models/suivi-entrainement.dart';
-import 'package:coachini/models/suivie-nutritionnel.dart';
-import 'package:coachini/pages/suivie-nutritionnel.dart';
+import 'package:coachini/pages/suivi_entrainement.dart';
 import 'package:coachini/utils/toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -31,9 +30,9 @@ class _SuiviEntrainementDetailPageState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Suivie Nutritionnel"),
+        title: Text("Suivie Entrainement"),
         leading: ElevatedButton(child: Icon(Icons.arrow_back),onPressed: (){
-          Get.to(SuivieNutritionnelPage(widget.userId));
+          Get.to(SuiviEntrainementPage(widget.userId));
         },),
       ),
       body: WillPopScope(
@@ -62,7 +61,7 @@ class _SuiviEntrainementDetailPageState
                           name: 'duree_totale_seance',
                           decoration: InputDecoration(
                               labelText: 'Duree totale séance',
-                              labelStyle: TextStyle(color: Colors.white)),
+                              labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(context),
                             FormBuilderValidators.numeric(context),
@@ -76,7 +75,7 @@ class _SuiviEntrainementDetailPageState
                           name: 'rythme_cardiaque_moy',
                           decoration: InputDecoration(
                               labelText: 'Rythme cardiaque moyen',
-                              labelStyle: TextStyle(color: Colors.white)),
+                              labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(context),
                             FormBuilderValidators.numeric(context),
@@ -89,7 +88,7 @@ class _SuiviEntrainementDetailPageState
                           name: 'vitesse_moyenne',
                           decoration: InputDecoration(
                               labelText: 'Vitesse moyenne',
-                              labelStyle: TextStyle(color: Colors.white)),
+                              labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(context),
                             FormBuilderValidators.numeric(context),
@@ -102,7 +101,7 @@ class _SuiviEntrainementDetailPageState
                           name: 'nombre_pas',
                           decoration: InputDecoration(
                               labelText: 'Nombre de pas',
-                              labelStyle: TextStyle(color: Colors.white)),
+                              labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(context),
                             FormBuilderValidators.numeric(context),
@@ -115,7 +114,7 @@ class _SuiviEntrainementDetailPageState
                           name: 'distance_parcourue',
                           decoration: InputDecoration(
                               labelText: 'distance parcourue',
-                              labelStyle: TextStyle(color: Colors.white)),
+                              labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(context),
                             FormBuilderValidators.numeric(context),
@@ -128,7 +127,7 @@ class _SuiviEntrainementDetailPageState
                           name: 'nb_calorie_brule',
                           decoration: InputDecoration(
                               labelText: 'Nombre calories bruleés',
-                              labelStyle: TextStyle(color: Colors.white)),
+                              labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(context),
                             FormBuilderValidators.numeric(context),
@@ -137,6 +136,46 @@ class _SuiviEntrainementDetailPageState
                           style: TextStyle(color: Colors.white),
                           keyboardType: TextInputType.number,
                         ),
+                        FormBuilderTextField(
+                          name: 'allureMoy',
+                          decoration: InputDecoration(
+                              labelText: 'Allure Moyenne',
+                              labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
+                          validator: FormBuilderValidators.compose([
+                            FormBuilderValidators.required(context),
+                            FormBuilderValidators.numeric(context),
+                          ]),
+                          initialValue: widget.suiviEntrainement?.allureMoy.toString(),
+                          style: TextStyle(color: Colors.white),
+                          keyboardType: TextInputType.number,
+                        ),
+                        FormBuilderTextField(
+                          name: 'cadenceMoy',
+                          decoration: InputDecoration(
+                              labelText: 'Cadence Moyenne',
+                              labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
+                          validator: FormBuilderValidators.compose([
+                            FormBuilderValidators.required(context),
+                            FormBuilderValidators.numeric(context),
+                          ]),
+                          initialValue: widget.suiviEntrainement?.cadenceMoy.toString(),
+                          style: TextStyle(color: Colors.white),
+                          keyboardType: TextInputType.number,
+                        ),
+                        FormBuilderTextField(
+                          name: 'longuerMoyPas',
+                          decoration: InputDecoration(
+                              labelText: 'Longueur Moyenne de pas',
+                              labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
+                          validator: FormBuilderValidators.compose([
+                            FormBuilderValidators.required(context),
+                            FormBuilderValidators.numeric(context),
+                          ]),
+                          initialValue: widget.suiviEntrainement?.longuerMoyPas.toString(),
+                          style: TextStyle(color: Colors.white),
+                          keyboardType: TextInputType.number,
+                        ),
+
                       ],
                     ),
                   ),
@@ -153,10 +192,10 @@ class _SuiviEntrainementDetailPageState
                         onPressed: () async {
                           _formKey.currentState?.save();
                           if (_formKey.currentState?.validate() == true) {
-                            SuivieNutritionnel suivie=SuivieNutritionnel.fromMap(_formKey.currentState?.value);
+                            SuiviEntrainement suivie=SuiviEntrainement.fromMap(_formKey.currentState?.value);
                             suivie.date=DateTime.now();
-                            await FirebaseController.to.addSuivieNutritionnel(suivie, widget.userId!);
-                            Get.to(SuivieNutritionnelPage(widget.userId));
+                            await FirebaseController.to.addSuivieEntrainement(suivie, widget.userId!);
+                            Get.to(SuiviEntrainementPage(widget.userId));
                           } else {
                             showLongToast("Validation failed");
                           }

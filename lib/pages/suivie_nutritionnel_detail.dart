@@ -2,7 +2,6 @@ import 'package:coachini/controller/firebase_controller.dart';
 import 'package:coachini/models/suivie-nutritionnel.dart';
 import 'package:coachini/pages/suivie-nutritionnel.dart';
 import 'package:coachini/utils/toast.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';

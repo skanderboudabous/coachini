@@ -59,20 +59,7 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                         key: _formKey,
                         child: Column(
                           children: <Widget>[
-                            FormBuilderTextField(
-                              name: 'Poid',
-                              decoration: InputDecoration(
-                                labelText: 'Poids',
-                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
-                              ),
-                              initialValue: widget.mesure?.poid.toString(),
-                              style: TextStyle(color: Colors.white),
-                              validator: FormBuilderValidators.compose([
-                                FormBuilderValidators.required(context),
-                                FormBuilderValidators.numeric(context),
-                              ]),
-                              keyboardType: TextInputType.number,
-                            ),
+
                             FormBuilderTextField(
                               name: 'taille',
                               decoration: InputDecoration(
@@ -87,20 +74,7 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                               style: TextStyle(color: Colors.white),
                               keyboardType: TextInputType.number,
                             ),
-                            FormBuilderTextField(
-                              name: 'IMC',
-                              decoration: InputDecoration(
-                                labelText: 'IMC',
-                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
-                              ),
-                              validator: FormBuilderValidators.compose([
-                                FormBuilderValidators.required(context),
-                                FormBuilderValidators.numeric(context),
-                              ]),
-                              initialValue: widget.mesure?.IMC.toString(),
-                              style: TextStyle(color: Colors.white),
-                              keyboardType: TextInputType.number,
-                            ),
+
                             FormBuilderTextField(
                               name: 'FC',
                               decoration: InputDecoration(
@@ -115,34 +89,7 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                               style: TextStyle(color: Colors.white),
                               keyboardType: TextInputType.number,
                             ),
-                            FormBuilderTextField(
-                              name: 'masseMuscle',
-                              decoration: InputDecoration(
-                                labelText: 'Masse Musculaire',
-                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
-                              ),
-                              validator: FormBuilderValidators.compose([
-                                FormBuilderValidators.required(context),
-                                FormBuilderValidators.numeric(context),
-                              ]),
-                              initialValue: widget.mesure?.masseMuscle.toString(),
-                              style: TextStyle(color: Colors.white),
-                              keyboardType: TextInputType.number,
-                            ),
-                            FormBuilderTextField(
-                              name: 'masseGraisse',
-                              decoration: InputDecoration(
-                                labelText: 'Masse Graisse',
-                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
-                              ),
-                              validator: FormBuilderValidators.compose([
-                                FormBuilderValidators.required(context),
-                                FormBuilderValidators.numeric(context),
-                              ]),
-                              initialValue: widget.mesure?.masseGraisse.toString(),
-                              style: TextStyle(color: Colors.white),
-                              keyboardType: TextInputType.number,
-                            ),
+
                             FormBuilderTextField(
                               name: 'stresse',
                               decoration: InputDecoration(

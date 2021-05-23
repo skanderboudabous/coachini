@@ -41,7 +41,7 @@ class Exercice {
           ? null
           : (temp is num ? temp.toInt() : int.tryParse(temp)),
       isDone: map['isDone'],
-      dateLim: null == (temp = map['date'])
+      dateLim: null == (temp = map['dateLim'])
           ? null
           : (temp is DateTime
               ? temp

@@ -7,9 +7,12 @@ class SuiviEntrainement{
   int? nombre_pas;
   int? distance_parcourue;
   int? nb_calorie_brule;
+  double? allureMoy;
+  int? cadenceMoy;
+  int? longuerMoyPas;
 
   SuiviEntrainement(
-      {this.id,this.date, this.duree_totale_seance, this.rythme_cardiaque_moy, this.vitesse_moyenne, this.nombre_pas, this.distance_parcourue,this.nb_calorie_brule});
+      {this.id,this.date, this.duree_totale_seance, this.rythme_cardiaque_moy, this.vitesse_moyenne, this.nombre_pas, this.distance_parcourue,this.nb_calorie_brule,this.allureMoy,this.cadenceMoy,this.longuerMoyPas});
 
   @override
   bool operator ==(Object other) =>
@@ -46,6 +49,15 @@ class SuiviEntrainement{
       nb_calorie_brule: null == (temp = map['nb_calorie_brule'])
           ? null
           : (temp is num ? temp.toInt() : int.tryParse(temp)),
+        allureMoy: null == (temp = map['allureMoy'])
+            ? null
+            : (temp is num ? temp.toDouble() : double.tryParse(temp)),
+      cadenceMoy: null == (temp = map['cadenceMoy'])
+          ? null
+          : (temp is num ? temp.toInt() : int.tryParse(temp)),
+      longuerMoyPas: null == (temp = map['longuerMoyPas'])
+          ? null
+          : (temp is num ? temp.toInt() : int.tryParse(temp)),
     );
   }
 
@@ -58,12 +70,12 @@ class SuiviEntrainement{
       'nombre_pas': nombre_pas,
       'date': date,
       'distance_parcourue': distance_parcourue,
-      'nb_calorie_brule': nb_calorie_brule
+      'nb_calorie_brule': nb_calorie_brule,
+      'allureMoy': allureMoy,
+      'cadenceMoy':cadenceMoy,
+      'longuerMoyPas':longuerMoyPas
     };
   }
 
-  @override
-  String toString() {
-    return 'SuiviEntrainement{id: $id, date: $date, duree_totale_seance: $duree_totale_seance, rythme_cardiaque_moy: $rythme_cardiaque_moy, vitesse_moyenne: $vitesse_moyenne, nombre_pas: $nombre_pas,distance_parcourue: $distance_parcourue,nb_calorie_brule: $nb_calorie_brule}';
-  }
+
 }

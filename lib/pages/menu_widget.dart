@@ -1,3 +1,4 @@
+import 'package:coachini/pages/composition_corporelle.dart';
 import 'package:coachini/pages/objectif.dart';
 import 'package:coachini/controller/firebase_controller.dart';
 import 'package:coachini/pages/rm.dart';
@@ -66,6 +67,7 @@ class MenuWidget extends StatelessWidget {
             sliderItem('Suivi Nutritionnel', Icons.fastfood),
             sliderItem('Suivi Mentale', Icons.assignment),
             sliderItem('Suivi Entrainement', Icons.fitness_center),
+            sliderItem('Composotion Corporelle', Icons.accessibility),
             sliderItem('LogOut', Icons.arrow_back_ios)
           ],
         ),
@@ -113,8 +115,11 @@ class MenuWidget extends StatelessWidget {
          case "Suivi Nutritionnel":
               Get.to(SuivieNutritionnelPage(FirebaseController.currentId));
             break;
-            case "Suivi Entrainement":
+         case "Suivi Entrainement":
               Get.to(SuiviEntrainementPage(FirebaseController.currentId));
+            break;
+          case "Composition Corporelle":
+            Get.to(CompositionCorporellePage(FirebaseController.currentId));
             break;
         }
       });
