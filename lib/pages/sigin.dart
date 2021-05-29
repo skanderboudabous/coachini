@@ -59,7 +59,7 @@ class _SignInPageState extends State<SignInPage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Container(
-                                  width: 75,
+                                  width: 115,
                                   height: 75,
                                   decoration: BoxDecoration(
                                     image: DecorationImage(

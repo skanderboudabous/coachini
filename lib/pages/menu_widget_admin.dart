@@ -1,3 +1,5 @@
+import 'package:coachini/pages/add_exercice_image.dart';
+import 'package:coachini/pages/add_rm_image.dart';
 import 'package:coachini/pages/composition_corporelle.dart';
 import 'package:coachini/pages/objectif.dart';
 import 'package:coachini/controller/firebase_controller.dart';
@@ -16,10 +18,10 @@ import 'mesures.dart';
 import 'mesures_detail.dart';
 import 'morphologie.dart';
 
-class MenuWidget extends StatelessWidget {
+class MenuWidgetAdmin extends StatelessWidget {
   final Function(String)? onItemClick;
 
-  const MenuWidget({Key? key, this.onItemClick}) : super(key: key);
+  const MenuWidgetAdmin({Key? key, this.onItemClick}) : super(key: key);
 //  final String? id=
 
   @override
@@ -51,17 +53,8 @@ class MenuWidget extends StatelessWidget {
             SizedBox(
               height: 5,
             ),
-            sliderItem('Profile', Icons.person_rounded,),
-            sliderItem('Type de morphologie', Icons.accessibility),
-            sliderItem('Objectif', Icons.assistant_photo),
-            sliderItem('Mesures', Icons.assignment),
-            sliderItem('1RM', Icons.assignment),
-            sliderItem('Exercices', Icons.assignment_turned_in_outlined),
-            sliderItem('Regime Alimentaire', Icons.food_bank),
-            sliderItem('Suivi Nutritionnel', Icons.fastfood),
-            sliderItem('Suivi Mentale', Icons.assignment),
-            sliderItem('Suivi Entrainement', Icons.fitness_center),
-            sliderItem('Composition Corporelle', Icons.accessibility),
+            sliderItem('Images RM', Icons.person_rounded,),
+            sliderItem('Images Exercices', Icons.accessibility),
             sliderItem('LogOut', Icons.arrow_back_ios)
           ],
         ),
@@ -85,35 +78,11 @@ class MenuWidget extends StatelessWidget {
           case "LogOut":
             Get.find<FirebaseController>().logout();
             break;
-          case "Exercices":
-            Get.to(ExercicesPage(FirebaseController.currentId));
+          case "Images Exercices":
+            Get.to(AddExerciceImage());
             break;
-          case "Objectif":
-            Get.to(ObjectifPage(FirebaseController.currentId));
-            break;
-          case "Type de morphologie":
-            Get.to(MorphologiePage(FirebaseController.currentId));
-            break;
-          case "Profile":
-            Get.to(EditProfilePage());
-            break;
-            case "1RM":
-            Get.to(RMsPage(FirebaseController.currentId));
-            break;
-          case "Mesures":
-            Get.to(MesuresPage(FirebaseController.currentId));
-            break;
-          case "Suivi Mentale":
-            Get.to(SuivieMentalePage(FirebaseController.currentId));
-            break;
-         case "Suivi Nutritionnel":
-              Get.to(SuivieNutritionnelPage(FirebaseController.currentId));
-            break;
-         case "Suivi Entrainement":
-              Get.to(SuiviEntrainementPage(FirebaseController.currentId));
-            break;
-          case "Composition Corporelle":
-            Get.to(CompositionCorporellePage(FirebaseController.currentId));
+          case "Images RM":
+            Get.to(AddRmImage());
             break;
         }
       });

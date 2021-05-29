@@ -1,4 +1,5 @@
-import 'package:coachini/pages/admin.dart';
+import 'package:coachini/pages/home_admin.dart';
+import 'package:coachini/pages/main_widget_admin.dart';
 import 'package:coachini/pages/home.dart';
 import 'package:coachini/pages/sigin.dart';
 import 'package:coachini/pages/sign_up.dart';
@@ -14,7 +15,7 @@ class AppRoutes {
     GetPage(name: SIGNIN, page: () => SignInPage()),
     GetPage(name: SIGNUP, page: () => SignUpPage()),
     GetPage(name: HOME, page: () => HomePage()),
-    GetPage(name: ADMIN, page: () => AdminPage()),
+    GetPage(name: ADMIN, page: () => HomeAdminPage()),
     GetPage(name: USER_PROFILE, page: () => UserProfile()),
     //   GetPage(name: SUIVIE_MENTALE, page: ()=> SuivieMentalePage())
   ];

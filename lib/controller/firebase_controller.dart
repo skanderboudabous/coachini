@@ -34,9 +34,14 @@ class FirebaseController extends GetxController {
   final exerciceCollection = FirebaseFirestore.instance.collection("exercices");
   final mesureCollection = FirebaseFirestore.instance.collection("mesures");
   final rmCollection = FirebaseFirestore.instance.collection("rms");
-  final suivieNutritionnelCollection = FirebaseFirestore.instance.collection("suiviesNurtitionneles");
-  final suiviEntrainementsCollection = FirebaseFirestore.instance.collection("suiviEntrainements");
-  final compositionCorporelleCollection = FirebaseFirestore.instance.collection("compositionCorporelles");
+  final rmImagesCollection = FirebaseFirestore.instance.collection("rm-images");
+  final exerciceImagesCollection = FirebaseFirestore.instance.collection("exercice-images");
+  final suivieNutritionnelCollection =
+      FirebaseFirestore.instance.collection("suiviesNurtitionneles");
+  final suiviEntrainementsCollection =
+      FirebaseFirestore.instance.collection("suiviEntrainements");
+  final compositionCorporelleCollection =
+      FirebaseFirestore.instance.collection("compositionCorporelles");
 
   @override
   void onReady() {
@@ -215,37 +220,35 @@ class FirebaseController extends GetxController {
     });
   }
 
-//#endregion
-
-//#endregion
-
   //#region Objectif Functions
 
-  Future<Objectif> addObjectif(Objectif objectif,String? userId) {
+  Future<Objectif> addObjectif(Objectif objectif, String? userId) {
     return FirebaseFirestore.instance.runTransaction((transaction) async {
       final DocumentSnapshot ds = await transaction
           .get(userCollection.doc(userId).collection("objectives").doc());
       print(ds.id);
       objectif.id = ds.id;
       await transaction.set(
-          userCollection
-              .doc(userId)
-              .collection("objectives")
-              .doc(objectif.id),
+          userCollection.doc(userId).collection("objectives").doc(objectif.id),
           objectif.toMap());
       return objectif;
     });
   }
 
-  Future<QuerySnapshot> getLastObjectif(String? userId){
-    return userCollection.doc(userId).collection("objectives").orderBy("date",descending: true).limit(1).get();
+  Future<QuerySnapshot> getLastObjectif(String? userId) {
+    return userCollection
+        .doc(userId)
+        .collection("objectives")
+        .orderBy("date", descending: true)
+        .limit(1)
+        .get();
   }
-
 
   //#endregion
 
   //#region TypeMorphologie Functions
-  Future<TypeMorphologie> addTypeMorphologie(TypeMorphologie typeMorphologie,String? userId) {
+  Future<TypeMorphologie> addTypeMorphologie(
+      TypeMorphologie typeMorphologie, String? userId) {
     return FirebaseFirestore.instance.runTransaction((transaction) async {
       final DocumentSnapshot ds = await transaction
           .get(userCollection.doc(userId).collection("typeMorphologies").doc());
@@ -261,8 +264,13 @@ class FirebaseController extends GetxController {
     });
   }
 
-  Future<QuerySnapshot> getLastTypeMorphologie(String? userId){
-    return userCollection.doc(userId).collection("typeMorphologies").orderBy("date",descending: true).limit(1).get();
+  Future<QuerySnapshot> getLastTypeMorphologie(String? userId) {
+    return userCollection
+        .doc(userId)
+        .collection("typeMorphologies")
+        .orderBy("date", descending: true)
+        .limit(1)
+        .get();
   }
 
   //#endregion
@@ -285,6 +293,7 @@ class FirebaseController extends GetxController {
       return suivieNutritionnel;
     });
   }
+
   Future<SuiviEntrainement> addSuivieEntrainement(
       SuiviEntrainement suiviEntrainement, String id) {
     return FirebaseFirestore.instance.runTransaction((transaction) async {
@@ -301,11 +310,12 @@ class FirebaseController extends GetxController {
       return suiviEntrainement;
     });
   }
+
   Future<CompositionCorporelle> addCompositionCorporelle(
       CompositionCorporelle compositionCorporelle, String id) {
     return FirebaseFirestore.instance.runTransaction((transaction) async {
-      final DocumentSnapshot ds = await transaction
-          .get(userCollection.doc(id).collection("compositionCorporelles").doc());
+      final DocumentSnapshot ds = await transaction.get(
+          userCollection.doc(id).collection("compositionCorporelles").doc());
       print(ds.id);
       compositionCorporelle.id = ds.id;
       transaction.set(
@@ -317,7 +327,6 @@ class FirebaseController extends GetxController {
       return compositionCorporelle;
     });
   }
-
 
 //#endregion
 
@@ -372,6 +381,7 @@ class FirebaseController extends GetxController {
         .orderBy('date', descending: true)
         .get();
   }
+
   Future<QuerySnapshot> getUserCompositionCorporelle({required String? id}) {
     return userCollection
         .doc(id)
@@ -411,6 +421,32 @@ class FirebaseController extends GetxController {
     }
     await userCollection.doc(currentId).update(updatedData);
   }
+
+  Future<void> addRmImage(
+      {required Map<String, dynamic>? data, File? image}) async {
+    var name = data?['name'];
+    Map<String, dynamic> updatedData = Map.from(data!);
+    String? extension = ((image!.path.split("/").last).split(".").last);
+    Reference ref = _fs.ref("rms/${name}.$extension");
+    var bytes = await image.readAsBytes();
+    await ref.putData(bytes);
+    var url = await ref.getDownloadURL();
+    updatedData.putIfAbsent("pictureUrl", () => url);
+    await rmImagesCollection.doc().set(updatedData);
+  }
+  Future<void> addExerciceImage(
+      {required Map<String, dynamic>? data, File? image}) async {
+    var name = data?['name'];
+    Map<String, dynamic> updatedData = Map.from(data!);
+    String? extension = ((image!.path.split("/").last).split(".").last);
+    Reference ref = _fs.ref("exercices/${name!}.$extension");
+    var bytes = await image.readAsBytes();
+    await ref.putData(bytes);
+    var url = await ref.getDownloadURL();
+    updatedData.putIfAbsent("pictureUrl", () => url);
+    await exerciceImagesCollection.doc().set(updatedData);
+  }
+
 
 //#endregion
 
