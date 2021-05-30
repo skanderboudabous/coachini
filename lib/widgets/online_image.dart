@@ -29,6 +29,14 @@ class _OnlineImageState extends State<OnlineImage>
   }
 
   @override
+  void dispose() {
+    _controller.dispose();
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+
+  @override
   Widget build(BuildContext context) {
     return widget.url != null
         ? ExtendedImage.network(

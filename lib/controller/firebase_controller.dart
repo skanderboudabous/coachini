@@ -13,6 +13,7 @@ import 'package:coachini/models/suivie-nutritionnel.dart';
 import 'package:coachini/models/type-morphologie.dart';
 import 'package:coachini/utils/toast.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -136,6 +137,7 @@ class FirebaseController extends GetxController {
         email: email,
         id: (result.user)?.uid,
       );
+      user.isAdmin=false;
       await setNewUser(user);
       hideLoadingIndicator(context);
       return user;
@@ -181,8 +183,9 @@ class FirebaseController extends GetxController {
     });
   }
 
-  Future<QuerySnapshot> getExercices() async {
-    return exerciceCollection.get();
+  Future<QuerySnapshot> getExercicesImages() async {
+    return exerciceImagesCollection.get();
+
   }
 
   Future<Exercice> updateExercice(Exercice exercice) {

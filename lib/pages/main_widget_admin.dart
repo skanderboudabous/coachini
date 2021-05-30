@@ -4,23 +4,26 @@ import 'package:coachini/pages/users_subscribed.dart';
 import 'package:coachini/pages/users_unsubscribed.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorful_tab/flutter_colorful_tab.dart';
+import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
 import 'package:get/get.dart';
 
 class MainWidgetAdmin extends StatefulWidget {
+  bool isDrawerOpen;
+  MainWidgetAdmin(this.isDrawerOpen);
   @override
   _MainWidgetAdminState createState() => _MainWidgetAdminState();
 }
 
-class _MainWidgetAdminState extends State<MainWidgetAdmin>  with SingleTickerProviderStateMixin{
-
+class _MainWidgetAdminState extends State<MainWidgetAdmin>
+    with SingleTickerProviderStateMixin {
   TabController? _tabController;
 
   @override
   void initState() {
     _tabController = TabController(vsync: this, length: 2);
-
     super.initState();
   }
+
   @override
   void dispose() {
     _tabController?.dispose();
@@ -30,15 +33,23 @@ class _MainWidgetAdminState extends State<MainWidgetAdmin>  with SingleTickerPro
 
   @override
   Widget build(BuildContext context) {
-    return  SafeArea(
+    return SafeArea(
       child: Column(
         children: [
-          MaterialButton(onPressed: (){
-            SuivieNutritionnel suivieNutritionnel=new SuivieNutritionnel(apport: 10,date: DateTime.now(),glucide: 50,lipide: 5,proteine: 3);
-            FirebaseController.to.addSuivieNutritionnel(suivieNutritionnel, "9WoyHufTYpfEMuvAegum1Lw03Er2").then((value) => {
-              print(value)
-            });
-          },),
+          MaterialButton(
+            onPressed: () {
+              SuivieNutritionnel suivieNutritionnel = new SuivieNutritionnel(
+                  apport: 10,
+                  date: DateTime.now(),
+                  glucide: 50,
+                  lipide: 5,
+                  proteine: 3);
+              FirebaseController.to
+                  .addSuivieNutritionnel(
+                      suivieNutritionnel, "9WoyHufTYpfEMuvAegum1Lw03Er2")
+                  .then((value) => {print(value)});
+            },
+          ),
           ColorfulTabBar(
             controller: _tabController,
             tabs: [
@@ -58,7 +69,9 @@ class _MainWidgetAdminState extends State<MainWidgetAdmin>  with SingleTickerPro
                   color: Colors.lightBlue.shade600),
             ],
           ),
-          Expanded(child: TabBarView(
+          Expanded(
+              child: TabBarView(
+            physics:  widget.isDrawerOpen? NeverScrollableScrollPhysics() : PageScrollPhysics(),
             controller: _tabController,
             children: [
               UsersSubscribed(),
@@ -69,6 +82,4 @@ class _MainWidgetAdminState extends State<MainWidgetAdmin>  with SingleTickerPro
       ),
     );
   }
-
-
 }

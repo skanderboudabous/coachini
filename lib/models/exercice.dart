@@ -1,7 +1,7 @@
 class Exercice {
   String? id;
   String? nom;
-  String? ImageLink;
+  String? pictureUrl;
   int? nbSerie;
   int? nbRep;
   int? repo;
@@ -11,7 +11,7 @@ class Exercice {
   Exercice(
       {this.id,
       this.nom,
-      this.ImageLink,
+      this.pictureUrl,
       this.nbSerie,
       this.nbRep,
       this.repo,
@@ -41,6 +41,7 @@ class Exercice {
           ? null
           : (temp is num ? temp.toInt() : int.tryParse(temp)),
       isDone: map['isDone'],
+      pictureUrl: map['pictureUrl']?.toString(),
       dateLim: null == (temp = map['dateLim'])
           ? null
           : (temp is DateTime
@@ -54,7 +55,7 @@ class Exercice {
     return {
       'id': id,
       'nom': nom,
-      'ImageLink': ImageLink,
+      'pictureUrl': pictureUrl,
       'nbSerie': nbSerie,
       'nbRep': nbRep,
       'repo': repo,
@@ -65,6 +66,6 @@ class Exercice {
 
   @override
   String toString() {
-    return 'Exercice{id: $id, nom: $nom,ImageLink: $ImageLink, nbSerie: $nbSerie, nbRep: $nbRep, repo: $repo,isDone :$isDone,dateLim: $dateLim}';
+    return 'Exercice{id: $id, nom: $nom,ImageLink: $pictureUrl, nbSerie: $nbSerie, nbRep: $nbRep, repo: $repo,isDone :$isDone,dateLim: $dateLim}';
   }
 }

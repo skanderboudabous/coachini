@@ -38,69 +38,57 @@ class _AddExerciceImageState extends State<AddExerciceImage> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(),
       body: Container(
-        height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/images/bg.jpg"),
-            fit: BoxFit.cover,
+          height: MediaQuery.of(context).size.height,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/bg.jpg"),
+              fit: BoxFit.cover,
+            ),
           ),
-        ),
-        child: FutureBuilder(
-          future: FirebaseController.to.getFirestoreUser(),
-          builder: (context,snapshot) {
-            if(snapshot.hasData)
-            {
-              final adherant= snapshot.data as Adherant;
-              return  Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: GestureDetector(
-                          onTap: () => {getImage()},
-                          child: _image==null ? adherant.pictureUrl!=null ?
-                          OnlineImage(adherant.pictureUrl!,width: 100,height: 100,size: 25,) : CircleAvatar(
-                              minRadius: 50,
-                              maxRadius: 50,
-                              child: Icon(Icons.add)) : Container(
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: FileImage(_image!)),
-                                ),
-                              )
-                      ),
-                    ),
-                    FormBuilder(
-                      key: _formKey,
-                      child: Column(
-                        children: <Widget>[
-                          FormBuilderTextField(
-                            name: 'name',
-                            decoration: InputDecoration(
-                                labelText:  'Image Name',
-                                labelStyle: TextStyle(color: Colors.white)
-                            ),
-                            validator: FormBuilderValidators.compose([
-                              FormBuilderValidators.required(context),
-                            ]),
-                            style: TextStyle(color: Colors.white),
-                            keyboardType: TextInputType.name,
-                          ),
-                         ],
-                      ),
-                    ),
-
-                  ],
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GestureDetector(
+                      onTap: () => {getImage()},
+                      child: _image == null
+                          ? CircleAvatar(
+                          minRadius: 50,
+                          maxRadius: 50,
+                          child: Icon(Icons.add))
+                          : Container(
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        height: 300,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: FileImage(_image!)),
+                        ),
+                      )),
                 ),
-              );
-            } else
-              return CircularProgressIndicator();
-
-          },
-        ),
-      ),
+                FormBuilder(
+                  key: _formKey,
+                  child: Column(
+                    children: <Widget>[
+                      FormBuilderTextField(
+                        name: 'name',
+                        decoration: InputDecoration(
+                            labelText: 'Image Name',
+                            labelStyle: TextStyle(color: Colors.white)),
+                        validator: FormBuilderValidators.compose([
+                          FormBuilderValidators.required(context),
+                        ]),
+                        style: TextStyle(color: Colors.white),
+                        keyboardType: TextInputType.name,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          )),
       floatingActionButton: Row(
         children: <Widget>[
           Expanded(
@@ -112,10 +100,10 @@ class _AddExerciceImageState extends State<AddExerciceImage> {
               ),
               onPressed: () async {
                 _formKey.currentState?.save();
-                if (_formKey.currentState?.validate()==true) {
+                if (_formKey.currentState?.validate() == true) {
                   print(_formKey.currentState?.value);
                   await FirebaseController.to.addExerciceImage( data: _formKey.currentState?.value,image: _image);
-                  Get.toNamed(AppRoutes.HOME);
+                  Get.toNamed(AppRoutes.ADMIN);
                 } else {
                   print("validation failed");
                 }
