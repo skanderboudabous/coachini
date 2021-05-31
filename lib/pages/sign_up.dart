@@ -58,9 +58,11 @@ class SignUpPage extends StatelessWidget {
                             FormBuilderTextField(
                               controller: emailController,
                               decoration: InputDecoration(
-                                  prefixIcon: Icon(Icons.email),
-                                  labelText: 'Email'),
+                                  prefixIcon: Icon(Icons.email,color: Colors.white),
+                                  labelText: 'Email',
+                                  labelStyle: TextStyle(color: Colors.white)),
                               validator: Validator().email,
+                              style: TextStyle(color: Colors.white),
                               keyboardType: TextInputType.emailAddress,
                               onChanged: (value) => null,
                               onSaved: (value) => emailController.text = value!,
@@ -69,9 +71,11 @@ class SignUpPage extends StatelessWidget {
                             FormBuilderTextField(
                               controller: passwordController,
                               decoration: InputDecoration(
-                                  prefixIcon: Icon(Icons.lock),
-                                  labelText: 'Password'),
+                                  prefixIcon: Icon(Icons.lock,color: Colors.white,),
+                                  labelText: 'Password',
+                                  labelStyle: TextStyle(color: Colors.white)),
                               validator: Validator().password,
+                              style: TextStyle(color: Colors.white),
                               obscureText: true,
                               onChanged: (value) => null,
                               onSaved: (value) =>
@@ -82,9 +86,11 @@ class SignUpPage extends StatelessWidget {
                             FormBuilderTextField(
                               controller: passwordController,
                               decoration: InputDecoration(
-                                  prefixIcon: Icon(Icons.lock),
-                                  labelText: 'Confirm Password'),
+                                  prefixIcon: Icon(Icons.lock,color: Colors.white,),
+                                  labelText: 'Confirm Password',
+                                  labelStyle: TextStyle(color: Colors.white)),
                               validator: Validator().password,
+                              style: TextStyle(color: Colors.white),
                               obscureText: true,
                               onChanged: (value) => null,
                               onSaved: (value) =>
@@ -107,7 +113,7 @@ class SignUpPage extends StatelessWidget {
                                 print(adherant);
                                 }
                               },
-                              buttonLabel: 'Signup',
+                              buttonLabel: 'Sign up',
                               fontSize: 14,
                               bgColor: Colors.lightBlue,
                               width: 340,
@@ -118,7 +124,7 @@ class SignUpPage extends StatelessWidget {
                             ),
                             PrimaryButton(
                               onPressed: () => Get.toNamed(AppRoutes.SIGNIN),
-                              buttonLabel: 'Sign In',
+                              buttonLabel: 'Sign in',
                               fontSize: 14,
                               bgColor: Colors.lightBlue,
                               width: 340,

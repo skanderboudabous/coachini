@@ -114,7 +114,7 @@ class _SignInPageState extends State<SignInPage> {
                                           context: context);
                                     }
                                   },
-                                  buttonLabel: 'Sign In',
+                                  buttonLabel: 'Sign in',
                                   fontSize: 14,
                                   bgColor: Colors.lightBlue,
                                   width: 150,
@@ -126,7 +126,7 @@ class _SignInPageState extends State<SignInPage> {
                                 PrimaryButton(
                                   onPressed: () =>
                                       Get.toNamed(AppRoutes.SIGNUP),
-                                  buttonLabel: 'Signup',
+                                  buttonLabel: 'Sign up',
                                   fontSize: 14,
                                   bgColor: Colors.lightBlue,
                                   width: 150,
