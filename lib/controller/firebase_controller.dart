@@ -7,13 +7,12 @@ import 'package:coachini/models/composition-corporelle.dart';
 import 'package:coachini/models/exercice.dart';
 import 'package:coachini/models/mesure.dart';
 import 'package:coachini/models/objectif.dart';
-import 'package:coachini/models/rm.dart';
+import 'package:coachini/models/regime-alimentaire.dart';
 import 'package:coachini/models/suivi-entrainement.dart';
 import 'package:coachini/models/suivie-nutritionnel.dart';
 import 'package:coachini/models/type-morphologie.dart';
 import 'package:coachini/utils/toast.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -43,6 +42,8 @@ class FirebaseController extends GetxController {
       FirebaseFirestore.instance.collection("suiviEntrainements");
   final compositionCorporelleCollection =
       FirebaseFirestore.instance.collection("compositionCorporelles");
+  final regimeAlimentaireCollection =
+      FirebaseFirestore.instance.collection("regimeAlimentaires");
 
   @override
   void onReady() {
@@ -450,7 +451,28 @@ class FirebaseController extends GetxController {
     await exerciceImagesCollection.doc().set(updatedData);
   }
 
+  Future<QuerySnapshot> getUserRegimeAlimentaire({String? id}) {
+    return userCollection
+      .doc(id)
+      .collection("regimeAlimentaires")
+      .orderBy('date', descending: true)
+      .get();
+  }
 
+  Future<RegimeAlimentaire> addRegimeAlimentaire(RegimeAlimentaire regimeAlimentaire, String? userId) {
+   return FirebaseFirestore.instance.runTransaction((transaction) async {
+      final DocumentSnapshot ds = await transaction
+          .get(userCollection.doc(userId).collection("regimeAlimentaires").doc());
+      print(ds.id);
+      regimeAlimentaire.id = ds.id;
+      transaction.set(
+          userCollection
+              .doc(userId)
+              .collection("regimeAlimentaires")
+              .doc(regimeAlimentaire.id),
+          regimeAlimentaire.toMap());
+      return regimeAlimentaire;
+    });
+  }
 //#endregion
-
 }

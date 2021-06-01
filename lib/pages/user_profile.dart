@@ -6,6 +6,7 @@ import 'package:coachini/pages/composition_corporelle.dart';
 import 'package:coachini/pages/exercices.dart';
 import 'package:coachini/pages/morphologie.dart';
 import 'package:coachini/pages/objectif.dart';
+import 'package:coachini/pages/regime-alimentaire.dart';
 import 'package:coachini/pages/rm.dart';
 import 'package:coachini/pages/suivi_entrainement.dart';
 import 'package:coachini/pages/suivie-mentale.dart';
@@ -155,6 +156,16 @@ class _UserProfileState extends State<UserProfile> {
               Get.to(new SuiviEntrainementPage(widget.id));
             },
             buttonLabel: "Suivi Entrainement",
+            fontSize: 14,
+            bgColor: Colors.lightBlue,
+            width: 150,
+            height: 50,),
+          SizedBox(height: 10,),
+          PrimaryButton(
+            onPressed: () {
+              Get.to(new RegimeAlimentairePage(widget.id));
+            },
+            buttonLabel: "Regime Alimentaire",
             fontSize: 14,
             bgColor: Colors.lightBlue,
             width: 150,
