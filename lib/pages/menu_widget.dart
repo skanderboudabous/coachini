@@ -1,6 +1,9 @@
+import 'package:coachini/pages/Chart.dart';
 import 'package:coachini/pages/composition_corporelle.dart';
+import 'package:coachini/pages/contact.dart';
 import 'package:coachini/pages/objectif.dart';
 import 'package:coachini/controller/firebase_controller.dart';
+import 'package:coachini/pages/regime-alimentaire.dart';
 import 'package:coachini/pages/rm.dart';
 import 'package:coachini/pages/suivi_entrainement.dart';
 import 'package:coachini/pages/suivie-mentale.dart';
@@ -10,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 
+import 'about.dart';
 import 'edit_profile.dart';
 import 'exercices.dart';
 import 'mesures.dart';
@@ -34,24 +38,35 @@ class MenuWidget extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            OnlineImage(FirebaseController.to.firestoreUser.value?.pictureUrl,size: 25,width: 100,height: 100,),
+            OnlineImage(
+              FirebaseController.to.firestoreUser.value?.pictureUrl,
+              size: 25,
+              width: 100,
+              height: 100,
+            ),
             SizedBox(
               height: 20,
             ),
-            GetX<FirebaseController>(builder: (fb){
-              return Text(
-                fb.firestoreUser.value?.firstName??'',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                    fontFamily: 'BalsamiqSans'),
-              );
-            },init: FirebaseController(),),
+            GetX<FirebaseController>(
+              builder: (fb) {
+                return Text(
+                  fb.firestoreUser.value?.firstName ?? '',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      fontFamily: 'BalsamiqSans'),
+                );
+              },
+              init: FirebaseController(),
+            ),
             SizedBox(
               height: 5,
             ),
-            sliderItem('Profile', Icons.person_rounded,),
+            sliderItem(
+              'Profile',
+              Icons.person_rounded,
+            ),
             sliderItem('Type de morphologie', Icons.accessibility),
             sliderItem('Objectif', Icons.assistant_photo),
             sliderItem('Mesures', Icons.assignment),
@@ -62,6 +77,9 @@ class MenuWidget extends StatelessWidget {
             sliderItem('Suivi Mentale', Icons.assignment),
             sliderItem('Suivi Entrainement', Icons.fitness_center),
             sliderItem('Composition Corporelle', Icons.accessibility),
+            sliderItem('Chart', Icons.graphic_eq),
+            sliderItem('Contact', Icons.contact_support),
+            sliderItem('About', Icons.info),
             sliderItem('LogOut', Icons.arrow_back_ios)
           ],
         ),
@@ -73,7 +91,7 @@ class MenuWidget extends StatelessWidget {
       title: Text(
         title,
         style:
-        TextStyle(color: Colors.black, fontFamily: 'BalsamiqSans_Regular'),
+            TextStyle(color: Colors.black, fontFamily: 'BalsamiqSans_Regular'),
       ),
       leading: Icon(
         icons,
@@ -81,7 +99,7 @@ class MenuWidget extends StatelessWidget {
       ),
       onTap: () {
         onItemClick!(title);
-        switch (title){
+        switch (title) {
           case "LogOut":
             Get.find<FirebaseController>().logout();
             break;
@@ -97,7 +115,7 @@ class MenuWidget extends StatelessWidget {
           case "Profile":
             Get.to(EditProfilePage());
             break;
-            case "1RM":
+          case "1RM":
             Get.to(RMsPage(FirebaseController.currentId));
             break;
           case "Mesures":
@@ -106,14 +124,26 @@ class MenuWidget extends StatelessWidget {
           case "Suivi Mentale":
             Get.to(SuivieMentalePage(FirebaseController.currentId));
             break;
-         case "Suivi Nutritionnel":
-              Get.to(SuivieNutritionnelPage(FirebaseController.currentId));
+          case "Suivi Nutritionnel":
+            Get.to(SuivieNutritionnelPage(FirebaseController.currentId));
             break;
-         case "Suivi Entrainement":
-              Get.to(SuiviEntrainementPage(FirebaseController.currentId));
+           case "Regime Alimentaire":
+            Get.to(RegimeAlimentairePage(FirebaseController.currentId));
+            break;
+          case "Suivi Entrainement":
+            Get.to(SuiviEntrainementPage(FirebaseController.currentId));
             break;
           case "Composition Corporelle":
             Get.to(CompositionCorporellePage(FirebaseController.currentId));
+            break;
+          case "Contact":
+            Get.to(ContactPage());
+            break;
+          case "About":
+            Get.to(AboutPage());
+            break;
+          case "Chart":
+            Get.to(Chart());
             break;
         }
       });

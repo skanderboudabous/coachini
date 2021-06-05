@@ -3,7 +3,6 @@ import 'package:coachini/models/exercice.dart';
 import 'package:coachini/pages/exercices.dart';
 import 'package:coachini/controller/firebase_controller.dart';
 import 'package:coachini/utils/toast.dart';
-import 'package:coachini/widgets/online_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
@@ -41,7 +40,14 @@ class _ExerciceDetailPageState extends State<ExerciceDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Execrcice"),
+        title: Text("Execrcice",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 20.0,
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.bold)),
+        centerTitle: true,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -57,9 +63,11 @@ class _ExerciceDetailPageState extends State<ExerciceDetailPage> {
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/images/bg.jpg"),
+              colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
+              image: AssetImage("assets/images/bg2.jpg"),
               fit: BoxFit.cover,
             ),
+
           ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -99,48 +107,52 @@ class _ExerciceDetailPageState extends State<ExerciceDetailPage> {
                               name: 'nom',
                               decoration: InputDecoration(
                                   labelText: 'Nom',
-                                  labelStyle: TextStyle(color: Colors.white)),
-                              initialValue: widget.exercice?.nom.toString(),
-                              validator: FormBuilderValidators.compose([
-                                FormBuilderValidators.required(context),
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
+                                  initialValue: widget.exercice?.nom.toString(),
+                                  validator: FormBuilderValidators.compose([
+                                  FormBuilderValidators.required(context),
                               ]),
                               keyboardType: TextInputType.name,
+                              style: TextStyle(color: Colors.white),
                             ),
                             FormBuilderTextField(
                               name: 'nbSerie',
                               decoration: InputDecoration(
                                   labelText: 'nbSerie',
-                                  labelStyle: TextStyle(color: Colors.white)),
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
                                 FormBuilderValidators.numeric(context),
                               ]),
                               initialValue: widget.exercice?.nbSerie.toString(),
                               keyboardType: TextInputType.number,
+                              style: TextStyle(color: Colors.white),
                             ),
                             FormBuilderTextField(
                               name: 'nbRep',
                               decoration: InputDecoration(
                                   labelText: 'nbRep',
-                                  labelStyle: TextStyle(color: Colors.white)),
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
                                 FormBuilderValidators.numeric(context),
                               ]),
                               initialValue: widget.exercice?.nbRep.toString(),
+                              style: TextStyle(color: Colors.white),
                               keyboardType: TextInputType.number,
                             ),
                             FormBuilderTextField(
                               name: 'repo',
                               decoration: InputDecoration(
                                   labelText: 'repo(sec)',
-                                  labelStyle: TextStyle(color: Colors.white)),
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
                                 FormBuilderValidators.numeric(context),
                               ]),
                               initialValue: widget.exercice?.repo.toString(),
                               keyboardType: TextInputType.number,
+                              style: TextStyle(color: Colors.white),
                             ),
                           ],
                         ),

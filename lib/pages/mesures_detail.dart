@@ -30,7 +30,14 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Mesures"),
+        title: Text("Mesure",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 20.0,
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.bold)),
+        centerTitle: true,
         leading: IconButton(icon: Icon(Icons.arrow_back),onPressed: (){
           Get.to(MesuresPage(widget.userId));
         },),
@@ -43,6 +50,7 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
             image: DecorationImage(
+              colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
               image: AssetImage("assets/images/bg.jpg"),
               fit: BoxFit.cover,
             ),
@@ -79,8 +87,7 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                               name: 'FC',
                               decoration: InputDecoration(
                                 labelText: 'FC repos',
-                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
-                              ),
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
                                 FormBuilderValidators.numeric(context),

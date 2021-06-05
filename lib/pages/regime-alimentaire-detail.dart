@@ -31,7 +31,14 @@ class _RegimeAlimentaireDetailPageState extends State<RegimeAlimentaireDetailPag
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Composition Corporelle"),
+        title: Text("Régime Alimentaire",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 20.0,
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.bold)),
+        centerTitle: true,
         leading: IconButton(icon: Icon(Icons.arrow_back),onPressed: (){
           Get.to(RegimeAlimentairePage(widget.userId));
         },),
@@ -44,7 +51,8 @@ class _RegimeAlimentaireDetailPageState extends State<RegimeAlimentaireDetailPag
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/images/bg.jpg"),
+              colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
+              image: AssetImage("assets/images/bg4.jpg"),
               fit: BoxFit.cover,
             ),
           ),
@@ -65,6 +73,7 @@ class _RegimeAlimentaireDetailPageState extends State<RegimeAlimentaireDetailPag
                               maxLines: 30,
                               decoration: InputDecoration(
                                   labelText: 'texte',
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                                  // labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([

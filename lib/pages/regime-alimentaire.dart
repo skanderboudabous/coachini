@@ -31,6 +31,14 @@ class _RegimeAlimentairePageState extends State<RegimeAlimentairePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text("Régime Alimentaire",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 20.0,
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.bold)),
+        centerTitle: true,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -40,24 +48,34 @@ class _RegimeAlimentairePageState extends State<RegimeAlimentairePage> {
           },
         ),
       ),
-      body: FutureBuilder(
-          future: FirebaseController.to.getUserRegimeAlimentaire(id: widget.userId),
-          builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-            print(snapshot.hasData);
-            if (snapshot.hasData) {
-              final List<DocumentSnapshot>? documents = snapshot.data?.docs;
-              return ListView.builder(
-                  itemCount: documents?.length,
-                  itemBuilder: (context, index) {
-                    final RegimeAlimentaire regimeAlimentaire = RegimeAlimentaire.fromMap(documents?[index].data());
-                    return Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: RegimeAlimentaireCard(regimeAlimentaire, widget.userId));
-                  });
-            } else {
-              return Loader();
-            }
-          }),
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
+            image: AssetImage("assets/images/bg4.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: FutureBuilder(
+            future: FirebaseController.to.getUserRegimeAlimentaire(id: widget.userId),
+            builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+              print(snapshot.hasData);
+              if (snapshot.hasData) {
+                final List<DocumentSnapshot>? documents = snapshot.data?.docs;
+                return ListView.builder(
+                    itemCount: documents?.length,
+                    itemBuilder: (context, index) {
+                      final RegimeAlimentaire regimeAlimentaire = RegimeAlimentaire.fromMap(documents?[index].data());
+                      return Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: RegimeAlimentaireCard(regimeAlimentaire, widget.userId));
+                    });
+              } else {
+                return Loader();
+              }
+            }),
+      ),
       floatingActionButton: isAdmin == true
           ? ElevatedButton(
         child: Icon(Icons.add),

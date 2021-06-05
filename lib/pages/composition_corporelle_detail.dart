@@ -29,7 +29,14 @@ class _CompositionCorporelleDetailPageState extends State<CompositionCorporelleD
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Composition Corporelle"),
+        title: Text("Composition Corporelle",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 20.0,
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.bold)),
+        centerTitle: true,
         leading: IconButton(icon: Icon(Icons.arrow_back),onPressed: (){
           Get.to(CompositionCorporellePage(widget.userId));
         },),
@@ -42,6 +49,7 @@ class _CompositionCorporelleDetailPageState extends State<CompositionCorporelleD
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
             image: DecorationImage(
+              colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
               image: AssetImage("assets/images/bg.jpg"),
               fit: BoxFit.cover,
             ),

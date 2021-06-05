@@ -33,7 +33,14 @@ class _SuiviEntrainementDetailPageState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Suivie Entrainement"),
+        title: Text("Suivi Entrainement",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 20.0,
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.bold)),
+        centerTitle: true,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -49,7 +56,8 @@ class _SuiviEntrainementDetailPageState
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/images/bg.jpg"),
+              colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
+              image: AssetImage("assets/images/bg5.jpg"),
               fit: BoxFit.cover,
             ),
           ),

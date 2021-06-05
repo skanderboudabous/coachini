@@ -30,7 +30,14 @@ class _SuivieNutritionnelDetailPageState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Suivie Nutritionnel"),
+        title: Text("Suivi nutritionnel",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 20.0,
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.bold)),
+        centerTitle: true,
         leading: IconButton(icon: Icon(Icons.arrow_back),onPressed: (){
           Get.to(SuivieNutritionnelPage(widget.userId));
         },),
@@ -43,7 +50,8 @@ class _SuivieNutritionnelDetailPageState
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/images/bg.jpg"),
+              colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
+              image: AssetImage("assets/images/bg4.jpg"),
               fit: BoxFit.cover,
             ),
           ),
@@ -61,7 +69,7 @@ class _SuivieNutritionnelDetailPageState
                           name: 'apport',
                           decoration: InputDecoration(
                               labelText: 'Apport',
-                              labelStyle: TextStyle(color: Colors.white)),
+                              labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(context),
                             FormBuilderValidators.numeric(context),
@@ -75,7 +83,7 @@ class _SuivieNutritionnelDetailPageState
                           name: 'proteine',
                           decoration: InputDecoration(
                               labelText: 'Proteine',
-                              labelStyle: TextStyle(color: Colors.white)),
+                              labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(context),
                             FormBuilderValidators.numeric(context),
@@ -88,7 +96,7 @@ class _SuivieNutritionnelDetailPageState
                           name: 'glucide',
                           decoration: InputDecoration(
                               labelText: 'Glucide',
-                              labelStyle: TextStyle(color: Colors.white)),
+                              labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(context),
                             FormBuilderValidators.numeric(context),
@@ -101,7 +109,7 @@ class _SuivieNutritionnelDetailPageState
                           name: 'lipide',
                           decoration: InputDecoration(
                               labelText: 'Lipide',
-                              labelStyle: TextStyle(color: Colors.white)),
+                              labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(context),
                             FormBuilderValidators.numeric(context),

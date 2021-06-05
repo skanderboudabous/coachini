@@ -4,8 +4,6 @@ import 'package:coachini/pages/users_subscribed.dart';
 import 'package:coachini/pages/users_unsubscribed.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorful_tab/flutter_colorful_tab.dart';
-import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
-import 'package:get/get.dart';
 
 class MainWidgetAdmin extends StatefulWidget {
   bool isDrawerOpen;

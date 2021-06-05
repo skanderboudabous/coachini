@@ -1,7 +1,6 @@
 import 'package:coachini/models/exercice.dart';
-import 'package:coachini/models/mesure.dart';
 import 'package:coachini/pages/exercices_detail.dart';
-import 'package:coachini/pages/mesures_detail.dart';
+import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,18 +11,21 @@ class ExercicesCard extends StatelessWidget {
   ExercicesCard(this.exercice,this.userId);
   @override
   Widget build(BuildContext context) {
+    var mesure;
     return GestureDetector(
       onTap: (){
         Get.to(new ExerciceDetailPage(userId,exercice: this.exercice));
       },
       child: Container(
-        decoration: BoxDecoration(color: Colors.grey,borderRadius: BorderRadius.circular(20)),
+        decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.circular(15)),
+        height: 50,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(exercice.dateLim.toString(),style: TextStyle(fontSize: 18),),
+              Text(formatDate(exercice.dateLim!, [dd, ' - ', MM, ' - ', yyyy]),style: TextStyle(fontSize: 18),),
+              Checkbox(value: false,onChanged: (bool? value){print("done");value=true;},)
             ],
           ),
         ),

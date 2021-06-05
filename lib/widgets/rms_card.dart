@@ -17,6 +17,7 @@ class RMsCard extends StatelessWidget {
         Get.to(new RMsPage(userId,rm: this.rm));
       },
       child: Container(
+        height: 50,
         decoration: BoxDecoration(color: Colors.grey,borderRadius: BorderRadius.circular(20)),
         child: Padding(
           padding: const EdgeInsets.all(8.0),

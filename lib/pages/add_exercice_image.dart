@@ -36,7 +36,14 @@ class _AddExerciceImageState extends State<AddExerciceImage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(),
+      appBar: AppBar(title: Text("Add Execrcice Image",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              color: Colors.white,
+              fontSize: 20.0,
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.bold)),
+        centerTitle: true,),
       body: Container(
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(

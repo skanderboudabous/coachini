@@ -42,11 +42,19 @@ class _MorphologiePageState extends State<MorphologiePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(title: Text("Type de morphologie",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              color: Colors.white,
+              fontSize: 20.0,
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.bold)),
+        centerTitle: true,),
       body:Container(
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
           image: DecorationImage(
+            colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
             image: AssetImage("assets/images/bg.jpg"),
             fit: BoxFit.cover,
           ),

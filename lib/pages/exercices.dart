@@ -28,6 +28,14 @@ class _ExercicesPageState extends State<ExercicesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+          title: Text("Execrcices",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20.0,
+                  fontFamily: 'Montserrat',
+                  fontWeight: FontWeight.bold)),
+          centerTitle: true,
         leading: IconButton(icon: Icon(Icons.arrow_back),onPressed: (){
           isAdmin == true
               ? Get.toNamed(AppRoutes.USER_PROFILE + "?id=" + widget.userId!)

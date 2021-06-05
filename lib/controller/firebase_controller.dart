@@ -8,6 +8,7 @@ import 'package:coachini/models/exercice.dart';
 import 'package:coachini/models/mesure.dart';
 import 'package:coachini/models/objectif.dart';
 import 'package:coachini/models/regime-alimentaire.dart';
+import 'package:coachini/models/rm.dart';
 import 'package:coachini/models/suivi-entrainement.dart';
 import 'package:coachini/models/suivie-nutritionnel.dart';
 import 'package:coachini/models/type-morphologie.dart';
@@ -188,6 +189,10 @@ class FirebaseController extends GetxController {
     return exerciceImagesCollection.get();
 
   }
+  Future<QuerySnapshot> getRMsImages() async {
+    return rmImagesCollection.get();
+
+  }
 
   Future<Exercice> updateExercice(Exercice exercice) {
     return FirebaseFirestore.instance.runTransaction((transaction) async {
@@ -210,6 +215,17 @@ class FirebaseController extends GetxController {
           userCollection.doc(userId).collection("mesures").doc(mesure.id),
           mesure.toMap());
       return mesure;
+    });
+  }  Future<RM> addRM(RM rm, String? userId) {
+    return FirebaseFirestore.instance.runTransaction((transaction) async {
+      final DocumentSnapshot ds = await transaction
+          .get(userCollection.doc(userId).collection("rms").doc());
+      print(ds.id);
+      rm.id = ds.id;
+      await transaction.set(
+          userCollection.doc(userId).collection("rms").doc(rm.id),
+          rm.toMap());
+      return rm;
     });
   }
 

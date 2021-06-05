@@ -1,5 +1,6 @@
 import 'package:coachini/models/suivi-entrainement.dart';
 import 'package:coachini/pages/suivi_entrainement_detail.dart';
+import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,13 +16,14 @@ class SuiviEntrainementCard extends StatelessWidget {
         Get.to(new SuiviEntrainementDetailPage(userId,suiviEntrainement: this.suiviEntrainement));
       },
       child: Container(
-        decoration: BoxDecoration(color: Colors.grey,borderRadius: BorderRadius.circular(20)),
+        height: 50,
+        decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.circular(15)),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(suiviEntrainement.date.toString(),style: TextStyle(fontSize: 18),),
+              Text(formatDate(suiviEntrainement.date!, [dd, ' - ', MM, ' - ', yyyy]),style: TextStyle(fontSize: 18),),
             ],
           ),
         ),

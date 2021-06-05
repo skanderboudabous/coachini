@@ -31,6 +31,14 @@ class _SuiviEntrainementPageState extends State<SuiviEntrainementPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text("Suivis entrainement",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 20.0,
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.bold)),
+        centerTitle: true,
         leading: IconButton(icon: Icon(Icons.arrow_back),onPressed: (){
           isAdmin==true ?
           Get.toNamed(AppRoutes.USER_PROFILE+"?id="+widget.userId!) :
@@ -42,25 +50,35 @@ class _SuiviEntrainementPageState extends State<SuiviEntrainementPage> {
           Get.toNamed(AppRoutes.USER_PROFILE+"?id="+widget.userId!);
           return Future.value(false);
         },
-        child: FutureBuilder(
-            future: FirebaseController.to.getUserSuiviEntrainements(id:widget.userId),
-            builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-              if (snapshot.hasData) {
-                final List<DocumentSnapshot>? documents = snapshot.data?.docs;
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
+              image: AssetImage("assets/images/bg5.jpg"),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: FutureBuilder(
+              future: FirebaseController.to.getUserSuiviEntrainements(id:widget.userId),
+              builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                if (snapshot.hasData) {
+                  final List<DocumentSnapshot>? documents = snapshot.data?.docs;
 
-                return ListView.builder(
-                    itemCount: documents?.length,
-                    itemBuilder: (context, index) {
-                      final SuiviEntrainement suiviEntrainement = SuiviEntrainement.fromMap(documents?[index].data());
-                      return Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: SuiviEntrainementCard(suiviEntrainement,widget.userId)
-                      );
-                    });
-              } else {
-                return Loader();
-              }
-            }),
+                  return ListView.builder(
+                      itemCount: documents?.length,
+                      itemBuilder: (context, index) {
+                        final SuiviEntrainement suiviEntrainement = SuiviEntrainement.fromMap(documents?[index].data());
+                        return Padding(
+                            padding: const EdgeInsets.all(8),
+                            child: SuiviEntrainementCard(suiviEntrainement,widget.userId)
+                        );
+                      });
+                } else {
+                  return Loader();
+                }
+              }),
+        ),
       ),
       floatingActionButton: isAdmin==true ? ElevatedButton(child: Icon(Icons.add),onPressed: (){
         Get.to(new SuiviEntrainementDetailPage(widget.userId));

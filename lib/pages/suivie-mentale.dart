@@ -50,7 +50,16 @@ class _SuivieMentalePageState extends State<SuivieMentalePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text("Suivi Mentale",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 20.0,
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.bold)),
+        centerTitle: true,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(
@@ -203,6 +212,20 @@ class _SuivieMentalePageState extends State<SuivieMentalePage> {
                 color: Theme.of(context).accentColor,
                 child: Text(
                   "Reset",
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () {
+                  _formKey.currentState?.reset();
+                },
+              ),
+            ),
+            SizedBox(width: 20,),
+            Expanded(
+              child: MaterialButton(
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(28))),
+                color: Theme.of(context).accentColor,
+                child: Text(
+                  "Links",
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () {

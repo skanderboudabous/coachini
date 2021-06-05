@@ -30,6 +30,14 @@ class _SuivieNutritionnelPageState extends State<SuivieNutritionnelPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text("Suivis Nutritionnel",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 20.0,
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.bold)),
+        centerTitle: true,
         leading: IconButton(icon: Icon(Icons.arrow_back),onPressed: (){
           isAdmin==true ?
           Get.toNamed(AppRoutes.USER_PROFILE+"?id="+widget.userId!) :
@@ -41,25 +49,35 @@ class _SuivieNutritionnelPageState extends State<SuivieNutritionnelPage> {
           Get.toNamed(AppRoutes.USER_PROFILE+"?id="+widget.userId!);
           return Future.value(false);
         },
-        child: FutureBuilder(
-            future: FirebaseController.to.getUserSuivieNutritionnels(id:widget.userId),
-            builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-              if (snapshot.hasData) {
-                final List<DocumentSnapshot>? documents = snapshot.data?.docs;
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
+              image: AssetImage("assets/images/bg4.jpg"),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: FutureBuilder(
+              future: FirebaseController.to.getUserSuivieNutritionnels(id:widget.userId),
+              builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                if (snapshot.hasData) {
+                  final List<DocumentSnapshot>? documents = snapshot.data?.docs;
 
-                return ListView.builder(
-                    itemCount: documents?.length,
-                    itemBuilder: (context, index) {
-                      final SuivieNutritionnel suivieNutritionnel = SuivieNutritionnel.fromMap(documents?[index].data());
-                      return Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: SuiviNutritionnelCard(suivieNutritionnel,widget.userId)
-                      );
-                    });
-              } else {
-                return Loader();
-              }
-            }),
+                  return ListView.builder(
+                      itemCount: documents?.length,
+                      itemBuilder: (context, index) {
+                        final SuivieNutritionnel suivieNutritionnel = SuivieNutritionnel.fromMap(documents?[index].data());
+                        return Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: SuiviNutritionnelCard(suivieNutritionnel,widget.userId)
+                        );
+                      });
+                } else {
+                  return Loader();
+                }
+              }),
+        ),
       ),
       floatingActionButton: isAdmin==true ? ElevatedButton(child: Icon(Icons.add),onPressed: (){
         Get.to(new SuivieNutritionnelDetailPage(widget.userId));

@@ -3,8 +3,9 @@ class RM{
   String? name;
   DateTime? date;
   double? value;
+  String? pictureUrl;
 
-  RM({this.id, this.name, this.date, this.value});
+  RM({this.id, this.name, this.date, this.value, this.pictureUrl,});
 
   @override
   bool operator ==(Object other) =>
@@ -28,6 +29,7 @@ class RM{
       date: null == (temp = map['date'])
           ? null
           : (temp is DateTime ? temp : DateTime.fromMillisecondsSinceEpoch(temp.millisecondsSinceEpoch)),
+      pictureUrl: map['pictureUrl']?.toString(),
       value: null == (temp = map['value'])
           ? null
           : (temp is num ? temp.toDouble() : double.tryParse(temp)),
@@ -38,6 +40,7 @@ class RM{
     return {
       'id': id,
       'name': name,
+      'pictureUrl': pictureUrl,
       'date': date?.toString(),
       'value': value,
     };
