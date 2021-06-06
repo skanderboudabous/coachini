@@ -1,10 +1,9 @@
-import 'package:coachini/routes/app_routes.dart';
-import 'package:coachini/controller/firebase_controller.dart';
-import 'package:coachini/models/adherant.dart';
-import 'package:coachini/widgets/loader.dart';
+
 import 'package:coachini/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'chart.dart';
 
 class SuiviNutritionnelList extends StatefulWidget {
   final String? id = Get.parameters['id'];
@@ -13,6 +12,7 @@ class SuiviNutritionnelList extends StatefulWidget {
 }
 
 class _SuiviNutritionnelListState extends State<SuiviNutritionnelList> {
+  final String collectionName="suiviesNurtitionneles";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +25,10 @@ class _SuiviNutritionnelListState extends State<SuiviNutritionnelList> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     PrimaryButton(
-                      onPressed: () {},
+                      onPressed: () {
+                         Get.to(()=> new ChartPage(title:"Apport", atr: 'apport',collectionName: collectionName,));
+
+                      },
                       buttonLabel: "Apport",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
@@ -33,7 +36,10 @@ class _SuiviNutritionnelListState extends State<SuiviNutritionnelList> {
                       height: 50,),
                     SizedBox(height: 10,),
                     PrimaryButton(
-                      onPressed: () {},
+                      onPressed: () {
+                         Get.to(()=> new ChartPage(title:"Proteine", atr: 'proteine',collectionName: collectionName,));
+
+                      },
                       buttonLabel: "Proteine",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
@@ -41,7 +47,10 @@ class _SuiviNutritionnelListState extends State<SuiviNutritionnelList> {
                       height: 50,),
                     SizedBox(height: 10,),
                     PrimaryButton(
-                      onPressed: () {},
+                      onPressed: () {
+                         Get.to(()=> new ChartPage(title:"Glucide", atr: 'glucide',collectionName: collectionName,));
+
+                      },
                       buttonLabel: "Glucide",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
@@ -49,15 +58,10 @@ class _SuiviNutritionnelListState extends State<SuiviNutritionnelList> {
                       height: 50,),
                     SizedBox(height: 10,),
                     PrimaryButton(
-                      onPressed: () {},
-                      buttonLabel: "VMA",
-                      fontSize: 14,
-                      bgColor: Colors.lightBlue,
-                      width: 150,
-                      height: 50,),
-                    SizedBox(height: 10,),
-                    PrimaryButton(
-                      onPressed: () {},
+                      onPressed: () {
+                         Get.to(()=> new ChartPage(title:"Lipide", atr: 'lipide',collectionName: collectionName,));
+
+                      },
                       buttonLabel: "Lipide",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
