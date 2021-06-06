@@ -97,7 +97,7 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                               keyboardType: TextInputType.number,
                             ),
                             FormBuilderTextField(
-                              name: 'TourHancher',
+                              name: 'TourHanche',
                               decoration: InputDecoration(
                                 labelText: 'Tour Hanche',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
@@ -106,7 +106,7 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                                 FormBuilderValidators.required(context),
                                 FormBuilderValidators.numeric(context),
                               ]),
-                              initialValue: widget.mesure?.tourHancher.toString(),
+                              initialValue: widget.mesure?.tourHanche.toString(),
                               style: TextStyle(color: Colors.white),
                               keyboardType: TextInputType.number,
                             ),

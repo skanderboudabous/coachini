@@ -6,19 +6,19 @@ import 'package:coachini/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CompositionCorporelleList extends StatefulWidget {
+class SuiviNutritionnelList extends StatefulWidget {
   final String? id = Get.parameters['id'];
   @override
-  _CompositionCorporelleListState createState() => _CompositionCorporelleListState();
+  _SuiviNutritionnelListState createState() => _SuiviNutritionnelListState();
 }
 
-class _CompositionCorporelleListState extends State<CompositionCorporelleList> {
+class _SuiviNutritionnelListState extends State<SuiviNutritionnelList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Coposition Corporelle")),
+      appBar: AppBar(title: Text("Suivi Nutritionnel")),
       body: SingleChildScrollView(
-        child:  Padding(
+        child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Center(
               child: Column(
@@ -26,7 +26,7 @@ class _CompositionCorporelleListState extends State<CompositionCorporelleList> {
                   children: [
                     PrimaryButton(
                       onPressed: () {},
-                      buttonLabel: "poids",
+                      buttonLabel: "Apport",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
                       width: 150,
@@ -34,7 +34,7 @@ class _CompositionCorporelleListState extends State<CompositionCorporelleList> {
                     SizedBox(height: 10,),
                     PrimaryButton(
                       onPressed: () {},
-                      buttonLabel: "masse Graisse",
+                      buttonLabel: "Proteine",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
                       width: 150,
@@ -42,7 +42,7 @@ class _CompositionCorporelleListState extends State<CompositionCorporelleList> {
                     SizedBox(height: 10,),
                     PrimaryButton(
                       onPressed: () {},
-                      buttonLabel: "masse Hydrique",
+                      buttonLabel: "Glucide",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
                       width: 150,
@@ -58,23 +58,7 @@ class _CompositionCorporelleListState extends State<CompositionCorporelleList> {
                     SizedBox(height: 10,),
                     PrimaryButton(
                       onPressed: () {},
-                      buttonLabel: "masse Musculaire",
-                      fontSize: 14,
-                      bgColor: Colors.lightBlue,
-                      width: 150,
-                      height: 50,),
-                    SizedBox(height: 10,),
-                    PrimaryButton(
-                      onPressed: () {},
-                      buttonLabel: "masse Osseuse",
-                      fontSize: 14,
-                      bgColor: Colors.lightBlue,
-                      width: 150,
-                      height: 50,),
-                    SizedBox(height: 10,),
-                    PrimaryButton(
-                      onPressed: () {},
-                      buttonLabel: "imc",
+                      buttonLabel: "Lipide",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
                       width: 150,

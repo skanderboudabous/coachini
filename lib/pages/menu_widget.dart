@@ -1,4 +1,5 @@
 import 'package:coachini/pages/chart.dart';
+import 'package:coachini/pages/collections-list.dart';
 import 'package:coachini/pages/composition_corporelle.dart';
 import 'package:coachini/pages/contact.dart';
 import 'package:coachini/pages/list_chart_items.dart';
@@ -144,7 +145,7 @@ class MenuWidget extends StatelessWidget {
             Get.to(AboutPage());
             break;
           case "Chart":
-            Get.to(ListChartItems());
+            Get.to(CollectionList());
             break;
         }
       });

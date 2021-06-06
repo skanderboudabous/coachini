@@ -3,7 +3,7 @@ class Mesure{
   DateTime? date;
   double? taille;//20
   double? tourTaille;//15
-  double? tourHancher;//15
+  double? tourHanche;//15
   double? VMA;//2
   double? LMD;//2
   int? cordination;//5
@@ -28,7 +28,7 @@ class Mesure{
     this.date,
     this.taille,
     this.tourTaille,
-    this.tourHancher,
+    this.tourHanche,
     this.VMA,
     this.LMD,
     this.cordination,
@@ -62,7 +62,7 @@ class Mesure{
       'date': date,
       'taille': taille,
       'tourTaille': tourTaille,
-      'tourHancher': tourHancher,
+      'tourHanche': tourHanche,
       'VMA': VMA,
       'LMD': LMD,
       'cordination': cordination,
@@ -98,7 +98,7 @@ class Mesure{
       tourTaille: null == (temp = map['tourTaille'])
           ? null
           : (temp is num ? temp.toDouble() : double.tryParse(temp)),
-      tourHancher: null == (temp = map['tourHancher'])
+      tourHanche: null == (temp = map['tourHanche'])
           ? null
           : (temp is num ? temp.toDouble() : double.tryParse(temp)),
       VMA: null == (temp = map['VMA'])
