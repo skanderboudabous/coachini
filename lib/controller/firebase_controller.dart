@@ -490,5 +490,10 @@ class FirebaseController extends GetxController {
       return regimeAlimentaire;
     });
   }
+
+  Future<QuerySnapshot> getChartData(String collectionName,String atr){
+    return userCollection.doc(firestoreUser.value!.id).collection(collectionName).orderBy('date', descending: true).limit(12).get();
+
+  }
 //#endregion
 }

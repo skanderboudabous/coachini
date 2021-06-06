@@ -35,15 +35,13 @@ class _HomePageState extends State<HomePage> {
               key: _key,
               sliderMenuOpenSize: 200,
               title: Text(
-                title,
+                "Coachini",
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
               ),
               sliderMenu: MenuWidget(
                 onItemClick: (title) {
                   _key.currentState!.closeDrawer();
-                  setState(() {
-                    this.title = title;
-                  });
+
                 },
               ),
               sliderMain: MainWidget()

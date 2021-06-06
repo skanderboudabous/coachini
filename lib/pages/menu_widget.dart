@@ -1,6 +1,7 @@
-import 'package:coachini/pages/Chart.dart';
+import 'package:coachini/pages/chart.dart';
 import 'package:coachini/pages/composition_corporelle.dart';
 import 'package:coachini/pages/contact.dart';
+import 'package:coachini/pages/list_chart_items.dart';
 import 'package:coachini/pages/objectif.dart';
 import 'package:coachini/controller/firebase_controller.dart';
 import 'package:coachini/pages/regime-alimentaire.dart';
@@ -143,7 +144,7 @@ class MenuWidget extends StatelessWidget {
             Get.to(AboutPage());
             break;
           case "Chart":
-            Get.to(Chart());
+            Get.to(ListChartItems());
             break;
         }
       });
