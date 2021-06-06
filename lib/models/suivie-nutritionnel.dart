@@ -2,10 +2,10 @@
 class SuivieNutritionnel{
   String? id;
   DateTime? date;
-  int? apport;
-  int? glucide;
-  int? lipide;
-  int? proteine;
+  int? apport;//250
+  int? glucide;//100
+  int? lipide;//100
+  int? proteine;//100
 
   SuivieNutritionnel(
       {this.id,this.date, this.apport, this.glucide, this.lipide, this.proteine});

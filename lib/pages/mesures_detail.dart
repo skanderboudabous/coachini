@@ -82,49 +82,6 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                               style: TextStyle(color: Colors.white),
                               keyboardType: TextInputType.number,
                             ),
-
-                            FormBuilderTextField(
-                              name: 'FC',
-                              decoration: InputDecoration(
-                                labelText: 'FC repos',
-                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
-                              validator: FormBuilderValidators.compose([
-                                FormBuilderValidators.required(context),
-                                FormBuilderValidators.numeric(context),
-                              ]),
-                              initialValue: widget.mesure?.FC.toString(),
-                              style: TextStyle(color: Colors.white),
-                              keyboardType: TextInputType.number,
-                            ),
-
-                            FormBuilderTextField(
-                              name: 'stresse',
-                              decoration: InputDecoration(
-                                labelText: 'Stress',
-                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
-                              ),
-                              validator: FormBuilderValidators.compose([
-                                FormBuilderValidators.required(context),
-                                FormBuilderValidators.numeric(context),
-                              ]),
-                              initialValue: widget.mesure?.stresse.toString(),
-                              style: TextStyle(color: Colors.white),
-                              keyboardType: TextInputType.number,
-                            ),
-                            FormBuilderTextField(
-                              name: 'oxygene',
-                              decoration: InputDecoration(
-                                labelText: 'SpO2',
-                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
-                              ),
-                              validator: FormBuilderValidators.compose([
-                                FormBuilderValidators.required(context),
-                                FormBuilderValidators.numeric(context),
-                              ]),
-                              initialValue: widget.mesure?.oxygene.toString(),
-                              style: TextStyle(color: Colors.white),
-                              keyboardType: TextInputType.number,
-                            ),
                             FormBuilderTextField(
                               name: 'tourTaille',
                               decoration: InputDecoration(
@@ -170,7 +127,7 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                             FormBuilderTextField(
                               name: 'LMD',
                               decoration: InputDecoration(
-                                labelText: 'Lancé medecine ball',
+                                labelText: 'Lancé médecine ball',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
@@ -318,20 +275,6 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                                 FormBuilderValidators.numeric(context),
                               ]),
                               initialValue: widget.mesure?.tempsLimiteGainSquat.toString(),
-                              style: TextStyle(color: Colors.white),
-                              keyboardType: TextInputType.number,
-                            ),
-                            FormBuilderTextField(
-                              name: 'RPE',
-                              decoration: InputDecoration(
-                                labelText: 'RPE',
-                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
-                              ),
-                              validator: FormBuilderValidators.compose([
-                                FormBuilderValidators.required(context),
-                                FormBuilderValidators.numeric(context),
-                              ]),
-                              initialValue: widget.mesure?.RPE.toString(),
                               style: TextStyle(color: Colors.white),
                               keyboardType: TextInputType.number,
                             ),

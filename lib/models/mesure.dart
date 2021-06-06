@@ -1,47 +1,32 @@
 class Mesure{
   String? id;
   DateTime? date;
-  double? poid;
-  double? taille;
-  double? IMC;
-  int? FC;
-  double? masseMuscle;
-  double? masseGraisse;
-  double? stresse;
-  double? oxygene;
-  double? tourTaille;
-  double? tourHancher;
-  double? VMA;
-  double? LMD;
-  int? cordination;
-  double? vitesseDmg;
-  double? vitesseMax;
-  double? fiveJumpTest;
-  double? squatJump;
-  double? agilite;
-  int? repMaxPompe;
-  int? repMaxAbd;
-  double? tempsLimiteGain;
-  double? tempsLimiteGainSquat;
-  int? RPE;
-  double? souplesse;
-  int? counterMvtJump;
-  int? dropJump;
-  double? vo2Max;
-  int? test6MinMarche;
+  double? taille;//20
+  double? tourTaille;//15
+  double? tourHancher;//15
+  double? VMA;//2
+  double? LMD;//2
+  int? cordination;//5
+  double? vitesseDmg;//500
+  double? vitesseMax;//3
+  double? fiveJumpTest;//2
+  double? squatJump;//10
+  double? agilite;//2
+  int? repMaxPompe;//20
+  int? repMaxAbd;//70
+  double? tempsLimiteGain;//2
+  double? tempsLimiteGainSquat;//2
+  double? souplesse;//4
+  int? counterMvtJump;//10
+  int? dropJump;//10
+  double? vo2Max;//10
+  int? test6MinMarche;//100
 
   Mesure(
   {
     this.id,
     this.date,
-    this.poid,
     this.taille,
-    this.IMC,
-    this.FC,
-    this.masseMuscle,
-    this.masseGraisse,
-    this.stresse,
-    this.oxygene,
     this.tourTaille,
     this.tourHancher,
     this.VMA,
@@ -56,7 +41,6 @@ class Mesure{
     this.repMaxAbd,
     this.tempsLimiteGain,
     this.tempsLimiteGainSquat,
-    this.RPE,
     this.souplesse,
     this.counterMvtJump,
     this.dropJump,
@@ -77,9 +61,6 @@ class Mesure{
       'id': id,
       'date': date,
       'taille': taille,
-      'FC': FC,
-      'stresse': stresse,
-      'oxygene': oxygene,
       'tourTaille': tourTaille,
       'tourHancher': tourHancher,
       'VMA': VMA,
@@ -94,7 +75,6 @@ class Mesure{
       'repMaxAbd': repMaxAbd,
       'tempsLimiteGain': tempsLimiteGain,
       'tempsLimiteGainSquat': tempsLimiteGainSquat,
-      'RPE' : RPE,
       'souplesse': souplesse,
       'counterMvtJump':counterMvtJump,
       'dropJump':dropJump,
@@ -112,28 +92,7 @@ class Mesure{
       date: null == (temp = map['date'])
           ? null
           : (temp is DateTime ? temp : DateTime.fromMillisecondsSinceEpoch(temp.millisecondsSinceEpoch)),
-      poid: null == (temp = map['poid'])
-          ? null
-          : (temp is num ? temp.toDouble() : double.tryParse(temp)),
       taille: null == (temp = map['taille'])
-          ? null
-          : (temp is num ? temp.toDouble() : double.tryParse(temp)),
-      IMC: null == (temp = map['IMC'])
-          ? null
-          : (temp is num ? temp.toDouble() : double.tryParse(temp)),
-      FC: null == (temp = map['FC'])
-          ? null
-          : (temp is num ? temp.toInt() : int.tryParse(temp)),
-      masseMuscle: null == (temp = map['masseMuscle'])
-          ? null
-          : (temp is num ? temp.toDouble() : double.tryParse(temp)),
-      masseGraisse: null == (temp = map['masseGraisse'])
-          ? null
-          : (temp is num ? temp.toDouble() : double.tryParse(temp)),
-      stresse: null == (temp = map['stresse'])
-          ? null
-          : (temp is num ? temp.toDouble() : double.tryParse(temp)),
-      oxygene: null == (temp = map['oxygene'])
           ? null
           : (temp is num ? temp.toDouble() : double.tryParse(temp)),
       tourTaille: null == (temp = map['tourTaille'])
@@ -178,9 +137,6 @@ class Mesure{
       tempsLimiteGainSquat: null == (temp = map['tempsLimiteGainSquat'])
           ? null
           : (temp is num ? temp.toDouble() : double.tryParse(temp)),
-      RPE: null == (temp = map['RPE'])
-          ? null
-          : (temp is num ? temp.toInt() : int.tryParse(temp)),
       souplesse: null == (temp = map['souplesse'])
           ? null
           : (temp is num ? temp.toDouble() : double.tryParse(temp)),

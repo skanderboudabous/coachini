@@ -232,6 +232,63 @@ class _SuiviEntrainementDetailPageState
                           style: TextStyle(color: Colors.white),
                           keyboardType: TextInputType.number,
                         ),
+
+                        FormBuilderTextField(
+                          name: 'FC',
+                          decoration: InputDecoration(
+                              labelText: 'FC repos',
+                              labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
+                          validator: FormBuilderValidators.compose([
+                            FormBuilderValidators.required(context),
+                            FormBuilderValidators.numeric(context),
+                          ]),
+                          initialValue: widget.suiviEntrainement?.FC.toString(),
+                          style: TextStyle(color: Colors.white),
+                          keyboardType: TextInputType.number,
+                        ),
+
+                        FormBuilderTextField(
+                          name: 'stresse',
+                          decoration: InputDecoration(
+                              labelText: 'Stress',
+                              labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
+                          ),
+                          validator: FormBuilderValidators.compose([
+                            FormBuilderValidators.required(context),
+                            FormBuilderValidators.numeric(context),
+                          ]),
+                          initialValue: widget.suiviEntrainement?.stresse.toString(),
+                          style: TextStyle(color: Colors.white),
+                          keyboardType: TextInputType.number,
+                        ),
+                        FormBuilderTextField(
+                          name: 'oxygene',
+                          decoration: InputDecoration(
+                              labelText: 'SpO2',
+                              labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
+                          ),
+                          validator: FormBuilderValidators.compose([
+                            FormBuilderValidators.required(context),
+                            FormBuilderValidators.numeric(context),
+                          ]),
+                          initialValue: widget.suiviEntrainement?.oxygene.toString(),
+                          style: TextStyle(color: Colors.white),
+                          keyboardType: TextInputType.number,
+                        ),
+                        FormBuilderTextField(
+                          name: 'RPE',
+                          decoration: InputDecoration(
+                              labelText: 'RPE',
+                              labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
+                          ),
+                          validator: FormBuilderValidators.compose([
+                            FormBuilderValidators.required(context),
+                            FormBuilderValidators.numeric(context),
+                          ]),
+                          initialValue: widget.suiviEntrainement?.RPE.toString(),
+                          style: TextStyle(color: Colors.white),
+                          keyboardType: TextInputType.number,
+                        ),
                       ],
                     ),
                   ),

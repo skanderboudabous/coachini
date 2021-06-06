@@ -1,9 +1,17 @@
+import 'dart:io';
+
+import 'package:coachini/constants/app_routes.dart';
 import 'package:coachini/controller/firebase_controller.dart';
+import 'package:coachini/models/suivie-mentale.dart';
+import 'package:coachini/pages/link1.dart';
 import 'package:coachini/utils/toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_radio_group/flutter_radio_group.dart';
 import 'package:get/get.dart';
+
+import 'link2.dart';
+import 'link3.dart';
 class SuivieMentalePage extends StatefulWidget {
   final String? userId;
   SuivieMentalePage(this.userId);
@@ -59,6 +67,11 @@ class _SuivieMentalePageState extends State<SuivieMentalePage> {
                 fontFamily: 'Montserrat',
                 fontWeight: FontWeight.bold)),
         centerTitle: true,
+        leading: IconButton(icon: Icon(Icons.arrow_back),onPressed: (){
+          isAdmin==true ?
+          Get.toNamed(AppRoutes.USER_PROFILE+"?id="+widget.userId!) :
+          Get.toNamed(AppRoutes.HOME);
+        },),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -182,9 +195,10 @@ class _SuivieMentalePageState extends State<SuivieMentalePage> {
           ),
         ),
       ),
+
       floatingActionButton: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: Row(
+        child: isAdmin == true ? Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Expanded(
@@ -195,12 +209,15 @@ class _SuivieMentalePageState extends State<SuivieMentalePage> {
                   "Submit",
                   style: TextStyle(color: Colors.white),
                 ),
-                onPressed: () {
+                onPressed: () async{
                   _formKey.currentState?.save();
                   if (_formKey.currentState?.validate() == true) {
-                    print(_formKey.currentState?.value);
+                    SuivieMentale suivieMentale=SuivieMentale.fromMap(_formKey.currentState?.value);
+                    suivieMentale.date=DateTime.now();
+                    await FirebaseController.to.addSuivieMentale(suivieMentale, widget.userId!);
+                    Get.to(SuivieMentalePage(widget.userId));
                   } else {
-                    print("validation failed");
+                    showShortToast("Validation failed");
                   }
                 },
               ),
@@ -219,22 +236,53 @@ class _SuivieMentalePageState extends State<SuivieMentalePage> {
                 },
               ),
             ),
+           ],
+        ) : Row (
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Expanded(
+              child: MaterialButton(
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(28))),
+                color: Theme.of(context).accentColor,
+                child: Text(
+                  "Lien 1",
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () {
+                  Get.to(Link1());
+                },
+              ),
+            ),
             SizedBox(width: 20,),
             Expanded(
               child: MaterialButton(
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(28))),
                 color: Theme.of(context).accentColor,
                 child: Text(
-                  "Links",
+                  "Lien 2",
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () {
-                  _formKey.currentState?.reset();
+                  Get.to(Link2());
                 },
               ),
             ),
+            SizedBox(width: 20,),
+            Expanded(
+              child: MaterialButton(
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(28))),
+                color: Theme.of(context).accentColor,
+                child: Text(
+                  "Lien 3",
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () {
+                  Get.to(Link3());
+                },
+              ),
+            )
           ],
-        ),
+        )
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );

@@ -1,18 +1,37 @@
 class SuiviEntrainement{
   String? id;
   DateTime? date;
-  int? duree_totale_seance;
-  int? rythme_cardiaque_moy;
-  double? vitesse_moyenne;
-  int? nombre_pas;
-  int? distance_parcourue;
-  int? nb_calorie_brule;
-  double? allureMoy;
-  int? cadenceMoy;
-  int? longuerMoyPas;
+  int? duree_totale_seance;//10
+  int? rythme_cardiaque_moy;//20
+  double? vitesse_moyenne;//1.5
+  int? nombre_pas;//1000
+  int? distance_parcourue;//2
+  int? nb_calorie_brule;//100
+  double? allureMoy;//10
+  int? cadenceMoy;//10
+  int? longuerMoyPas;//20
+  int? FC;//20
+  double? stresse;//10
+  double? oxygene;//10
+  int? RPE;//1
+
 
   SuiviEntrainement(
-      {this.id,this.date, this.duree_totale_seance, this.rythme_cardiaque_moy, this.vitesse_moyenne, this.nombre_pas, this.distance_parcourue,this.nb_calorie_brule,this.allureMoy,this.cadenceMoy,this.longuerMoyPas});
+      {this.id,
+        this.date,
+        this.duree_totale_seance,
+        this.rythme_cardiaque_moy,
+        this.vitesse_moyenne,
+        this.nombre_pas,
+        this.distance_parcourue,
+        this.nb_calorie_brule,
+        this.allureMoy,
+        this.cadenceMoy,
+        this.longuerMoyPas,
+        this.FC,
+        this.stresse,
+        this.oxygene,
+        this.RPE,});
 
   @override
   bool operator ==(Object other) =>
@@ -58,6 +77,19 @@ class SuiviEntrainement{
       longuerMoyPas: null == (temp = map['longuerMoyPas'])
           ? null
           : (temp is num ? temp.toInt() : int.tryParse(temp)),
+      FC: null == (temp = map['FC'])
+          ? null
+          : (temp is num ? temp.toInt() : int.tryParse(temp)),
+      stresse: null == (temp = map['stresse'])
+          ? null
+          : (temp is num ? temp.toDouble() : double.tryParse(temp)),
+      oxygene: null == (temp = map['oxygene'])
+          ? null
+          : (temp is num ? temp.toDouble() : double.tryParse(temp)),
+
+      RPE: null == (temp = map['RPE'])
+          ? null
+          : (temp is num ? temp.toInt() : int.tryParse(temp)),
     );
   }
 
@@ -73,7 +105,11 @@ class SuiviEntrainement{
       'nb_calorie_brule': nb_calorie_brule,
       'allureMoy': allureMoy,
       'cadenceMoy':cadenceMoy,
-      'longuerMoyPas':longuerMoyPas
+      'longuerMoyPas':longuerMoyPas,
+      'FC': FC,
+      'stresse': stresse,
+      'oxygene': oxygene,
+      'RPE' : RPE,
     };
   }
 

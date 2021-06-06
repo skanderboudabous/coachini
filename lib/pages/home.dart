@@ -15,7 +15,7 @@ class _HomePageState extends State<HomePage> {
   late String title;
   @override
   void initState() {
-    title = "Home";
+    title = "Coachini";
     super.initState();
   }
   @override

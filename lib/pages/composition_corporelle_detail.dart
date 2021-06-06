@@ -85,7 +85,7 @@ class _CompositionCorporelleDetailPageState extends State<CompositionCorporelleD
                             FormBuilderTextField(
                               name: 'masseGraisse',
                               decoration: InputDecoration(
-                                  labelText: 'masseGraisse',
+                                  labelText: 'masse Graisse',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
@@ -100,7 +100,7 @@ class _CompositionCorporelleDetailPageState extends State<CompositionCorporelleD
                             FormBuilderTextField(
                               name: 'masseHydrique',
                               decoration: InputDecoration(
-                                  labelText: 'masseHydrique',
+                                  labelText: 'masse Hydrique',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
@@ -114,7 +114,7 @@ class _CompositionCorporelleDetailPageState extends State<CompositionCorporelleD
                             FormBuilderTextField(
                               name: 'masseMusculaire',
                               decoration: InputDecoration(
-                                  labelText: 'masseMusculaire',
+                                  labelText: 'masse Musculaire',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
@@ -128,7 +128,7 @@ class _CompositionCorporelleDetailPageState extends State<CompositionCorporelleD
                             FormBuilderTextField(
                               name: 'masseOsseuse',
                               decoration: InputDecoration(
-                                  labelText: 'masseOsseuse',
+                                  labelText: 'masse Osseuse',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([

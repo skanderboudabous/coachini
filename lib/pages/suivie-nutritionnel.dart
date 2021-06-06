@@ -5,7 +5,6 @@ import 'package:coachini/models/suivie-nutritionnel.dart';
 import 'package:coachini/pages/suivie_nutritionnel_detail.dart';
 import 'package:coachini/widgets/loader.dart';
 import 'package:coachini/widgets/suivi_entrainement_card.dart';
-import 'package:coachini/widgets/suivi_nutritionnel_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 class SuivieNutritionnelPage extends StatefulWidget {

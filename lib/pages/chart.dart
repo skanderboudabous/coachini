@@ -30,53 +30,52 @@ class _ChartPageState extends State<ChartPage> {
       body: SafeArea(
         child: Center(
             child: FutureBuilder(
-          future: FirebaseController.to
-              .getChartData(widget.collectionName!, widget.atr!),
-          builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-            if (!snapshot.hasData) {
-              return CircularProgressIndicator();
-            } else {
-              final List<DocumentSnapshot> docs = snapshot.data!.docs;
-              List<dynamic> dataList = [];
-
-              docs.forEach((element) {
-                final data = element.data();
-                dataList.add(
-                    {"date": data!['date'], widget.atr: data[widget.atr!]});
-              });
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(widget.title!),
-                  Stack(
-                    children: <Widget>[
-                      AspectRatio(
-                        aspectRatio: 1.7,
-                        child: Container(
-                          decoration: const BoxDecoration(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(18),
+              future: FirebaseController.to
+                  .getChartData(widget.collectionName!, widget.atr!),
+              builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                if (!snapshot.hasData) {
+                  return CircularProgressIndicator();
+                } else {
+                  final List<DocumentSnapshot> docs = snapshot.data!.docs;
+                  List<dynamic> dataList = [];
+                  docs.forEach((element) {
+                    final data = element.data();
+                    dataList.add(
+                        {"date": data!['date'], widget.atr: data[widget.atr!]});
+                  });
+                  return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(widget.title!),
+                        Stack(
+                          children: <Widget>[
+                            AspectRatio(
+                              aspectRatio: 1.7,
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(18),
+                                    ),
+                                    color: Color(0xff232d37)),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      right: 18.0, left: 12.0, top: 24, bottom: 12),
+                                  child: LineChart(
+                                    mainData(dataList),
+                                  ),
+                                ),
                               ),
-                              color: Color(0xff232d37)),
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                                right: 18.0, left: 12.0, top: 24, bottom: 12),
-                            child: LineChart(
-                              mainData(dataList),
                             ),
-                          ),
+                          ],
                         ),
-                      ),
-                    ],
-                  ),
-                ],
-              );
-            }
-          },
-        )),
-      ),
-    );
+                      ],
+                    );
+                  }
+                },
+              )),
+            ),
+          );
   }
 
   LineChartData mainData(List<dynamic> dataList) {
@@ -86,23 +85,26 @@ class _ChartPageState extends State<ChartPage> {
       spots.add(new FlSpot(dataList.indexOf(element).toDouble(),
           element[widget.atr].toDouble()));
     });
-    final List<FlSpot> sortedSpots=spots;
+    final List<FlSpot> sortedSpots = spots;
 
-    spots.sort((a,b){
-      return a.y <=b.y ? 1 : -1;
+    spots.sort((a, b) {
+      return a.y <= b.y ? 1 : -1;
     });
 
     print(spots);
-    double max=spots[0].y;
+    double max = spots[0].y;
     print(max);
-    spots=spots.map((element) {
-      return FlSpot(element.x,(element.y/max)*12);
-    }).cast<FlSpot>().toList();
-    spots.sort((a,b){
-      return a.x >=b.x ? 1 : -1;
+    spots = spots
+        .map((element) {
+          return FlSpot(element.x, (element.y / max) * 12);
+        })
+        .cast<FlSpot>()
+        .toList();
+    spots.sort((a, b) {
+      return a.x >= b.x ? 1 : -1;
     });
-    sortedSpots.sort((a,b){
-      return a.y >=b.y ? 1 : -1;
+    sortedSpots.sort((a, b) {
+      return a.y >= b.y ? 1 : -1;
     });
     print(spots);
     print(sortedSpots);
@@ -157,7 +159,7 @@ class _ChartPageState extends State<ChartPage> {
             if (value.toInt() + 1 <= dataList.length) {
               print(value.toInt());
               print(sortedSpots[value.toInt()].y.toInt().toString());
-              return  sortedSpots[value.toInt()].y.toInt().toString();
+              return sortedSpots[value.toInt()].y.toInt().toString();
             } else {
               return "";
             }

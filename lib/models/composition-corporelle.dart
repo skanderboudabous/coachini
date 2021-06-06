@@ -1,11 +1,11 @@
 class CompositionCorporelle {
   String? id;
-  double? poids;
-  double? masseGraisse;
-  double? masseHydrique;
-  double? masseMusculaire;
-  double? masseOsseuse;
-  double? imc;
+  double? poids;//15
+  double? masseGraisse;//5
+  double? masseHydrique;//10
+  double? masseMusculaire;//10
+  double? masseOsseuse;//10
+  double? imc;//5
   DateTime? date;
 
   CompositionCorporelle(

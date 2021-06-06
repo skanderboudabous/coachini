@@ -46,7 +46,7 @@ class _RMsPageState extends State<RMsPage> {
           },
         ),
       ),
-      body: FutureBuilder(
+      body:  FutureBuilder(
           future: FirebaseController.to.getUserRms(id: widget.userId),
           builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
             print(snapshot.hasData);

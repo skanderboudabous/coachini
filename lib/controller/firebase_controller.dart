@@ -10,6 +10,7 @@ import 'package:coachini/models/objectif.dart';
 import 'package:coachini/models/regime-alimentaire.dart';
 import 'package:coachini/models/rm.dart';
 import 'package:coachini/models/suivi-entrainement.dart';
+import 'package:coachini/models/suivie-mentale.dart';
 import 'package:coachini/models/suivie-nutritionnel.dart';
 import 'package:coachini/models/type-morphologie.dart';
 import 'package:coachini/utils/toast.dart';
@@ -38,13 +39,13 @@ class FirebaseController extends GetxController {
   final rmImagesCollection = FirebaseFirestore.instance.collection("rm-images");
   final exerciceImagesCollection = FirebaseFirestore.instance.collection("exercice-images");
   final suivieNutritionnelCollection =
-      FirebaseFirestore.instance.collection("suiviesNurtitionneles");
+  FirebaseFirestore.instance.collection("suiviesNurtitionneles");
   final suiviEntrainementsCollection =
-      FirebaseFirestore.instance.collection("suiviEntrainements");
+  FirebaseFirestore.instance.collection("suiviEntrainements");
   final compositionCorporelleCollection =
-      FirebaseFirestore.instance.collection("compositionCorporelles");
+  FirebaseFirestore.instance.collection("compositionCorporelles");
   final regimeAlimentaireCollection =
-      FirebaseFirestore.instance.collection("regimeAlimentaires");
+  FirebaseFirestore.instance.collection("regimeAlimentaires");
 
   @override
   void onReady() {
@@ -107,8 +108,8 @@ class FirebaseController extends GetxController {
 
   Future<User?> login(
       {required String email,
-      required String password,
-      required BuildContext context}) async {
+        required String password,
+        required BuildContext context}) async {
     showLoadingIndicator(context);
     try {
       final authResult = (await _auth.signInWithEmailAndPassword(
@@ -128,8 +129,8 @@ class FirebaseController extends GetxController {
 
   Future<Adherant?> register(
       {required String email,
-      required String password,
-      required BuildContext context}) async {
+        required String password,
+        required BuildContext context}) async {
     showLoadingIndicator(context);
 
     try {
@@ -366,7 +367,7 @@ class FirebaseController extends GetxController {
 
   Future<Adherant?> getUserFromId({required String? id}) async {
     final DocumentSnapshot documentSnapshot =
-        (await userCollection.doc(id).get());
+    (await userCollection.doc(id).get());
     return Adherant.fromMap(documentSnapshot.data());
   }
 
@@ -469,14 +470,14 @@ class FirebaseController extends GetxController {
 
   Future<QuerySnapshot> getUserRegimeAlimentaire({String? id}) {
     return userCollection
-      .doc(id)
-      .collection("regimeAlimentaires")
-      .orderBy('date', descending: true)
-      .get();
+        .doc(id)
+        .collection("regimeAlimentaires")
+        .orderBy('date', descending: true)
+        .get();
   }
 
   Future<RegimeAlimentaire> addRegimeAlimentaire(RegimeAlimentaire regimeAlimentaire, String? userId) {
-   return FirebaseFirestore.instance.runTransaction((transaction) async {
+    return FirebaseFirestore.instance.runTransaction((transaction) async {
       final DocumentSnapshot ds = await transaction
           .get(userCollection.doc(userId).collection("regimeAlimentaires").doc());
       print(ds.id);
@@ -493,6 +494,10 @@ class FirebaseController extends GetxController {
 
   Future<QuerySnapshot> getChartData(String collectionName,String atr){
     return userCollection.doc(firestoreUser.value!.id).collection(collectionName).orderBy('date', descending: true).limit(12).get();
+
+  }
+
+  addSuivieMentale(SuivieMentale suivieMentale, String s) {
 
   }
 //#endregion
