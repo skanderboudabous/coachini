@@ -1,5 +1,5 @@
 import 'package:age_calculator/age_calculator.dart';
-import 'package:coachini/constants/app_routes.dart';
+import 'package:coachini/routes/app_routes.dart';
 import 'package:coachini/controller/firebase_controller.dart';
 import 'package:coachini/models/adherant.dart';
 import 'package:coachini/pages/composition_corporelle.dart';

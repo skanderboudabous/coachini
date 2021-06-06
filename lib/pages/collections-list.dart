@@ -1,4 +1,4 @@
-import 'package:coachini/constants/app_routes.dart';
+import 'package:coachini/routes/app_routes.dart';
 import 'package:coachini/controller/firebase_controller.dart';
 import 'package:coachini/models/adherant.dart';
 import 'package:coachini/pages/composition-corporelle-liste.dart';
@@ -22,7 +22,7 @@ class _CollectionListState extends State<CollectionList> {
       appBar: AppBar(title: Text("Collection")),
       body: WillPopScope(
         onWillPop: (){
-          Get.toNamed(AppRoutes.ADMIN);
+          Get.toNamed(AppRoutes.HOME);
           return Future.value(false);
         },
         child: SingleChildScrollView(

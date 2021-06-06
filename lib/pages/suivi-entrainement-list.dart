@@ -1,4 +1,4 @@
-import 'package:coachini/constants/app_routes.dart';
+import 'package:coachini/routes/app_routes.dart';
 import 'package:coachini/controller/firebase_controller.dart';
 import 'package:coachini/models/adherant.dart';
 import 'package:coachini/widgets/loader.dart';

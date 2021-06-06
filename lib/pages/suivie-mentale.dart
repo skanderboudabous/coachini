@@ -1,17 +1,15 @@
 import 'dart:io';
 
-import 'package:coachini/constants/app_routes.dart';
+import 'package:coachini/routes/app_routes.dart';
 import 'package:coachini/controller/firebase_controller.dart';
 import 'package:coachini/models/suivie-mentale.dart';
-import 'package:coachini/pages/link1.dart';
+import 'package:coachini/pages/form_web_view.dart';
+import 'package:coachini/utils/constants.dart';
 import 'package:coachini/utils/toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_radio_group/flutter_radio_group.dart';
 import 'package:get/get.dart';
-
-import 'link2.dart';
-import 'link3.dart';
 class SuivieMentalePage extends StatefulWidget {
   final String? userId;
   SuivieMentalePage(this.userId);
@@ -249,7 +247,7 @@ class _SuivieMentalePageState extends State<SuivieMentalePage> {
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () {
-                  Get.to(Link1());
+                  Get.to(FormWebView(Constants.LINK1));
                 },
               ),
             ),
@@ -263,7 +261,7 @@ class _SuivieMentalePageState extends State<SuivieMentalePage> {
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () {
-                  Get.to(Link2());
+                  Get.to(FormWebView(Constants.LINK2));
                 },
               ),
             ),
@@ -277,7 +275,7 @@ class _SuivieMentalePageState extends State<SuivieMentalePage> {
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () {
-                  Get.to(Link3());
+                  Get.to(FormWebView(Constants.LINK3));
                 },
               ),
             )

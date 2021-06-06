@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:coachini/constants/app_routes.dart';
+import 'package:coachini/routes/app_routes.dart';
 import 'package:coachini/models/exercice.dart';
 import 'package:coachini/pages/exercices_detail.dart';
 import 'package:coachini/controller/firebase_controller.dart';

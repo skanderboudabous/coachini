@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:coachini/constants/app_routes.dart';
+import 'package:coachini/routes/app_routes.dart';
 import 'package:coachini/models/adherant.dart';
 import 'package:coachini/models/composition-corporelle.dart';
 import 'package:coachini/models/exercice.dart';

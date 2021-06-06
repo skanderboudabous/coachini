@@ -1,4 +1,4 @@
-import 'package:coachini/constants/app_routes.dart';
+import 'package:coachini/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 class AboutPage extends StatefulWidget {
