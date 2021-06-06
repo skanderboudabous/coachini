@@ -222,6 +222,7 @@ class _ChartPageState extends State<ChartPage> {
           colors: gradientColors,
           barWidth: 5,
           isStrokeCapRound: true,
+
           dotData: FlDotData(
             show: true,
           ),

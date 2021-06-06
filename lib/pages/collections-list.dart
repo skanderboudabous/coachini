@@ -1,3 +1,4 @@
+import 'package:coachini/pages/SuiviNutritionnelList.dart';
 import 'package:coachini/routes/app_routes.dart';
 import 'package:coachini/controller/firebase_controller.dart';
 import 'package:coachini/models/adherant.dart';
@@ -67,7 +68,9 @@ class _CollectionListState extends State<CollectionList> {
                           height: 50,),
                         SizedBox(height: 10,),
                         PrimaryButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.to(SuiviNutritionnelList())
+                          },
                           buttonLabel: "Suivi Nutritionnel",
                           fontSize: 14,
                           bgColor: Colors.lightBlue,

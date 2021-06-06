@@ -16,7 +16,7 @@ class _SuiviEntrainementListState extends State<SuiviEntrainementList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Suivi ENtrainement")),
+      appBar: AppBar(title: Text("Suivi Entrainement")),
       body: WillPopScope(
         onWillPop: (){
           Get.toNamed(AppRoutes.ADMIN);
