@@ -1,7 +1,3 @@
-import 'package:coachini/routes/app_routes.dart';
-import 'package:coachini/controller/firebase_controller.dart';
-import 'package:coachini/models/adherant.dart';
-import 'package:coachini/widgets/loader.dart';
 import 'package:coachini/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -78,7 +74,9 @@ class _MesuresListState extends State<MesuresList> {
                       height: 50,),
                     SizedBox(height: 10,),
                     PrimaryButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(()=> new ChartPage(title:"Vitesse de démarrage", atr: 'vitesseDmg',collectionName: collectionName,));
+                      },
                       buttonLabel: "Vitesse de démarrage",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
@@ -86,7 +84,9 @@ class _MesuresListState extends State<MesuresList> {
                       height: 50,),
                     SizedBox(height: 10,),
                     PrimaryButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(()=> new ChartPage(title:"Vitesse max", atr: 'vitesseMax',collectionName: collectionName,));
+                      },
                       buttonLabel: "Vitesse max",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
@@ -94,7 +94,9 @@ class _MesuresListState extends State<MesuresList> {
                       height: 50,),
                     SizedBox(height: 10,),
                     PrimaryButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(()=> new ChartPage(title:"Five Jump Test", atr: 'fiveJumpTest',collectionName: collectionName,));
+                      },
                       buttonLabel: "Five Jump Test",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
@@ -102,7 +104,9 @@ class _MesuresListState extends State<MesuresList> {
                       height: 50,),
                     SizedBox(height: 10,),
                     PrimaryButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(()=> new ChartPage(title:"Squat Jump", atr: 'squatJump',collectionName: collectionName,));
+                      },
                       buttonLabel: "Squat Jump",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
@@ -110,7 +114,9 @@ class _MesuresListState extends State<MesuresList> {
                       height: 50,),
                     SizedBox(height: 10,),
                     PrimaryButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(()=> new ChartPage(title:"Agilité", atr: 'agilite',collectionName: collectionName,));
+                      },
                       buttonLabel: "Agilité",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
@@ -118,7 +124,9 @@ class _MesuresListState extends State<MesuresList> {
                       height: 50,),
                     SizedBox(height: 10,),
                     PrimaryButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(()=> new ChartPage(title:"Repétition Max Pompe", atr: 'repMaxPompe',collectionName: collectionName,));
+                      },
                       buttonLabel: "Repétition Max Pompe",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
@@ -126,7 +134,9 @@ class _MesuresListState extends State<MesuresList> {
                       height: 50,),
                     SizedBox(height: 10,),
                     PrimaryButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(()=> new ChartPage(title:"Repétition Max Abdo", atr: 'repMaxAbd',collectionName: collectionName,));
+                      },
                       buttonLabel: "Repétition Max Abdo",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
@@ -134,7 +144,9 @@ class _MesuresListState extends State<MesuresList> {
                       height: 50,),
                     SizedBox(height: 10,),
                     PrimaryButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(()=> new ChartPage(title:"Temps Limite Gainage", atr: 'tempsLimiteGain',collectionName: collectionName,));
+                      },
                       buttonLabel: "Temps Limite Gainage",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
@@ -142,7 +154,9 @@ class _MesuresListState extends State<MesuresList> {
                       height: 50,),
                     SizedBox(height: 10,),
                     PrimaryButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(()=> new ChartPage(title:"Temps Limite Gainage Squat", atr: 'tempsLimiteGainSquat',collectionName: collectionName,));
+                      },
                       buttonLabel: "Temps Limite Gainage Squat",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
@@ -150,7 +164,9 @@ class _MesuresListState extends State<MesuresList> {
                       height: 50,),
                     SizedBox(height: 10,),
                     PrimaryButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(()=> new ChartPage(title:"souplesse", atr: 'souplesse',collectionName: collectionName,));
+                      },
                       buttonLabel: "souplesse",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
@@ -158,7 +174,9 @@ class _MesuresListState extends State<MesuresList> {
                       height: 50,),
                     SizedBox(height: 10,),
                     PrimaryButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(()=> new ChartPage(title:"Counter movement Jump", atr: 'counterMvtJump',collectionName: collectionName,));
+                      },
                       buttonLabel: "Counter movement Jump",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
@@ -166,7 +184,9 @@ class _MesuresListState extends State<MesuresList> {
                       height: 50,),
                     SizedBox(height: 10,),
                     PrimaryButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(()=> new ChartPage(title:"Drop Jump", atr: 'dropJump',collectionName: collectionName,));
+                      },
                       buttonLabel: "Drop Jump",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
@@ -174,7 +194,9 @@ class _MesuresListState extends State<MesuresList> {
                       height: 50,),
                     SizedBox(height: 10,),
                     PrimaryButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(()=> new ChartPage(title:"Vo2Max", atr: 'vo2Max',collectionName: collectionName,));
+                      },
                       buttonLabel: "Vo2Max",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
@@ -182,7 +204,9 @@ class _MesuresListState extends State<MesuresList> {
                       height: 50,),
                     SizedBox(height: 10,),
                     PrimaryButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(()=> new ChartPage(title:"Test 6 minutes de marche", atr: 'test6MinMarche',collectionName: collectionName,));
+                      },
                       buttonLabel: "Test 6 minutes de marche",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
