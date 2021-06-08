@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coachini/controller/firebase_controller.dart';
 import 'package:coachini/models/objectif.dart';
-import 'package:coachini/utils/toast.dart';
+import 'package:coachini/utils/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:direct_select_flutter/direct_select_container.dart';
 import 'package:direct_select_flutter/direct_select_item.dart';

@@ -13,7 +13,7 @@ import 'package:coachini/models/suivi-entrainement.dart';
 import 'package:coachini/models/suivie-mentale.dart';
 import 'package:coachini/models/suivie-nutritionnel.dart';
 import 'package:coachini/models/type-morphologie.dart';
-import 'package:coachini/utils/toast.dart';
+import 'package:coachini/utils/functions.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:firebase_auth/firebase_auth.dart';
