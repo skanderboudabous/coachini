@@ -68,7 +68,7 @@ class _SuivieNutritionnelDetailPageState
                         FormBuilderTextField(
                           name: 'apport',
                           decoration: InputDecoration(
-                              labelText: 'Apport',
+                              labelText: 'Apport (cal)',
                               labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(context),
@@ -82,7 +82,7 @@ class _SuivieNutritionnelDetailPageState
                         FormBuilderTextField(
                           name: 'proteine',
                           decoration: InputDecoration(
-                              labelText: 'Proteine',
+                              labelText: 'Proteine (cal)',
                               labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(context),
@@ -95,7 +95,7 @@ class _SuivieNutritionnelDetailPageState
                         FormBuilderTextField(
                           name: 'glucide',
                           decoration: InputDecoration(
-                              labelText: 'Glucide',
+                              labelText: 'Glucide (cal)',
                               labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(context),
@@ -108,7 +108,7 @@ class _SuivieNutritionnelDetailPageState
                         FormBuilderTextField(
                           name: 'lipide',
                           decoration: InputDecoration(
-                              labelText: 'Lipide',
+                              labelText: 'Lipide (cal)',
                               labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(context),

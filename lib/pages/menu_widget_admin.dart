@@ -1,22 +1,11 @@
 import 'package:coachini/pages/add_exercice_image.dart';
 import 'package:coachini/pages/add_rm_image.dart';
-import 'package:coachini/pages/composition_corporelle.dart';
-import 'package:coachini/pages/objectif.dart';
 import 'package:coachini/controller/firebase_controller.dart';
-import 'package:coachini/pages/rm.dart';
-import 'package:coachini/pages/suivi_entrainement.dart';
-import 'package:coachini/pages/suivie-mentale.dart';
-import 'package:coachini/pages/suivie-nutritionnel.dart';
 import 'package:coachini/widgets/online_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 
-import 'edit_profile.dart';
-import 'exercices.dart';
-import 'mesures.dart';
-import 'mesures_detail.dart';
-import 'morphologie.dart';
 
 class MenuWidgetAdmin extends StatelessWidget {
   final Function(String)? onItemClick;

@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:coachini/routes/app_routes.dart';
 import 'package:coachini/controller/firebase_controller.dart';
 import 'package:coachini/models/suivie-mentale.dart';
@@ -10,9 +8,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_radio_group/flutter_radio_group.dart';
 import 'package:get/get.dart';
+
 class SuivieMentalePage extends StatefulWidget {
   final String? userId;
+
   SuivieMentalePage(this.userId);
+
   @override
   _SuivieMentalePageState createState() => _SuivieMentalePageState();
 }
@@ -26,24 +27,22 @@ class _SuivieMentalePageState extends State<SuivieMentalePage> {
   var _key6 = GlobalKey<FlutterRadioGroupState>();
   var _key7 = GlobalKey<FlutterRadioGroupState>();
 
-  var _listBienEtre = ["1", "2", "3","4","5"];
+  var _listBienEtre = ["1", "2", "3", "4", "5"];
   var _indexBienEtre = -1;
-  var _listPositivite = ["1", "2", "3","4","5"];
+  var _listPositivite = ["1", "2", "3", "4", "5"];
   var _indexPositivite = -1;
-  var _listNegativite = ["1", "2", "3","4","5"];
+  var _listNegativite = ["1", "2", "3", "4", "5"];
   var _indexNegativite = -1;
-  var _listDepression = ["1", "2", "3","4","5"];
+  var _listDepression = ["1", "2", "3", "4", "5"];
   var _indexDepression = -1;
-  var _listAnxiete = ["1", "2", "3","4","5"];
+  var _listAnxiete = ["1", "2", "3", "4", "5"];
   var _indexAnxiete = -1;
-  var _listStress = ["1", "2", "3","4","5"];
+  var _listStress = ["1", "2", "3", "4", "5"];
   var _indexStress = -1;
-  var _listNiveauFatigue = ["1", "2", "3","4","5"];
+  var _listNiveauFatigue = ["1", "2", "3", "4", "5"];
   var _indexNiveauFatigue = -1;
 
   final _formKey = GlobalKey<FormBuilderState>();
-
-
 
   bool? isAdmin;
 
@@ -53,6 +52,7 @@ class _SuivieMentalePageState extends State<SuivieMentalePage> {
     // TODO: implement initState
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,11 +65,14 @@ class _SuivieMentalePageState extends State<SuivieMentalePage> {
                 fontFamily: 'Montserrat',
                 fontWeight: FontWeight.bold)),
         centerTitle: true,
-        leading: IconButton(icon: Icon(Icons.arrow_back),onPressed: (){
-          isAdmin==true ?
-          Get.toNamed(AppRoutes.USER_PROFILE+"?id="+widget.userId!) :
-          Get.toNamed(AppRoutes.HOME);
-        },),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            isAdmin == true
+                ? Get.toNamed(AppRoutes.USER_PROFILE + "?id=" + widget.userId!)
+                : Get.toNamed(AppRoutes.HOME);
+          },
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -77,15 +80,14 @@ class _SuivieMentalePageState extends State<SuivieMentalePage> {
           child: Column(
             children: <Widget>[
               GestureDetector(
-                onTap: (){
-                  if(isAdmin== false)
-                  {
+                onTap: () {
+                  if (isAdmin == false) {
                     showShortToast("Please contact the administrator");
                   }
                 },
                 child: AbsorbPointer(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal:20.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
                     child: FormBuilder(
                       key: _formKey,
                       child: Column(
@@ -102,7 +104,9 @@ class _SuivieMentalePageState extends State<SuivieMentalePage> {
                                   _indexBienEtre = index!;
                                 });
                               }),
-                          SizedBox(height: 10,),
+                          SizedBox(
+                            height: 10,
+                          ),
                           FlutterRadioGroup(
                               key: _key2,
                               titles: _listPositivite,
@@ -115,7 +119,9 @@ class _SuivieMentalePageState extends State<SuivieMentalePage> {
                                   _indexPositivite = index!;
                                 });
                               }),
-                          SizedBox(height: 10,),
+                          SizedBox(
+                            height: 10,
+                          ),
                           FlutterRadioGroup(
                               key: _key3,
                               titles: _listNegativite,
@@ -128,7 +134,9 @@ class _SuivieMentalePageState extends State<SuivieMentalePage> {
                                   _indexNegativite = index!;
                                 });
                               }),
-                          SizedBox(height: 10,),
+                          SizedBox(
+                            height: 10,
+                          ),
                           FlutterRadioGroup(
                               key: _key4,
                               titles: _listDepression,
@@ -141,7 +149,9 @@ class _SuivieMentalePageState extends State<SuivieMentalePage> {
                                   _indexDepression = index!;
                                 });
                               }),
-                          SizedBox(height: 10,),
+                          SizedBox(
+                            height: 10,
+                          ),
                           FlutterRadioGroup(
                               key: _key5,
                               titles: _listAnxiete,
@@ -154,7 +164,9 @@ class _SuivieMentalePageState extends State<SuivieMentalePage> {
                                   _indexAnxiete = index!;
                                 });
                               }),
-                          SizedBox(height: 10,),
+                          SizedBox(
+                            height: 10,
+                          ),
                           FlutterRadioGroup(
                               key: _key6,
                               titles: _listStress,
@@ -167,7 +179,9 @@ class _SuivieMentalePageState extends State<SuivieMentalePage> {
                                   _indexStress = index!;
                                 });
                               }),
-                          SizedBox(height: 10,),
+                          SizedBox(
+                            height: 10,
+                          ),
                           FlutterRadioGroup(
                               key: _key7,
                               titles: _listNiveauFatigue,
@@ -180,7 +194,6 @@ class _SuivieMentalePageState extends State<SuivieMentalePage> {
                                   _indexNiveauFatigue = index!;
                                 });
                               }),
-
                         ],
                       ),
                     ),
@@ -188,100 +201,117 @@ class _SuivieMentalePageState extends State<SuivieMentalePage> {
                   absorbing: isAdmin == false,
                 ),
               ),
-
             ],
           ),
         ),
       ),
-
       floatingActionButton: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: isAdmin == true ? Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Expanded(
-              child: MaterialButton(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(28))),
-                color: Theme.of(context).accentColor,
-                child: Text(
-                  "Submit",
-                  style: TextStyle(color: Colors.white),
-                ),
-                onPressed: () async{
-                  _formKey.currentState?.save();
-                  if (_formKey.currentState?.validate() == true) {
-                    SuivieMentale suivieMentale=SuivieMentale.fromMap(_formKey.currentState?.value);
-                    suivieMentale.date=DateTime.now();
-                    await FirebaseController.to.addSuivieMentale(suivieMentale, widget.userId!);
-                    Get.to(SuivieMentalePage(widget.userId));
-                  } else {
-                    showShortToast("Validation failed");
-                  }
-                },
-              ),
-            ),
-            SizedBox(width: 20,),
-            Expanded(
-              child: MaterialButton(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(28))),
-                color: Theme.of(context).accentColor,
-                child: Text(
-                  "Reset",
-                  style: TextStyle(color: Colors.white),
-                ),
-                onPressed: () {
-                  _formKey.currentState?.reset();
-                },
-              ),
-            ),
-           ],
-        ) : Row (
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Expanded(
-              child: MaterialButton(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(28))),
-                color: Theme.of(context).accentColor,
-                child: Text(
-                  "Lien 1",
-                  style: TextStyle(color: Colors.white),
-                ),
-                onPressed: () {
-                  Get.to(FormWebView(Constants.LINK1));
-                },
-              ),
-            ),
-            SizedBox(width: 20,),
-            Expanded(
-              child: MaterialButton(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(28))),
-                color: Theme.of(context).accentColor,
-                child: Text(
-                  "Lien 2",
-                  style: TextStyle(color: Colors.white),
-                ),
-                onPressed: () {
-                  Get.to(FormWebView(Constants.LINK2));
-                },
-              ),
-            ),
-            SizedBox(width: 20,),
-            Expanded(
-              child: MaterialButton(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(28))),
-                color: Theme.of(context).accentColor,
-                child: Text(
-                  "Lien 3",
-                  style: TextStyle(color: Colors.white),
-                ),
-                onPressed: () {
-                  Get.to(FormWebView(Constants.LINK3));
-                },
-              ),
-            )
-          ],
-        )
-      ),
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: isAdmin == true
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Expanded(
+                      child: MaterialButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(28))),
+                        color: Theme.of(context).accentColor,
+                        child: Text(
+                          "Submit",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        onPressed: () async {
+                          _formKey.currentState?.save();
+                          if (_formKey.currentState?.validate() == true) {
+                            SuivieMentale suivieMentale = SuivieMentale.fromMap(
+                                _formKey.currentState?.value);
+                            suivieMentale.date = DateTime.now();
+                            await FirebaseController.to.addSuivieMentale(
+                                suivieMentale, widget.userId!);
+                            Get.to(SuivieMentalePage(widget.userId));
+                          } else {
+                            showShortToast("Validation failed");
+                          }
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Expanded(
+                      child: MaterialButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(28))),
+                        color: Theme.of(context).accentColor,
+                        child: Text(
+                          "Reset",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        onPressed: () {
+                          _formKey.currentState?.reset();
+                        },
+                      ),
+                    ),
+                  ],
+                )
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Expanded(
+                      child: MaterialButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(28))),
+                        color: Theme.of(context).accentColor,
+                        child: Text(
+                          "Lien 1",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        onPressed: () {
+                          Get.to(FormWebView(Constants.LINK1));
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Expanded(
+                      child: MaterialButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(28))),
+                        color: Theme.of(context).accentColor,
+                        child: Text(
+                          "Lien 2",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        onPressed: () {
+                          Get.to(FormWebView(Constants.LINK2));
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Expanded(
+                      child: MaterialButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(28))),
+                        color: Theme.of(context).accentColor,
+                        child: Text(
+                          "Lien 3",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        onPressed: () {
+                          Get.to(FormWebView(Constants.LINK3));
+                        },
+                      ),
+                    )
+                  ],
+                )),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }

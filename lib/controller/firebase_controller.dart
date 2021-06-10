@@ -179,7 +179,7 @@ class FirebaseController extends GetxController {
           .get(userCollection.doc(userId).collection("exercices").doc());
       print(ds.id);
       exercice.id = ds.id;
-      await transaction.set(
+       transaction.set(
           userCollection.doc(userId).collection("exercices").doc(exercice.id),
           exercice.toMap());
       return exercice;
@@ -493,6 +493,8 @@ class FirebaseController extends GetxController {
   }
 
   Future<QuerySnapshot> getChartData(String collectionName,String atr){
+    print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+    print(userCollection.doc(firestoreUser.value!.id).collection(collectionName).toString());
     return userCollection.doc(firestoreUser.value!.id).collection(collectionName).orderBy('date', descending: true).limit(12).get();
 
   }

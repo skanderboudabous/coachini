@@ -1,8 +1,5 @@
 import 'package:coachini/models/composition-corporelle.dart';
-import 'package:coachini/models/mesure.dart';
-import 'package:coachini/pages/composition_corporelle.dart';
 import 'package:coachini/pages/composition_corporelle_detail.dart';
-import 'package:coachini/pages/mesures_detail.dart';
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

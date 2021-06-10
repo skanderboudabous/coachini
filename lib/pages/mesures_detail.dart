@@ -71,7 +71,7 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                             FormBuilderTextField(
                               name: 'taille',
                               decoration: InputDecoration(
-                                labelText: 'taille',
+                                labelText: 'taille (cm)',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
@@ -85,7 +85,7 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                             FormBuilderTextField(
                               name: 'tourTaille',
                               decoration: InputDecoration(
-                                labelText: 'Tour Taille',
+                                labelText: 'Tour Taille (cm)',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
@@ -99,7 +99,7 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                             FormBuilderTextField(
                               name: 'TourHanche',
                               decoration: InputDecoration(
-                                labelText: 'Tour Hanche',
+                                labelText: 'Tour Hanche (cm)',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
@@ -113,7 +113,7 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                             FormBuilderTextField(
                               name: 'VMA',
                               decoration: InputDecoration(
-                                labelText: 'VMA',
+                                labelText: 'VMA (Km/h)',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
@@ -127,7 +127,7 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                             FormBuilderTextField(
                               name: 'LMD',
                               decoration: InputDecoration(
-                                labelText: 'Lancé médecine ball',
+                                labelText: 'Lancé médecine ball (m)',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
@@ -141,7 +141,7 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                             FormBuilderTextField(
                               name: 'cordination',
                               decoration: InputDecoration(
-                                labelText: 'Coordination',
+                                labelText: 'Coordination (fois)',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
@@ -155,7 +155,7 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                             FormBuilderTextField(
                               name: 'vitesseDmg',
                               decoration: InputDecoration(
-                                labelText: 'Vitesse de démarrage',
+                                labelText: 'Vitesse de démarrage (sec)',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
@@ -169,7 +169,7 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                             FormBuilderTextField(
                               name: 'vitesseMax',
                               decoration: InputDecoration(
-                                labelText: 'Vitesse max',
+                                labelText: 'Vitesse max (sec)',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
@@ -183,7 +183,7 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                             FormBuilderTextField(
                               name: 'fiveJumpTest',
                               decoration: InputDecoration(
-                                labelText: 'Five Jump Test',
+                                labelText: 'Five Jump Test (m)',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
@@ -197,7 +197,7 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                             FormBuilderTextField(
                               name: 'squatJump',
                               decoration: InputDecoration(
-                                labelText: 'Squat Jump',
+                                labelText: 'Squat Jump (cm)',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
@@ -211,7 +211,7 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                             FormBuilderTextField(
                               name: 'agilite',
                               decoration: InputDecoration(
-                                labelText: 'Agilité',
+                                labelText: 'Agilité (sec)',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
@@ -225,7 +225,7 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                             FormBuilderTextField(
                               name: 'repMaxPompe',
                               decoration: InputDecoration(
-                                labelText: 'Repétition Max Pompe',
+                                labelText: 'Repétition Max Pompe (fois)',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
@@ -239,7 +239,7 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                             FormBuilderTextField(
                               name: 'repMaxAbd',
                               decoration: InputDecoration(
-                                labelText: 'Repétition Max Abdo',
+                                labelText: 'Repétition Max Abdo (fois)',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
@@ -253,7 +253,7 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                             FormBuilderTextField(
                               name: 'tempsLimiteGain',
                               decoration: InputDecoration(
-                                labelText: 'Temps Limite Gainage',
+                                labelText: 'Temps Limite Gainage (sec)',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
@@ -267,7 +267,7 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                             FormBuilderTextField(
                               name: 'tempsLimiteGainSquat',
                               decoration: InputDecoration(
-                                labelText: 'Temps Limite Gainage Squat',
+                                labelText: 'Temps Limite Gainage Squat (sec)',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
@@ -281,7 +281,7 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                             FormBuilderTextField(
                               name: 'souplesse',
                               decoration: InputDecoration(
-                                labelText: 'souplesse',
+                                labelText: 'souplesse (cm)',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
@@ -295,7 +295,7 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                             FormBuilderTextField(
                               name: 'counterMvtJump',
                               decoration: InputDecoration(
-                                labelText: 'Counter movement Jump',
+                                labelText: 'Counter movement Jump (cm)',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
@@ -309,7 +309,7 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                             FormBuilderTextField(
                               name: 'dropJump',
                               decoration: InputDecoration(
-                                labelText: 'Drop Jump',
+                                labelText: 'Drop Jump (cm)',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
@@ -323,7 +323,7 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                             FormBuilderTextField(
                               name: 'vo2Max',
                               decoration: InputDecoration(
-                                labelText: 'Vo2Max',
+                                labelText: 'Vo2Max (ml/min/Kg)',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
@@ -335,7 +335,7 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                               keyboardType: TextInputType.number,
                             ),
                              FormBuilderTextField(
-                              name: 'test6MinMarche',
+                              name: 'test6MinMarche (m)',
                               decoration: InputDecoration(
                                 labelText: 'Test 6 minutes de marche',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)

@@ -70,7 +70,7 @@ class _CompositionCorporelleDetailPageState extends State<CompositionCorporelleD
                             FormBuilderTextField(
                               name: 'poids',
                               decoration: InputDecoration(
-                                  labelText: 'poids',
+                                  labelText: 'poids (Kg)',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
@@ -85,7 +85,7 @@ class _CompositionCorporelleDetailPageState extends State<CompositionCorporelleD
                             FormBuilderTextField(
                               name: 'masseGraisse',
                               decoration: InputDecoration(
-                                  labelText: 'masse Graisse',
+                                  labelText: 'masse Graisse (Kg)',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
@@ -100,7 +100,7 @@ class _CompositionCorporelleDetailPageState extends State<CompositionCorporelleD
                             FormBuilderTextField(
                               name: 'masseHydrique',
                               decoration: InputDecoration(
-                                  labelText: 'masse Hydrique',
+                                  labelText: 'masse Hydrique (Kg)',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
@@ -114,7 +114,7 @@ class _CompositionCorporelleDetailPageState extends State<CompositionCorporelleD
                             FormBuilderTextField(
                               name: 'masseMusculaire',
                               decoration: InputDecoration(
-                                  labelText: 'masse Musculaire',
+                                  labelText: 'masse Musculaire (Kg)',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([
@@ -128,7 +128,7 @@ class _CompositionCorporelleDetailPageState extends State<CompositionCorporelleD
                             FormBuilderTextField(
                               name: 'masseOsseuse',
                               decoration: InputDecoration(
-                                  labelText: 'masse Osseuse',
+                                  labelText: 'masse Osseuse (Kg)',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([

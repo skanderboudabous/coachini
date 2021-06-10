@@ -11,7 +11,6 @@ class ExercicesCard extends StatelessWidget {
   ExercicesCard(this.exercice,this.userId);
   @override
   Widget build(BuildContext context) {
-    var mesure;
     return GestureDetector(
       onTap: (){
         Get.to(new ExerciceDetailPage(userId,exercice: this.exercice));
@@ -24,8 +23,13 @@ class ExercicesCard extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(formatDate(exercice.dateLim!, [dd, ' - ', MM, ' - ', yyyy]),style: TextStyle(fontSize: 18),),
-              Checkbox(value: false,onChanged: (bool? value){print("done");value=true;},)
+              Text("délai:  "+formatDate(exercice.dateLim!, [dd, ' - ', MM, ' - ', yyyy]),style: TextStyle(fontSize: 18),),
+              Checkbox(
+                value: exercice.isDone,
+                onChanged: (bool? value) {
+                    value = value!;
+                },
+              )
             ],
           ),
         ),
@@ -33,3 +37,5 @@ class ExercicesCard extends StatelessWidget {
     );
   }
 }
+
+

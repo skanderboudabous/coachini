@@ -1,10 +1,8 @@
 import 'package:coachini/pages/home_admin.dart';
-import 'package:coachini/pages/main_widget_admin.dart';
 import 'package:coachini/pages/home.dart';
 import 'package:coachini/pages/sigin.dart';
 import 'package:coachini/pages/sign_up.dart';
 import 'package:coachini/pages/splash.dart';
-import 'package:coachini/pages/suivie-mentale.dart';
 import 'package:coachini/pages/user_profile.dart';
 import 'package:get/get.dart';
 

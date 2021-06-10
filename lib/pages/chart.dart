@@ -54,12 +54,12 @@ class _ChartPageState extends State<ChartPage> {
                   } else {
                     final List<DocumentSnapshot> docs = snapshot.data!.docs;
                     List<dynamic> dataList = [];
-
                     docs.forEach((element) {
                       final data = element.data();
                       dataList.add(
                           {"date": data!['date'], widget.atr: data[widget.atr!]});
                     });
+
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,

@@ -75,7 +75,7 @@ class _SuiviEntrainementDetailPageState
                         FormBuilderTextField(
                           name: 'duree_totale_seance',
                           decoration: InputDecoration(
-                              labelText: 'Duree totale séance',
+                              labelText: 'Duree totale séance (min)',
                               labelStyle: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
@@ -94,7 +94,7 @@ class _SuiviEntrainementDetailPageState
                         FormBuilderTextField(
                           name: 'rythme_cardiaque_moy',
                           decoration: InputDecoration(
-                              labelText: 'Rythme cardiaque moyen',
+                              labelText: 'Rythme cardiaque moyen (bpm)',
                               labelStyle: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
@@ -112,7 +112,7 @@ class _SuiviEntrainementDetailPageState
                         FormBuilderTextField(
                           name: 'vitesse_moyenne',
                           decoration: InputDecoration(
-                              labelText: 'Vitesse moyenne',
+                              labelText: 'Vitesse moyenne (Km/h)',
                               labelStyle: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
@@ -147,7 +147,7 @@ class _SuiviEntrainementDetailPageState
                         FormBuilderTextField(
                           name: 'distance_parcourue',
                           decoration: InputDecoration(
-                              labelText: 'distance parcourue',
+                              labelText: 'distance parcourue (m)',
                               labelStyle: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
@@ -183,7 +183,7 @@ class _SuiviEntrainementDetailPageState
                         FormBuilderTextField(
                           name: 'allureMoy',
                           decoration: InputDecoration(
-                              labelText: 'Allure Moyenne',
+                              labelText: 'Allure Moyenne (min/Km)',
                               labelStyle: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
@@ -200,7 +200,7 @@ class _SuiviEntrainementDetailPageState
                         FormBuilderTextField(
                           name: 'cadenceMoy',
                           decoration: InputDecoration(
-                              labelText: 'Cadence Moyenne',
+                              labelText: 'Cadence Moyenne (pas/min)',
                               labelStyle: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
@@ -217,7 +217,7 @@ class _SuiviEntrainementDetailPageState
                         FormBuilderTextField(
                           name: 'longuerMoyPas',
                           decoration: InputDecoration(
-                              labelText: 'Longueur Moyenne de pas',
+                              labelText: 'Longueur Moyenne de pas (cm)',
                               labelStyle: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
@@ -236,7 +236,7 @@ class _SuiviEntrainementDetailPageState
                         FormBuilderTextField(
                           name: 'FC',
                           decoration: InputDecoration(
-                              labelText: 'FC repos',
+                              labelText: 'FC repos (bpm)',
                               labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(context),
@@ -264,7 +264,7 @@ class _SuiviEntrainementDetailPageState
                         FormBuilderTextField(
                           name: 'oxygene',
                           decoration: InputDecoration(
-                              labelText: 'SpO2',
+                              labelText: 'SpO2 (%)',
                               labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                           ),
                           validator: FormBuilderValidators.compose([

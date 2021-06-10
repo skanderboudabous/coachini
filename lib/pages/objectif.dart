@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coachini/controller/firebase_controller.dart';
 import 'package:coachini/models/objectif.dart';
 import 'package:coachini/utils/functions.dart';

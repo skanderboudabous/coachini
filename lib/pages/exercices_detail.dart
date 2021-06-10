@@ -144,7 +144,7 @@ class _ExerciceDetailPageState extends State<ExerciceDetailPage> {
                             FormBuilderTextField(
                               name: 'repo',
                               decoration: InputDecoration(
-                                  labelText: 'repo(sec)',
+                                  labelText: 'repos (sec)',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),

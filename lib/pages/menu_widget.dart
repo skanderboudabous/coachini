@@ -19,7 +19,6 @@ import 'about.dart';
 import 'edit_profile.dart';
 import 'exercices.dart';
 import 'mesures.dart';
-import 'mesures_detail.dart';
 import 'morphologie.dart';
 
 class MenuWidget extends StatelessWidget {
@@ -80,7 +79,6 @@ class MenuWidget extends StatelessWidget {
             sliderItem('Suivi Entrainement', Icons.fitness_center),
             sliderItem('Composition Corporelle', Icons.accessibility),
             sliderItem('Chart', Icons.graphic_eq),
-            sliderItem('Contact', Icons.contact_support),
             sliderItem('About', Icons.info),
             sliderItem('LogOut', Icons.arrow_back_ios)
           ],
@@ -137,9 +135,6 @@ class MenuWidget extends StatelessWidget {
             break;
           case "Composition Corporelle":
             Get.to(CompositionCorporellePage(FirebaseController.currentId));
-            break;
-          case "Contact":
-            Get.to(ContactPage());
             break;
           case "About":
             Get.to(AboutPage());
