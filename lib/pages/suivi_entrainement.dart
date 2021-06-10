@@ -17,8 +17,6 @@ class SuiviEntrainementPage extends StatefulWidget {
 }
 
 class _SuiviEntrainementPageState extends State<SuiviEntrainementPage> {
-
-
   bool? isAdmin;
   @override
   void initState() {
@@ -26,7 +24,6 @@ class _SuiviEntrainementPageState extends State<SuiviEntrainementPage> {
     // TODO: implement initState
     super.initState();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -19,14 +19,12 @@ class MesuresPage extends StatefulWidget {
 
 class _MesuresPageState extends State<MesuresPage> {
   bool? isAdmin;
-
   @override
   void initState() {
     isAdmin = Get.find<FirebaseController>().admin.value;
     // TODO: implement initState
     super.initState();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,25 +46,41 @@ class _MesuresPageState extends State<MesuresPage> {
           },
         ),
       ),
-      body: FutureBuilder(
-          future: FirebaseController.to.getUserMesures(id: widget.userId),
-          builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-            print(snapshot.hasData);
-            if (snapshot.hasData) {
-              final List<DocumentSnapshot>? documents = snapshot.data?.docs;
+      body: WillPopScope(
+        onWillPop: () {
+          Get.toNamed(AppRoutes.USER_PROFILE+"?id="+widget.userId!);
+          return Future.value(false);
+        },
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
+              image: AssetImage("assets/images/bg5.jpg"),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: FutureBuilder(
+              future: FirebaseController.to.getUserMesures(id: widget.userId),
+              builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                print(snapshot.hasData);
+                if (snapshot.hasData) {
+                  final List<DocumentSnapshot>? documents = snapshot.data?.docs;
 
-              return ListView.builder(
-                  itemCount: documents?.length,
-                  itemBuilder: (context, index) {
-                    final Mesure mesure = Mesure.fromMap(documents?[index].data());
-                    return Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: MesuresCard(mesure, widget.userId));
-                  });
-            } else {
-              return Loader();
-            }
-          }),
+                  return ListView.builder(
+                      itemCount: documents?.length,
+                      itemBuilder: (context, index) {
+                        final Mesure mesure = Mesure.fromMap(documents?[index].data());
+                        return Padding(
+                            padding: const EdgeInsets.all(8),
+                            child: MesuresCard(mesure, widget.userId));
+                      });
+                } else {
+                  return Loader();
+                }
+              }),
+        ),
+      ),
       floatingActionButton: isAdmin == true
           ? ElevatedButton(
               child: Icon(Icons.add),

@@ -21,7 +21,7 @@ class _CollectionListState extends State<CollectionList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Collection")),
+      appBar: AppBar(title: Text("Collection",textAlign: TextAlign.center,)),
       body: SingleChildScrollView(
         child: Padding(
             padding: const EdgeInsets.all(8.0),

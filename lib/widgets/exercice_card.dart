@@ -23,11 +23,13 @@ class ExercicesCard extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("délai:  "+formatDate(exercice.dateLim!, [dd, ' - ', MM, ' - ', yyyy]),style: TextStyle(fontSize: 18),),
+              Text(formatDate(exercice.dateLim!, [dd, ' - ', MM, ' - ', yyyy]),style: TextStyle(fontSize: 18),),
               Checkbox(
                 value: exercice.isDone,
-                onChanged: (bool? value) {
-                    value = value!;
+                onChanged:  (bool? value) {
+//                  setState(() {
+//                    value = !value;
+//                  });
                 },
               )
             ],
@@ -37,5 +39,3 @@ class ExercicesCard extends StatelessWidget {
     );
   }
 }
-
-
