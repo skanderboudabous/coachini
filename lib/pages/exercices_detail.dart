@@ -97,11 +97,16 @@ class _ExerciceDetailPageState extends State<ExerciceDetailPage> {
                                     : Container(
                                         width: 150,
                                         height: 150,
-                                        decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                              fit: BoxFit.cover,
-                                              image: NetworkImage(pictureUrl!)),
-                                        ),
+                                        // decoration: BoxDecoration(
+                                        //   image: DecorationImage(
+                                        //       fit: BoxFit.cover,
+                                        //       image: NetworkImage(pictureUrl!)),
+                                        // ),
+                                  child: FadeInImage(
+                                    fit: BoxFit.cover,
+                                    placeholder: AssetImage("bg.jpg") ,
+                                    image: NetworkImage(pictureUrl!),
+                                  ),
                                       )),
                             FormBuilderTextField(
                               name: 'nom',
@@ -154,6 +159,18 @@ class _ExerciceDetailPageState extends State<ExerciceDetailPage> {
                               keyboardType: TextInputType.number,
                               style: TextStyle(color: Colors.white),
                             ),
+                            FormBuilderDateTimePicker(
+                              name: 'dateLim',
+                              // onChanged: _onChanged,
+                              inputType: InputType.date,
+                              decoration: InputDecoration(
+                                  labelText: 'Date Limit',
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
+                              initialValue: widget.exercice?.dateLim,
+                              style: TextStyle(color: Colors.white),
+                              // initialValue: DateTime.now(),
+                              // enabled: true,
+                            ),
                           ],
                         ),
                       ),
@@ -177,7 +194,7 @@ class _ExerciceDetailPageState extends State<ExerciceDetailPage> {
                                       pictureUrl != null) {
                                     Exercice exercice = Exercice.fromMap(
                                         _formKey.currentState?.value);
-                                    exercice.dateLim = DateTime.now();
+                                    exercice.isDone=false;
                                     exercice.pictureUrl = pictureUrl;
                                     await FirebaseController.to
                                         .addExercice(exercice, widget.userId!);

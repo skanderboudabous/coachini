@@ -7,9 +7,12 @@ import 'package:direct_select_flutter/direct_select_container.dart';
 import 'package:direct_select_flutter/direct_select_item.dart';
 import 'package:direct_select_flutter/direct_select_list.dart';
 import 'package:get/get.dart';
+
 class MorphologiePage extends StatefulWidget {
   final String? userId;
+
   MorphologiePage(this.userId);
+
   @override
   _MorphologiePageState createState() => _MorphologiePageState();
 }
@@ -17,40 +20,43 @@ class MorphologiePage extends StatefulWidget {
 class _MorphologiePageState extends State<MorphologiePage> {
   List<String> morphologies = ["Ectomorphe", "Mesomorphe", "Endomorphe"];
 
-
   bool? isAdmin;
   int? selectedIndex;
+
   @override
   void initState() {
-    isAdmin=Get.find<FirebaseController>().admin.value;
+    isAdmin = Get.find<FirebaseController>().admin.value;
     FirebaseController.to.getLastTypeMorphologie(widget.userId).then((value) {
       setState(() {
         if (value.size == 0) {
           this.selectedIndex = 0;
         } else {
-          TypeMorphologie typeMorphologie = TypeMorphologie.fromMap(value.docs[0].data());
+          TypeMorphologie typeMorphologie =
+              TypeMorphologie.fromMap(value.docs[0].data());
           print(typeMorphologie.date);
           this.selectedIndex = this.morphologies.indexOf(typeMorphologie.nom!);
         }
       });
     });
 
-
     // TODO: implement initState
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Type de morphologie",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-              color: Colors.white,
-              fontSize: 20.0,
-              fontFamily: 'Montserrat',
-              fontWeight: FontWeight.bold)),
-        centerTitle: true,),
-      body:Container(
+      appBar: AppBar(
+        title: Text("Type de morphologie",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 20.0,
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.bold)),
+        centerTitle: true,
+      ),
+      body: Container(
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -80,25 +86,28 @@ class _MorphologiePageState extends State<MorphologiePage> {
                               Expanded(
                                   child: Padding(
                                       child: GestureDetector(
-                                        onTap: (){
-                                          if(isAdmin== false)
-                                          {
-                                            showShortToast("Please contact the administrator");
+                                        onTap: () {
+                                          if (isAdmin == false) {
+                                            showShortToast(
+                                                "Please contact the administrator");
                                           }
                                         },
                                         child: AbsorbPointer(
                                           child: DirectSelectList<String>(
                                               values: morphologies,
-                                              defaultItemIndex: this.selectedIndex??0,
-                                              itemBuilder: (String value) => getDropDownMenuItem(value),
-                                              focusedItemDecoration: _getDslDecoration(),
-
-                                              onItemSelectedListener: (item, index, context) {
+                                              defaultItemIndex:
+                                                  this.selectedIndex ?? 0,
+                                              itemBuilder: (String value) =>
+                                                  getDropDownMenuItem(value),
+                                              focusedItemDecoration:
+                                                  _getDslDecoration(),
+                                              onItemSelectedListener:
+                                                  (item, index, context) {
                                                 setState(() {
-                                                  this.selectedIndex=index;
+                                                  this.selectedIndex = index;
                                                 });
                                               }),
-                                          absorbing: isAdmin==false,
+                                          absorbing: isAdmin == false,
                                         ),
                                       ),
                                       padding: EdgeInsets.only(left: 12))),
@@ -121,24 +130,29 @@ class _MorphologiePageState extends State<MorphologiePage> {
           ),
         ),
       ),
-      floatingActionButton:  isAdmin == true
-          ? IconButton(
-        icon: Icon(
-          Icons.save,
-          color: Colors.green,
-        ),
-        onPressed: () {
-          TypeMorphologie? typeMorphologie = new TypeMorphologie();
-          typeMorphologie.nom = this.morphologies[this.selectedIndex!];
-          typeMorphologie.date = DateTime.now();
-          FirebaseController.to.addTypeMorphologie(typeMorphologie, widget.userId);
-          Get.back();
-        },
-      )
+      floatingActionButton: isAdmin == true
+          ? ElevatedButton(
+              child: Icon(
+                Icons.save,
+                color: Colors.white,
+              ),
+              style: ElevatedButton.styleFrom(
+                shape: CircleBorder(),
+                padding: EdgeInsets.all(20),
+                primary: Colors.blue, // <-- Button color
+              ),
+              onPressed: () {
+                TypeMorphologie? typeMorphologie = new TypeMorphologie();
+                typeMorphologie.nom = this.morphologies[this.selectedIndex!];
+                typeMorphologie.date = DateTime.now();
+                FirebaseController.to
+                    .addTypeMorphologie(typeMorphologie, widget.userId);
+                Get.back();
+              },
+            )
           : SizedBox(),
     );
   }
-
 
   DirectSelectItem<String> getDropDownMenuItem(String value) {
     return DirectSelectItem<String>(
@@ -157,5 +171,4 @@ class _MorphologiePageState extends State<MorphologiePage> {
       ),
     );
   }
-
 }

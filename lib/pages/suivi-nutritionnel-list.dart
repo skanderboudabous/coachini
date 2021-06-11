@@ -12,7 +12,7 @@ class SuiviNutritionnelList extends StatefulWidget {
 }
 
 class _SuiviNutritionnelListState extends State<SuiviNutritionnelList> {
-  final String collectionName="suiviesNurtitionneles";
+  final String collectionName="suivieNutritionnels";
   @override
   Widget build(BuildContext context) {
     return Scaffold(

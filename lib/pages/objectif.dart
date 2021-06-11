@@ -70,98 +70,101 @@ class _ObjectifPageState extends State<ObjectifPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Objectif",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: 20.0,
-                fontFamily: 'Montserrat',
-                fontWeight: FontWeight.bold)),
-          centerTitle: true,),
+        appBar: AppBar(
+          title: Text("Objectif",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20.0,
+                  fontFamily: 'Montserrat',
+                  fontWeight: FontWeight.bold)),
+          centerTitle: true,
+        ),
         body: Container(
-          height: MediaQuery.of(context).size.height,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
-              image: AssetImage("assets/images/bg.jpg"),
-              fit: BoxFit.cover,
-            ),
-          ),
-          child: DirectSelectContainer(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                verticalDirection: VerticalDirection.down,
-                children: <Widget>[
-                  SizedBox(height: 150.0),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
-                          child: Card(
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: <Widget>[
-                                Expanded(
-                                    child: Padding(
-                                        child: GestureDetector(
-                                          onTap: () {
-                                            if (isAdmin == false) {
-                                              showShortToast(
-                                                  "Please contact the administrator");
-                                            }
-                                          },
-                                          child: AbsorbPointer(
-                                            child: DirectSelectList<String>(
-                                              values: _objectifs,
-                                              defaultItemIndex:
-                                              this.selectedIndex ?? 0,
-                                              itemBuilder: (String value) =>
-                                                  getDropDownMenuItem(
-                                                      value),
-                                              focusedItemDecoration:
-                                              _getDslDecoration(),
-                                              onItemSelectedListener:
-                                                  (item, index, context) {
-                                                setState(() {
-                                                  this.selectedIndex =
-                                                      index;
-                                                  print(this.selectedIndex);
-                                                });
-                                              },
-                                            ),
-                                            absorbing: isAdmin == false,
-                                          ),
-                                        ),
-                                        padding:
-                                        EdgeInsets.only(left: 12))),
-                                Padding(
-                                  padding: EdgeInsets.only(right: 8),
-                                  child: Icon(
-                                    Icons.unfold_more,
-                                    color: Colors.black38,
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+            height: MediaQuery.of(context).size.height,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
+                image: AssetImage("assets/images/bg.jpg"),
+                fit: BoxFit.cover,
               ),
             ),
-          )
-        ),
+            child: DirectSelectContainer(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  verticalDirection: VerticalDirection.down,
+                  children: <Widget>[
+                    SizedBox(height: 150.0),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
+                            child: Card(
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  Expanded(
+                                      child: Padding(
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              if (isAdmin == false) {
+                                                showShortToast(
+                                                    "Please contact the administrator");
+                                              }
+                                            },
+                                            child: AbsorbPointer(
+                                              child: DirectSelectList<String>(
+                                                values: _objectifs,
+                                                defaultItemIndex:
+                                                    this.selectedIndex ?? 0,
+                                                itemBuilder: (String value) =>
+                                                    getDropDownMenuItem(value),
+                                                focusedItemDecoration:
+                                                    _getDslDecoration(),
+                                                onItemSelectedListener:
+                                                    (item, index, context) {
+                                                  setState(() {
+                                                    this.selectedIndex = index;
+                                                    print(this.selectedIndex);
+                                                  });
+                                                },
+                                              ),
+                                              absorbing: isAdmin == false,
+                                            ),
+                                          ),
+                                          padding: EdgeInsets.only(left: 12))),
+                                  Padding(
+                                    padding: EdgeInsets.only(right: 8),
+                                    child: Icon(
+                                      Icons.unfold_more,
+                                      color: Colors.black38,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            )),
         floatingActionButton: isAdmin == true
-            ? IconButton(
-                icon: Icon(
+            ? ElevatedButton(
+                child: Icon(
                   Icons.save,
-                  color: Colors.green,
+                  color: Colors.white,
+                ),
+                style: ElevatedButton.styleFrom(
+                  shape: CircleBorder(),
+                  padding: EdgeInsets.all(20),
+                  primary: Colors.blue, // <-- Button color
                 ),
                 onPressed: () {
                   Objectif? objectif = new Objectif();
