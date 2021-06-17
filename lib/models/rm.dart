@@ -41,7 +41,7 @@ class RM{
       'id': id,
       'name': name,
       'pictureUrl': pictureUrl,
-      'date': date?.toString(),
+      'date': date,
       'value': value,
     };
   }

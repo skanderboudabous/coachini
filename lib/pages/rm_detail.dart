@@ -103,9 +103,9 @@ class _RMDetailPageState extends State<RMDetailPage> {
                                   ),
                                 )),
                             FormBuilderTextField(
-                              name: 'nom',
+                              name: 'name',
                               decoration: InputDecoration(
-                                  labelText: 'Nom',
+                                  labelText: 'Name',
                                   labelStyle: TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
@@ -117,9 +117,9 @@ class _RMDetailPageState extends State<RMDetailPage> {
                               keyboardType: TextInputType.name,
                             ),
                             FormBuilderTextField(
-                              name: 'nbSerie',
+                              name: 'value',
                               decoration: InputDecoration(
-                                  labelText: 'nbSerie',
+                                  labelText: 'Value',
                                   labelStyle: TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,

@@ -14,6 +14,7 @@ import 'package:coachini/models/suivie-mentale.dart';
 import 'package:coachini/models/suivie-nutritionnel.dart';
 import 'package:coachini/models/type-morphologie.dart';
 import 'package:coachini/utils/functions.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -127,21 +128,25 @@ class FirebaseController extends GetxController {
     }
   }
 
-  Future<Adherant?> register(
+  Future<Adherant?>   register(
       {required String email,
         required String password,
         required BuildContext context}) async {
     showLoadingIndicator(context);
 
     try {
-      final UserCredential result = (await _auth.createUserWithEmailAndPassword(
+      FirebaseApp app = await Firebase.initializeApp(
+          name: 'Secondary', options: Firebase.app().options);
+      final UserCredential result = (await FirebaseAuth.instanceFor(app: app).createUserWithEmailAndPassword(
           email: email, password: password));
       Adherant? user = new Adherant(
         email: email,
         id: (result.user)?.uid,
       );
       user.isAdmin=false;
+      user.isSubscribed=false;
       await setNewUser(user);
+      await app.delete();
       hideLoadingIndicator(context);
       return user;
     } on FirebaseAuthException catch (e) {
@@ -439,6 +444,7 @@ class FirebaseController extends GetxController {
       await ref.putData(bytes);
       var url = await ref.getDownloadURL();
       updatedData.putIfAbsent("pictureUrl", () => url);
+      await FirebaseAuth.instance.currentUser?.updateProfile(photoURL: url);
     }
     await userCollection.doc(currentId).update(updatedData);
   }

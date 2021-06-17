@@ -34,20 +34,6 @@ class _MainWidgetAdminState extends State<MainWidgetAdmin>
     return SafeArea(
       child: Column(
         children: [
-          MaterialButton(
-            onPressed: () {
-              SuivieNutritionnel suivieNutritionnel = new SuivieNutritionnel(
-                  apport: 10,
-                  date: DateTime.now(),
-                  glucide: 50,
-                  lipide: 5,
-                  proteine: 3);
-              FirebaseController.to
-                  .addSuivieNutritionnel(
-                      suivieNutritionnel, "9WoyHufTYpfEMuvAegum1Lw03Er2")
-                  .then((value) => {print(value)});
-            },
-          ),
           ColorfulTabBar(
             controller: _tabController,
             tabs: [

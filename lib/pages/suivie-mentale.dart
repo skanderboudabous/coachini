@@ -224,12 +224,13 @@ class _SuivieMentalePageState extends State<SuivieMentalePage> {
                         onPressed: () async {
                           _formKey.currentState?.save();
                           if (_formKey.currentState?.validate() == true) {
-                            SuivieMentale suivieMentale = SuivieMentale.fromMap(
-                                _formKey.currentState?.value);
-                            suivieMentale.date = DateTime.now();
-                            await FirebaseController.to.addSuivieMentale(
-                                suivieMentale, widget.userId!);
-                            Get.to(SuivieMentalePage(widget.userId));
+                            print(_formKey.currentState?.value);
+                            // SuivieMentale suivieMentale = SuivieMentale.fromMap(
+                            //     _formKey.currentState?.value);
+                            // suivieMentale.date = DateTime.now();
+                            // await FirebaseController.to.addSuivieMentale(
+                            //     suivieMentale, widget.userId!);
+                            // Get.to(SuivieMentalePage(widget.userId));
                           } else {
                             showShortToast("Validation failed");
                           }

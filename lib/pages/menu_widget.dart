@@ -11,6 +11,7 @@ import 'package:coachini/pages/suivi_entrainement.dart';
 import 'package:coachini/pages/suivie-mentale.dart';
 import 'package:coachini/pages/suivie-nutritionnel.dart';
 import 'package:coachini/widgets/online_image.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
@@ -40,7 +41,7 @@ class MenuWidget extends StatelessWidget {
               height: 30,
             ),
             OnlineImage(
-              FirebaseController.to.firestoreUser.value?.pictureUrl,
+              FirebaseAuth.instance.currentUser?.photoURL,
               size: 25,
               width: 100,
               height: 100,

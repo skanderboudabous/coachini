@@ -110,6 +110,7 @@ class SignUpPage extends StatelessWidget {
                                       email: emailController.text,
                                       password: passwordController.text,
                                       context: context);
+                                Get.offAllNamed(AppRoutes.SIGNIN);
                                 print(adherant);
                                 }
                               },

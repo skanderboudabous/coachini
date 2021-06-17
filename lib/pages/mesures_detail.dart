@@ -97,7 +97,7 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                               keyboardType: TextInputType.number,
                             ),
                             FormBuilderTextField(
-                              name: 'TourHanche',
+                              name: 'tourHanche',
                               decoration: InputDecoration(
                                 labelText: 'Tour Hanche (cm)',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
@@ -335,9 +335,9 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                               keyboardType: TextInputType.number,
                             ),
                              FormBuilderTextField(
-                              name: 'test6MinMarche (m)',
+                              name: 'test6MinMarche',
                               decoration: InputDecoration(
-                                labelText: 'Test 6 minutes de marche',
+                                labelText: 'Test 6 minutes de marche (m)',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               validator: FormBuilderValidators.compose([

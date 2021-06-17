@@ -59,7 +59,7 @@ class Exercice {
       'nbSerie': nbSerie,
       'nbRep': nbRep,
       'repo': repo,
-      'isDone': isDone,
+      'isDone': isDone??false,
       'dateLim': dateLim
     };
   }
