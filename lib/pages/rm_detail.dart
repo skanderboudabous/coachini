@@ -106,7 +106,10 @@ class _RMDetailPageState extends State<RMDetailPage> {
                               name: 'nom',
                               decoration: InputDecoration(
                                   labelText: 'Nom',
-                                  labelStyle: TextStyle(color: Colors.white)),
+                                  labelStyle: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 22)),
                               initialValue: widget.rm?.name.toString(),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
@@ -117,7 +120,10 @@ class _RMDetailPageState extends State<RMDetailPage> {
                               name: 'nbSerie',
                               decoration: InputDecoration(
                                   labelText: 'nbSerie',
-                                  labelStyle: TextStyle(color: Colors.white)),
+                                  labelStyle: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 22)),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
                                 FormBuilderValidators.numeric(context),

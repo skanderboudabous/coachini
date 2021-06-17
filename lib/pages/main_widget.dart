@@ -48,6 +48,7 @@ class _MainWidgetState extends State<MainWidget> {
                   background: Image.asset(
                     "assets/images/img2.png",
                     fit: BoxFit.cover,
+//                    colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
                   ),
                   title: Container(
                     child: Column(
@@ -67,7 +68,7 @@ class _MainWidgetState extends State<MainWidget> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal:8.0),
                       child: Text("L'entraînement sportif est l'ensemble des méthodes et exercices physiques visant l'entretien et l'amélioration des performances sportives, chez le sportif amateur ou professionnel ; cet entraînement comprend notamment la préparation physique, technique, tactique et mentale.",
-                          style: TextStyle(fontSize: 20, color: Colors.white)),
+                          style: TextStyle(fontSize: 20, color: Colors.white,fontWeight: FontWeight.bold)),
                     )
                   ],
                 ),

@@ -2,8 +2,6 @@ import 'dart:io';
 
 import 'package:coachini/routes/app_routes.dart';
 import 'package:coachini/controller/firebase_controller.dart';
-import 'package:coachini/models/adherant.dart';
-import 'package:coachini/widgets/online_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';

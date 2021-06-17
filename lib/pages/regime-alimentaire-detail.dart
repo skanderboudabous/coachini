@@ -3,6 +3,7 @@ import 'package:coachini/models/regime-alimentaire.dart';
 import 'package:coachini/pages/composition_corporelle.dart';
 import 'package:coachini/pages/regime-alimentaire.dart';
 import 'package:coachini/utils/functions.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
@@ -70,16 +71,16 @@ class _RegimeAlimentaireDetailPageState extends State<RegimeAlimentaireDetailPag
                             FormBuilderTextField(
                               name: 'texte',
                               maxLines: 30,
-                              decoration: InputDecoration(
-                                  labelText: 'texte',
-                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
-                                 // labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
-                              ),
+//                              decoration: InputDecoration(
+//                                  labelText: 'texte',
+//                                  labelStyle: TextStyle(color: Colors.grey,fontWeight: FontWeight.normal,fontSize: 30)
+//                                 //labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
+//                              ),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
                               ]),
                               initialValue: widget.regimeAlimentaire?.texte.toString(),
-                              style: TextStyle(color: Colors.white),
+                              style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.bold),
                               keyboardType: TextInputType.multiline,
                             ),
                           ],
