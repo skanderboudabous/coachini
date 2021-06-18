@@ -16,7 +16,6 @@ class EditProfilePage extends StatefulWidget {
 
 class _EditProfilePageState extends State<EditProfilePage> {
   final _formKey = GlobalKey<FormBuilderState>();
-  final List<String> genderOptions = ['Male', 'Female'];
   File? _image;
   final picker = ImagePicker();
 

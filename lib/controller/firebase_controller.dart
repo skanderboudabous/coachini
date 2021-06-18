@@ -38,15 +38,16 @@ class FirebaseController extends GetxController {
   final mesureCollection = FirebaseFirestore.instance.collection("mesures");
   final rmCollection = FirebaseFirestore.instance.collection("rms");
   final rmImagesCollection = FirebaseFirestore.instance.collection("rm-images");
-  final exerciceImagesCollection = FirebaseFirestore.instance.collection("exercice-images");
+  final exerciceImagesCollection =
+      FirebaseFirestore.instance.collection("exercice-images");
   final suivieNutritionnelCollection =
-  FirebaseFirestore.instance.collection("suiviesNurtitionneles");
+      FirebaseFirestore.instance.collection("suiviesNurtitionneles");
   final suiviEntrainementsCollection =
-  FirebaseFirestore.instance.collection("suiviEntrainements");
+      FirebaseFirestore.instance.collection("suiviEntrainements");
   final compositionCorporelleCollection =
-  FirebaseFirestore.instance.collection("compositionCorporelles");
+      FirebaseFirestore.instance.collection("compositionCorporelles");
   final regimeAlimentaireCollection =
-  FirebaseFirestore.instance.collection("regimeAlimentaires");
+      FirebaseFirestore.instance.collection("regimeAlimentaires");
 
   @override
   void onReady() {
@@ -66,7 +67,6 @@ class FirebaseController extends GetxController {
     }
 
     if (_firebaseUser == null) {
-      print('Send to signin');
       Get.offAllNamed(AppRoutes.SIGNIN);
     } else {
       if (admin.value == false)
@@ -85,7 +85,6 @@ class FirebaseController extends GetxController {
 
   //Streams the firestore user from the firestore collection
   Stream<Adherant> streamFirestoreUser() {
-    print('streamFirestoreUser()');
 
     return _db
         .doc('/users/${firebaseUser.value!.uid}')
@@ -98,23 +97,23 @@ class FirebaseController extends GetxController {
     return _db
         .doc('/users/${firebaseUser.value!.uid}')
         .get()
-        .then((documentSnapshot) => Adherant.fromMap(documentSnapshot.data()!));
+        .then((documentSnapshot) =>  Adherant.fromMap(documentSnapshot.data()!));
   }
 
   isAdmin() async {
     var adherant = await getFirestoreUser();
-    admin.value = adherant.isAdmin;
+    admin.value =adherant==null ? false : adherant.isAdmin;
     update();
   }
 
   Future<User?> login(
-      {required String email,
-        required String password,
-        required BuildContext context}) async {
+      {required String? email,
+      required String ?password,
+      required BuildContext context}) async {
     showLoadingIndicator(context);
     try {
       final authResult = (await _auth.signInWithEmailAndPassword(
-          email: email, password: password));
+          email: email!, password: password!));
       User? user = authResult.user;
       hideLoadingIndicator(context);
       return user;
@@ -128,27 +127,31 @@ class FirebaseController extends GetxController {
     }
   }
 
-  Future<Adherant?>   register(
-      {required String email,
-        required String password,
-        required BuildContext context}) async {
+  Future<Adherant?> register(
+      {required Adherant adherant,
+      required String? password,
+      required File? image,
+      required BuildContext context}) async {
     showLoadingIndicator(context);
 
     try {
-      FirebaseApp app = await Firebase.initializeApp(
-          name: 'Secondary', options: Firebase.app().options);
+      FirebaseApp app = await Firebase.app("Secondary");
       final UserCredential result = (await FirebaseAuth.instanceFor(app: app).createUserWithEmailAndPassword(
-          email: email, password: password));
-      Adherant? user = new Adherant(
-        email: email,
-        id: (result.user)?.uid,
-      );
-      user.isAdmin=false;
-      user.isSubscribed=false;
-      await setNewUser(user);
-      await app.delete();
+              email: adherant.email!, password: password!));
+      adherant.id=(result.user)?.uid;
+      adherant.isAdmin = false;
+      adherant.isSubscribed = false;
+      String? extension = ((image!.path.split("/").last).split(".").last);
+      Reference ref = _fs.ref("users/${currentId!}.$extension");
+      var bytes = await image.readAsBytes();
+      await ref.putData(bytes);
+      var url = await ref.getDownloadURL();
+      adherant.pictureUrl = url;
+      await setNewUser(adherant);
+      await login(email: adherant.email, password: password, context: context);
+      await FirebaseAuth.instance.currentUser?.updateProfile(photoURL: url);
       hideLoadingIndicator(context);
-      return user;
+      return adherant;
     } on FirebaseAuthException catch (e) {
       hideLoadingIndicator(context);
 
@@ -184,7 +187,7 @@ class FirebaseController extends GetxController {
           .get(userCollection.doc(userId).collection("exercices").doc());
       print(ds.id);
       exercice.id = ds.id;
-       transaction.set(
+      transaction.set(
           userCollection.doc(userId).collection("exercices").doc(exercice.id),
           exercice.toMap());
       return exercice;
@@ -193,11 +196,10 @@ class FirebaseController extends GetxController {
 
   Future<QuerySnapshot> getExercicesImages() async {
     return exerciceImagesCollection.get();
-
   }
+
   Future<QuerySnapshot> getRMsImages() async {
     return rmImagesCollection.get();
-
   }
 
   Future<Exercice> updateExercice(Exercice exercice) {
@@ -222,15 +224,16 @@ class FirebaseController extends GetxController {
           mesure.toMap());
       return mesure;
     });
-  }  Future<RM> addRM(RM rm, String? userId) {
+  }
+
+  Future<RM> addRM(RM rm, String? userId) {
     return FirebaseFirestore.instance.runTransaction((transaction) async {
       final DocumentSnapshot ds = await transaction
           .get(userCollection.doc(userId).collection("rms").doc());
       print(ds.id);
       rm.id = ds.id;
       await transaction.set(
-          userCollection.doc(userId).collection("rms").doc(rm.id),
-          rm.toMap());
+          userCollection.doc(userId).collection("rms").doc(rm.id), rm.toMap());
       return rm;
     });
   }
@@ -372,7 +375,7 @@ class FirebaseController extends GetxController {
 
   Future<Adherant?> getUserFromId({required String? id}) async {
     final DocumentSnapshot documentSnapshot =
-    (await userCollection.doc(id).get());
+        (await userCollection.doc(id).get());
     return Adherant.fromMap(documentSnapshot.data());
   }
 
@@ -461,6 +464,7 @@ class FirebaseController extends GetxController {
     updatedData.putIfAbsent("pictureUrl", () => url);
     await rmImagesCollection.doc().set(updatedData);
   }
+
   Future<void> addExerciceImage(
       {required Map<String, dynamic>? data, File? image}) async {
     var name = data?['name'];
@@ -482,10 +486,11 @@ class FirebaseController extends GetxController {
         .get();
   }
 
-  Future<RegimeAlimentaire> addRegimeAlimentaire(RegimeAlimentaire regimeAlimentaire, String? userId) {
+  Future<RegimeAlimentaire> addRegimeAlimentaire(
+      RegimeAlimentaire regimeAlimentaire, String? userId) {
     return FirebaseFirestore.instance.runTransaction((transaction) async {
-      final DocumentSnapshot ds = await transaction
-          .get(userCollection.doc(userId).collection("regimeAlimentaires").doc());
+      final DocumentSnapshot ds = await transaction.get(
+          userCollection.doc(userId).collection("regimeAlimentaires").doc());
       print(ds.id);
       regimeAlimentaire.id = ds.id;
       transaction.set(
@@ -498,15 +503,20 @@ class FirebaseController extends GetxController {
     });
   }
 
-  Future<QuerySnapshot> getChartData(String collectionName,String atr){
+  Future<QuerySnapshot> getChartData(String collectionName, String atr) {
     print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-    print(userCollection.doc(firestoreUser.value!.id).collection(collectionName).toString());
-    return userCollection.doc(firestoreUser.value!.id).collection(collectionName).orderBy('date', descending: true).limit(12).get();
-
+    print(userCollection
+        .doc(firestoreUser.value!.id)
+        .collection(collectionName)
+        .toString());
+    return userCollection
+        .doc(firestoreUser.value!.id)
+        .collection(collectionName)
+        .orderBy('date', descending: true)
+        .limit(12)
+        .get();
   }
 
-  addSuivieMentale(SuivieMentale suivieMentale, String s) {
-
-  }
+  addSuivieMentale(SuivieMentale suivieMentale, String s) {}
 //#endregion
 }

@@ -1,3 +1,4 @@
+import 'package:coachini/models/adherant.dart';
 import 'package:coachini/pages/chart.dart';
 import 'package:coachini/pages/collections-list.dart';
 import 'package:coachini/pages/composition_corporelle.dart';
@@ -40,11 +41,20 @@ class MenuWidget extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            OnlineImage(
-              FirebaseAuth.instance.currentUser?.photoURL,
-              size: 25,
-              width: 100,
-              height: 100,
+            FutureBuilder<Adherant>(
+              future: FirebaseController.to.getFirestoreUser(),
+              builder:(context,snapshot){
+                if(!snapshot.hasData){
+                  return new CircularProgressIndicator();
+                } else{
+                  return OnlineImage(
+                   snapshot.data?.pictureUrl,
+                    size: 25,
+                    width: 100,
+                    height: 100,
+                  );
+                }
+              }
             ),
             SizedBox(
               height: 20,

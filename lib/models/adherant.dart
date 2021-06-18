@@ -59,7 +59,7 @@ class Adherant {
       'id': id,
       'firstName': firstName,
       'lastName': lastName,
-      'birthday': birthday?.toString(),
+      'birthday': birthday,
       'sexe': sexe,
       'pictureUrl': pictureUrl,
       'phone': phone,
