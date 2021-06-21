@@ -29,6 +29,7 @@ class _RegimeAlimentaireDetailPageState extends State<RegimeAlimentaireDetailPag
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text("Régime Alimentaire",
             textAlign: TextAlign.center,
@@ -79,7 +80,7 @@ class _RegimeAlimentaireDetailPageState extends State<RegimeAlimentaireDetailPag
                                 FormBuilderValidators.required(context),
                               ]),
                               initialValue: widget.regimeAlimentaire?.texte.toString(),
-                              style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.bold),
+                              style: TextStyle(color: Colors.white,fontSize: 25),
                               keyboardType: TextInputType.multiline,
                             ),
                           ],
@@ -88,49 +89,46 @@ class _RegimeAlimentaireDetailPageState extends State<RegimeAlimentaireDetailPag
                     ),
                     absorbing:widget.regimeAlimentaire!=null,
                   ),
-                  widget.regimeAlimentaire==null ? Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: MaterialButton(
-                          color: Theme.of(context).accentColor,
-                          child: Text(
-                            "Submit",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          onPressed: () async {
-                            _formKey.currentState?.save();
-                            if (_formKey.currentState?.validate() == true) {
-                              RegimeAlimentaire regimeAlimentaire=RegimeAlimentaire.fromMap(_formKey.currentState?.value);
-                              regimeAlimentaire.date=DateTime.now();
-                              await FirebaseController.to.addRegimeAlimentaire(regimeAlimentaire, widget.userId!);
-                              Get.to(RegimeAlimentairePage(widget.userId));
-                            } else {
-                              showShortToast("Validation failed");
-                            }
-                          },
-                        ),
-                      ),
-                      SizedBox(width: 20),
-                      Expanded(
-                        child: MaterialButton(
-                          color: Theme.of(context).accentColor,
-                          child: Text(
-                            "Reset",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          onPressed: () {
-                            _formKey.currentState?.reset();
-                          },
-                        ),
-                      ),
-                    ],
-                  ) : SizedBox()
+
                 ],
               ),
             ),
           ),
         ),
       ),
+      floatingActionButton:   widget.regimeAlimentaire==null ? Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          MaterialButton(
+            color: Theme.of(context).accentColor,
+            child: Text(
+              "Submit",
+              style: TextStyle(color: Colors.white),
+            ),
+            onPressed: () async {
+              _formKey.currentState?.save();
+              if (_formKey.currentState?.validate() == true) {
+                RegimeAlimentaire regimeAlimentaire=RegimeAlimentaire.fromMap(_formKey.currentState?.value);
+                regimeAlimentaire.date=DateTime.now();
+                await FirebaseController.to.addRegimeAlimentaire(regimeAlimentaire, widget.userId!);
+                Get.to(RegimeAlimentairePage(widget.userId));
+              } else {
+                showShortToast("Validation failed");
+              }
+            },
+          ),
+          MaterialButton(
+            color: Theme.of(context).accentColor,
+            child: Text(
+              "Reset",
+              style: TextStyle(color: Colors.white),
+            ),
+            onPressed: () {
+              _formKey.currentState?.reset();
+            },
+          ),
+        ],
+      ) : SizedBox(),
     );
   }
 }

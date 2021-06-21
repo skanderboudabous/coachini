@@ -36,6 +36,7 @@ class _ChartPageState extends State<ChartPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFF1E2630),
       body: SafeArea(
         child: WillPopScope(
           onWillPop: () async{

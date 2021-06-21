@@ -85,7 +85,6 @@ class FirebaseController extends GetxController {
 
   //Streams the firestore user from the firestore collection
   Stream<Adherant> streamFirestoreUser() {
-
     return _db
         .doc('/users/${firebaseUser.value!.uid}')
         .snapshots()
@@ -97,18 +96,22 @@ class FirebaseController extends GetxController {
     return _db
         .doc('/users/${firebaseUser.value!.uid}')
         .get()
-        .then((documentSnapshot) =>  Adherant.fromMap(documentSnapshot.data()!));
+        .then((documentSnapshot) => Adherant.fromMap(documentSnapshot.data()!));
+  }
+
+  Future<void> sendPasswordReset(String email) {
+    return _auth.sendPasswordResetEmail(email: email);
   }
 
   isAdmin() async {
     var adherant = await getFirestoreUser();
-    admin.value =adherant==null ? false : adherant.isAdmin;
+    admin.value = adherant == null ? false : adherant.isAdmin;
     update();
   }
 
   Future<User?> login(
       {required String? email,
-      required String ?password,
+      required String? password,
       required BuildContext context}) async {
     showLoadingIndicator(context);
     try {
@@ -133,20 +136,19 @@ class FirebaseController extends GetxController {
       required File? image,
       required BuildContext context}) async {
     showLoadingIndicator(context);
-    String appName="Secondary";
+    String appName = "Secondary";
     FirebaseApp app;
     try {
-      if(Firebase.apps.length==1)
-        {
-          app=await Firebase.initializeApp(name:appName,options:Firebase.app().options);
-        }
-      else{
-
-          app = await Firebase.app(appName);
+      if (Firebase.apps.length == 1) {
+        app = await Firebase.initializeApp(
+            name: appName, options: Firebase.app().options);
+      } else {
+        app = await Firebase.app(appName);
       }
-      final UserCredential result = (await FirebaseAuth.instanceFor(app: app).createUserWithEmailAndPassword(
+      final UserCredential result = (await FirebaseAuth.instanceFor(app: app)
+          .createUserWithEmailAndPassword(
               email: adherant.email!, password: password!));
-      adherant.id=(result.user)?.uid;
+      adherant.id = (result.user)?.uid;
       adherant.isAdmin = false;
       adherant.isSubscribed = false;
       String? extension = ((image!.path.split("/").last).split(".").last);
@@ -374,11 +376,17 @@ class FirebaseController extends GetxController {
   }
 
   Stream<QuerySnapshot> getUsersSubscribed() {
-    return userCollection.where("isSubscribed", isEqualTo: true).snapshots();
+    return userCollection
+        .where("isSubscribed", isEqualTo: true)
+        .where("isAdmin", isEqualTo: false)
+        .snapshots();
   }
 
   Stream<QuerySnapshot> getUsersUnSubscribed() {
-    return userCollection.where("isSubscribed", isEqualTo: false).snapshots();
+    return userCollection
+        .where("isSubscribed", isEqualTo: false)
+        .where("isAdmin", isEqualTo: false)
+        .snapshots();
   }
 
   Future<Adherant?> getUserFromId({required String? id}) async {
@@ -409,8 +417,8 @@ class FirebaseController extends GetxController {
 
   Future<void> setUserUnSubscribed({required String? userId}) async {
     return userCollection.doc(userId).update({"isSubscribed": false});
-
   }
+
   Future<void> deleteUser({required String? userId}) async {
     return userCollection.doc(userId).delete();
   }
@@ -516,7 +524,6 @@ class FirebaseController extends GetxController {
   }
 
   Future<QuerySnapshot> getChartData(String collectionName, String atr) {
-    print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     print(userCollection
         .doc(firestoreUser.value!.id)
         .collection(collectionName)
@@ -530,5 +537,9 @@ class FirebaseController extends GetxController {
   }
 
   addSuivieMentale(SuivieMentale suivieMentale, String s) {}
+
+  Future<void> updateSuiviMentale(String? userId, List suiviMentale) {
+    return userCollection.doc(userId).update({"suiviMentale": suiviMentale});
+  }
 //#endregion
 }

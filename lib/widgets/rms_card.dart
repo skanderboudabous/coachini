@@ -1,5 +1,6 @@
 import 'package:coachini/models/rm.dart';
 import 'package:coachini/pages/rm.dart';
+import 'package:coachini/pages/rm_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,8 +13,7 @@ class RMsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        Get.to(new RMsPage(userId,rm: this.rm));
-        print('testttt');
+        Get.to(new RMDetailPage(userId,rm: this.rm));
       },
       child: Container(
         decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.circular(15)),

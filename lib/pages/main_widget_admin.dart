@@ -5,7 +5,9 @@ import 'package:flutter_colorful_tab/flutter_colorful_tab.dart';
 
 class MainWidgetAdmin extends StatefulWidget {
   bool isDrawerOpen;
+
   MainWidgetAdmin(this.isDrawerOpen);
+
   @override
   _MainWidgetAdminState createState() => _MainWidgetAdminState();
 }
@@ -53,7 +55,9 @@ class _MainWidgetAdminState extends State<MainWidgetAdmin>
           ),
           Expanded(
               child: TabBarView(
-            physics:  widget.isDrawerOpen? NeverScrollableScrollPhysics() : PageScrollPhysics(),
+            physics: widget.isDrawerOpen
+                ? NeverScrollableScrollPhysics()
+                : PageScrollPhysics(),
             controller: _tabController,
             children: [
               UsersSubscribed(),

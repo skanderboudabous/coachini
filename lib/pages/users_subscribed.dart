@@ -16,7 +16,7 @@ class UsersSubscribed extends StatelessWidget {
             return ListView.builder(
                 itemCount: documents?.length,
                 itemBuilder: (context, index) {
-                  final Adherant adherant = Adherant.fromMap(documents?[index]);
+                  final Adherant adherant = Adherant.fromMap(documents?[index].data());
                   return Padding(
                     padding: const EdgeInsets.all(8),
                     child: UserSubscribedCard(adherant),

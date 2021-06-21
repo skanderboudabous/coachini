@@ -10,6 +10,7 @@ class Adherant {
   String? sexe;
   String? phone;
   String? pictureUrl;
+  List<dynamic>? suiviMentale=[];
 
   String? fullName() {
     return firstName! + " " + lastName!;
@@ -25,6 +26,7 @@ class Adherant {
       this.isAdmin,
       this.isSubscribed,
       this.pictureUrl,
+        this.suiviMentale
 });
 
   @override
@@ -35,10 +37,10 @@ class Adherant {
   @override
   int get hashCode => id.hashCode;
 
-  factory Adherant.fromMap(dynamic map) {
+  factory Adherant.fromMap(Map<String,dynamic>? map) {
     var temp;
     return Adherant(
-      email: map['email']?.toString(),
+      email: map!['email']?.toString(),
       id: map['id']?.toString(),
       isAdmin: map['isAdmin'],
       isSubscribed: map['isSubscribed'],
@@ -50,6 +52,7 @@ class Adherant {
           : (temp is DateTime ? temp : DateTime.fromMillisecondsSinceEpoch(temp.millisecondsSinceEpoch)),
       sexe: map['sexe']?.toString(),
       phone: map['phone']?.toString(),
+        suiviMentale: map.containsKey("suiviMentale")? map['suiviMentale'] : null
     );
   }
 
@@ -65,6 +68,7 @@ class Adherant {
       'phone': phone,
       'isAdmin': isAdmin,
       'isSubscribed':isSubscribed,
+      'suiviMentale':suiviMentale??null
     };
   }
 }

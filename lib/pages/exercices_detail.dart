@@ -163,6 +163,9 @@ class _ExerciceDetailPageState extends State<ExerciceDetailPage> {
                               name: 'dateLim',
                               // onChanged: _onChanged,
                               inputType: InputType.date,
+                              validator: FormBuilderValidators.compose([
+                                FormBuilderValidators.required(context),
+                              ]),
                               decoration: InputDecoration(
                                   labelText: 'Date Limit',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
