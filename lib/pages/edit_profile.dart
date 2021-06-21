@@ -46,6 +46,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
           image: DecorationImage(
+            colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
             image: AssetImage("assets/images/bg.jpg"),
             fit: BoxFit.cover,
           ),
@@ -57,120 +58,122 @@ class _EditProfilePageState extends State<EditProfilePage> {
               final adherant = snapshot.data as Adherant;
               return Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: GestureDetector(
-                            onTap: () => {getImage()},
-                            child: _image == null
-                                ? adherant.pictureUrl != null
-                                    ? OnlineImage(
-                                        adherant.pictureUrl!,
-                                        width: 100,
-                                        height: 100,
-                                        size: 25,
-                                      )
-                                    : CircleAvatar(
-                                        minRadius: 50,
-                                        maxRadius: 50,
-                                        child: Icon(Icons.add))
-                                : CircleAvatar(
-                                    maxRadius: 50,
-                                    minRadius: 50,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        image: DecorationImage(
-                                            fit: BoxFit.cover,
-                                            image: FileImage(_image!)),
+                child: Container(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: GestureDetector(
+                              onTap: () => {getImage()},
+                              child: _image == null
+                                  ? adherant.pictureUrl != null
+                                      ? OnlineImage(
+                                          adherant.pictureUrl!,
+                                          width: 100,
+                                          height: 100,
+                                          size: 25,
+                                        )
+                                      : CircleAvatar(
+                                          minRadius: 50,
+                                          maxRadius: 50,
+                                          child: Icon(Icons.add))
+                                  : CircleAvatar(
+                                      maxRadius: 50,
+                                      minRadius: 50,
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          image: DecorationImage(
+                                              fit: BoxFit.cover,
+                                              image: FileImage(_image!)),
+                                        ),
                                       ),
-                                    ),
-                                  )),
-                      ),
-                      FormBuilder(
-                        key: _formKey,
-                        child: Column(
-                          children: <Widget>[
-                            FormBuilderTextField(
-                              name: 'firstName',
-                              decoration: InputDecoration(
-                                  labelText: 'First Name',
-                                  labelStyle: TextStyle(color: Colors.white)),
-                              validator: FormBuilderValidators.compose([
-                                FormBuilderValidators.required(context),
-                              ]),
-                              initialValue: adherant.firstName==null ? '':adherant.firstName.toString(),
-                              style: TextStyle(color: Colors.white),
-                              keyboardType: TextInputType.name,
-                            ),
-                            FormBuilderTextField(
-                              name: 'lastName',
-                              decoration: InputDecoration(
-                                  labelText: 'Last Name',
-                                  labelStyle: TextStyle(color: Colors.white)),
-                              validator: FormBuilderValidators.compose([
-                                FormBuilderValidators.required(context),
-                              ]),
-                              initialValue: adherant.lastName==null ? '':adherant.lastName.toString(),
-                              style: TextStyle(color: Colors.white),
-                              keyboardType: TextInputType.name,
-                            ),
-                            FormBuilderTextField(
-                              name: 'phone',
-                              decoration: InputDecoration(
-                                  labelText: 'Phone Number',
-                                  labelStyle: TextStyle(color: Colors.white)),
-                              validator: FormBuilderValidators.compose([
-                                FormBuilderValidators.required(context),
-                                FormBuilderValidators.numeric(context),
-                                FormBuilderValidators.maxLength(context, 8),
-                                FormBuilderValidators.minLength(context, 8),
-                              ]),
-                              initialValue: adherant.phone==null ? '': adherant.phone.toString(),
-                              keyboardType: TextInputType.number,
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            FormBuilderDateTimePicker(
-                              name: 'birthday',
-                              // onChanged: _onChanged,
-                              inputType: InputType.date,
-                              decoration: InputDecoration(
-                                  labelText: 'Birthday',
-                                  labelStyle: TextStyle(color: Colors.white)),
-                              initialValue: adherant.birthday,
-                              style: TextStyle(color: Colors.white),
-                              // initialValue: DateTime.now(),
-                              // enabled: true,
-                            ),
-                            FormBuilderDropdown(
-                                name: 'sexe',
-                                decoration: InputDecoration(
-                                    labelText: 'Gender',
-                                    labelStyle: TextStyle(color: Colors.white)),
-                                initialValue: adherant.sexe==null ? 'Male': adherant.sexe.toString(),
-                                style: TextStyle(color: Colors.white),
-                                dropdownColor: Colors.black,
-                                allowClear: true,
-                                validator: FormBuilderValidators.compose(
-                                    [FormBuilderValidators.required(context)]),
-                                items: [
-                                  DropdownMenuItem(
-                                    child: Text('Male'),
-                                    value: 'Male',
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text(
-                                      'Female',
-                                    ),
-                                    value: 'Female',
-                                  )
-                                ]),
-                          ],
+                                    )),
                         ),
-                      ),
-                    ],
+                        FormBuilder(
+                          key: _formKey,
+                          child: Column(
+                            children: <Widget>[
+                              FormBuilderTextField(
+                                name: 'firstName',
+                                decoration: InputDecoration(
+                                    labelText: 'First Name',
+                                    labelStyle: TextStyle(color: Colors.white)),
+                                validator: FormBuilderValidators.compose([
+                                  FormBuilderValidators.required(context),
+                                ]),
+                                initialValue: adherant.firstName==null ? '':adherant.firstName.toString(),
+                                style: TextStyle(color: Colors.white,fontSize: 20),
+                                keyboardType: TextInputType.name,
+                              ),
+                              FormBuilderTextField(
+                                name: 'lastName',
+                                decoration: InputDecoration(
+                                    labelText: 'Last Name',
+                                    labelStyle: TextStyle(color: Colors.white)),
+                                validator: FormBuilderValidators.compose([
+                                  FormBuilderValidators.required(context),
+                                ]),
+                                initialValue: adherant.lastName==null ? '':adherant.lastName.toString(),
+                                style: TextStyle(color: Colors.white,fontSize: 20),
+                                keyboardType: TextInputType.name,
+                              ),
+                              FormBuilderTextField(
+                                name: 'phone',
+                                decoration: InputDecoration(
+                                    labelText: 'Phone Number',
+                                    labelStyle: TextStyle(color: Colors.white)),
+                                validator: FormBuilderValidators.compose([
+                                  FormBuilderValidators.required(context),
+                                  FormBuilderValidators.numeric(context),
+                                  FormBuilderValidators.maxLength(context, 8),
+                                  FormBuilderValidators.minLength(context, 8),
+                                ]),
+                                initialValue: adherant.phone==null ? '': adherant.phone.toString(),
+                                keyboardType: TextInputType.number,
+                                style: TextStyle(color: Colors.white,fontSize: 20),
+                              ),
+                              FormBuilderDateTimePicker(
+                                name: 'birthday',
+                                // onChanged: _onChanged,
+                                inputType: InputType.date,
+                                decoration: InputDecoration(
+                                    labelText: 'Birthday',
+                                    labelStyle: TextStyle(color: Colors.white)),
+                                initialValue: adherant.birthday,
+                                style: TextStyle(color: Colors.white,fontSize: 20),
+                                // initialValue: DateTime.now(),
+                                // enabled: true,
+                              ),
+                              FormBuilderDropdown(
+                                  name: 'sexe',
+                                  decoration: InputDecoration(
+                                      labelText: 'Gender',
+                                      labelStyle: TextStyle(color: Colors.white)),
+                                  initialValue: adherant.sexe==null ? 'Male': adherant.sexe.toString(),
+                                  style: TextStyle(color: Colors.white,fontSize: 20),
+                                  dropdownColor: Colors.black,
+                                  allowClear: true,
+                                  validator: FormBuilderValidators.compose(
+                                      [FormBuilderValidators.required(context)]),
+                                  items: [
+                                    DropdownMenuItem(
+                                      child: Text('Male'),
+                                      value: 'Male',
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text(
+                                        'Female',
+                                      ),
+                                      value: 'Female',
+                                    )
+                                  ]),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               );

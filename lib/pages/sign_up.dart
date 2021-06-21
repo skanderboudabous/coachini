@@ -88,6 +88,7 @@ class _SignUpPageState extends State<SignUpPage> {
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
+              colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
               image: AssetImage("assets/images/bg.jpg"),
               fit: BoxFit.cover,
             ),
@@ -124,7 +125,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       Step(
                           title: Text(
                             'Login Details',
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22),
                           ),
                           isActive: currentStep == 0,
                           content: Column(
@@ -213,7 +214,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           isActive: currentStep == 1,
                           title: Text(
                             'Pesonal Details',
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22),
                           ),
                           content: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -221,93 +222,109 @@ class _SignUpPageState extends State<SignUpPage> {
                             children: [
                               FormBuilder(
                                 key: _formKey2,
-                                child: Column(
-                                  children: <Widget>[
-                                    FormBuilderTextField(
-                                      name: 'firstName',
-                                      decoration: InputDecoration(
-                                          labelText: 'First Name',
-                                          labelStyle:
-                                              TextStyle(color: Colors.white)),
-                                      validator: FormBuilderValidators.compose([
-                                        FormBuilderValidators.required(context),
-                                      ]),
-                                      initialValue: '',
-                                      style: TextStyle(color: Colors.white),
-                                      keyboardType: TextInputType.name,
-                                    ),
-                                    FormBuilderTextField(
-                                      name: 'lastName',
-                                      decoration: InputDecoration(
-                                          labelText: 'Last Name',
-                                          labelStyle:
-                                              TextStyle(color: Colors.white)),
-                                      validator: FormBuilderValidators.compose([
-                                        FormBuilderValidators.required(context),
-                                      ]),
-                                      initialValue: '',
-                                      style: TextStyle(color: Colors.white),
-                                      keyboardType: TextInputType.name,
-                                    ),
-                                    FormBuilderTextField(
-                                      name: 'phone',
-                                      decoration: InputDecoration(
-                                          labelText: 'Phone Number',
-                                          labelStyle:
-                                              TextStyle(color: Colors.white)),
-                                      validator: FormBuilderValidators.compose([
-                                        FormBuilderValidators.required(context),
-                                        FormBuilderValidators.numeric(context),
-                                        FormBuilderValidators.maxLength(
-                                            context, 8),
-                                        FormBuilderValidators.minLength(
-                                            context, 8),
-                                      ]),
-                                      initialValue: '',
-                                      keyboardType: TextInputType.number,
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                    FormBuilderDateTimePicker(
-                                      name: 'birthday',
-                                      // onChanged: _onChanged,
-                                      inputType: InputType.date,
-                                      decoration: InputDecoration(
-                                          labelText: 'Birthday',
-                                          labelStyle:
-                                              TextStyle(color: Colors.white)),
-                                      initialValue: new DateTime(1990, 1, 1),
-                                      style: TextStyle(color: Colors.white),
-                                      // initialValue: DateTime.now(),
-                                      // enabled: true,
-                                    ),
-                                    FormBuilderDropdown(
-                                        name: 'sexe',
-                                        decoration: InputDecoration(
-                                            labelText: 'Gender',
-                                            labelStyle:
-                                                TextStyle(color: Colors.white)),
-                                        initialValue: 'Male',
-                                        style: TextStyle(color: Colors.white),
-                                        dropdownColor: Colors.black,
-                                        allowClear: true,
-                                        validator:
-                                            FormBuilderValidators.compose([
-                                          FormBuilderValidators.required(
-                                              context)
-                                        ]),
-                                        items: [
-                                          DropdownMenuItem(
-                                            child: Text('Male'),
-                                            value: 'Male',
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 40.0),
+                                  child: Center(
+                                    child: SingleChildScrollView(
+                                      child:
+                                        Container(
+                                          decoration: BoxDecoration(
+                                              color: Colors.transparent,
+                                              borderRadius:
+                                              BorderRadius.circular(20)),
+                                          child: Column(
+                                            children: <Widget>[
+                                              FormBuilderTextField(
+                                                name: 'firstName',
+                                                decoration: InputDecoration(
+                                                    labelText: 'First Name',
+                                                    labelStyle:
+                                                        TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold)),
+                                                validator: FormBuilderValidators.compose([
+                                                  FormBuilderValidators.required(context),
+                                                ]),
+                                                initialValue: '',
+                                                style: TextStyle(color: Colors.white),
+                                                keyboardType: TextInputType.name,
+                                              ),
+                                              FormBuilderTextField(
+                                                name: 'lastName',
+                                                decoration: InputDecoration(
+                                                    labelText: 'Last Name',
+                                                    labelStyle:
+                                                        TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold)),
+                                                validator: FormBuilderValidators.compose([
+                                                  FormBuilderValidators.required(context),
+                                                ]),
+                                                initialValue: '',
+                                                style: TextStyle(color: Colors.white),
+                                                keyboardType: TextInputType.name,
+                                              ),
+                                              FormBuilderTextField(
+                                                name: 'phone',
+                                                decoration: InputDecoration(
+                                                    labelText: 'Phone Number',
+                                                    labelStyle:
+                                                        TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold)),
+                                                validator: FormBuilderValidators.compose([
+                                                  FormBuilderValidators.required(context),
+                                                  FormBuilderValidators.numeric(context),
+                                                  FormBuilderValidators.maxLength(
+                                                      context, 8),
+                                                  FormBuilderValidators.minLength(
+                                                      context, 8),
+                                                ]),
+                                                initialValue: '',
+                                                keyboardType: TextInputType.number,
+                                                style: TextStyle(color: Colors.white),
+                                              ),
+                                              FormBuilderDateTimePicker(
+                                                name: 'birthday',
+                                                // onChanged: _onChanged,
+                                                inputType: InputType.date,
+                                                decoration: InputDecoration(
+                                                    labelText: 'Birthday',
+                                                    labelStyle:
+                                                        TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold)),
+                                                initialValue: new DateTime(1990, 1, 1),
+                                                style: TextStyle(color: Colors.white),
+                                                // initialValue: DateTime.now(),
+                                                // enabled: true,
+                                              ),
+                                              FormBuilderDropdown(
+                                                  name: 'sexe',
+                                                  decoration: InputDecoration(
+                                                      labelText: 'Gender',
+                                                      labelStyle:
+                                                          TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold)),
+                                                  initialValue: 'Male',
+                                                  style: TextStyle(color: Colors.white),
+                                                  dropdownColor: Colors.black,
+                                                  allowClear: true,
+                                                  validator:
+                                                      FormBuilderValidators.compose([
+                                                    FormBuilderValidators.required(
+                                                        context)
+                                                  ]),
+                                                  items: [
+                                                    DropdownMenuItem(
+                                                      child: Text('Male'),
+                                                      value: 'Male',
+                                                    ),
+                                                    DropdownMenuItem(
+                                                      child: Text(
+                                                        'Female',
+                                                      ),
+                                                      value: 'Female',
+                                                    )
+                                                  ]),
+                                            ],
                                           ),
-                                          DropdownMenuItem(
-                                            child: Text(
-                                              'Female',
-                                            ),
-                                            value: 'Female',
-                                          )
-                                        ]),
-                                  ],
+                                        ),
+
+                                    ),
+                                  ),
                                 ),
                               ),
                             ],
@@ -316,7 +333,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           isActive: currentStep == 2,
                           title: Text(
                             'Profile Picture',
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22),
                           ),
                           content: Column(
                             mainAxisAlignment: MainAxisAlignment.center,

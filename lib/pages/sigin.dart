@@ -1,7 +1,6 @@
 import 'package:coachini/routes/app_routes.dart';
 import 'package:coachini/controller/firebase_controller.dart';
 import 'package:coachini/helpers/helpers.dart';
-import 'package:coachini/widgets/label_button.dart';
 import 'package:coachini/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

@@ -1,7 +1,5 @@
-import 'package:coachini/routes/app_routes.dart';
 import 'package:coachini/utils/functions.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 class AboutPage extends StatefulWidget {
   @override
   _AboutPageState createState() => _AboutPageState();

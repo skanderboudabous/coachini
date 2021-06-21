@@ -90,7 +90,7 @@ class UserUnSubscribedCard extends StatelessWidget {
                               onPressed: () {
                                 Navigator.pop(context);
                                 FirebaseController.to
-                                    .setUserUnSubscribed(userId: adherant.id);
+                                    .deleteUser(userId: adherant.id);
                               },
                               color: Color.fromRGBO(0, 179, 134, 1.0),
                             ),

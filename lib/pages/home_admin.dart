@@ -1,7 +1,5 @@
-import 'package:coachini/controller/firebase_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
-
 import 'main_widget_admin.dart';
 import 'menu_widget_admin.dart';
 
@@ -12,8 +10,8 @@ class HomeAdminPage extends StatefulWidget {
 
 class _HomeAdminPageState extends State<HomeAdminPage> {
   late String title;
-  final   GlobalKey<SliderMenuContainerState> key =
-  new GlobalKey<SliderMenuContainerState>();
+  final GlobalKey<SliderMenuContainerState> key =
+      new GlobalKey<SliderMenuContainerState>();
 
   @override
   void initState() {
@@ -41,7 +39,9 @@ class _HomeAdminPageState extends State<HomeAdminPage> {
                 Navigator.pop(context);
               },
             ),
-            sliderMain: MainWidgetAdmin( key.currentState==null ? false : key.currentState!.isDrawerOpen)),
+            sliderMain: MainWidgetAdmin(key.currentState == null
+                ? false
+                : key.currentState!.isDrawerOpen)),
       ),
     );
   }

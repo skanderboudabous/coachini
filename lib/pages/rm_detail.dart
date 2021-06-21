@@ -115,6 +115,7 @@ class _RMDetailPageState extends State<RMDetailPage> {
                                 FormBuilderValidators.required(context),
                               ]),
                               keyboardType: TextInputType.name,
+                              style: TextStyle(color: Colors.white),
                             ),
                             FormBuilderTextField(
                               name: 'value',
@@ -130,6 +131,7 @@ class _RMDetailPageState extends State<RMDetailPage> {
                               ]),
                               initialValue: widget.rm?.value.toString(),
                               keyboardType: TextInputType.number,
+                              style: TextStyle(color: Colors.white),
                             ),
                           ],
                         ),

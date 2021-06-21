@@ -1,6 +1,5 @@
 import 'package:coachini/routes/app_routes.dart';
 import 'package:coachini/controller/firebase_controller.dart';
-import 'package:coachini/models/suivie-mentale.dart';
 import 'package:coachini/pages/form_web_view.dart';
 import 'package:coachini/utils/constants.dart';
 import 'package:coachini/utils/functions.dart';

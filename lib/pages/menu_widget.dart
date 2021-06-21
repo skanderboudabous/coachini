@@ -1,9 +1,6 @@
 import 'package:coachini/models/adherant.dart';
-import 'package:coachini/pages/chart.dart';
 import 'package:coachini/pages/collections-list.dart';
 import 'package:coachini/pages/composition_corporelle.dart';
-import 'package:coachini/pages/contact.dart';
-import 'package:coachini/pages/list_chart_items.dart';
 import 'package:coachini/pages/objectif.dart';
 import 'package:coachini/controller/firebase_controller.dart';
 import 'package:coachini/pages/regime-alimentaire.dart';
@@ -12,7 +9,6 @@ import 'package:coachini/pages/suivi_entrainement.dart';
 import 'package:coachini/pages/suivie-mentale.dart';
 import 'package:coachini/pages/suivie-nutritionnel.dart';
 import 'package:coachini/widgets/online_image.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';

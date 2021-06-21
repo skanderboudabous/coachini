@@ -1,11 +1,7 @@
 import 'package:coachini/pages/suivi-nutritionnel-list.dart';
-import 'package:coachini/routes/app_routes.dart';
-import 'package:coachini/controller/firebase_controller.dart';
-import 'package:coachini/models/adherant.dart';
 import 'package:coachini/pages/composition-corporelle-liste.dart';
 import 'package:coachini/pages/mesures-list.dart';
 import 'package:coachini/pages/suivi-entrainement-list.dart';
-import 'package:coachini/widgets/loader.dart';
 import 'package:coachini/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

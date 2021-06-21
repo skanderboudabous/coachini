@@ -16,6 +16,7 @@ class CompositionCorporelleCard extends StatelessWidget {
         Get.to(new CompositionCorporelleDetailPage(userId,compositionCorporelle: this.compositionCorporelle));
       },
       child: Container(
+        height: 50,
         decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.circular(15)),
         child: Padding(
           padding: const EdgeInsets.all(8.0),

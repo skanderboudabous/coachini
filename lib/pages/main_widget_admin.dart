@@ -1,5 +1,3 @@
-import 'package:coachini/controller/firebase_controller.dart';
-import 'package:coachini/models/suivie-nutritionnel.dart';
 import 'package:coachini/pages/users_subscribed.dart';
 import 'package:coachini/pages/users_unsubscribed.dart';
 import 'package:flutter/material.dart';

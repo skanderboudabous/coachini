@@ -1,6 +1,5 @@
 import 'package:coachini/controller/firebase_controller.dart';
 import 'package:coachini/models/regime-alimentaire.dart';
-import 'package:coachini/pages/composition_corporelle.dart';
 import 'package:coachini/pages/regime-alimentaire.dart';
 import 'package:coachini/utils/functions.dart';
 import 'package:flutter/cupertino.dart';

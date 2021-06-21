@@ -133,16 +133,24 @@ class FirebaseController extends GetxController {
       required File? image,
       required BuildContext context}) async {
     showLoadingIndicator(context);
-
+    String appName="Secondary";
+    FirebaseApp app;
     try {
-      FirebaseApp app = await Firebase.app("Secondary");
+      if(Firebase.apps.length==1)
+        {
+          app=await Firebase.initializeApp(name:appName,options:Firebase.app().options);
+        }
+      else{
+
+          app = await Firebase.app(appName);
+      }
       final UserCredential result = (await FirebaseAuth.instanceFor(app: app).createUserWithEmailAndPassword(
               email: adherant.email!, password: password!));
       adherant.id=(result.user)?.uid;
       adherant.isAdmin = false;
       adherant.isSubscribed = false;
       String? extension = ((image!.path.split("/").last).split(".").last);
-      Reference ref = _fs.ref("users/${currentId!}.$extension");
+      Reference ref = _fs.ref("users/${adherant.id!}.$extension");
       var bytes = await image.readAsBytes();
       await ref.putData(bytes);
       var url = await ref.getDownloadURL();
@@ -401,6 +409,10 @@ class FirebaseController extends GetxController {
 
   Future<void> setUserUnSubscribed({required String? userId}) async {
     return userCollection.doc(userId).update({"isSubscribed": false});
+
+  }
+  Future<void> deleteUser({required String? userId}) async {
+    return userCollection.doc(userId).delete();
   }
 
   Future<QuerySnapshot> getUserSuiviEntrainements({required String? id}) {
