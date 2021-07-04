@@ -13,6 +13,7 @@ class UsersSubscribed extends StatelessWidget {
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasData) {
             final List<DocumentSnapshot>? documents = snapshot.data?.docs;
+
             return ListView.builder(
                 itemCount: documents?.length,
                 itemBuilder: (context, index) {

@@ -42,25 +42,34 @@ class _ExercicesPageState extends State<ExercicesPage> {
               : Get.toNamed(AppRoutes.HOME);
         },)
       ),
-      body: FutureBuilder(
-          future: FirebaseController.to.getUserExercices(id: widget.userId),
-          builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-            print(snapshot.hasData);
-            if (snapshot.hasData) {
-              final List<DocumentSnapshot>? documents = snapshot.data?.docs;
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
+            image: AssetImage("assets/images/bg2.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: FutureBuilder(
+            future: FirebaseController.to.getUserExercices(id: widget.userId),
+            builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+              print(snapshot.hasData);
+              if (snapshot.hasData) {
+                final List<DocumentSnapshot>? documents = snapshot.data?.docs;
 
-              return ListView.builder(
-                  itemCount: documents?.length,
-                  itemBuilder: (context, index) {
-                    final Exercice exercice = Exercice.fromMap(documents?[index].data());
-                    return Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: ExercicesCard(exercice, widget.userId));
-                  });
-            } else {
-              return Loader();
-            }
-          }),
+                return ListView.builder(
+                    itemCount: documents?.length,
+                    itemBuilder: (context, index) {
+                      final Exercice exercice = Exercice.fromMap(documents?[index].data());
+                      return Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: ExercicesCard(exercice, widget.userId));
+                    });
+              } else {
+                return Loader();
+              }
+            }),
+      ),
       floatingActionButton: isAdmin == true
           ? ElevatedButton(
         child: Icon(Icons.add),

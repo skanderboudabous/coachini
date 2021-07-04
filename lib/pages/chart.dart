@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coachini/controller/firebase_controller.dart';
-import 'package:coachini/pages/list_chart_items.dart';
 import 'package:date_format/date_format.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -65,7 +65,7 @@ class _ChartPageState extends State<ChartPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text(widget.title!),
+                        Text(widget.title!,style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),),
                         Expanded(
                           child: Stack(
                             children: <Widget>[

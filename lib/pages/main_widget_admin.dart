@@ -58,10 +58,10 @@ class _MainWidgetAdminState extends State<MainWidgetAdmin>
             physics: widget.isDrawerOpen
                 ? NeverScrollableScrollPhysics()
                 : PageScrollPhysics(),
-            controller: _tabController,
-            children: [
-              UsersSubscribed(),
-              UsersUnSubscribed(),
+                  controller: _tabController,
+                  children: [
+                UsersSubscribed(),
+                UsersUnSubscribed(),
             ],
           ))
         ],

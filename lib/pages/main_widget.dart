@@ -16,9 +16,9 @@ class _MainWidgetState extends State<MainWidget> {
           child: Column(
               children: <Widget>[ExpansionCard(
                 borderRadius: 20,
-                background: Image.asset(
-                  "assets/images/img1.jpg",
-                  fit: BoxFit.cover,
+                background: Image(image: AssetImage("assets/images/img1.jpg"),
+                  colorBlendMode: BlendMode.darken,
+                  color: Colors.black38,
                 ),
                 title: Container(
                   child: Column(
@@ -45,11 +45,10 @@ class _MainWidgetState extends State<MainWidget> {
               ),
                 ExpansionCard(
                   borderRadius: 20,
-                  background: Image.asset(
-                    "assets/images/img2.png",
-                    fit: BoxFit.cover,
-//                    colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
-                  ),
+                    background: Image(image: AssetImage("assets/images/img2.png"),
+                    colorBlendMode: BlendMode.darken,
+                      color: Colors.black38,
+                    ),
                   title: Container(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,15 +67,15 @@ class _MainWidgetState extends State<MainWidget> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal:8.0),
                       child: Text("L'entraînement sportif est l'ensemble des méthodes et exercices physiques visant l'entretien et l'amélioration des performances sportives, chez le sportif amateur ou professionnel ; cet entraînement comprend notamment la préparation physique, technique, tactique et mentale.",
-                          style: TextStyle(fontSize: 20, color: Colors.white,fontWeight: FontWeight.bold)),
+                          style: TextStyle(fontSize: 20, color: Colors.white,fontWeight: FontWeight.normal)),
                     )
                   ],
                 ),
                 ExpansionCard(
                   borderRadius: 20,
-                  background: Image.asset(
-                    "assets/images/img3.jpg",
-                    fit: BoxFit.cover,
+                  background: Image(image: AssetImage("assets/images/img3.jpg"),
+                    colorBlendMode: BlendMode.darken,
+                    color: Colors.black38,
                   ),
                   title: Container(
                     child: Column(
@@ -102,9 +101,9 @@ class _MainWidgetState extends State<MainWidget> {
                 ),
                 ExpansionCard(
                   borderRadius: 20,
-                  background: Image.asset(
-                    "assets/images/img4.jpg",
-                    fit: BoxFit.cover,
+                  background: Image(image: AssetImage("assets/images/img4.jpg"),
+                    colorBlendMode: BlendMode.darken,
+                    color: Colors.black38,
                   ),
                   title: Container(
                     child: Column(
@@ -123,16 +122,16 @@ class _MainWidgetState extends State<MainWidget> {
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.only(right: 130, left: 10),
-                      child: Text("Le sport est une moyen qui va permettre d'atteindre plusieurs objectifs: perte de poid, renforcement muculaire, préparation physique, remise en forme",
-                          style: TextStyle(fontSize: 20, color: Colors.white,fontWeight: FontWeight.bold)),
+                      child: Text("La liste des bienfaits du sport sur la santé est longue comme le bras : meilleur fonctionnement du coeur et de l’activité sanguine, augmentation de la masse musculaire, diminution de la masse graisseuse, amélioration du sommeil… ",
+                          style: TextStyle(fontSize: 20, color: Colors.white,fontWeight: FontWeight.normal)),
                     )
                   ],
                 ),
                 ExpansionCard(
                   borderRadius: 20,
-                  background: Image.asset(
-                    "assets/images/img5.jpg",
-                    fit: BoxFit.cover,
+                  background: Image(image: AssetImage("assets/images/img5.jpg"),
+                    colorBlendMode: BlendMode.darken,
+                    color: Colors.black38,
                   ),
                   title: Container(
                     child: Column(
@@ -151,7 +150,7 @@ class _MainWidgetState extends State<MainWidget> {
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal:8.0),
-                      child: Text("LE sport est une moyen qui va permettre d'atteindre plusieurs objectifs: perte de poid, renforcement muculaire, préparation physique, remise en forme",
+                      child: Text("La pratique régulière d’une activité sportive ou physique a un effet bénéfique sur la vie sociale et la santé. Non seulement elle a une incidence directe sur les aptitudes physiques, mais elle aide aussi les enfants et les jeunes à faire des choix sains, à rester actifs et à lutter contre les maladies non transmissibles",
                           style: TextStyle(fontSize: 20, color: Colors.white)),
                     )
                   ],

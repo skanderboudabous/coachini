@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:coachini/controller/firebase_controller.dart';
 import 'package:coachini/models/exercice.dart';
 import 'package:coachini/pages/exercices_detail.dart';

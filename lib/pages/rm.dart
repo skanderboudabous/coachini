@@ -46,25 +46,34 @@ class _RMsPageState extends State<RMsPage> {
           },
         ),
       ),
-      body:  FutureBuilder(
-          future: FirebaseController.to.getUserRms(id: widget.userId),
-          builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-            print(snapshot.hasData);
-            if (snapshot.hasData) {
-              final List<DocumentSnapshot>? documents = snapshot.data?.docs;
+      body:  Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
+            image: AssetImage("assets/images/bg3.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: FutureBuilder(
+            future: FirebaseController.to.getUserRms(id: widget.userId),
+            builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+              print(snapshot.hasData);
+              if (snapshot.hasData) {
+                final List<DocumentSnapshot>? documents = snapshot.data?.docs;
 
-              return ListView.builder(
-                  itemCount: documents?.length,
-                  itemBuilder: (context, index) {
-                    final RM rm = RM.fromMap(documents?[index].data());
-                    return Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: RMsCard(rm, widget.userId));
-                  });
-            } else {
-              return Loader();
-            }
-          }),
+                return ListView.builder(
+                    itemCount: documents?.length,
+                    itemBuilder: (context, index) {
+                      final RM rm = RM.fromMap(documents?[index].data());
+                      return Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: RMsCard(rm, widget.userId));
+                    });
+              } else {
+                return Loader();
+              }
+            }),
+      ),
       floatingActionButton: isAdmin == true
           ? ElevatedButton(
         child: Icon(Icons.add),

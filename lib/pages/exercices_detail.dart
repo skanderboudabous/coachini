@@ -159,6 +159,19 @@ class _ExerciceDetailPageState extends State<ExerciceDetailPage> {
                               keyboardType: TextInputType.number,
                               style: TextStyle(color: Colors.white),
                             ),
+                            FormBuilderTextField(
+                              name: 'charge',
+                              decoration: InputDecoration(
+                                  labelText: 'charge (Kg)',
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
+                              validator: FormBuilderValidators.compose([
+                                FormBuilderValidators.required(context),
+                                FormBuilderValidators.numeric(context),
+                              ]),
+                              initialValue: widget.exercice?.charge.toString(),
+                              keyboardType: TextInputType.number,
+                              style: TextStyle(color: Colors.white),
+                            ),
                             FormBuilderDateTimePicker(
                               name: 'dateLim',
                               // onChanged: _onChanged,

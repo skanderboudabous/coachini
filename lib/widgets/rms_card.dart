@@ -1,5 +1,4 @@
 import 'package:coachini/models/rm.dart';
-import 'package:coachini/pages/rm.dart';
 import 'package:coachini/pages/rm_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

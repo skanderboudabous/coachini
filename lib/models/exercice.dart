@@ -5,6 +5,7 @@ class Exercice {
   int? nbSerie;
   int? nbRep;
   int? repo;
+  int? charge;
   bool? isDone;
   DateTime? dateLim;
 
@@ -15,6 +16,7 @@ class Exercice {
       this.nbSerie,
       this.nbRep,
       this.repo,
+      this.charge,
       this.isDone,
       this.dateLim});
 
@@ -40,6 +42,9 @@ class Exercice {
       repo: null == (temp = map['repo'])
           ? null
           : (temp is num ? temp.toInt() : int.tryParse(temp)),
+      charge: null == (temp = map['charge'])
+          ? null
+          : (temp is num ? temp.toInt() : int.tryParse(temp)),
       isDone: map['isDone'],
       pictureUrl: map['pictureUrl']?.toString(),
       dateLim: null == (temp = map['dateLim'])
@@ -59,6 +64,7 @@ class Exercice {
       'nbSerie': nbSerie,
       'nbRep': nbRep,
       'repo': repo,
+      'charge': charge,
       'isDone': isDone??false,
       'dateLim': dateLim
     };
@@ -66,6 +72,6 @@ class Exercice {
 
   @override
   String toString() {
-    return 'Exercice{id: $id, nom: $nom,ImageLink: $pictureUrl, nbSerie: $nbSerie, nbRep: $nbRep, repo: $repo,isDone :$isDone,dateLim: $dateLim}';
+    return 'Exercice{id: $id, nom: $nom,ImageLink: $pictureUrl, nbSerie: $nbSerie, nbRep: $nbRep, repo: $repo,charge: $charge,isDone :$isDone,dateLim: $dateLim}';
   }
 }
