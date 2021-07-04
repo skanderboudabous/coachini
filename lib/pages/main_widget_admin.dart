@@ -1,3 +1,4 @@
+import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:coachini/pages/users_subscribed.dart';
 import 'package:coachini/pages/users_unsubscribed.dart';
 import 'package:flutter/material.dart';
@@ -15,11 +16,19 @@ class MainWidgetAdmin extends StatefulWidget {
 class _MainWidgetAdminState extends State<MainWidgetAdmin>
     with SingleTickerProviderStateMixin {
   TabController? _tabController;
+  TextEditingController textController = TextEditingController();
+  String search="";
 
   @override
   void initState() {
     _tabController = TabController(vsync: this, length: 2);
+    textController.addListener(setSearch);
     super.initState();
+  }
+  setSearch(){
+    setState(() {
+      this.search=textController.text;
+    });
   }
 
   @override
@@ -34,6 +43,16 @@ class _MainWidgetAdminState extends State<MainWidgetAdmin>
     return SafeArea(
       child: Column(
         children: [
+          AnimSearchBar(
+            width: 400,
+            textController: textController,
+            onSuffixTap: () {
+              setState(() {
+                textController.clear();
+              });
+            },
+
+          ),
           ColorfulTabBar(
             controller: _tabController,
             tabs: [
@@ -58,10 +77,10 @@ class _MainWidgetAdminState extends State<MainWidgetAdmin>
             physics: widget.isDrawerOpen
                 ? NeverScrollableScrollPhysics()
                 : PageScrollPhysics(),
-                  controller: _tabController,
-                  children: [
-                UsersSubscribed(),
-                UsersUnSubscribed(),
+            controller: _tabController,
+            children: [
+              UsersSubscribed(search),
+              UsersUnSubscribed(search),
             ],
           ))
         ],

@@ -379,7 +379,7 @@ class FirebaseController extends GetxController {
     return userCollection
         .where("isSubscribed", isEqualTo: true)
         .where("isAdmin", isEqualTo: false)
-        .orderBy('firstName', descending: false)
+//        .orderBy('firstName', descending: false)
         .snapshots();
   }
 
@@ -387,7 +387,7 @@ class FirebaseController extends GetxController {
     return userCollection
         .where("isSubscribed", isEqualTo: false)
         .where("isAdmin", isEqualTo: false)
-        .orderBy('firstName', descending: false)
+//        .orderBy('firstName', descending: false)
         .snapshots();
   }
 

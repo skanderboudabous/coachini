@@ -41,6 +41,7 @@ dependencies:
   date_format: ^2.0.2
   fl_chart: ^0.36.1
   webview_flutter: ^2.0.8
+  anim_search_bar: ^2.0.2
   flutter_radio_group:
   #State Management
   get: ^4.0.0-nullsafety.2

@@ -6,6 +6,8 @@ import 'package:coachini/widgets/user_subscribed_card.dart';
 import 'package:flutter/material.dart';
 
 class UsersSubscribed extends StatelessWidget {
+  final String filter;
+  UsersSubscribed(this.filter);
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
@@ -13,14 +15,25 @@ class UsersSubscribed extends StatelessWidget {
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasData) {
             final List<DocumentSnapshot>? documents = snapshot.data?.docs;
+             List<Adherant>? adherants = documents?.map((e) =>
+                Adherant.fromMap(e.data())).toList();
+            if(filter!="")
+              {
+                adherants=adherants?.where((adherant) {
+                  String fullName= (adherant.firstName!.toLowerCase()) +
+                      " " +
+                      (adherant.lastName!.toLowerCase());
+                  return fullName.contains(filter.toLowerCase());
+                }).toList();
+              }
 
             return ListView.builder(
-                itemCount: documents?.length,
+                itemCount: adherants?.length,
                 itemBuilder: (context, index) {
-                  final Adherant adherant = Adherant.fromMap(documents?[index].data());
+                  final Adherant? adherant = adherants?[index];
                   return Padding(
                     padding: const EdgeInsets.all(8),
-                    child: UserSubscribedCard(adherant),
+                    child: UserSubscribedCard(adherant!),
                   );
                 });
           } else {
