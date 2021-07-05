@@ -1,4 +1,5 @@
 import 'package:age_calculator/age_calculator.dart';
+import 'package:coachini/pages/techniques-preparation-mentale.dart';
 import 'package:coachini/routes/app_routes.dart';
 import 'package:coachini/controller/firebase_controller.dart';
 import 'package:coachini/models/adherant.dart';
@@ -156,6 +157,16 @@ class _UserProfileState extends State<UserProfile> {
               Get.to(new SuiviEntrainementPage(widget.id));
             },
             buttonLabel: "Suivi entrainement",
+            fontSize: 14,
+            bgColor: Colors.lightBlue,
+            width: 150,
+            height: 50,),
+          SizedBox(height: 10,),
+          PrimaryButton(
+            onPressed: () {
+              Get.to(new TechniquesPreparationMentalePage(widget.id));
+            },
+            buttonLabel: "Techniques de préparation mentale",
             fontSize: 14,
             bgColor: Colors.lightBlue,
             width: 150,

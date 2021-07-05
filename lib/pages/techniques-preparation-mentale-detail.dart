@@ -54,7 +54,7 @@ class _TechniquesPreparationMentaleDetailPageState extends State<TechniquesPrepa
           decoration: BoxDecoration(
             image: DecorationImage(
               colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
-              image: AssetImage("assets/images/bg4.jpg"),
+              image: AssetImage("assets/images/bg8.jpg"),
               fit: BoxFit.cover,
             ),
           ),

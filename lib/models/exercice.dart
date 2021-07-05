@@ -5,7 +5,7 @@ class Exercice {
   int? nbSerie;
   int? nbRep;
   int? repo;
-  int? charge;
+  String? charge;
   bool? isDone;
   DateTime? dateLim;
   DateTime? date;
@@ -44,9 +44,7 @@ class Exercice {
       repo: null == (temp = map['repo'])
           ? null
           : (temp is num ? temp.toInt() : int.tryParse(temp)),
-      charge: null == (temp = map['charge'])
-          ? null
-          : (temp is num ? temp.toInt() : int.tryParse(temp)),
+      charge: map['nom']?.toString(),
       isDone: map['isDone'],
       pictureUrl: map['pictureUrl']?.toString(),
       dateLim: null == (temp = map['dateLim'])
