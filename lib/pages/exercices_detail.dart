@@ -213,6 +213,7 @@ class _ExerciceDetailPageState extends State<ExerciceDetailPage> {
                                       pictureUrl != null) {
                                     Exercice exercice = Exercice.fromMap(
                                         _formKey.currentState?.value);
+                                    exercice.date=DateTime.now();
                                     exercice.isDone=false;
                                     exercice.pictureUrl = pictureUrl;
                                     await FirebaseController.to

@@ -72,16 +72,44 @@ class _SuivieNutritionnelDetailPageState
                     child: Column(
                       children: <Widget>[
                         FormBuilderTextField(
-                          name: 'apport',
+                          name: 'qteCalRec',
                           decoration: InputDecoration(
-                              labelText: 'Apport (Kcal)',
+                              labelText: 'Quantité de calories recommandé (Kcal)',
                               labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(context),
                             FormBuilderValidators.numeric(context),
                           ]),
                           //************************************
-                          initialValue: widget.suivieNutritionnel?.apport.toString(),
+                          initialValue: widget.suivieNutritionnel?.qteCalRec.toString(),
+                          style: TextStyle(color: Colors.white),
+                          keyboardType: TextInputType.number,
+                        ),
+                        FormBuilderTextField(
+                          name: 'metabolisme',
+                          decoration: InputDecoration(
+                              labelText: 'Métabolisme de base (Kcal)',
+                              labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
+                          validator: FormBuilderValidators.compose([
+                            FormBuilderValidators.required(context),
+                            FormBuilderValidators.numeric(context),
+                          ]),
+                          //************************************
+                          initialValue: widget.suivieNutritionnel?.metabolisme.toString(),
+                          style: TextStyle(color: Colors.white),
+                          keyboardType: TextInputType.number,
+                        ),
+                        FormBuilderTextField(
+                          name: 'depEnergy',
+                          decoration: InputDecoration(
+                              labelText: 'Dépense énergétique (Kcal)',
+                              labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
+                          validator: FormBuilderValidators.compose([
+                            FormBuilderValidators.required(context),
+                            FormBuilderValidators.numeric(context),
+                          ]),
+                          //************************************
+                          initialValue: widget.suivieNutritionnel?.depEnergy.toString(),
                           style: TextStyle(color: Colors.white),
                           keyboardType: TextInputType.number,
                         ),

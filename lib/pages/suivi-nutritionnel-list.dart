@@ -26,10 +26,32 @@ class _SuiviNutritionnelListState extends State<SuiviNutritionnelList> {
                   children: [
                     PrimaryButton(
                       onPressed: () {
-                         Get.to(()=> new ChartPage(title:"Apport", atr: 'apport',collectionName: collectionName,));
+                         Get.to(()=> new ChartPage(title:"Quantité de calories recommandé", atr: 'qteCalRec',collectionName: collectionName,));
 
                       },
-                      buttonLabel: "Apport",
+                      buttonLabel: "Quantité de calories recommandé",
+                      fontSize: 14,
+                      bgColor: Colors.lightBlue,
+                      width: 150,
+                      height: 50,),
+                    SizedBox(height: 10,),
+                    PrimaryButton(
+                      onPressed: () {
+                         Get.to(()=> new ChartPage(title:"Métabolisme de base", atr: 'metabolisme',collectionName: collectionName,));
+
+                      },
+                      buttonLabel: "Métabolisme de base",
+                      fontSize: 14,
+                      bgColor: Colors.lightBlue,
+                      width: 150,
+                      height: 50,),
+                    SizedBox(height: 10,),
+                    PrimaryButton(
+                      onPressed: () {
+                         Get.to(()=> new ChartPage(title:"Dépense énergétique", atr: 'depEnergy',collectionName: collectionName,));
+
+                      },
+                      buttonLabel: "Dépense énergétique",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
                       width: 150,

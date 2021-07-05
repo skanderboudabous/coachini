@@ -8,6 +8,7 @@ class Exercice {
   int? charge;
   bool? isDone;
   DateTime? dateLim;
+  DateTime? date;
 
   Exercice(
       {this.id,
@@ -18,7 +19,8 @@ class Exercice {
       this.repo,
       this.charge,
       this.isDone,
-      this.dateLim});
+      this.dateLim,
+      this.date});
 
   @override
   bool operator ==(Object other) =>
@@ -53,6 +55,12 @@ class Exercice {
               ? temp
               : DateTime.fromMillisecondsSinceEpoch(
                   temp.millisecondsSinceEpoch)),
+      date: null == (temp = map['date'])
+          ? null
+          : (temp is DateTime
+              ? temp
+              : DateTime.fromMillisecondsSinceEpoch(
+                  temp.millisecondsSinceEpoch)),
     );
   }
 
@@ -72,6 +80,6 @@ class Exercice {
 
   @override
   String toString() {
-    return 'Exercice{id: $id, nom: $nom,ImageLink: $pictureUrl, nbSerie: $nbSerie, nbRep: $nbRep, repo: $repo,charge: $charge,isDone :$isDone,dateLim: $dateLim}';
+    return 'Exercice{id: $id, nom: $nom,ImageLink: $pictureUrl, nbSerie: $nbSerie, nbRep: $nbRep, repo: $repo,charge: $charge,isDone :$isDone,dateLim: $dateLim,date: $date}';
   }
 }

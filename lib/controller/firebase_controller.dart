@@ -446,7 +446,7 @@ class FirebaseController extends GetxController {
     return userCollection
         .doc(id)
         .collection("exercices")
-        .orderBy('dateLim', descending: true)
+        .orderBy('date', descending: true)
         .get();
   }
 
