@@ -26,7 +26,7 @@ class _SuiviEntrainementPageState extends State<SuiviEntrainementPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Suivis entrainement",
+        title: Text("Suivi entraînement",
             textAlign: TextAlign.center,
             style: TextStyle(
                 color: Colors.white,

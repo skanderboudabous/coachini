@@ -1,23 +1,23 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:coachini/models/techniques-preparation-mentale.dart';
+import 'package:coachini/pages/techniques-preparation-mentale-detail.dart';
 import 'package:coachini/routes/app_routes.dart';
 import 'package:coachini/controller/firebase_controller.dart';
-import 'package:coachini/models/regime-alimentaire.dart';
-import 'package:coachini/pages/regime-alimentaire-detail.dart';
 import 'package:coachini/widgets/loader.dart';
-import 'package:coachini/widgets/regime-alimentaire-card.dart';
+import 'package:coachini/widgets/techniques-preparation-mentale-card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class RegimeAlimentairePage extends StatefulWidget {
+class TechniquesPreparationMentalePage extends StatefulWidget {
   final String? userId;
 
-  RegimeAlimentairePage(this.userId);
+  TechniquesPreparationMentalePage(this.userId);
 
   @override
-  _RegimeAlimentairePageState createState() => _RegimeAlimentairePageState();
+  _TechniquesPreparationMentalePageState createState() => _TechniquesPreparationMentalePageState();
 }
 
-class _RegimeAlimentairePageState extends State<RegimeAlimentairePage> {
+class _TechniquesPreparationMentalePageState extends State<TechniquesPreparationMentalePage> {
   bool? isAdmin;
 
   @override
@@ -31,7 +31,7 @@ class _RegimeAlimentairePageState extends State<RegimeAlimentairePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Régime alimentaire",
+        title: Text("Techniques de préparation mentale",
             textAlign: TextAlign.center,
             style: TextStyle(
                 color: Colors.white,
@@ -58,7 +58,7 @@ class _RegimeAlimentairePageState extends State<RegimeAlimentairePage> {
           ),
         ),
         child: FutureBuilder(
-            future: FirebaseController.to.getUserRegimeAlimentaire(id: widget.userId),
+            future: FirebaseController.to.getUserTechniquesPreparationMentale(id: widget.userId),
             builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
               print(snapshot.hasData);
               if (snapshot.hasData) {
@@ -66,10 +66,10 @@ class _RegimeAlimentairePageState extends State<RegimeAlimentairePage> {
                 return ListView.builder(
                     itemCount: documents?.length,
                     itemBuilder: (context, index) {
-                      final RegimeAlimentaire regimeAlimentaire = RegimeAlimentaire.fromMap(documents?[index].data());
+                      final TechniquesPreparationMentale techniquesPreparationMentale = TechniquesPreparationMentale.fromMap(documents?[index].data());
                       return Padding(
                           padding: const EdgeInsets.all(8),
-                          child: RegimeAlimentaireCard(regimeAlimentaire, widget.userId));
+                          child: TechniquesPreparationMentaleCard(techniquesPreparationMentale, widget.userId));
                     });
               } else {
                 return Loader();
@@ -80,7 +80,7 @@ class _RegimeAlimentairePageState extends State<RegimeAlimentairePage> {
           ? ElevatedButton(
         child: Icon(Icons.add),
         onPressed: () {
-          Get.to(new RegimeAlimentaireDetailPage(widget.userId));
+          Get.to(new TechniquesPreparationMentaleDetailPage(widget.userId));
         },
       )
           : SizedBox(),

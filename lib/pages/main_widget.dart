@@ -38,7 +38,7 @@ class _MainWidgetState extends State<MainWidget> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal:8.0),
                     child: Text("La pratique d’activités physiques ou sportives contribue au maintien de la santé chez le sujet sain dans le cadre de la prévention primaire. Elle contribue aussi chez les personnes vivant avec une maladie chronique non transmissible à améliorer l’état de santé et à prévenir l’aggravation et/ou la récidive de ces maladies chroniques (prévention tertiaire).",
-                        style: TextStyle(fontSize: 20, color: Colors.white)),
+                        style: TextStyle(fontSize: 16, color: Colors.white)),
                   ),
 
                 ],
@@ -67,7 +67,7 @@ class _MainWidgetState extends State<MainWidget> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal:8.0),
                       child: Text("L'entraînement sportif est l'ensemble des méthodes et exercices physiques visant l'entretien et l'amélioration des performances sportives, chez le sportif amateur ou professionnel ; cet entraînement comprend notamment la préparation physique, technique, tactique et mentale.",
-                          style: TextStyle(fontSize: 20, color: Colors.white,fontWeight: FontWeight.normal)),
+                          style: TextStyle(fontSize: 16, color: Colors.white,fontWeight: FontWeight.normal)),
                     )
                   ],
                 ),
@@ -95,7 +95,7 @@ class _MainWidgetState extends State<MainWidget> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal:8.0),
                       child: Text("Quand on fait du sport, on est plus résistant au stress et on a moins tendance à basculer dans l'anxiété et la dépression. On maîtrise mieux les émotions négatives et les échecsLe sport permet d'augmenter le niveau d'estime de soi, ce qui aide aussi à l'amélioration de la santé mentale.",
-                          style: TextStyle(fontSize: 20, color: Colors.white)),
+                          style: TextStyle(fontSize: 16, color: Colors.white)),
                     )
                   ],
                 ),
@@ -121,9 +121,9 @@ class _MainWidgetState extends State<MainWidget> {
                   ),
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.only(right: 130, left: 10),
+                      padding: const EdgeInsets.symmetric(horizontal:8.0),
                       child: Text("La liste des bienfaits du sport sur la santé est longue comme le bras : meilleur fonctionnement du coeur et de l’activité sanguine, augmentation de la masse musculaire, diminution de la masse graisseuse, amélioration du sommeil… ",
-                          style: TextStyle(fontSize: 20, color: Colors.white,fontWeight: FontWeight.normal)),
+                          style: TextStyle(fontSize: 16, color: Colors.white,fontWeight: FontWeight.normal)),
                     )
                   ],
                 ),
@@ -151,7 +151,7 @@ class _MainWidgetState extends State<MainWidget> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal:8.0),
                       child: Text("La pratique régulière d’une activité sportive ou physique a un effet bénéfique sur la vie sociale et la santé. Non seulement elle a une incidence directe sur les aptitudes physiques, mais elle aide aussi les enfants et les jeunes à faire des choix sains, à rester actifs et à lutter contre les maladies non transmissibles",
-                          style: TextStyle(fontSize: 20, color: Colors.white)),
+                          style: TextStyle(fontSize: 16, color: Colors.white)),
                     )
                   ],
                 ),

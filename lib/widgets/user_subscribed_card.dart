@@ -55,7 +55,7 @@ class UserSubscribedCard extends StatelessWidget {
                         ),
                         DialogButton(
                           child: Text(
-                            "GRADIENT",
+                            "No",
                             style: TextStyle(color: Colors.white, fontSize: 20),
                           ),
                           onPressed: () => Navigator.pop(context),

@@ -1,6 +1,7 @@
 import 'package:coachini/controller/firebase_controller.dart';
 import 'package:coachini/models/mesure.dart';
 import 'package:coachini/pages/mesures.dart';
+import 'package:coachini/routes/app_routes.dart';
 import 'package:coachini/utils/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -38,9 +39,14 @@ class _MesuresDetailPageState extends State<MesuresDetailPage> {
                 fontFamily: 'Montserrat',
                 fontWeight: FontWeight.bold)),
         centerTitle: true,
-        leading: IconButton(icon: Icon(Icons.arrow_back),onPressed: (){
-          Get.to(MesuresPage(widget.userId));
-        },),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            isAdmin == true
+                ? Get.toNamed(AppRoutes.USER_PROFILE + "?id=" + widget.userId!)
+                : Get.toNamed(AppRoutes.HOME);
+          },
+        ),
       ),
       body: WillPopScope(
         onWillPop: (){

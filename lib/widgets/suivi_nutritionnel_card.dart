@@ -23,7 +23,7 @@ class SuiviEntrainementCard extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(formatDate(suiviEntrainement.date!, [dd, ' - ', MM, ' - ', yyyy]),style: TextStyle(fontSize: 18),),
+              Text(formatDate(suiviEntrainement.date!, [dd, '-', MM, '-', yyyy]),style: TextStyle(fontSize: 18),),
             ],
           ),
         ),

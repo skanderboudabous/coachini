@@ -44,7 +44,7 @@ class UserUnSubscribedCard extends StatelessWidget {
                         Alert(
                           context: context,
                           type: AlertType.warning,
-                          title: "abooner "+adherant.firstName!+" "+adherant.lastName!,
+                          title: "Abonner "+adherant.firstName!+" "+adherant.lastName!,
                           desc: "vous êtes sur ??",
                           buttons: [
                             DialogButton(
@@ -61,7 +61,7 @@ class UserUnSubscribedCard extends StatelessWidget {
                             ),
                             DialogButton(
                               child: Text(
-                                "GRADIENT",
+                                "No",
                                 style: TextStyle(color: Colors.white, fontSize: 20),
                               ),
                               onPressed: () => Navigator.pop(context),
@@ -96,7 +96,7 @@ class UserUnSubscribedCard extends StatelessWidget {
                             ),
                             DialogButton(
                               child: Text(
-                                "GRADIENT",
+                                "No",
                                 style: TextStyle(color: Colors.white, fontSize: 20),
                               ),
                               onPressed: () => Navigator.pop(context),

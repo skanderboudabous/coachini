@@ -39,7 +39,7 @@ class _SuiviEntrainementListState extends State<SuiviEntrainementList> {
                         Get.to(()=> new ChartPage(title:"Rythme cardiaque moyen", atr: 'rythme_cardiaque_moy',collectionName: collectionName,));
 
                       },
-                      buttonLabel: "Rythme cardiaque moyen",
+                      buttonLabel: "Rythme cardiaque    moyen",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
                       width: 150,
@@ -72,7 +72,7 @@ class _SuiviEntrainementListState extends State<SuiviEntrainementList> {
                         Get.to(()=> new ChartPage(title:"distance parcourue", atr: 'distance_parcourue',collectionName: collectionName,));
 
                       },
-                      buttonLabel: "distance parcourue",
+                      buttonLabel: "Distance parcourue",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
                       width: 150,
@@ -83,7 +83,7 @@ class _SuiviEntrainementListState extends State<SuiviEntrainementList> {
                         Get.to(()=> new ChartPage(title:"Nombre calories bruleés", atr: 'nb_calorie_brule',collectionName: collectionName,));
 
                       },
-                      buttonLabel: "Nombre calories bruleés",
+                      buttonLabel: "Nombre calories     bruleés",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
                       width: 150,
@@ -94,7 +94,7 @@ class _SuiviEntrainementListState extends State<SuiviEntrainementList> {
                         Get.to(()=> new ChartPage(title:"Allure Moyenne", atr: 'allureMoy',collectionName: collectionName,));
 
                       },
-                      buttonLabel: "Allure Moyenne",
+                      buttonLabel: "Allure moyenne",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
                       width: 150,
@@ -105,7 +105,7 @@ class _SuiviEntrainementListState extends State<SuiviEntrainementList> {
                         Get.to(()=> new ChartPage(title:"Cadence Moyenne", atr: 'cadenceMoy',collectionName: collectionName,));
 
                       },
-                      buttonLabel: "Cadence Moyenne",
+                      buttonLabel: "Cadence moyenne",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
                       width: 150,
@@ -116,7 +116,7 @@ class _SuiviEntrainementListState extends State<SuiviEntrainementList> {
                         Get.to(()=> new ChartPage(title:"Longueur Moyenne de pas", atr: 'longuerMoyPas',collectionName: collectionName,));
 
                       },
-                      buttonLabel: "Longueur Moyenne de pas",
+                      buttonLabel: "Longueur moyenne de      pas",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
                       width: 150,

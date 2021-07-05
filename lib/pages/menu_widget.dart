@@ -8,11 +8,11 @@ import 'package:coachini/pages/rm.dart';
 import 'package:coachini/pages/suivi_entrainement.dart';
 import 'package:coachini/pages/suivie-mentale.dart';
 import 'package:coachini/pages/suivie-nutritionnel.dart';
+import 'package:coachini/pages/techniques-preparation-mentale.dart';
 import 'package:coachini/widgets/online_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
-
 import 'about.dart';
 import 'edit_profile.dart';
 import 'exercices.dart';
@@ -80,11 +80,12 @@ class MenuWidget extends StatelessWidget {
             sliderItem('Mesures', Icons.assignment),
             sliderItem('1RM', Icons.assignment),
             sliderItem('Exercices', Icons.assignment_turned_in_outlined),
-            sliderItem('Regime Alimentaire', Icons.food_bank),
-            sliderItem('Suivi Nutritionnel', Icons.fastfood),
-            sliderItem('Suivi Mentale', Icons.assignment),
-            sliderItem('Suivi Entrainement', Icons.fitness_center),
-            sliderItem('Composition Corporelle', Icons.accessibility),
+            sliderItem('Régime alimentaire', Icons.food_bank),
+            sliderItem('Suivi nutritionnel', Icons.fastfood),
+            sliderItem('Suivi mentale', Icons.assignment),
+            sliderItem('Techniques de préparation mentale', Icons.assignment),
+            sliderItem('Suivi entrainement', Icons.fitness_center),
+            sliderItem('Composition corporelle', Icons.accessibility),
             sliderItem('Chart', Icons.graphic_eq),
             sliderItem('About', Icons.info),
             sliderItem('LogOut', Icons.arrow_back_ios)
@@ -128,20 +129,23 @@ class MenuWidget extends StatelessWidget {
           case "Mesures":
             Get.to(MesuresPage(FirebaseController.currentId));
             break;
-          case "Suivi Mentale":
+          case "Suivi mentale":
             Get.to(SuivieMentalePage(FirebaseController.currentId));
             break;
-          case "Suivi Nutritionnel":
+          case "Suivi nutritionnel":
             Get.to(SuivieNutritionnelPage(FirebaseController.currentId));
             break;
-           case "Regime Alimentaire":
+           case "Régime alimentaire":
             Get.to(RegimeAlimentairePage(FirebaseController.currentId));
             break;
-          case "Suivi Entrainement":
+          case "Suivi entrainement":
             Get.to(SuiviEntrainementPage(FirebaseController.currentId));
             break;
-          case "Composition Corporelle":
+          case "Composition corporelle":
             Get.to(CompositionCorporellePage(FirebaseController.currentId));
+            break;
+            case "Techniques de préparation mentale":
+            Get.to(TechniquesPreparationMentalePage(FirebaseController.currentId));
             break;
           case "About":
             Get.to(AboutPage());

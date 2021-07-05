@@ -15,7 +15,7 @@ class _HomeAdminPageState extends State<HomeAdminPage> {
 
   @override
   void initState() {
-    title = "HomeAdmin";
+    title = "Home Admin";
     super.initState();
   }
 

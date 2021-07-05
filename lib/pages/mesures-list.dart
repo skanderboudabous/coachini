@@ -27,7 +27,7 @@ class _MesuresListState extends State<MesuresList> {
                         Get.to(()=> new ChartPage(title:"Taille", atr: 'taille',collectionName: collectionName,));
 
                       },
-                      buttonLabel: "taille",
+                      buttonLabel: "Taille",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
                       width: 150,
@@ -37,7 +37,7 @@ class _MesuresListState extends State<MesuresList> {
                       onPressed: () {
                         Get.to(()=> new ChartPage(title:"Tour Taille", atr: 'tourTaille',collectionName: collectionName,));
                       },
-                      buttonLabel: "Tour Taille",
+                      buttonLabel: "Tour taille",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
                       width: 150,
@@ -47,7 +47,7 @@ class _MesuresListState extends State<MesuresList> {
                       onPressed: () {
                         Get.to(()=> new ChartPage(title:"Tour Hanche", atr: 'tourHanche',collectionName: collectionName,));
                       },
-                      buttonLabel: "Tour Hanche",
+                      buttonLabel: "Tour hanche",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
                       width: 150,
@@ -127,7 +127,7 @@ class _MesuresListState extends State<MesuresList> {
                       onPressed: () {
                         Get.to(()=> new ChartPage(title:"Repétition Max Pompe", atr: 'repMaxPompe',collectionName: collectionName,));
                       },
-                      buttonLabel: "Repétition Max Pompe",
+                      buttonLabel: "Repétition max pompe",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
                       width: 150,
@@ -137,7 +137,7 @@ class _MesuresListState extends State<MesuresList> {
                       onPressed: () {
                         Get.to(()=> new ChartPage(title:"Repétition Max Abdo", atr: 'repMaxAbd',collectionName: collectionName,));
                       },
-                      buttonLabel: "Repétition Max Abdo",
+                      buttonLabel: "Repétition max abdo",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
                       width: 150,
@@ -147,7 +147,7 @@ class _MesuresListState extends State<MesuresList> {
                       onPressed: () {
                         Get.to(()=> new ChartPage(title:"Temps Limite Gainage", atr: 'tempsLimiteGain',collectionName: collectionName,));
                       },
-                      buttonLabel: "Temps Limite Gainage",
+                      buttonLabel: "Temps limite gainage",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
                       width: 150,
@@ -157,7 +157,7 @@ class _MesuresListState extends State<MesuresList> {
                       onPressed: () {
                         Get.to(()=> new ChartPage(title:"Temps Limite Gainage Squat", atr: 'tempsLimiteGainSquat',collectionName: collectionName,));
                       },
-                      buttonLabel: "Temps Limite Gainage Squat",
+                      buttonLabel: "Temps limite gainage        squat",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
                       width: 150,
@@ -167,7 +167,7 @@ class _MesuresListState extends State<MesuresList> {
                       onPressed: () {
                         Get.to(()=> new ChartPage(title:"souplesse", atr: 'souplesse',collectionName: collectionName,));
                       },
-                      buttonLabel: "souplesse",
+                      buttonLabel: "Souplesse",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
                       width: 150,
@@ -177,7 +177,7 @@ class _MesuresListState extends State<MesuresList> {
                       onPressed: () {
                         Get.to(()=> new ChartPage(title:"Counter movement Jump", atr: 'counterMvtJump',collectionName: collectionName,));
                       },
-                      buttonLabel: "Counter movement Jump",
+                      buttonLabel: "Counter movement jump",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
                       width: 150,

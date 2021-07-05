@@ -1,22 +1,23 @@
 import 'package:coachini/controller/firebase_controller.dart';
 import 'package:coachini/models/regime-alimentaire.dart';
+import 'package:coachini/models/techniques-preparation-mentale.dart';
 import 'package:coachini/pages/regime-alimentaire.dart';
-import 'package:coachini/routes/app_routes.dart';
+import 'package:coachini/pages/techniques-preparation-mentale.dart';
 import 'package:coachini/utils/functions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 
-class RegimeAlimentaireDetailPage extends StatefulWidget {
+class TechniquesPreparationMentaleDetailPage extends StatefulWidget {
   final String? userId;
-  final RegimeAlimentaire? regimeAlimentaire;
-  RegimeAlimentaireDetailPage(this.userId,{this.regimeAlimentaire});
+  final TechniquesPreparationMentale? techniquesPreparationMentale;
+  TechniquesPreparationMentaleDetailPage(this.userId,{this.techniquesPreparationMentale});
   @override
-  _RegimeAlimentaireDetailPageState createState() => _RegimeAlimentaireDetailPageState();
+  _TechniquesPreparationMentaleDetailPageState createState() => _TechniquesPreparationMentaleDetailPageState();
 }
 
-class _RegimeAlimentaireDetailPageState extends State<RegimeAlimentaireDetailPage> {
+class _TechniquesPreparationMentaleDetailPageState extends State<TechniquesPreparationMentaleDetailPage> {
   final _formKey = GlobalKey<FormBuilderState>();
   bool? isAdmin;
 
@@ -32,7 +33,7 @@ class _RegimeAlimentaireDetailPageState extends State<RegimeAlimentaireDetailPag
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text("Régime Alimentaire",
+        title: Text("Techniques de préparation mentale",
             textAlign: TextAlign.center,
             style: TextStyle(
                 color: Colors.white,
@@ -40,14 +41,9 @@ class _RegimeAlimentaireDetailPageState extends State<RegimeAlimentaireDetailPag
                 fontFamily: 'Montserrat',
                 fontWeight: FontWeight.bold)),
         centerTitle: true,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            isAdmin == true
-                ? Get.toNamed(AppRoutes.USER_PROFILE + "?id=" + widget.userId!)
-                : Get.toNamed(AppRoutes.HOME);
-          },
-        ),
+        leading: IconButton(icon: Icon(Icons.arrow_back),onPressed: (){
+          Get.to(TechniquesPreparationMentalePage(widget.userId));
+        },),
       ),
       body: WillPopScope(
         onWillPop: (){
@@ -85,7 +81,7 @@ class _RegimeAlimentaireDetailPageState extends State<RegimeAlimentaireDetailPag
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
                               ]),
-                              initialValue: widget.regimeAlimentaire?.texte.toString(),
+                              initialValue: widget.techniquesPreparationMentale?.texte.toString(),
                               style: TextStyle(color: Colors.white,fontSize: 25),
                               keyboardType: TextInputType.multiline,
                             ),
@@ -93,7 +89,7 @@ class _RegimeAlimentaireDetailPageState extends State<RegimeAlimentaireDetailPag
                         ),
                       ),
                     ),
-                    absorbing:widget.regimeAlimentaire!=null,
+                    absorbing:widget.techniquesPreparationMentale!=null,
                   ),
 
                 ],
@@ -102,7 +98,7 @@ class _RegimeAlimentaireDetailPageState extends State<RegimeAlimentaireDetailPag
           ),
         ),
       ),
-      floatingActionButton:   widget.regimeAlimentaire==null ? Row(
+      floatingActionButton:   widget.techniquesPreparationMentale==null ? Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           MaterialButton(
@@ -114,10 +110,10 @@ class _RegimeAlimentaireDetailPageState extends State<RegimeAlimentaireDetailPag
             onPressed: () async {
               _formKey.currentState?.save();
               if (_formKey.currentState?.validate() == true) {
-                RegimeAlimentaire regimeAlimentaire=RegimeAlimentaire.fromMap(_formKey.currentState?.value);
-                regimeAlimentaire.date=DateTime.now();
-                await FirebaseController.to.addRegimeAlimentaire(regimeAlimentaire, widget.userId!);
-                Get.to(RegimeAlimentairePage(widget.userId));
+                TechniquesPreparationMentale techniquesPreparationMentale=TechniquesPreparationMentale.fromMap(_formKey.currentState?.value);
+                techniquesPreparationMentale.date=DateTime.now();
+                await FirebaseController.to.addTechniquesPreparationMentale(techniquesPreparationMentale, widget.userId!);
+                Get.to(TechniquesPreparationMentalePage(widget.userId));
               } else {
                 showShortToast("Validation failed");
               }

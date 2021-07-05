@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coachini/models/exercice.dart';
 import 'package:coachini/pages/exercices.dart';
 import 'package:coachini/controller/firebase_controller.dart';
+import 'package:coachini/routes/app_routes.dart';
 import 'package:coachini/utils/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -51,7 +52,9 @@ class _ExerciceDetailPageState extends State<ExerciceDetailPage> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Get.to(ExercicesPage(widget.userId));
+            isAdmin == true
+                ? Get.toNamed(AppRoutes.USER_PROFILE + "?id=" + widget.userId!)
+                : Get.toNamed(AppRoutes.HOME);
           },
         ),
       ),
@@ -104,7 +107,7 @@ class _ExerciceDetailPageState extends State<ExerciceDetailPage> {
                                         // ),
                                   child: FadeInImage(
                                     fit: BoxFit.cover,
-                                    placeholder: AssetImage("bg.jpg") ,
+                                    placeholder: AssetImage("assets/images/bg.jpg") ,
                                     image: NetworkImage(pictureUrl!),
                                   ),
                                       )),
@@ -123,7 +126,7 @@ class _ExerciceDetailPageState extends State<ExerciceDetailPage> {
                             FormBuilderTextField(
                               name: 'nbSerie',
                               decoration: InputDecoration(
-                                  labelText: 'nbSerie',
+                                  labelText: 'nombre de series',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),

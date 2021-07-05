@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:coachini/models/techniques-preparation-mentale.dart';
 import 'package:coachini/routes/app_routes.dart';
 import 'package:coachini/models/adherant.dart';
 import 'package:coachini/models/composition-corporelle.dart';
@@ -48,6 +49,8 @@ class FirebaseController extends GetxController {
       FirebaseFirestore.instance.collection("compositionCorporelles");
   final regimeAlimentaireCollection =
       FirebaseFirestore.instance.collection("regimeAlimentaires");
+  final techniquesPreparationMentaleCollection =
+      FirebaseFirestore.instance.collection("techniquesPreparationMentale");
 
   @override
   void onReady() {
@@ -379,7 +382,6 @@ class FirebaseController extends GetxController {
     return userCollection
         .where("isSubscribed", isEqualTo: true)
         .where("isAdmin", isEqualTo: false)
-//        .orderBy('firstName', descending: false)
         .snapshots();
   }
 
@@ -387,7 +389,6 @@ class FirebaseController extends GetxController {
     return userCollection
         .where("isSubscribed", isEqualTo: false)
         .where("isAdmin", isEqualTo: false)
-//        .orderBy('firstName', descending: false)
         .snapshots();
   }
 
@@ -507,6 +508,13 @@ class FirebaseController extends GetxController {
         .orderBy('date', descending: true)
         .get();
   }
+  Future<QuerySnapshot> getUserTechniquesPreparationMentale({String? id}) {
+    return userCollection
+        .doc(id)
+        .collection("techniquesPreparationMentale")
+        .orderBy('date', descending: true)
+        .get();
+  }
 
   Future<RegimeAlimentaire> addRegimeAlimentaire(
       RegimeAlimentaire regimeAlimentaire, String? userId) {
@@ -522,6 +530,22 @@ class FirebaseController extends GetxController {
               .doc(regimeAlimentaire.id),
           regimeAlimentaire.toMap());
       return regimeAlimentaire;
+    });
+  }
+  Future<TechniquesPreparationMentale> addTechniquesPreparationMentale(
+      TechniquesPreparationMentale techniquesPreparationMentale, String? userId) {
+    return FirebaseFirestore.instance.runTransaction((transaction) async {
+      final DocumentSnapshot ds = await transaction.get(
+          userCollection.doc(userId).collection("techniquesPreparationMentale").doc());
+      print(ds.id);
+      techniquesPreparationMentale.id = ds.id;
+      transaction.set(
+          userCollection
+              .doc(userId)
+              .collection("techniquesPreparationMentale")
+              .doc(techniquesPreparationMentale.id),
+          techniquesPreparationMentale.toMap());
+      return techniquesPreparationMentale;
     });
   }
 

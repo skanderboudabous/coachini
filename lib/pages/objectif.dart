@@ -1,5 +1,6 @@
 import 'package:coachini/controller/firebase_controller.dart';
 import 'package:coachini/models/objectif.dart';
+import 'package:coachini/routes/app_routes.dart';
 import 'package:coachini/utils/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:direct_select_flutter/direct_select_container.dart';
@@ -79,6 +80,14 @@ class _ObjectifPageState extends State<ObjectifPage> {
                   fontFamily: 'Montserrat',
                   fontWeight: FontWeight.bold)),
           centerTitle: true,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              isAdmin == true
+                  ? Get.toNamed(AppRoutes.USER_PROFILE + "?id=" + widget.userId!)
+                  : Get.toNamed(AppRoutes.HOME);
+            },
+          ),
         ),
         body: Container(
             height: MediaQuery.of(context).size.height,

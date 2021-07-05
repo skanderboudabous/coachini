@@ -28,7 +28,7 @@ class _CompositionCorporelleListState extends State<CompositionCorporelleList> {
                         Get.to(()=> new ChartPage(title:"poids", atr: 'poids',collectionName: collectionName,));
 
                       },
-                      buttonLabel: "poids",
+                      buttonLabel: "Poids",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
                       width: 150,
@@ -36,10 +36,10 @@ class _CompositionCorporelleListState extends State<CompositionCorporelleList> {
                     SizedBox(height: 10,),
                     PrimaryButton(
                       onPressed: () {
-                        Get.to(()=> new ChartPage(title:"masse Graisse", atr: 'masseGraisse',collectionName: collectionName,));
+                        Get.to(()=> new ChartPage(title:"masse Graisseuse", atr: 'masseGraisse',collectionName: collectionName,));
 
                       },
-                      buttonLabel: "masse Graisse",
+                      buttonLabel: "Masse graisseuse",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
                       width: 150,
@@ -50,7 +50,7 @@ class _CompositionCorporelleListState extends State<CompositionCorporelleList> {
                         Get.to(()=> new ChartPage(title:"masse Hydrique", atr: 'masseHydrique',collectionName: collectionName,));
 
                       },
-                      buttonLabel: "masse Hydrique",
+                      buttonLabel: "Masse hydrique",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
                       width: 150,
@@ -61,7 +61,7 @@ class _CompositionCorporelleListState extends State<CompositionCorporelleList> {
                         Get.to(()=> new ChartPage(title:"masse Musculaire", atr: 'masseMusculaire',collectionName: collectionName,));
 
                       },
-                      buttonLabel: "masse Musculaire",
+                      buttonLabel: "Masse musculaire",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
                       width: 150,
@@ -72,7 +72,7 @@ class _CompositionCorporelleListState extends State<CompositionCorporelleList> {
                         Get.to(()=> new ChartPage(title:"masse Osseuse", atr: 'masseOsseuse',collectionName: collectionName,));
 
                       },
-                      buttonLabel: "masse Osseuse",
+                      buttonLabel: "Masse osseuse",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
                       width: 150,
@@ -83,7 +83,7 @@ class _CompositionCorporelleListState extends State<CompositionCorporelleList> {
                         Get.to(()=> new ChartPage(title:"imc", atr: 'imc',collectionName: collectionName,));
 
                       },
-                      buttonLabel: "imc",
+                      buttonLabel: "IMC",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
                       width: 150,

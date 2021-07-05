@@ -95,7 +95,7 @@ class _UserProfileState extends State<UserProfile> {
             onPressed: () {
               Get.to(new MorphologiePage(widget.id));
             },
-            buttonLabel: "Type de Morphologie",
+            buttonLabel: "Type de morphologie",
             fontSize: 14,
             bgColor: Colors.lightBlue,
             width: 150,
@@ -135,7 +135,7 @@ class _UserProfileState extends State<UserProfile> {
             onPressed: () {
               Get.to(new SuivieNutritionnelPage(widget.id));
             },
-            buttonLabel: "Suivi Nutritionnel",
+            buttonLabel: "Suivi nutritionnel",
             fontSize: 14,
             bgColor: Colors.lightBlue,
             width: 150,
@@ -145,7 +145,7 @@ class _UserProfileState extends State<UserProfile> {
             onPressed: () {
               Get.to(new SuivieMentalePage(widget.id));
             },
-            buttonLabel: "Suivi Mentale",
+            buttonLabel: "Suivi mentale",
             fontSize: 14,
             bgColor: Colors.lightBlue,
             width: 150,
@@ -155,7 +155,7 @@ class _UserProfileState extends State<UserProfile> {
             onPressed: () {
               Get.to(new SuiviEntrainementPage(widget.id));
             },
-            buttonLabel: "Suivi Entrainement",
+            buttonLabel: "Suivi entrainement",
             fontSize: 14,
             bgColor: Colors.lightBlue,
             width: 150,
@@ -165,7 +165,7 @@ class _UserProfileState extends State<UserProfile> {
             onPressed: () {
               Get.to(new RegimeAlimentairePage(widget.id));
             },
-            buttonLabel: "Regime Alimentaire",
+            buttonLabel: "Régime alimentaire",
             fontSize: 14,
             bgColor: Colors.lightBlue,
             width: 150,
@@ -175,7 +175,7 @@ class _UserProfileState extends State<UserProfile> {
             onPressed: () {
               Get.to(new CompositionCorporellePage(widget.id));
             },
-            buttonLabel: "Composition Corporelle",
+            buttonLabel: "Composition corporelle",
             fontSize: 14,
             bgColor: Colors.lightBlue,
             width: 150,

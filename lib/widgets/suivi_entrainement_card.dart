@@ -23,7 +23,7 @@ class SuiviNutritionnelCard extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(formatDate(suivieNutritionnel.date!, [dd, ' - ', MM, ' - ', yyyy]),style: TextStyle(fontSize: 18),),
+              Text(formatDate(suivieNutritionnel.date!, [dd, '-', MM, '-', yyyy]),style: TextStyle(fontSize: 18),),
             ],
           ),
         ),

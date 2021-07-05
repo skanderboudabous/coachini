@@ -23,7 +23,7 @@ class CompositionCorporelleCard extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-                  Text(formatDate(compositionCorporelle.date!, [dd, ' - ', MM, ' - ', yyyy]),style: TextStyle(fontSize: 18),),
+                  Text(formatDate(compositionCorporelle.date!, [dd, '-', MM, '-', yyyy]),style: TextStyle(fontSize: 18),),
             ],
           ),
         ),

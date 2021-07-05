@@ -1,5 +1,6 @@
 import 'package:coachini/controller/firebase_controller.dart';
 import 'package:coachini/models/type-morphologie.dart';
+import 'package:coachini/routes/app_routes.dart';
 import 'package:coachini/utils/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:direct_select_flutter/direct_select_container.dart';
@@ -17,7 +18,7 @@ class MorphologiePage extends StatefulWidget {
 }
 
 class _MorphologiePageState extends State<MorphologiePage> {
-  List<String> morphologies = ["Ectomorphe", "Mesomorphe", "Endomorphe"];
+  List<String> morphologies = ["Ectomorphe", "Mésomorphe", "Endomorphe"];
 
   bool? isAdmin;
   int? selectedIndex;
@@ -54,7 +55,16 @@ class _MorphologiePageState extends State<MorphologiePage> {
                 fontFamily: 'Montserrat',
                 fontWeight: FontWeight.bold)),
         centerTitle: true,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            isAdmin == true
+                ? Get.toNamed(AppRoutes.USER_PROFILE + "?id=" + widget.userId!)
+                : Get.toNamed(AppRoutes.HOME);
+          },
+        ),
       ),
+
       body: Container(
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(

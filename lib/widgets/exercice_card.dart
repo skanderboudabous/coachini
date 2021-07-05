@@ -46,9 +46,9 @@ class _ExercicesCardState extends State<ExercicesCard> {
               width: MediaQuery.of(context).size.width*0.8,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text(
+                child: Text(widget.exercice.nom!+" "+
                   formatDate(widget.exercice.dateLim!,
-                      [dd, ' - ', MM, ' - ', yyyy]),
+                      [dd, '-', MM, '-', yyyy]),
                   style: TextStyle(fontSize: 18),
                 ),
               ),

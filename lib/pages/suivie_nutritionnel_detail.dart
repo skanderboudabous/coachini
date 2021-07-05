@@ -1,6 +1,7 @@
 import 'package:coachini/controller/firebase_controller.dart';
 import 'package:coachini/models/suivie-nutritionnel.dart';
 import 'package:coachini/pages/suivie-nutritionnel.dart';
+import 'package:coachini/routes/app_routes.dart';
 import 'package:coachini/utils/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -38,9 +39,14 @@ class _SuivieNutritionnelDetailPageState
                 fontFamily: 'Montserrat',
                 fontWeight: FontWeight.bold)),
         centerTitle: true,
-        leading: IconButton(icon: Icon(Icons.arrow_back),onPressed: (){
-          Get.to(SuivieNutritionnelPage(widget.userId));
-        },),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            isAdmin == true
+                ? Get.toNamed(AppRoutes.USER_PROFILE + "?id=" + widget.userId!)
+                : Get.toNamed(AppRoutes.HOME);
+          },
+        ),
       ),
       body: WillPopScope(
         onWillPop: (){
@@ -68,7 +74,7 @@ class _SuivieNutritionnelDetailPageState
                         FormBuilderTextField(
                           name: 'apport',
                           decoration: InputDecoration(
-                              labelText: 'Apport (cal)',
+                              labelText: 'Apport (Kcal)',
                               labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(context),
@@ -82,7 +88,7 @@ class _SuivieNutritionnelDetailPageState
                         FormBuilderTextField(
                           name: 'proteine',
                           decoration: InputDecoration(
-                              labelText: 'Proteine (cal)',
+                              labelText: 'Proteine (Kcal)',
                               labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(context),
@@ -95,7 +101,7 @@ class _SuivieNutritionnelDetailPageState
                         FormBuilderTextField(
                           name: 'glucide',
                           decoration: InputDecoration(
-                              labelText: 'Glucide (cal)',
+                              labelText: 'Glucide (Kcal)',
                               labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(context),
@@ -108,7 +114,7 @@ class _SuivieNutritionnelDetailPageState
                         FormBuilderTextField(
                           name: 'lipide',
                           decoration: InputDecoration(
-                              labelText: 'Lipide (cal)',
+                              labelText: 'Lipide (Kcal)',
                               labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
                           validator: FormBuilderValidators.compose([
                             FormBuilderValidators.required(context),

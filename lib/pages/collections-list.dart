@@ -42,7 +42,7 @@ class _CollectionListState extends State<CollectionList> {
                       onPressed: () {
                         Get.to(CompositionCorporelleList());
                       },
-                      buttonLabel: "Composition Corporelle",
+                      buttonLabel: "Composition corporelle",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
                       width: 150,
@@ -55,7 +55,7 @@ class _CollectionListState extends State<CollectionList> {
                       onPressed: () {
                         Get.to(SuiviEntrainementList());
                       },
-                      buttonLabel: "Suivi Entrainement",
+                      buttonLabel: "Suivi entrainement",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
                       width: 150,
@@ -68,7 +68,7 @@ class _CollectionListState extends State<CollectionList> {
                       onPressed: () {
                         Get.to(SuiviNutritionnelList());
                       },
-                      buttonLabel: "Suivi Nutritionnel",
+                      buttonLabel: "Suivi nutritionnel",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
                       width: 150,
