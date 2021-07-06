@@ -4,9 +4,10 @@ import 'package:coachini/controller/firebase_controller.dart';
 import 'package:coachini/models/suivie-nutritionnel.dart';
 import 'package:coachini/pages/suivie_nutritionnel_detail.dart';
 import 'package:coachini/widgets/loader.dart';
-import 'package:coachini/widgets/suivi_entrainement_card.dart';
+import 'package:coachini/widgets/suivi_nutritionnel_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 class SuivieNutritionnelPage extends StatefulWidget {
   final String? userId;
   SuivieNutritionnelPage(this.userId);
@@ -15,9 +16,8 @@ class SuivieNutritionnelPage extends StatefulWidget {
 }
 
 class _SuivieNutritionnelPageState extends State<SuivieNutritionnelPage> {
-
-
   bool? isAdmin;
+  List<DocumentSnapshot>? documents= [];
   @override
   void initState() {
     isAdmin = Get.find<FirebaseController>().admin.value;
@@ -61,7 +61,7 @@ class _SuivieNutritionnelPageState extends State<SuivieNutritionnelPage> {
               future: FirebaseController.to.getUserSuivieNutritionnels(id:widget.userId),
               builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (snapshot.hasData) {
-                  final List<DocumentSnapshot>? documents = snapshot.data?.docs;
+                  documents = snapshot.data?.docs;
 
                   return ListView.builder(
                       itemCount: documents?.length,
@@ -69,7 +69,42 @@ class _SuivieNutritionnelPageState extends State<SuivieNutritionnelPage> {
                         final SuivieNutritionnel suivieNutritionnel = SuivieNutritionnel.fromMap(documents?[index].data());
                         return Padding(
                           padding: const EdgeInsets.all(8),
-                          child: SuiviNutritionnelCard(suivieNutritionnel,widget.userId)
+                          child: SuiviNutritionnelCard(suivieNutritionnel,widget.userId,onPressed:(){
+                            (isAdmin == true) ?Alert(
+                              context: context,
+                              type: AlertType.warning,
+                              title: "Supprimer ",
+                              desc: "vous êtes sur ??",
+                              buttons: [
+                                DialogButton(
+                                  child: Text(
+                                    "Yes",
+                                    style: TextStyle(color: Colors.white, fontSize: 20),
+                                  ),
+                                  onPressed: () async {
+                                    Navigator.pop(context);
+                                    await FirebaseController.to.deleteUserSuiviNutritionnel(
+                                        widget.userId,suivieNutritionnel.id);
+                                    setState(() {
+                                      documents?.removeAt(index);
+                                    });
+                                  },
+                                  color: Color.fromRGBO(0, 179, 134, 1.0),
+                                ),
+                                DialogButton(
+                                  child: Text(
+                                    "No",
+                                    style: TextStyle(color: Colors.white, fontSize: 20),
+                                  ),
+                                  onPressed: () => Navigator.pop(context),
+                                  gradient: LinearGradient(colors: [
+                                    Color.fromRGBO(116, 116, 191, 1.0),
+                                    Color.fromRGBO(52, 138, 199, 1.0)
+                                  ]),
+                                )
+                              ],
+                            ).show() : print('not Admin');
+                          })
                         );
                       });
                 } else {

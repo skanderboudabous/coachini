@@ -9,8 +9,9 @@ import 'package:get/get.dart';
 class ExercicesCard extends StatefulWidget {
   final Exercice exercice;
   final String? userId;
+  final VoidCallback ? onPressed;
 
-  ExercicesCard(this.exercice, this.userId);
+  ExercicesCard(this.exercice, this.userId, {this.onPressed});
 
   @override
   _ExercicesCardState createState() => _ExercicesCardState();
@@ -42,6 +43,7 @@ class _ExercicesCardState extends State<ExercicesCard> {
               Get.to(new ExerciceDetailPage(widget.userId,
                   exercice: this.widget.exercice));
             },
+            onLongPress: widget.onPressed,
             child: Container(
               width: MediaQuery.of(context).size.width*0.8,
               child: Padding(
@@ -61,6 +63,7 @@ class _ExercicesCardState extends State<ExercicesCard> {
               onChanged: (bool? value) {
                 setState(() {
                   widget.exercice.isDone = value;
+                  FirebaseController.to.updateExerciceCheck(widget.userId, widget.exercice.id, value);
                 });
               },
             ),

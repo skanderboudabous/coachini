@@ -1,20 +1,28 @@
-import 'package:coachini/models/suivi-entrainement.dart';
-import 'package:coachini/pages/suivi_entrainement_detail.dart';
+import 'package:coachini/models/suivie-nutritionnel.dart';
+import 'package:coachini/pages/suivie_nutritionnel_detail.dart';
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 
-class SuiviEntrainementCard extends StatelessWidget {
-  final SuiviEntrainement suiviEntrainement;
+class SuiviNutritionnelCard extends StatefulWidget {
+  final SuivieNutritionnel suivieNutritionnel;
   final String? userId;
-  SuiviEntrainementCard(this.suiviEntrainement,this.userId);
+  final VoidCallback ? onPressed;
+  SuiviNutritionnelCard(this.suivieNutritionnel,this.userId, {this.onPressed});
+
+  @override
+  _SuiviNutritionnelCardState createState() => _SuiviNutritionnelCardState();
+}
+
+class _SuiviNutritionnelCardState extends State<SuiviNutritionnelCard> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        Get.to(new SuiviEntrainementDetailPage(userId,suiviEntrainement: this.suiviEntrainement));
+        Get.to(new SuivieNutritionnelDetailPage(widget.userId,suivieNutritionnel: this.widget.suivieNutritionnel));
       },
+      onLongPress: widget.onPressed,
       child: Container(
         height: 50,
         decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.circular(15)),
@@ -23,7 +31,7 @@ class SuiviEntrainementCard extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(formatDate(suiviEntrainement.date!, [dd, '-', MM, '-', yyyy]),style: TextStyle(fontSize: 18),),
+              Text(formatDate(widget.suivieNutritionnel.date!, [dd, '-', MM, '-', yyyy]),style: TextStyle(fontSize: 18),),
             ],
           ),
         ),

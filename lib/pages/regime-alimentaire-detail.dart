@@ -102,39 +102,44 @@ class _RegimeAlimentaireDetailPageState extends State<RegimeAlimentaireDetailPag
           ),
         ),
       ),
-      floatingActionButton:   widget.regimeAlimentaire==null ? Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      floatingActionButton:widget.regimeAlimentaire == null ?  Row(
         children: <Widget>[
-          MaterialButton(
-            color: Theme.of(context).accentColor,
-            child: Text(
-              "Submit",
-              style: TextStyle(color: Colors.white),
+          Expanded(
+            child: MaterialButton(
+              color: Theme.of(context).accentColor,
+              child: Text(
+                "Submit",
+                style: TextStyle(color: Colors.white),
+              ),
+              onPressed: () async {
+                _formKey.currentState?.save();
+                if (_formKey.currentState?.validate() == true) {
+                  RegimeAlimentaire regimeAlimentaire=RegimeAlimentaire.fromMap(_formKey.currentState?.value);
+                  regimeAlimentaire.date=DateTime.now();
+                  await FirebaseController.to.addRegimeAlimentaire(regimeAlimentaire, widget.userId!);
+                  Get.to(RegimeAlimentairePage(widget.userId));
+                } else {
+                  showShortToast("Validation failed");
+                }
+              },
             ),
-            onPressed: () async {
-              _formKey.currentState?.save();
-              if (_formKey.currentState?.validate() == true) {
-                RegimeAlimentaire regimeAlimentaire=RegimeAlimentaire.fromMap(_formKey.currentState?.value);
-                regimeAlimentaire.date=DateTime.now();
-                await FirebaseController.to.addRegimeAlimentaire(regimeAlimentaire, widget.userId!);
-                Get.to(RegimeAlimentairePage(widget.userId));
-              } else {
-                showShortToast("Validation failed");
-              }
-            },
           ),
-          MaterialButton(
-            color: Theme.of(context).accentColor,
-            child: Text(
-              "Reset",
-              style: TextStyle(color: Colors.white),
+          SizedBox(width: 20),
+          Expanded(
+            child: MaterialButton(
+              color: Theme.of(context).accentColor,
+              child: Text(
+                "Reset",
+                style: TextStyle(color: Colors.white),
+              ),
+              onPressed: () {
+                _formKey.currentState?.reset();
+              },
             ),
-            onPressed: () {
-              _formKey.currentState?.reset();
-            },
           ),
         ],
-      ) : SizedBox(),
+      )
+          :SizedBox(),
     );
   }
 }

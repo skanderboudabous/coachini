@@ -62,143 +62,144 @@ class _SuivieNutritionnelDetailPageState
             ),
           ),
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: <Widget>[
-                AbsorbPointer(
-                  absorbing: widget.suivieNutritionnel!=null,
-                  child: FormBuilder(
-                    key: _formKey,
-                    child: Column(
-                      children: <Widget>[
-                        FormBuilderTextField(
-                          name: 'qteCalRec',
-                          decoration: InputDecoration(
-                              labelText: 'Quantité de calories recommandé (Kcal)',
-                              labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
-                          validator: FormBuilderValidators.compose([
-                            FormBuilderValidators.required(context),
-                            FormBuilderValidators.numeric(context),
-                          ]),
-                          //************************************
-                          initialValue: widget.suivieNutritionnel?.qteCalRec.toString(),
-                          style: TextStyle(color: Colors.white),
-                          keyboardType: TextInputType.number,
-                        ),
-                        FormBuilderTextField(
-                          name: 'metabolisme',
-                          decoration: InputDecoration(
-                              labelText: 'Métabolisme de base (Kcal)',
-                              labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
-                          validator: FormBuilderValidators.compose([
-                            FormBuilderValidators.required(context),
-                            FormBuilderValidators.numeric(context),
-                          ]),
-                          //************************************
-                          initialValue: widget.suivieNutritionnel?.metabolisme.toString(),
-                          style: TextStyle(color: Colors.white),
-                          keyboardType: TextInputType.number,
-                        ),
-                        FormBuilderTextField(
-                          name: 'depEnergy',
-                          decoration: InputDecoration(
-                              labelText: 'Dépense énergétique (Kcal)',
-                              labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
-                          validator: FormBuilderValidators.compose([
-                            FormBuilderValidators.required(context),
-                            FormBuilderValidators.numeric(context),
-                          ]),
-                          //************************************
-                          initialValue: widget.suivieNutritionnel?.depEnergy.toString(),
-                          style: TextStyle(color: Colors.white),
-                          keyboardType: TextInputType.number,
-                        ),
-                        FormBuilderTextField(
-                          name: 'proteine',
-                          decoration: InputDecoration(
-                              labelText: 'Proteine (Kcal)',
-                              labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
-                          validator: FormBuilderValidators.compose([
-                            FormBuilderValidators.required(context),
-                            FormBuilderValidators.numeric(context),
-                          ]),
-                          initialValue: widget.suivieNutritionnel?.proteine.toString(),
-                          style: TextStyle(color: Colors.white),
-                          keyboardType: TextInputType.number,
-                        ),
-                        FormBuilderTextField(
-                          name: 'glucide',
-                          decoration: InputDecoration(
-                              labelText: 'Glucide (Kcal)',
-                              labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
-                          validator: FormBuilderValidators.compose([
-                            FormBuilderValidators.required(context),
-                            FormBuilderValidators.numeric(context),
-                          ]),
-                          initialValue: widget.suivieNutritionnel?.glucide.toString(),
-                          style: TextStyle(color: Colors.white),
-                          keyboardType: TextInputType.number,
-                        ),
-                        FormBuilderTextField(
-                          name: 'lipide',
-                          decoration: InputDecoration(
-                              labelText: 'Lipide (Kcal)',
-                              labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
-                          validator: FormBuilderValidators.compose([
-                            FormBuilderValidators.required(context),
-                            FormBuilderValidators.numeric(context),
-                          ]),
-                          initialValue: widget.suivieNutritionnel?.lipide.toString(),
-                          style: TextStyle(color: Colors.white),
-                          keyboardType: TextInputType.number,
-                        ),
-                      ],
+            padding: const EdgeInsets.only(bottom:55),
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: AbsorbPointer(
+                    absorbing: widget.suivieNutritionnel!=null,
+                    child: FormBuilder(
+                      key: _formKey,
+                      child: Column(
+                        children: <Widget>[
+                          FormBuilderTextField(
+                            name: 'qteCalRec',
+                            decoration: InputDecoration(
+                                labelText: 'Quantité de calories recommandé (Kcal)',
+                                labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
+                            validator: FormBuilderValidators.compose([
+                              FormBuilderValidators.required(context),
+                              FormBuilderValidators.numeric(context),
+                            ]),
+                            //************************************
+                            initialValue: widget.suivieNutritionnel?.qteCalRec.toString(),
+                            style: TextStyle(color: Colors.white),
+                            keyboardType: TextInputType.number,
+                          ),
+                          FormBuilderTextField(
+                            name: 'metabolisme',
+                            decoration: InputDecoration(
+                                labelText: 'Métabolisme de base (Kcal)',
+                                labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
+                            validator: FormBuilderValidators.compose([
+                              FormBuilderValidators.required(context),
+                              FormBuilderValidators.numeric(context),
+                            ]),
+                            //************************************
+                            initialValue: widget.suivieNutritionnel?.metabolisme.toString(),
+                            style: TextStyle(color: Colors.white),
+                            keyboardType: TextInputType.number,
+                          ),
+                          FormBuilderTextField(
+                            name: 'depEnergy',
+                            decoration: InputDecoration(
+                                labelText: 'Dépense énergétique (Kcal)',
+                                labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
+                            validator: FormBuilderValidators.compose([
+                              FormBuilderValidators.required(context),
+                              FormBuilderValidators.numeric(context),
+                            ]),
+                            //************************************
+                            initialValue: widget.suivieNutritionnel?.depEnergy.toString(),
+                            style: TextStyle(color: Colors.white),
+                            keyboardType: TextInputType.number,
+                          ),
+                          FormBuilderTextField(
+                            name: 'proteine',
+                            decoration: InputDecoration(
+                                labelText: 'Proteine (Kcal)',
+                                labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
+                            validator: FormBuilderValidators.compose([
+                              FormBuilderValidators.required(context),
+                              FormBuilderValidators.numeric(context),
+                            ]),
+                            initialValue: widget.suivieNutritionnel?.proteine.toString(),
+                            style: TextStyle(color: Colors.white),
+                            keyboardType: TextInputType.number,
+                          ),
+                          FormBuilderTextField(
+                            name: 'glucide',
+                            decoration: InputDecoration(
+                                labelText: 'Glucide (Kcal)',
+                                labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
+                            validator: FormBuilderValidators.compose([
+                              FormBuilderValidators.required(context),
+                              FormBuilderValidators.numeric(context),
+                            ]),
+                            initialValue: widget.suivieNutritionnel?.glucide.toString(),
+                            style: TextStyle(color: Colors.white),
+                            keyboardType: TextInputType.number,
+                          ),
+                          FormBuilderTextField(
+                            name: 'lipide',
+                            decoration: InputDecoration(
+                                labelText: 'Lipide (Kcal)',
+                                labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
+                            validator: FormBuilderValidators.compose([
+                              FormBuilderValidators.required(context),
+                              FormBuilderValidators.numeric(context),
+                            ]),
+                            initialValue: widget.suivieNutritionnel?.lipide.toString(),
+                            style: TextStyle(color: Colors.white),
+                            keyboardType: TextInputType.number,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                widget.suivieNutritionnel == null ?  Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: MaterialButton(
-                        color: Theme.of(context).accentColor,
-                        child: Text(
-                          "Submit",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        onPressed: () async {
-                          _formKey.currentState?.save();
-                          if (_formKey.currentState?.validate() == true) {
-                            SuivieNutritionnel suivie=SuivieNutritionnel.fromMap(_formKey.currentState?.value);
-                            suivie.date=DateTime.now();
-                            await FirebaseController.to.addSuivieNutritionnel(suivie, widget.userId!);
-                            Get.to(SuivieNutritionnelPage(widget.userId));
-                          } else {
-                            showShortToast("Validation failed");
-                          }
-                        },
-                      ),
-                    ),
-                    SizedBox(width: 20),
-                    Expanded(
-                      child: MaterialButton(
-                        color: Theme.of(context).accentColor,
-                        child: Text(
-                          "Reset",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        onPressed: () {
-                          _formKey.currentState?.reset();
-                        },
-                      ),
-                    ),
-                  ],
-                ):
-                    SizedBox()
-              ],
+              ),
             ),
           ),
         ),
       ),
+        floatingActionButton:widget.suivieNutritionnel == null ?  Row(
+          children: <Widget>[
+            Expanded(
+              child: MaterialButton(
+                color: Theme.of(context).accentColor,
+                child: Text(
+                  "Submit",
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () async {
+                  _formKey.currentState?.save();
+                  if (_formKey.currentState?.validate() == true) {
+                    SuivieNutritionnel suivie=SuivieNutritionnel.fromMap(_formKey.currentState?.value);
+                    suivie.date=DateTime.now();
+                    await FirebaseController.to.addSuivieNutritionnel(suivie, widget.userId!);
+                    Get.to(SuivieNutritionnelPage(widget.userId));
+                  } else {
+                    showShortToast("Validation failed");
+                  }
+                },
+              ),
+            ),
+            SizedBox(width: 20),
+            Expanded(
+              child: MaterialButton(
+                color: Theme.of(context).accentColor,
+                child: Text(
+                  "Reset",
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () {
+                  _formKey.currentState?.reset();
+                },
+              ),
+            ),
+          ],
+        )
+            :SizedBox(),
     );
   }
 }

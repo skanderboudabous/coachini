@@ -72,7 +72,8 @@ class Exercice {
       'repo': repo,
       'charge': charge,
       'isDone': isDone??false,
-      'dateLim': dateLim
+      'dateLim': dateLim,
+      'date': date
     };
   }
 

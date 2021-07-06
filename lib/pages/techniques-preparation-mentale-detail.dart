@@ -1,7 +1,5 @@
 import 'package:coachini/controller/firebase_controller.dart';
-import 'package:coachini/models/regime-alimentaire.dart';
 import 'package:coachini/models/techniques-preparation-mentale.dart';
-import 'package:coachini/pages/regime-alimentaire.dart';
 import 'package:coachini/pages/techniques-preparation-mentale.dart';
 import 'package:coachini/utils/functions.dart';
 import 'package:flutter/cupertino.dart';
@@ -98,39 +96,44 @@ class _TechniquesPreparationMentaleDetailPageState extends State<TechniquesPrepa
           ),
         ),
       ),
-      floatingActionButton:   widget.techniquesPreparationMentale==null ? Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      floatingActionButton:widget.techniquesPreparationMentale == null ?  Row(
         children: <Widget>[
-          MaterialButton(
-            color: Theme.of(context).accentColor,
-            child: Text(
-              "Submit",
-              style: TextStyle(color: Colors.white),
+          Expanded(
+            child: MaterialButton(
+              color: Theme.of(context).accentColor,
+              child: Text(
+                "Submit",
+                style: TextStyle(color: Colors.white),
+              ),
+              onPressed: () async {
+                _formKey.currentState?.save();
+                if (_formKey.currentState?.validate() == true) {
+                  TechniquesPreparationMentale techniquesPreparationMentale=TechniquesPreparationMentale.fromMap(_formKey.currentState?.value);
+                  techniquesPreparationMentale.date=DateTime.now();
+                  await FirebaseController.to.addTechniquesPreparationMentale(techniquesPreparationMentale, widget.userId!);
+                  Get.to(TechniquesPreparationMentalePage(widget.userId));
+                } else {
+                  showShortToast("Validation failed");
+                }
+              },
             ),
-            onPressed: () async {
-              _formKey.currentState?.save();
-              if (_formKey.currentState?.validate() == true) {
-                TechniquesPreparationMentale techniquesPreparationMentale=TechniquesPreparationMentale.fromMap(_formKey.currentState?.value);
-                techniquesPreparationMentale.date=DateTime.now();
-                await FirebaseController.to.addTechniquesPreparationMentale(techniquesPreparationMentale, widget.userId!);
-                Get.to(TechniquesPreparationMentalePage(widget.userId));
-              } else {
-                showShortToast("Validation failed");
-              }
-            },
           ),
-          MaterialButton(
-            color: Theme.of(context).accentColor,
-            child: Text(
-              "Reset",
-              style: TextStyle(color: Colors.white),
+          SizedBox(width: 20),
+          Expanded(
+            child: MaterialButton(
+              color: Theme.of(context).accentColor,
+              child: Text(
+                "Reset",
+                style: TextStyle(color: Colors.white),
+              ),
+              onPressed: () {
+                _formKey.currentState?.reset();
+              },
             ),
-            onPressed: () {
-              _formKey.currentState?.reset();
-            },
           ),
         ],
-      ) : SizedBox(),
+      )
+          :SizedBox(),
     );
   }
 }

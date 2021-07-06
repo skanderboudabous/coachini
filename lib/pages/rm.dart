@@ -7,6 +7,7 @@ import 'package:coachini/widgets/loader.dart';
 import 'package:coachini/widgets/rms_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class RMsPage extends StatefulWidget {
   final String? userId;
@@ -18,6 +19,7 @@ class RMsPage extends StatefulWidget {
 
 class _RMsPageState extends State<RMsPage> {
   bool? isAdmin;
+  List<DocumentSnapshot>? documents= [];
   @override
   void initState() {
     isAdmin = Get.find<FirebaseController>().admin.value;
@@ -59,7 +61,7 @@ class _RMsPageState extends State<RMsPage> {
             builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
               print(snapshot.hasData);
               if (snapshot.hasData) {
-                final List<DocumentSnapshot>? documents = snapshot.data?.docs;
+                documents = snapshot.data?.docs;
 
                 return ListView.builder(
                     itemCount: documents?.length,
@@ -67,7 +69,42 @@ class _RMsPageState extends State<RMsPage> {
                       final RM rm = RM.fromMap(documents?[index].data());
                       return Padding(
                           padding: const EdgeInsets.all(8),
-                          child: RMsCard(rm, widget.userId));
+                          child: RMsCard(rm, widget.userId,onPressed:(){
+                            (isAdmin == true) ?Alert(
+                              context: context,
+                              type: AlertType.warning,
+                              title: "Supprimer ",
+                              desc: "vous êtes sur ??",
+                              buttons: [
+                                DialogButton(
+                                  child: Text(
+                                    "Yes",
+                                    style: TextStyle(color: Colors.white, fontSize: 20),
+                                  ),
+                                  onPressed: () async {
+                                    Navigator.pop(context);
+                                    await FirebaseController.to.deleteUserRM(
+                                        widget.userId,rm.id);
+                                    setState(() {
+                                      documents?.removeAt(index);
+                                    });
+                                  },
+                                  color: Color.fromRGBO(0, 179, 134, 1.0),
+                                ),
+                                DialogButton(
+                                  child: Text(
+                                    "No",
+                                    style: TextStyle(color: Colors.white, fontSize: 20),
+                                  ),
+                                  onPressed: () => Navigator.pop(context),
+                                  gradient: LinearGradient(colors: [
+                                    Color.fromRGBO(116, 116, 191, 1.0),
+                                    Color.fromRGBO(52, 138, 199, 1.0)
+                                  ]),
+                                )
+                              ],
+                            ).show() : print('not Admin');
+                          }));
                     });
               } else {
                 return Loader();

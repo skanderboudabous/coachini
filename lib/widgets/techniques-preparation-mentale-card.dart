@@ -5,16 +5,24 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 
-class TechniquesPreparationMentaleCard extends StatelessWidget {
+class TechniquesPreparationMentaleCard extends StatefulWidget {
   final TechniquesPreparationMentale techniquesPreparationMentale;
   final String? userId;
-  TechniquesPreparationMentaleCard(this.techniquesPreparationMentale,this.userId);
+  final VoidCallback ? onPressed;
+  TechniquesPreparationMentaleCard(this.techniquesPreparationMentale,this.userId, {this.onPressed});
+
+  @override
+  _TechniquesPreparationMentaleCardState createState() => _TechniquesPreparationMentaleCardState();
+}
+
+class _TechniquesPreparationMentaleCardState extends State<TechniquesPreparationMentaleCard> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        Get.to(new TechniquesPreparationMentaleDetailPage(userId,techniquesPreparationMentale: this.techniquesPreparationMentale));
+        Get.to(new TechniquesPreparationMentaleDetailPage(widget.userId,techniquesPreparationMentale: this.widget.techniquesPreparationMentale));
       },
+      onLongPress: widget.onPressed,
       child: Container(
         decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.circular(15)),
         height: 50,
@@ -23,7 +31,7 @@ class TechniquesPreparationMentaleCard extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(formatDate(techniquesPreparationMentale.date!, [dd, '-', MM, '-', yyyy]),style: TextStyle(fontSize: 18),),
+              Text(formatDate(widget.techniquesPreparationMentale.date!, [dd, '-', MM, '-', yyyy]),style: TextStyle(fontSize: 18),),
             ],
           ),
         ),

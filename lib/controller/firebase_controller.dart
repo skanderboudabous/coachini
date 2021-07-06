@@ -343,7 +343,7 @@ class FirebaseController extends GetxController {
           .get(userCollection.doc(id).collection("suiviEntrainements").doc());
       print(ds.id);
       suiviEntrainement.id = ds.id;
-      await transaction.set(
+      transaction.set(
           userCollection
               .doc(id)
               .collection("suiviEntrainements")
@@ -367,6 +367,13 @@ class FirebaseController extends GetxController {
               .doc(compositionCorporelle.id),
           compositionCorporelle.toMap());
       return compositionCorporelle;
+    });
+  }
+
+
+  Future updateExerciceCheck(String? userId,String? id,bool? value){
+    return userCollection.doc(userId).collection("exercices").doc(id).update({
+      "isDone":value
     });
   }
 
@@ -507,6 +514,30 @@ class FirebaseController extends GetxController {
         .collection("regimeAlimentaires")
         .orderBy('date', descending: true)
         .get();
+  }
+  Future<void> deleteUserRegimeAlimentaire(String? id,String? cID) {
+    return userCollection.doc(id).collection("regimeAlimentaires").doc(cID).delete();
+  }
+  Future<void> deleteUserExercice(String? id,String? cID) {
+    return userCollection.doc(id).collection("exercices").doc(cID).delete();
+  }
+  Future<void> deleteUserMesure(String? id,String? cID) {
+    return userCollection.doc(id).collection("mesures").doc(cID).delete();
+  }
+  Future<void> deleteUserSuiviEntrainement(String? id,String? cID) {
+    return userCollection.doc(id).collection("suiviEntrainements").doc(cID).delete();
+  }
+  Future<void> deleteUserSuiviNutritionnel(String? id,String? cID) {
+    return userCollection.doc(id).collection("suivieNutritionnels").doc(cID).delete();
+  }
+  Future<void> deleteUserRM(String? id,String? cID) {
+    return userCollection.doc(id).collection("rms").doc(cID).delete();
+  }
+  Future<void> deleteUserCompositionCorporelle(String? id,String? cID) {
+    return userCollection.doc(id).collection("compositionCorporelles").doc(cID).delete();
+  }
+  Future<void> deleteUserTechniquesPreparationMentale(String? id,String? cID) {
+    return userCollection.doc(id).collection("techniquesPreparationMentale").doc(cID).delete();
   }
   Future<QuerySnapshot> getUserTechniquesPreparationMentale({String? id}) {
     return userCollection
