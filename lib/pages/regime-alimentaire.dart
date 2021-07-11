@@ -117,7 +117,7 @@ class _RegimeAlimentairePageState extends State<RegimeAlimentairePage> {
           ? ElevatedButton(
         child: Icon(Icons.add),
         onPressed: () {
-          Get.to(new RegimeAlimentaireDetailPage(widget.userId));
+          Get.to(() => new RegimeAlimentaireDetailPage(widget.userId));
         },
       )
           : SizedBox(),

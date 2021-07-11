@@ -139,7 +139,7 @@ class _SuiviEntrainementPageState extends State<SuiviEntrainementPage> {
           ? ElevatedButton(
               child: Icon(Icons.add),
               onPressed: () {
-                Get.to(new SuiviEntrainementDetailPage(widget.userId));
+                Get.to(() => new SuiviEntrainementDetailPage(widget.userId));
               },
             )
           : SizedBox(),

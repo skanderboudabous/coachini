@@ -328,7 +328,7 @@ class _SuiviEntrainementDetailPageState
                         suivie.date = DateTime.now();
                         await FirebaseController.to
                             .addSuivieEntrainement(suivie, widget.userId!);
-                        Get.to(SuiviEntrainementPage(widget.userId));
+                        Get.to(() => SuiviEntrainementPage(widget.userId));
                       } else {
                         showShortToast("Validation failed");
                       }

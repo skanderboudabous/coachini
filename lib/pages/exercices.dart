@@ -111,7 +111,7 @@ class _ExercicesPageState extends State<ExercicesPage> {
           ? ElevatedButton(
         child: Icon(Icons.add),
         onPressed: () {
-          Get.to(new ExerciceDetailPage(widget.userId));
+          Get.to(() => new ExerciceDetailPage(widget.userId));
         },
       )
           : SizedBox(),

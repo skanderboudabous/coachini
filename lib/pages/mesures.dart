@@ -124,7 +124,7 @@ class _MesuresPageState extends State<MesuresPage> {
           ? ElevatedButton(
               child: Icon(Icons.add),
               onPressed: () {
-                Get.to(new MesuresDetailPage(widget.userId));
+                Get.to(() => new MesuresDetailPage(widget.userId));
               },
             )
           : SizedBox(),

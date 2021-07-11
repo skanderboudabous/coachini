@@ -40,7 +40,7 @@ class _CollectionListState extends State<CollectionList> {
                   children: [
                     PrimaryButton(
                       onPressed: () {
-                        Get.to(MesuresList());
+                        Get.to(() => MesuresList());
                       },
                       buttonLabel: "Mesure",
                       fontSize: 14,
@@ -53,7 +53,7 @@ class _CollectionListState extends State<CollectionList> {
                     ),
                     PrimaryButton(
                       onPressed: () {
-                        Get.to(CompositionCorporelleList());
+                        Get.to(() => CompositionCorporelleList());
                       },
                       buttonLabel: "Composition corporelle",
                       fontSize: 14,
@@ -66,9 +66,9 @@ class _CollectionListState extends State<CollectionList> {
                     ),
                     PrimaryButton(
                       onPressed: () {
-                        Get.to(SuiviEntrainementList());
+                        Get.to(() => SuiviEntrainementList());
                       },
-                      buttonLabel: "Suivi entrainement",
+                      buttonLabel: "Suivi entraînement",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
                       width: 150,
@@ -79,7 +79,7 @@ class _CollectionListState extends State<CollectionList> {
                     ),
                     PrimaryButton(
                       onPressed: () {
-                        Get.to(SuiviNutritionnelList());
+                        Get.to(() => SuiviNutritionnelList());
                       },
                       buttonLabel: "Suivi nutritionnel",
                       fontSize: 14,

@@ -112,46 +112,46 @@ class MenuWidget extends StatelessWidget {
             Get.find<FirebaseController>().logout();
             break;
           case "Exercices":
-            Get.to(ExercicesPage(FirebaseController.currentId));
+            Get.to(() => ExercicesPage(FirebaseController.currentId));
             break;
           case "Objectif":
-            Get.to(ObjectifPage(FirebaseController.currentId));
+            Get.to(() => ObjectifPage(FirebaseController.currentId));
             break;
           case "Type de morphologie":
-            Get.to(MorphologiePage(FirebaseController.currentId));
+            Get.to(() => MorphologiePage(FirebaseController.currentId));
             break;
           case "Profile":
-            Get.to(EditProfilePage());
+            Get.to(() => EditProfilePage());
             break;
           case "1RM":
-            Get.to(RMsPage(FirebaseController.currentId));
+            Get.to(() => RMsPage(FirebaseController.currentId));
             break;
           case "Mesures":
-            Get.to(MesuresPage(FirebaseController.currentId));
+            Get.to(() => MesuresPage(FirebaseController.currentId));
             break;
           case "Suivi mentale":
-            Get.to(SuivieMentalePage(FirebaseController.currentId));
+            Get.to(() => SuivieMentalePage(FirebaseController.currentId));
             break;
           case "Suivi nutritionnel":
-            Get.to(SuivieNutritionnelPage(FirebaseController.currentId));
+            Get.to(() => SuivieNutritionnelPage(FirebaseController.currentId));
             break;
            case "Régime alimentaire":
-            Get.to(RegimeAlimentairePage(FirebaseController.currentId));
+            Get.to(() => RegimeAlimentairePage(FirebaseController.currentId));
             break;
-          case "Suivi entrainement":
-            Get.to(SuiviEntrainementPage(FirebaseController.currentId));
+          case "Suivi entraînement":
+            Get.to(() => SuiviEntrainementPage(FirebaseController.currentId));
             break;
           case "Composition corporelle":
-            Get.to(CompositionCorporellePage(FirebaseController.currentId));
+            Get.to(() => CompositionCorporellePage(FirebaseController.currentId));
             break;
             case "Techniques de préparation mentale":
-            Get.to(TechniquesPreparationMentalePage(FirebaseController.currentId));
+            Get.to(() => TechniquesPreparationMentalePage(FirebaseController.currentId));
             break;
           case "About":
-            Get.to(AboutPage());
+            Get.to(() => AboutPage());
             break;
           case "Statistiques":
-            Get.to(CollectionList());
+            Get.to(() => CollectionList());
             break;
         }
       });

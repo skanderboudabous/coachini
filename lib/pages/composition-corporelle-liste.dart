@@ -15,7 +15,7 @@ class _CompositionCorporelleListState extends State<CompositionCorporelleList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Coposition Corporelle")),
+      appBar: AppBar(title: Text("Composition corporelle")),
       body: Container(
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
@@ -100,10 +100,10 @@ class _CompositionCorporelleListState extends State<CompositionCorporelleList> {
                     SizedBox(height: 10,),
                     PrimaryButton(
                       onPressed: () {
-                        Get.to(()=> new ChartPage(title:"pli cutané bicipital", atr: 'pliCutaneBicipital',collectionName: collectionName,));
+                        Get.to(()=> new ChartPage(title:"Pli cutané bicipital", atr: 'pliCutaneBicipital',collectionName: collectionName,));
 
                       },
-                      buttonLabel: "pli cutané bicipital",
+                      buttonLabel: "Pli cutané bicipital",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
                       width: 150,
@@ -111,10 +111,10 @@ class _CompositionCorporelleListState extends State<CompositionCorporelleList> {
                     SizedBox(height: 10,),
                     PrimaryButton(
                       onPressed: () {
-                        Get.to(()=> new ChartPage(title:"pli cutané tricipital", atr: 'pliCutaneTricipital',collectionName: collectionName,));
+                        Get.to(()=> new ChartPage(title:"Pli cutané tricipital", atr: 'pliCutaneTricipital',collectionName: collectionName,));
 
                       },
-                      buttonLabel: "pli cutané tricipital",
+                      buttonLabel: "Pli cutané tricipital",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
                       width: 150,
@@ -122,10 +122,10 @@ class _CompositionCorporelleListState extends State<CompositionCorporelleList> {
                     SizedBox(height: 10,),
                     PrimaryButton(
                       onPressed: () {
-                        Get.to(()=> new ChartPage(title:"pli cutané sous-scapulaire", atr: 'pliCutaneSousScapulaire',collectionName: collectionName,));
+                        Get.to(()=> new ChartPage(title:"Pli cutané sous-scapulaire", atr: 'pliCutaneSousScapulaire',collectionName: collectionName,));
 
                       },
-                      buttonLabel: "pli cutané sous-scapulaire",
+                      buttonLabel: "Pli cutané sous-scapulaire",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
                       width: 150,
@@ -133,10 +133,10 @@ class _CompositionCorporelleListState extends State<CompositionCorporelleList> {
                     SizedBox(height: 10,),
                     PrimaryButton(
                       onPressed: () {
-                        Get.to(()=> new ChartPage(title:"pli cutané supra-iliaque", atr: 'pliCutaneSupraIliaque',collectionName: collectionName,));
+                        Get.to(()=> new ChartPage(title:"Pli cutané supra-iliaque", atr: 'pliCutaneSupraIliaque',collectionName: collectionName,));
 
                       },
-                      buttonLabel: "pli cutané supra-iliaque",
+                      buttonLabel: "Pli cutané supra-iliaque",
                       fontSize: 14,
                       bgColor: Colors.lightBlue,
                       width: 150,
