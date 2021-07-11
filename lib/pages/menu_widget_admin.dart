@@ -6,11 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 
-
 class MenuWidgetAdmin extends StatelessWidget {
   final Function(String)? onItemClick;
 
   const MenuWidgetAdmin({Key? key, this.onItemClick}) : super(key: key);
+
 //  final String? id=
 
   @override
@@ -25,24 +25,30 @@ class MenuWidgetAdmin extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            OnlineImage(FirebaseController.to.firestoreUser.value?.pictureUrl,size: 25,width: 100,height: 100,),
+            OnlineImage(
+              FirebaseController.to.firestoreUser.value?.pictureUrl,
+              size: 25,
+              width: 100,
+              height: 100,
+            ),
             SizedBox(
               height: 20,
             ),
-            GetX<FirebaseController>(builder: (fb){
-              return Text(
-                fb.firestoreUser.value?.firstName??'',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                    fontFamily: 'BalsamiqSans'),
-              );
-            },init: FirebaseController(),),
+            Text(
+              FirebaseController.to.firestoreUser.value?.firstName ?? '',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  fontFamily: 'BalsamiqSans'),
+            ),
             SizedBox(
               height: 5,
             ),
-            sliderItem('Images RM', Icons.person_rounded,),
+            sliderItem(
+              'Images RM',
+              Icons.person_rounded,
+            ),
             sliderItem('Images Exercices', Icons.accessibility),
             sliderItem('LogOut', Icons.arrow_back_ios)
           ],
@@ -55,7 +61,7 @@ class MenuWidgetAdmin extends StatelessWidget {
       title: Text(
         title,
         style:
-        TextStyle(color: Colors.black, fontFamily: 'BalsamiqSans_Regular'),
+            TextStyle(color: Colors.black, fontFamily: 'BalsamiqSans_Regular'),
       ),
       leading: Icon(
         icons,
@@ -63,9 +69,9 @@ class MenuWidgetAdmin extends StatelessWidget {
       ),
       onTap: () {
         onItemClick!(title);
-        switch (title){
+        switch (title) {
           case "LogOut":
-            Get.find<FirebaseController>().logout();
+            FirebaseController.to.logout();
             break;
           case "Images Exercices":
             Get.to(AddExerciceImage());
