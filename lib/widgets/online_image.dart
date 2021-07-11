@@ -64,7 +64,7 @@ class _OnlineImageState extends State<OnlineImage>
                         maxRadius: widget.size??20,
                         backgroundImage:state.imageProvider ,
                       ));
-                  break;
+                 // break;
                 case LoadState.failed:
                   _controller.reset();
                   return GestureDetector(

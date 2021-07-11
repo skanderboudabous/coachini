@@ -31,7 +31,7 @@ class _RMsPageState extends State<RMsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("RMs",
+        title: Text("RM",
             textAlign: TextAlign.center,
             style: TextStyle(
                 color: Colors.white,

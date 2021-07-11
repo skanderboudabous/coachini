@@ -17,13 +17,26 @@ class _CollectionListState extends State<CollectionList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Collection",textAlign: TextAlign.center,)),
-      body: SingleChildScrollView(
+      appBar: AppBar(
+          title: Text(
+        "Statistiques",
+        textAlign: TextAlign.center,
+      )),
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
+            image: AssetImage("assets/images/bg9.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
         child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Center(
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     PrimaryButton(
                       onPressed: () {

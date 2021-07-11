@@ -11,6 +11,7 @@ class SuiviEntrainement{
   int? cadenceMoy;//10
   int? longuerMoyPas;//20
   int? FC;//20
+  int? FCmax;//20
   double? stresse;//10
   double? oxygene;//10
   int? RPE;//1
@@ -29,6 +30,7 @@ class SuiviEntrainement{
         this.cadenceMoy,
         this.longuerMoyPas,
         this.FC,
+        this.FCmax,
         this.stresse,
         this.oxygene,
         this.RPE,});
@@ -80,6 +82,9 @@ class SuiviEntrainement{
       FC: null == (temp = map['FC'])
           ? null
           : (temp is num ? temp.toInt() : int.tryParse(temp)),
+      FCmax: null == (temp = map['FCmax'])
+          ? null
+          : (temp is num ? temp.toInt() : int.tryParse(temp)),
       stresse: null == (temp = map['stresse'])
           ? null
           : (temp is num ? temp.toDouble() : double.tryParse(temp)),
@@ -107,6 +112,7 @@ class SuiviEntrainement{
       'cadenceMoy':cadenceMoy,
       'longuerMoyPas':longuerMoyPas,
       'FC': FC,
+      'FCmax': FCmax,
       'stresse': stresse,
       'oxygene': oxygene,
       'RPE' : RPE,

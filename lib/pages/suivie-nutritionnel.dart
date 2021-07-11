@@ -29,7 +29,7 @@ class _SuivieNutritionnelPageState extends State<SuivieNutritionnelPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Suivis Nutritionnel",
+        title: Text("Suivi nutritionnel",
             textAlign: TextAlign.center,
             style: TextStyle(
                 color: Colors.white,

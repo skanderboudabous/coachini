@@ -146,7 +146,7 @@ class FirebaseController extends GetxController {
         app = await Firebase.initializeApp(
             name: appName, options: Firebase.app().options);
       } else {
-        app = await Firebase.app(appName);
+        app = Firebase.app(appName);
       }
       final UserCredential result = (await FirebaseAuth.instanceFor(app: app)
           .createUserWithEmailAndPassword(
@@ -232,7 +232,7 @@ class FirebaseController extends GetxController {
           .get(userCollection.doc(userId).collection("mesures").doc());
       print(ds.id);
       mesure.id = ds.id;
-      await transaction.set(
+       transaction.set(
           userCollection.doc(userId).collection("mesures").doc(mesure.id),
           mesure.toMap());
       return mesure;
@@ -245,7 +245,7 @@ class FirebaseController extends GetxController {
           .get(userCollection.doc(userId).collection("rms").doc());
       print(ds.id);
       rm.id = ds.id;
-      await transaction.set(
+       transaction.set(
           userCollection.doc(userId).collection("rms").doc(rm.id), rm.toMap());
       return rm;
     });
@@ -270,7 +270,7 @@ class FirebaseController extends GetxController {
           .get(userCollection.doc(userId).collection("objectives").doc());
       print(ds.id);
       objectif.id = ds.id;
-      await transaction.set(
+       transaction.set(
           userCollection.doc(userId).collection("objectives").doc(objectif.id),
           objectif.toMap());
       return objectif;
@@ -326,7 +326,7 @@ class FirebaseController extends GetxController {
           .get(userCollection.doc(id).collection("suivieNutritionnels").doc());
       print(ds.id);
       suivieNutritionnel.id = ds.id;
-      await transaction.set(
+       transaction.set(
           userCollection
               .doc(id)
               .collection("suivieNutritionnels")

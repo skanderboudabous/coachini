@@ -126,7 +126,7 @@ class _ExerciceDetailPageState extends State<ExerciceDetailPage> {
                             FormBuilderTextField(
                               name: 'nbSerie',
                               decoration: InputDecoration(
-                                  labelText: 'nombre de series',
+                                  labelText: 'Nombre de series',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
@@ -139,7 +139,7 @@ class _ExerciceDetailPageState extends State<ExerciceDetailPage> {
                             FormBuilderTextField(
                               name: 'nbRep',
                               decoration: InputDecoration(
-                                  labelText: 'nbRep',
+                                  labelText: 'Nombre de répétitions',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
@@ -152,7 +152,7 @@ class _ExerciceDetailPageState extends State<ExerciceDetailPage> {
                             FormBuilderTextField(
                               name: 'repo',
                               decoration: InputDecoration(
-                                  labelText: 'repos (sec)',
+                                  labelText: 'Temps de récupération (sec)',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
@@ -165,11 +165,10 @@ class _ExerciceDetailPageState extends State<ExerciceDetailPage> {
                             FormBuilderTextField(
                               name: 'charge',
                               decoration: InputDecoration(
-                                  labelText: 'charge',
+                                  labelText: 'Charge',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
                               validator: FormBuilderValidators.compose([
                                 FormBuilderValidators.required(context),
-                                FormBuilderValidators.numeric(context),
                               ]),
                               initialValue: widget.exercice?.charge.toString(),
                               keyboardType: TextInputType.text,
@@ -183,8 +182,9 @@ class _ExerciceDetailPageState extends State<ExerciceDetailPage> {
                                 FormBuilderValidators.required(context),
                               ]),
                               decoration: InputDecoration(
-                                  labelText: 'Date Limit',
+                                  labelText: 'Date Limite',
                                   labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
+
                               initialValue: widget.exercice?.dateLim,
                               style: TextStyle(color: Colors.white),
                               // initialValue: DateTime.now(),

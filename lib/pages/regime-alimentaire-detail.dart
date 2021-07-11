@@ -75,6 +75,7 @@ class _RegimeAlimentaireDetailPageState extends State<RegimeAlimentaireDetailPag
                         child: Column(
                           children: <Widget>[
                             FormBuilderTextField(
+                              readOnly: false,
                               name: 'texte',
                               maxLines: 30,
 //                              decoration: InputDecoration(
@@ -88,12 +89,13 @@ class _RegimeAlimentaireDetailPageState extends State<RegimeAlimentaireDetailPag
                               initialValue: widget.regimeAlimentaire?.texte.toString(),
                               style: TextStyle(color: Colors.white,fontSize: 25),
                               keyboardType: TextInputType.multiline,
+
                             ),
                           ],
                         ),
                       ),
                     ),
-                    absorbing:widget.regimeAlimentaire!=null,
+                    absorbing: isAdmin == false,
                   ),
 
                 ],

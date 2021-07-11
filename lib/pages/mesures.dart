@@ -50,7 +50,9 @@ class _MesuresPageState extends State<MesuresPage> {
       ),
       body: WillPopScope(
         onWillPop: () {
-          Get.toNamed(AppRoutes.USER_PROFILE+"?id="+widget.userId!);
+          isAdmin == true
+              ? Get.toNamed(AppRoutes.USER_PROFILE + "?id=" + widget.userId!)
+              : Get.toNamed(AppRoutes.HOME);
           return Future.value(false);
         },
         child: Container(

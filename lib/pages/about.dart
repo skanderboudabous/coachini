@@ -48,10 +48,13 @@ class _AboutPageState extends State<AboutPage> {
                 SizedBox(
                   height: 20,
                 ),
-                Text("Cette application à pour objectif d'un coaching professionnel personnel presentiel ou a distance pour toute "
-                    "les catgories d'age meme en presence des maladies chroniques ou aigues developpé "
+                Text("Cette application a pour objectif d'un coaching professionnel personnel présentiel ou à distance pour toute "
+                    "les catégories d'âge même en présence des maladies chroniques ou aigues développé "
                     "par Skander Boudabous et Mohamed Mseddi appartient à",
                 style: TextStyle(color: Colors.white),textAlign: TextAlign.center,),
+                SizedBox(
+                  height: 70,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -72,13 +75,13 @@ class _AboutPageState extends State<AboutPage> {
                     }, icon: Icon(Icons.phone),color: Colors.green,)
                   ],
                 ),
-                Text("Experts en sciences du sport contact",style: TextStyle(color:Colors.white),),
+                Text("Experts en sciences du sport",style: TextStyle(color:Colors.white),),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("coachini@gmail.com",style: TextStyle(color:Colors.white),),
+                    Text("service.coachini@gmail.com",style: TextStyle(color:Colors.white),),
                     IconButton(onPressed: ()=>{
-                      sendEmail("coachini@gmail.com")
+                      sendEmail("service.coachini@gmail.com")
                     }, icon: Icon(Icons.email_outlined,color: Colors.red,))
                   ],
                 ),

@@ -87,7 +87,7 @@ class _TechniquesPreparationMentaleDetailPageState extends State<TechniquesPrepa
                         ),
                       ),
                     ),
-                    absorbing:widget.techniquesPreparationMentale!=null,
+                    absorbing: isAdmin == false,
                   ),
 
                 ],

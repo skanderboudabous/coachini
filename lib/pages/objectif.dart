@@ -3,10 +3,9 @@ import 'package:coachini/models/objectif.dart';
 import 'package:coachini/routes/app_routes.dart';
 import 'package:coachini/utils/functions.dart';
 import 'package:flutter/material.dart';
-import 'package:direct_select_flutter/direct_select_container.dart';
 import 'package:direct_select_flutter/direct_select_item.dart';
-import 'package:direct_select_flutter/direct_select_list.dart';
 import 'package:get/get.dart';
+import 'package:search_choices/search_choices.dart';
 
 class ObjectifPage extends StatefulWidget {
   final String? userId;
@@ -25,7 +24,7 @@ class _ObjectifPageState extends State<ObjectifPage> {
     "Cross training",
     "Cuisses abdos fessiers",
     "Femmes enceintes",
-    "Gym a domicile",
+    "Gym à domicile",
     "Gym et pathologie",
     "Gym enfant",
     "Gym handicap",
@@ -46,12 +45,19 @@ class _ObjectifPageState extends State<ObjectifPage> {
     "Travail postural",
     "Ventre plat",
   ];
+  List<DropdownMenuItem<String>> items = [];
 
   bool? isAdmin;
-  int? selectedIndex = 0;
+  int selectedIndex = 0;
 
   @override
   void initState() {
+    items = _objectifs
+        .map((e) => DropdownMenuItem<String>(
+      child: (Text(e)),
+      value: e,
+    ))
+        .toList();
     isAdmin = Get.find<FirebaseController>().admin.value;
     FirebaseController.to.getLastObjectif(widget.userId).then((value) {
       setState(() {
@@ -94,74 +100,65 @@ class _ObjectifPageState extends State<ObjectifPage> {
             decoration: BoxDecoration(
               image: DecorationImage(
                 colorFilter: ColorFilter.mode(Colors.black38, BlendMode.darken),
-                image: AssetImage("assets/images/bg.jpg"),
+                image: AssetImage("assets/images/bg10.jpg"),
                 fit: BoxFit.cover,
               ),
             ),
-            child: DirectSelectContainer(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  verticalDirection: VerticalDirection.down,
-                  children: <Widget>[
-                    SizedBox(height: 150.0),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
-                            child: Card(
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: <Widget>[
-                                  Expanded(
-                                      child: Padding(
-                                          child: GestureDetector(
-                                            onTap: () {
-                                              if (isAdmin == false) {
-                                                showShortToast(
-                                                    "Please contact the administrator");
-                                              }
-                                            },
-                                            child: AbsorbPointer(
-                                              child: DirectSelectList<String>(
-                                                values: _objectifs,
-                                                defaultItemIndex:
-                                                    this.selectedIndex ?? 0,
-                                                itemBuilder: (String value) =>
-                                                    getDropDownMenuItem(value),
-                                                focusedItemDecoration:
-                                                    _getDslDecoration(),
-                                                onItemSelectedListener:
-                                                    (item, index, context) {
-                                                  setState(() {
-                                                    this.selectedIndex = index;
-                                                    print(this.selectedIndex);
-                                                  });
-                                                },
-                                              ),
-                                              absorbing: isAdmin == false,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                verticalDirection: VerticalDirection.down,
+                children: <Widget>[
+                  SizedBox(height: 150.0),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
+                          child: Card(
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: <Widget>[
+                                Expanded(
+                                    child: Padding(
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            if (isAdmin == false) {
+                                              showShortToast(
+                                                  "Please contact the administrator");
+                                            }
+                                          },
+                                          child: AbsorbPointer(
+                                            child:SearchChoices.single(
+                                              items: items,
+                                              value:
+                                              _objectifs[this.selectedIndex],
+                                              hint: "",
+                                              searchHint: "",
+                                              onChanged: (value) {
+                                                setState(() {
+                                                  this.selectedIndex =
+                                                      _objectifs.indexOf(value);
+                                                });
+                                              },
+                                              displayClearIcon: false,
+                                              isExpanded: true,
                                             ),
+                                            absorbing: isAdmin == false,
                                           ),
-                                          padding: EdgeInsets.only(left: 12))),
-                                  Padding(
-                                    padding: EdgeInsets.only(right: 8),
-                                    child: Icon(
-                                      Icons.unfold_more,
-                                      color: Colors.black38,
-                                    ),
-                                  )
-                                ],
-                              ),
+                                        ),
+                                        padding: EdgeInsets.only(left: 12))),
+
+                              ],
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             )),
         floatingActionButton: isAdmin == true
@@ -177,7 +174,7 @@ class _ObjectifPageState extends State<ObjectifPage> {
                 ),
                 onPressed: () {
                   Objectif? objectif = new Objectif();
-                  objectif.nom = this._objectifs[this.selectedIndex!];
+                  objectif.nom = this._objectifs[this.selectedIndex];
                   objectif.date = DateTime.now();
                   FirebaseController.to.addObjectif(objectif, widget.userId);
                   Get.back();

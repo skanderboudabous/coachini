@@ -33,7 +33,7 @@ class _CompositionCorporellePageState extends State<CompositionCorporellePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Composition Corporelle",
+        title: Text("Composition corporelle",
             textAlign: TextAlign.center,
             style: TextStyle(
                 color: Colors.white,

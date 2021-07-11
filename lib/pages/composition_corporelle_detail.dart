@@ -153,6 +153,62 @@ class _CompositionCorporelleDetailPageState extends State<CompositionCorporelleD
                               style: TextStyle(color: Colors.white),
                               keyboardType: TextInputType.number,
                             ),
+                            FormBuilderTextField(
+                              name: 'pliCutaneBicipital',
+                              decoration: InputDecoration(
+                                  labelText: 'pli cutané bicipital (mm)',
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
+                              ),
+                              validator: FormBuilderValidators.compose([
+                                FormBuilderValidators.required(context),
+                                FormBuilderValidators.numeric(context),
+                              ]),
+                              initialValue: widget.compositionCorporelle?.pliCutaneBicipital.toString(),
+                              style: TextStyle(color: Colors.white),
+                              keyboardType: TextInputType.number,
+                            ),
+                            FormBuilderTextField(
+                              name: 'pliCutaneTricipital',
+                              decoration: InputDecoration(
+                                  labelText: 'pli cutané tricipital (mm)',
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
+                              ),
+                              validator: FormBuilderValidators.compose([
+                                FormBuilderValidators.required(context),
+                                FormBuilderValidators.numeric(context),
+                              ]),
+                              initialValue: widget.compositionCorporelle?.pliCutaneTricipital.toString(),
+                              style: TextStyle(color: Colors.white),
+                              keyboardType: TextInputType.number,
+                            ),
+                            FormBuilderTextField(
+                              name: 'pliCutaneSousScapulaire',
+                              decoration: InputDecoration(
+                                  labelText: 'pli cutané sous-scapulaire (mm)',
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
+                              ),
+                              validator: FormBuilderValidators.compose([
+                                FormBuilderValidators.required(context),
+                                FormBuilderValidators.numeric(context),
+                              ]),
+                              initialValue: widget.compositionCorporelle?.pliCutaneSousScapulaire.toString(),
+                              style: TextStyle(color: Colors.white),
+                              keyboardType: TextInputType.number,
+                            ),
+                            FormBuilderTextField(
+                              name: 'pliCutaneSupraIliaque',
+                              decoration: InputDecoration(
+                                  labelText: 'pli cutané supra-iliaque (mm)',
+                                  labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
+                              ),
+                              validator: FormBuilderValidators.compose([
+                                FormBuilderValidators.required(context),
+                                FormBuilderValidators.numeric(context),
+                              ]),
+                              initialValue: widget.compositionCorporelle?.pliCutaneSupraIliaque.toString(),
+                              style: TextStyle(color: Colors.white),
+                              keyboardType: TextInputType.number,
+                            ),
                            ],
                         ),
                       ),

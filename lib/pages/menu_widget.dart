@@ -86,7 +86,7 @@ class MenuWidget extends StatelessWidget {
             sliderItem('Techniques de préparation mentale', Icons.assignment),
             sliderItem('Suivi entrainement', Icons.fitness_center),
             sliderItem('Composition corporelle', Icons.accessibility),
-            sliderItem('Chart', Icons.graphic_eq),
+            sliderItem('Statistiques', Icons.graphic_eq),
             sliderItem('About', Icons.info),
             sliderItem('LogOut', Icons.arrow_back_ios)
           ],
@@ -150,7 +150,7 @@ class MenuWidget extends StatelessWidget {
           case "About":
             Get.to(AboutPage());
             break;
-          case "Chart":
+          case "Statistiques":
             Get.to(CollectionList());
             break;
         }

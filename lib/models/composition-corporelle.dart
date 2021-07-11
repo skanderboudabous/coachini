@@ -6,6 +6,10 @@ class CompositionCorporelle {
   double? masseMusculaire;//10
   double? masseOsseuse;//10
   double? imc;//5
+  double? pliCutaneBicipital;
+  double? pliCutaneTricipital;
+  double? pliCutaneSousScapulaire;
+  double? pliCutaneSupraIliaque;
   DateTime? date;
 
   CompositionCorporelle(
@@ -16,6 +20,10 @@ class CompositionCorporelle {
         this.masseMusculaire,
         this.masseOsseuse,
         this.imc,
+        this.pliCutaneBicipital,
+        this.pliCutaneTricipital,
+        this.pliCutaneSousScapulaire,
+        this.pliCutaneSupraIliaque,
         this.date});
 
   @override
@@ -48,6 +56,18 @@ class CompositionCorporelle {
       imc: null == (temp = map['imc'])
           ? null
           : (temp is num ? temp.toDouble() : double.tryParse(temp)),
+      pliCutaneBicipital: null == (temp = map['pliCutaneBicipital'])
+          ? null
+          : (temp is num ? temp.toDouble() : double.tryParse(temp)),
+      pliCutaneTricipital: null == (temp = map['pliCutaneTricipital'])
+          ? null
+          : (temp is num ? temp.toDouble() : double.tryParse(temp)),
+      pliCutaneSousScapulaire: null == (temp = map['pliCutaneSousScapulaire'])
+          ? null
+          : (temp is num ? temp.toDouble() : double.tryParse(temp)),
+      pliCutaneSupraIliaque: null == (temp = map['pliCutaneSupraIliaque'])
+          ? null
+          : (temp is num ? temp.toDouble() : double.tryParse(temp)),
 
       date: null == (temp = map['date'])
           ? null
@@ -67,12 +87,16 @@ class CompositionCorporelle {
       'masseMusculaire': masseMusculaire,
       'masseOsseuse': masseOsseuse,
       'imc': imc,
+      "pliCutaneBicipital":pliCutaneBicipital,
+      "pliCutaneTricipital":pliCutaneTricipital,
+      "pliCutaneSousScapulaire":pliCutaneSousScapulaire,
+      "pliCutaneSupraIliaque":pliCutaneSupraIliaque,
       'date': date
     };
   }
 
   @override
   String toString() {
-    return 'CompositionCorporelle{id: $id,poids: $poids,masseGraisse: $masseGraisse,masseHydrique: $masseHydrique,masseMusculaire: $masseMusculaire,masseOsseuse: $masseOsseuse,imc: $imc ,date: $date}';
+    return 'CompositionCorporelle{id: $id,poids: $poids,masseGraisse: $masseGraisse,masseHydrique: $masseHydrique,masseMusculaire: $masseMusculaire,masseOsseuse: $masseOsseuse,imc: $imc ,date: $date,pliCutaneBicipital:$pliCutaneBicipital,pliCutaneTricipital:$pliCutaneTricipital,pliCutaneSousScapulaire:$pliCutaneSousScapulaire,pliCutaneSupraIliaque:$pliCutaneSupraIliaque}';
   }
 }

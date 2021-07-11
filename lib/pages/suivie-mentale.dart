@@ -84,7 +84,7 @@ class _SuivieMentalePageState extends State<SuivieMentalePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Suivi Mentale",
+        title: Text("Suivi mentale",
             textAlign: TextAlign.center,
             style: TextStyle(
                 color: Colors.white,
@@ -126,7 +126,7 @@ class _SuivieMentalePageState extends State<SuivieMentalePage> {
                                     titles: _listBienEtre,
                                     labelStyle: TextStyle(color: Colors.pink),
                                     defaultSelected: _indexBienEtre,
-                                    label: "Bien Être",
+                                    label: "Bien être",
                                     orientation: RGOrientation.HORIZONTAL,
                                     onChanged: (index) {
                                       setState(() {
@@ -156,7 +156,7 @@ class _SuivieMentalePageState extends State<SuivieMentalePage> {
                                     titles: _listNegativite,
                                     labelStyle: TextStyle(color: Colors.pink),
                                     defaultSelected: _indexNegativite,
-                                    label: "Negativité",
+                                    label: "Négativité",
                                     orientation: RGOrientation.HORIZONTAL,
                                     onChanged: (index) {
                                       setState(() {
@@ -302,8 +302,8 @@ class _SuivieMentalePageState extends State<SuivieMentalePage> {
                                 BorderRadius.all(Radius.circular(28))),
                         color: Theme.of(context).accentColor,
                         child: Text(
-                          "Lien 1",
-                          style: TextStyle(color: Colors.white),
+                          "Formulaire 1",
+                          style: TextStyle(color: Colors.white,fontSize: 11),
                         ),
                         onPressed: () {
                           Get.to(FormWebView(Constants.LINK1));
@@ -320,8 +320,8 @@ class _SuivieMentalePageState extends State<SuivieMentalePage> {
                                 BorderRadius.all(Radius.circular(28))),
                         color: Theme.of(context).accentColor,
                         child: Text(
-                          "Lien 2",
-                          style: TextStyle(color: Colors.white),
+                          "Formulaire 2",
+                          style: TextStyle(color: Colors.white,fontSize: 11),
                         ),
                         onPressed: () {
                           Get.to(FormWebView(Constants.LINK2));
@@ -338,8 +338,8 @@ class _SuivieMentalePageState extends State<SuivieMentalePage> {
                                 BorderRadius.all(Radius.circular(28))),
                         color: Theme.of(context).accentColor,
                         child: Text(
-                          "Lien 3",
-                          style: TextStyle(color: Colors.white),
+                          "Formulaire 3",
+                          style: TextStyle(color: Colors.white,fontSize: 11),
                         ),
                         onPressed: () {
                           Get.to(FormWebView(Constants.LINK3));

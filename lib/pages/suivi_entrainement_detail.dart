@@ -75,7 +75,7 @@ class _SuiviEntrainementDetailPageState
                         FormBuilderTextField(
                           name: 'duree_totale_seance',
                           decoration: InputDecoration(
-                              labelText: 'Duree totale séance (min)',
+                              labelText: 'Durée totale de la séance (min)',
                               labelStyle: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
@@ -92,9 +92,22 @@ class _SuiviEntrainementDetailPageState
                           keyboardType: TextInputType.number,
                         ),
                         FormBuilderTextField(
+                          name: 'FC',
+                          decoration: InputDecoration(
+                              labelText: 'Fréquence cardiaque repos (bpm)',
+                              labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
+                          validator: FormBuilderValidators.compose([
+                            FormBuilderValidators.required(context),
+                            FormBuilderValidators.numeric(context),
+                          ]),
+                          initialValue: widget.suiviEntrainement?.FC.toString(),
+                          style: TextStyle(color: Colors.white),
+                          keyboardType: TextInputType.number,
+                        ),
+                        FormBuilderTextField(
                           name: 'rythme_cardiaque_moy',
                           decoration: InputDecoration(
-                              labelText: 'Rythme cardiaque moyen (bpm)',
+                              labelText: 'Fréquence cardiaque moy (bpm)',
                               labelStyle: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
@@ -106,6 +119,19 @@ class _SuiviEntrainementDetailPageState
                           initialValue: widget
                               .suiviEntrainement?.rythme_cardiaque_moy
                               .toString(),
+                          style: TextStyle(color: Colors.white),
+                          keyboardType: TextInputType.number,
+                        ),
+                        FormBuilderTextField(
+                          name: 'FCmax',
+                          decoration: InputDecoration(
+                              labelText: 'Fréquence cardiaque max (bpm)',
+                              labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
+                          validator: FormBuilderValidators.compose([
+                            FormBuilderValidators.required(context),
+                            FormBuilderValidators.numeric(context),
+                          ]),
+                          initialValue: widget.suiviEntrainement?.FCmax.toString(),
                           style: TextStyle(color: Colors.white),
                           keyboardType: TextInputType.number,
                         ),
@@ -147,7 +173,7 @@ class _SuiviEntrainementDetailPageState
                         FormBuilderTextField(
                           name: 'distance_parcourue',
                           decoration: InputDecoration(
-                              labelText: 'distance parcourue (m)',
+                              labelText: 'Distance parcourue (m)',
                               labelStyle: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
@@ -165,7 +191,7 @@ class _SuiviEntrainementDetailPageState
                         FormBuilderTextField(
                           name: 'nb_calorie_brule',
                           decoration: InputDecoration(
-                              labelText: 'Nombre calories bruleés',
+                              labelText: 'Nombre de calories bruleés',
                               labelStyle: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
@@ -183,7 +209,7 @@ class _SuiviEntrainementDetailPageState
                         FormBuilderTextField(
                           name: 'allureMoy',
                           decoration: InputDecoration(
-                              labelText: 'Allure Moyenne (min/Km)',
+                              labelText: 'Allure moyenne (min/Km)',
                               labelStyle: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
@@ -200,7 +226,7 @@ class _SuiviEntrainementDetailPageState
                         FormBuilderTextField(
                           name: 'cadenceMoy',
                           decoration: InputDecoration(
-                              labelText: 'Cadence Moyenne (pas/min)',
+                              labelText: 'Cadence moyenne (pas/min)',
                               labelStyle: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
@@ -217,7 +243,7 @@ class _SuiviEntrainementDetailPageState
                         FormBuilderTextField(
                           name: 'longuerMoyPas',
                           decoration: InputDecoration(
-                              labelText: 'Longueur Moyenne de pas (cm)',
+                              labelText: 'Longueur moyenne de pas (cm)',
                               labelStyle: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
@@ -229,20 +255,6 @@ class _SuiviEntrainementDetailPageState
                           initialValue: widget
                               .suiviEntrainement?.longuerMoyPas
                               .toString(),
-                          style: TextStyle(color: Colors.white),
-                          keyboardType: TextInputType.number,
-                        ),
-
-                        FormBuilderTextField(
-                          name: 'FC',
-                          decoration: InputDecoration(
-                              labelText: 'FC repos (bpm)',
-                              labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
-                          validator: FormBuilderValidators.compose([
-                            FormBuilderValidators.required(context),
-                            FormBuilderValidators.numeric(context),
-                          ]),
-                          initialValue: widget.suiviEntrainement?.FC.toString(),
                           style: TextStyle(color: Colors.white),
                           keyboardType: TextInputType.number,
                         ),
@@ -278,7 +290,7 @@ class _SuiviEntrainementDetailPageState
                         FormBuilderTextField(
                           name: 'RPE',
                           decoration: InputDecoration(
-                              labelText: 'RPE',
+                              labelText: 'Niveau de fatigue',
                               labelStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)
                           ),
                           validator: FormBuilderValidators.compose([

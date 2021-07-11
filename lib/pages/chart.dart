@@ -178,15 +178,15 @@ class _ChartPageState extends State<ChartPage> {
           ),
           getTitles: (value) {
             return ((value.toInt())*(max/maxY!)).toInt().toString();
-            return( value.toInt()*100).toString();
-            print(value.toInt() + 1 <= dataList.length);
-            if (value.toInt() + 1 <= dataList.length) {
-              print(value.toInt());
-              print(sortedSpots[value.toInt()].y.toInt().toString());
-              return  sortedSpots[value.toInt()].y.toInt().toString();
-            } else {
-              return( value.toInt()*100).toString();
-            }
+//            return( value.toInt()*100).toString();
+//            print(value.toInt() + 1 <= dataList.length);
+//            if (value.toInt() + 1 <= dataList.length) {
+//              print(value.toInt());
+//              print(sortedSpots[value.toInt()].y.toInt().toString());
+//              return  sortedSpots[value.toInt()].y.toInt().toString();
+//            } else {
+//              return( value.toInt()*100).toString();
+//            }
           },
           reservedSize: 28,
           margin: 12,
@@ -206,7 +206,7 @@ class _ChartPageState extends State<ChartPage> {
                 fontWeight: FontWeight.bold,
                 fontSize: 14,
               );
-              return LineTooltipItem(((touchedSpot.y/12)*max).toString(), textStyle);
+              return LineTooltipItem(((touchedSpot.y/12)*max).toStringAsFixed(1), textStyle);
             }).toList();
           }
         )
