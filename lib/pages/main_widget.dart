@@ -27,7 +27,7 @@ class _MainWidgetState extends State<MainWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          "Sport et Santé",
+                          "Sport et santé",
                           style: TextStyle(
                             fontSize: 30,
                             color: Colors.white,
