@@ -45,7 +45,9 @@ class _SuivieNutritionnelPageState extends State<SuivieNutritionnelPage> {
       ),
       body: WillPopScope(
         onWillPop: () {
-          Get.toNamed(AppRoutes.USER_PROFILE+"?id="+widget.userId!);
+          isAdmin==true ?
+          Get.toNamed(AppRoutes.USER_PROFILE+"?id="+widget.userId!) :
+          Get.toNamed(AppRoutes.HOME);
           return Future.value(false);
         },
         child: Container(

@@ -7,7 +7,53 @@ class MainWidget extends StatefulWidget {
 }
 
 class _MainWidgetState extends State<MainWidget> {
+  Image? image1;
+  Image? image2;
+  Image? image3;
+  Image? image4;
+  Image? image5;
+  Image? image6;
+  Image? image7;
+  Image? image8;
+  Image? image9;
+  Image? image10;
+  Image? image11;
+  Image? image12;
+  @override
+  void initState() {
+    image1=Image.asset("assets/images/img1.jpg");
+    image2=Image.asset("assets/images/img2.png");
+    image3=Image.asset("assets/images/img3.jpg");
+    image4=Image.asset("assets/images/img4.jpg");
+    image5=Image.asset("assets/images/img5.jpg");
+    image6=Image.asset("assets/images/img6.jpg");
+    image7=Image.asset("assets/images/img7.jpg");
+    image8=Image.asset("assets/images/img8.jpg");
+    image9=Image.asset("assets/images/img9.jpg");
+    image10=Image.asset("assets/images/img10.jpg");
+    image11=Image.asset("assets/images/img11.jpg");
+    image12=Image.asset("assets/images/img12.jpg");
+    // TODO: implement initState
+    super.initState();
+  }
 
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+    precacheImage(image1!.image,context);
+    precacheImage(image2!.image,context);
+    precacheImage(image3!.image,context);
+    precacheImage(image4!.image,context);
+    precacheImage(image5!.image,context);
+    precacheImage(image6!.image,context);
+    precacheImage(image7!.image,context);
+    precacheImage(image8!.image,context);
+    precacheImage(image9!.image,context);
+    precacheImage(image10!.image,context);
+    precacheImage(image11!.image,context);
+    precacheImage(image12!.image,context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +64,7 @@ class _MainWidgetState extends State<MainWidget> {
             child: Column(
                 children: <Widget>[ExpansionCard(
                   borderRadius: 20,
-                  background: Image(image: AssetImage("assets/images/img1.jpg"),
+                  background: Image(image: image1!.image,
                     colorBlendMode: BlendMode.darken,
                     color: Colors.black38,
                   ),
@@ -47,7 +93,7 @@ class _MainWidgetState extends State<MainWidget> {
                 ),
                   ExpansionCard(
                     borderRadius: 20,
-                      background: Image(image: AssetImage("assets/images/img2.png"),
+                      background: Image(image: image2!.image,
                       colorBlendMode: BlendMode.darken,
                         color: Colors.black38,
                       ),
@@ -75,7 +121,7 @@ class _MainWidgetState extends State<MainWidget> {
                   ),
                   ExpansionCard(
                     borderRadius: 20,
-                    background: Image(image: AssetImage("assets/images/img3.jpg"),
+                    background: Image(image:image3!.image,
                       colorBlendMode: BlendMode.darken,
                       color: Colors.black38,
                     ),
@@ -103,7 +149,7 @@ class _MainWidgetState extends State<MainWidget> {
                   ),
                   ExpansionCard(
                     borderRadius: 20,
-                    background: Image(image: AssetImage("assets/images/img4.jpg"),
+                    background: Image(image: image4!.image,
                       colorBlendMode: BlendMode.darken,
                       color: Colors.black38,
                     ),
@@ -131,7 +177,7 @@ class _MainWidgetState extends State<MainWidget> {
                   ),
                   ExpansionCard(
                     borderRadius: 20,
-                    background: Image(image: AssetImage("assets/images/img5.jpg"),
+                    background: Image(image: image5!.image,
                       colorBlendMode: BlendMode.darken,
                       color: Colors.black38,
                     ),
@@ -159,7 +205,7 @@ class _MainWidgetState extends State<MainWidget> {
                   ),
                   ExpansionCard(
                     borderRadius: 20,
-                    background: Image(image: AssetImage("assets/images/img6.jpg"),
+                    background: Image(image: image6!.image,
                       colorBlendMode: BlendMode.darken,
                       color: Colors.black38,
                     ),
@@ -187,7 +233,7 @@ class _MainWidgetState extends State<MainWidget> {
                   ),
                   ExpansionCard(
                     borderRadius: 20,
-                    background: Image(image: AssetImage("assets/images/img8.jpg"),
+                    background: Image(image: image8!.image,
                       colorBlendMode: BlendMode.darken,
                       color: Colors.black38,
                     ),
@@ -215,7 +261,7 @@ class _MainWidgetState extends State<MainWidget> {
                   ),
                   ExpansionCard(
                     borderRadius: 20,
-                    background: Image(image: AssetImage("assets/images/img9.jpg"),
+                    background: Image(image: image9!.image,
                       colorBlendMode: BlendMode.darken,
                       color: Colors.black38,
                     ),
@@ -243,7 +289,7 @@ class _MainWidgetState extends State<MainWidget> {
                   ),
                   ExpansionCard(
                     borderRadius: 20,
-                    background: Image(image: AssetImage("assets/images/img11.jpg"),
+                    background: Image(image: image11!.image,
                       colorBlendMode: BlendMode.darken,
                       color: Colors.black38,
                     ),
@@ -270,7 +316,7 @@ class _MainWidgetState extends State<MainWidget> {
                     ],
                   ), ExpansionCard(
                     borderRadius: 20,
-                    background: Image(image: AssetImage("assets/images/img7.jpg"),
+                    background: Image(image: image7!.image,
                       colorBlendMode: BlendMode.darken,
                       color: Colors.black38,
                     ),
@@ -298,7 +344,7 @@ class _MainWidgetState extends State<MainWidget> {
                   ),
                   ExpansionCard(
                     borderRadius: 20,
-                    background: Image(image: AssetImage("assets/images/img10.jpg"),
+                    background: Image(image: image10!.image,
                       colorBlendMode: BlendMode.darken,
                       color: Colors.black38,
                     ),
@@ -326,7 +372,7 @@ class _MainWidgetState extends State<MainWidget> {
                   ),
                   ExpansionCard(
                     borderRadius: 20,
-                    background: Image(image: AssetImage("assets/images/img12.jpg"),
+                    background: Image(image: image12!.image,
                       colorBlendMode: BlendMode.darken,
                       color: Colors.black38,
                     ),
