@@ -34,7 +34,7 @@ class _AddExerciceImageState extends State<AddExerciceImage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(title: Text("Add Execrcice Image",
+      appBar: AppBar(title: Text("Add exercice image",
           textAlign: TextAlign.center,
           style: TextStyle(
               color: Colors.white,

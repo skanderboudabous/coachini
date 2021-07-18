@@ -44,7 +44,7 @@ class _MesuresListState extends State<MesuresList> {
                       SizedBox(height: 10,),
                       PrimaryButton(
                         onPressed: () {
-                          Get.to(()=> new ChartPage(title:"Tour Taille", atr: 'tourTaille',collectionName: collectionName,));
+                          Get.to(()=> new ChartPage(title:"Tour de taille", atr: 'tourTaille',collectionName: collectionName,));
                         },
                         buttonLabel: "Tour de taille",
                         fontSize: 14,
@@ -54,7 +54,7 @@ class _MesuresListState extends State<MesuresList> {
                       SizedBox(height: 10,),
                       PrimaryButton(
                         onPressed: () {
-                          Get.to(()=> new ChartPage(title:"Tour Hanche", atr: 'tourHanche',collectionName: collectionName,));
+                          Get.to(()=> new ChartPage(title:"Tour de hanche", atr: 'tourHanche',collectionName: collectionName,));
                         },
                         buttonLabel: "Tour de hanche",
                         fontSize: 14,
@@ -134,7 +134,7 @@ class _MesuresListState extends State<MesuresList> {
                       SizedBox(height: 10,),
                       PrimaryButton(
                         onPressed: () {
-                          Get.to(()=> new ChartPage(title:"Repétition Max Pompe", atr: 'repMaxPompe',collectionName: collectionName,));
+                          Get.to(()=> new ChartPage(title:"Repétition max pompe", atr: 'repMaxPompe',collectionName: collectionName,));
                         },
                         buttonLabel: "Répétition max pompe",
                         fontSize: 14,
@@ -144,7 +144,7 @@ class _MesuresListState extends State<MesuresList> {
                       SizedBox(height: 10,),
                       PrimaryButton(
                         onPressed: () {
-                          Get.to(()=> new ChartPage(title:"Repétition Max Abdo", atr: 'repMaxAbd',collectionName: collectionName,));
+                          Get.to(()=> new ChartPage(title:"Repétition max abdo", atr: 'repMaxAbd',collectionName: collectionName,));
                         },
                         buttonLabel: "Répétition max abdo",
                         fontSize: 14,
@@ -154,7 +154,7 @@ class _MesuresListState extends State<MesuresList> {
                       SizedBox(height: 10,),
                       PrimaryButton(
                         onPressed: () {
-                          Get.to(()=> new ChartPage(title:"Temps Limite Gainage", atr: 'tempsLimiteGain',collectionName: collectionName,));
+                          Get.to(()=> new ChartPage(title:"Temps limite gainage", atr: 'tempsLimiteGain',collectionName: collectionName,));
                         },
                         buttonLabel: "Temps limite gainage",
                         fontSize: 14,
@@ -164,7 +164,7 @@ class _MesuresListState extends State<MesuresList> {
                       SizedBox(height: 10,),
                       PrimaryButton(
                         onPressed: () {
-                          Get.to(()=> new ChartPage(title:"Temps Limite Gainage Squat", atr: 'tempsLimiteGainSquat',collectionName: collectionName,));
+                          Get.to(()=> new ChartPage(title:"Temps Limite gainage squat", atr: 'tempsLimiteGainSquat',collectionName: collectionName,));
                         },
                         buttonLabel: "Temps limite gainage squat",
                         fontSize: 14,
@@ -214,7 +214,7 @@ class _MesuresListState extends State<MesuresList> {
                       SizedBox(height: 10,),
                       PrimaryButton(
                         onPressed: () {
-                          Get.to(()=> new ChartPage(title:"Test 6 minutes de marche", atr: 'test6MinMarche',collectionName: collectionName,));
+                          Get.to(()=> new ChartPage(title:"Test de marche de 6 minutes", atr: 'test6MinMarche',collectionName: collectionName,));
                         },
                         buttonLabel: "Test de marche de 6 minutes",
                         fontSize: 14,

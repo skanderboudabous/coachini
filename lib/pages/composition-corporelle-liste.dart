@@ -34,7 +34,7 @@ class _CompositionCorporelleListState extends State<CompositionCorporelleList> {
                   children: [
                     PrimaryButton(
                       onPressed: () {
-                        Get.to(()=> new ChartPage(title:"poids", atr: 'poids',collectionName: collectionName,));
+                        Get.to(()=> new ChartPage(title:"Poids", atr: 'poids',collectionName: collectionName,));
 
                       },
                       buttonLabel: "Poids",
@@ -45,7 +45,7 @@ class _CompositionCorporelleListState extends State<CompositionCorporelleList> {
                     SizedBox(height: 10,),
                     PrimaryButton(
                       onPressed: () {
-                        Get.to(()=> new ChartPage(title:"masse Graisseuse", atr: 'masseGraisse',collectionName: collectionName,));
+                        Get.to(()=> new ChartPage(title:"Masse graisseuse", atr: 'masseGraisse',collectionName: collectionName,));
 
                       },
                       buttonLabel: "Masse graisseuse",
@@ -56,7 +56,7 @@ class _CompositionCorporelleListState extends State<CompositionCorporelleList> {
                     SizedBox(height: 10,),
                     PrimaryButton(
                       onPressed: () {
-                        Get.to(()=> new ChartPage(title:"masse Hydrique", atr: 'masseHydrique',collectionName: collectionName,));
+                        Get.to(()=> new ChartPage(title:"Masse hydrique", atr: 'masseHydrique',collectionName: collectionName,));
 
                       },
                       buttonLabel: "Masse hydrique",
@@ -67,7 +67,7 @@ class _CompositionCorporelleListState extends State<CompositionCorporelleList> {
                     SizedBox(height: 10,),
                     PrimaryButton(
                       onPressed: () {
-                        Get.to(()=> new ChartPage(title:"masse Musculaire", atr: 'masseMusculaire',collectionName: collectionName,));
+                        Get.to(()=> new ChartPage(title:"Masse musculaire", atr: 'masseMusculaire',collectionName: collectionName,));
 
                       },
                       buttonLabel: "Masse musculaire",
@@ -78,7 +78,7 @@ class _CompositionCorporelleListState extends State<CompositionCorporelleList> {
                     SizedBox(height: 10,),
                     PrimaryButton(
                       onPressed: () {
-                        Get.to(()=> new ChartPage(title:"masse Osseuse", atr: 'masseOsseuse',collectionName: collectionName,));
+                        Get.to(()=> new ChartPage(title:"Masse osseuse", atr: 'masseOsseuse',collectionName: collectionName,));
 
                       },
                       buttonLabel: "Masse osseuse",
@@ -89,7 +89,7 @@ class _CompositionCorporelleListState extends State<CompositionCorporelleList> {
                     SizedBox(height: 10,),
                     PrimaryButton(
                       onPressed: () {
-                        Get.to(()=> new ChartPage(title:"imc", atr: 'imc',collectionName: collectionName,));
+                        Get.to(()=> new ChartPage(title:"IMC", atr: 'imc',collectionName: collectionName,));
 
                       },
                       buttonLabel: "IMC",

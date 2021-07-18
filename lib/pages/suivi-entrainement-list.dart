@@ -64,7 +64,7 @@ class _SuiviEntrainementListState extends State<SuiviEntrainementList> {
                       SizedBox(height: 10,),
                       PrimaryButton(
                         onPressed: () {
-                          Get.to(()=> new ChartPage(title:"FC max", atr: 'FCmax',collectionName: collectionName,));
+                          Get.to(()=> new ChartPage(title:"Fréquence cardiaque max", atr: 'FCmax',collectionName: collectionName,));
                         },
                         buttonLabel: "Fréquence cardiaque max",
                         fontSize: 14,
@@ -114,7 +114,7 @@ class _SuiviEntrainementListState extends State<SuiviEntrainementList> {
                       SizedBox(height: 10,),
                       PrimaryButton(
                         onPressed: () {
-                          Get.to(()=> new ChartPage(title:"Allure Moyenne", atr: 'allureMoy',collectionName: collectionName,));
+                          Get.to(()=> new ChartPage(title:"Allure moyenne", atr: 'allureMoy',collectionName: collectionName,));
                         },
                         buttonLabel: "Allure moyenne",
                         fontSize: 14,
@@ -124,7 +124,7 @@ class _SuiviEntrainementListState extends State<SuiviEntrainementList> {
                       SizedBox(height: 10,),
                       PrimaryButton(
                         onPressed: () {
-                          Get.to(()=> new ChartPage(title:"Cadence Moyenne", atr: 'cadenceMoy',collectionName: collectionName,));
+                          Get.to(()=> new ChartPage(title:"Cadence moyenne", atr: 'cadenceMoy',collectionName: collectionName,));
                         },
                         buttonLabel: "Cadence moyenne",
                         fontSize: 14,
@@ -134,7 +134,7 @@ class _SuiviEntrainementListState extends State<SuiviEntrainementList> {
                       SizedBox(height: 10,),
                       PrimaryButton(
                         onPressed: () {
-                          Get.to(()=> new ChartPage(title:"Longueur Moyenne de pas", atr: 'longuerMoyPas',collectionName: collectionName,));
+                          Get.to(()=> new ChartPage(title:"Longueur moyenne de pas", atr: 'longuerMoyPas',collectionName: collectionName,));
                         },
                         buttonLabel: "Longueur moyenne de pas",
                         fontSize: 14,
